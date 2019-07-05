@@ -1,0 +1,28 @@
+//
+// List style
+// --------------------------------------------------
+
+.checklist {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    margin-bottom: 5px;
+
+    &:before {
+      @extend .text-success;
+      content: "\f05d";
+      font-family: FontAwesome;
+      padding-right: 5px;
+    }
+
+    &.item-not-available {
+      @extend .text-secondary;
+
+      &:before {
+        color: $gray-light;
+        content: "\f05c";
+      }
+    }
+  }
+}

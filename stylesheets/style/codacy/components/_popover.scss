@@ -1,0 +1,40 @@
+[data-toggle=popover] {
+  cursor: pointer;
+
+  &:not(.btn) {
+    &:hover, &:active, &:focus  {
+      color: $brand-primary;
+    }
+  }
+}
+
+.popover {
+  border-color: $border-color;
+  font-size: $font-sm;
+  line-height: 16px;
+  padding: 0 10px;
+  max-width: 160px;
+  box-shadow: 0 2px 3px transparentize($brand-primary, 0.8);
+
+  .arrow {
+    display: none;
+  }
+}
+
+.popover-primary {
+  border-color: $brand-primary;
+  box-shadow: 0 2px 3px transparentize($brand-primary, 0.8);
+}
+
+.popover-md {
+  max-width: 420px;
+}
+
+.popover-title {
+  background-color: transparent;
+  font-weight: bold;
+  font-size: inherit;
+}
+
+.popover-content,
+.popover-title { padding: 8px 0; }

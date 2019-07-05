@@ -1,0 +1,55 @@
+// Text input groups
+// -------------------------
+.input-group .form-control:focus {
+  z-index: 2;
+}
+
+.input-group-addon.checkbox {
+  padding: $padding-base-vertical $padding-base-horizontal;
+  font-size: $font-size-base;
+  font-weight: normal;
+  line-height: inherit;
+  color: $input-color;
+  text-align: center;
+  background-color: $white;
+  border: none;
+  border-radius: 0;
+  z-index: 3;
+
+  // Sizing
+  &.input-sm {
+    padding: $padding-small-vertical $padding-small-horizontal;
+    font-size: $font-size-small;
+    border-radius: $input-border-radius-small;
+  }
+  &.input-lg {
+    padding: $padding-large-vertical $padding-large-horizontal;
+    font-size: $font-size-large;
+    border-radius: $input-border-radius-large;
+  }
+
+  // Nuke default margins from checkboxes and radios to vertically center within.
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-top: 0;
+  }
+
+  &.checkbox-lg {
+
+    label {
+
+      &::before {
+        margin-left: -10px;
+        margin-top: -7px;
+        border-radius: 3px 0 0 3px;
+      }
+
+      &::after {
+        margin-left: -10px;
+        margin-top: -2px;
+        border-radius: 3px 0 0 3px;
+        font-size: $font-lg;
+      }
+    }
+  }
+}

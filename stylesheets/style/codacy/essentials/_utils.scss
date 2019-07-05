@@ -1,0 +1,301 @@
+//--General
+
+:focus{ outline: none; }
+
+.overflow-x { overflow-x: hidden; }
+
+body {
+  @include general-type;
+  -webkit-font-smoothing: antialiased;
+
+  a {
+    font-weight: bold;
+
+    &:hover, &:active, &:focus {
+      text-decoration: none;
+    }
+
+    //== Add chevron when a link has a collapse element
+    &[data-toggle="collapse"] {
+      cursor: pointer;
+
+      &::after {
+        content: " \f107";
+        font-family: FontAwesome;
+        font-weight: 400;
+      }
+
+      &[aria-expanded="true"] {
+        &::after {
+          font-family: FontAwesome;
+          content: " \f106";
+        }
+      }
+    }
+
+    //== Add icon indicating the link will open on another tab when there is "target=_blank"
+    &[target="_blank"]:not(.no-external-icon) {
+      &::after {
+        content: " \f08e";
+        font-family: FontAwesome;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+//== override external icon on the navbar
+.navbar {
+  li a[target="_blank"]::after {
+     display: none;
+   }
+}
+
+.container-padding {
+  padding-left: 105px;
+  padding-right: 15px;
+}
+
+.wrapper-padding {
+  @extend .padding-xxs;
+}
+
+//== Text utilities
+.text-truncate {
+  @include text-overflow();
+}
+
+.text-hyphens {
+  @include hyphens();
+}
+
+.highlight-font-size { font-size: 35px; }
+
+.highlight-font-size-sm { font-size: 25px; }
+
+//== Avatars
+.avatar {
+  overflow: hidden;
+  border-radius: 50%;
+  height: 56px;
+  width: 56px;
+  margin-right: 10px;
+  float: left;
+  position: relative;
+
+  img {
+    height: 100%;
+    width: auto;
+    position: absolute;
+  }
+
+  &.avatar-xxs {
+    height: 22px;
+    width: 22px;
+  }
+
+  &.avatar-xs {
+    height: 28px;
+    width: 28px;
+  }
+
+  &.avatar-sm {
+    height: 46px;
+    width: 46px;
+  }
+
+  &.avatar-md {
+    height: 64px;
+    width: 64px;
+  }
+
+  &.avatar-lg {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+
+//== Icons
+.fa-question-circle,
+.fa-question-circle-o {
+  cursor: help;
+  color: $gray;
+}
+
+.delta {
+  font-size: 0.8em;
+
+  &.up {
+
+    &:before {
+      font-family: "fontAwesome";
+      content: "\f106";
+    }
+  }
+
+  &.down {
+
+    &:before {
+      font-family: "fontAwesome";
+      content: "\f107";
+    }
+  }
+
+  &.positive { color: $brand-success; }
+
+  &.negative { color: $brand-danger; }
+
+  &.neutral { color: $gray; }
+}
+
+.circle {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 5px;
+  border: 3px solid transparent;
+
+  &.circle-md {
+    width: 14px;
+    height: 14px;
+  }
+
+  &.circle-green { background-color: $brand-success; }
+
+  &.circle-red { background-color: $brand-danger; }
+
+  &.circle-orange { background-color: $brand-orange; }
+
+  &.circle-border-green { border-color: $brand-success; }
+
+  &.circle-border-red { border-color: $brand-danger; }
+}
+
+
+//== Borders and dividers
+.divider {
+  background-color: #dbe6ec;
+  height: 1px;
+}
+
+.border-dashed {
+  @include border-dashed();
+}
+
+.border-doted { border-bottom: 1px dotted $black; }
+
+
+//== Colours
+.color-warning {color: $brand-orange; }
+
+.color-success { color: $brand-success; }
+
+.color-danger { color: $brand-danger; }
+
+
+//== Opacity for elements
+.faded-60 { opacity: 0.6; }
+
+.faded-30 { opacity: 0.3; }
+
+@each $prop, $abbrev in (margin: margin, padding: padding) {
+
+  .#{$abbrev} {
+    #{$prop}: $margin-normal !important;
+  }
+
+  .#{$abbrev}-top {
+    #{$prop}-top: $margin-normal !important;
+  }
+
+  .#{$abbrev}-right {
+    #{$prop}-right: $margin-normal !important;
+  }
+
+  .#{$abbrev}-bottom {
+    #{$prop}-bottom: $margin-normal !important;
+  }
+
+  .#{$abbrev}-left {
+    #{$prop}-left: $margin-normal !important;
+  }
+
+  .no-#{$abbrev} {
+    #{$prop}: 0 !important;
+  }
+
+  .no-#{$abbrev}-top {
+    #{$prop}-top: 0 !important;
+  }
+
+  .no-#{$abbrev}-right {
+    #{$prop}-right: 0 !important;
+  }
+
+  .no-#{$abbrev}-bottom {
+    #{$prop}-bottom: 0 !important;
+  }
+
+  .no-#{$abbrev}-left {
+    #{$prop}-left: 0 !important;
+  }
+
+  @each $size, $length in $spacers {
+
+    .#{$abbrev}-#{$size} {
+      #{$prop}: $length !important;
+    }
+
+    .#{$abbrev}-top-#{$size} {
+      #{$prop}-top: $length !important;
+    }
+
+    .#{$abbrev}-right-#{$size} {
+      #{$prop}-right: $length !important;
+    }
+
+    .#{$abbrev}-bottom-#{$size} {
+      #{$prop}-bottom: $length !important;
+    }
+
+    .#{$abbrev}-left-#{$size} {
+      #{$prop}-left: $length !important;
+    }
+  }
+}
+
+.font-base {
+  font-size: $font-normal;
+}
+
+@each $abbrev, $size in $font-sizes {
+  .font-#{$abbrev} {
+    font-size: $size;
+  }
+}
+
+.flex {
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display:flex;
+}
+
+.js-copy { cursor: pointer; }
+
+.classy-hr {
+  display: block;
+  vertical-align: middle;
+
+  &::before,
+  &::after {
+    content: '';
+    height: 1px;
+    background-color: $gray-lighter;
+    width: 40%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

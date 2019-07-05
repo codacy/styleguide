@@ -1,0 +1,15 @@
+.border-secondary-top {
+  @include border("top", 1px, $border-color);
+}
+
+.border-secondary-right {
+  @include border("right", 1px, $border-color);
+}
+
+.border-secondary-bottom {
+  @include border("bottom", 1px, $border-color);
+}
+
+.border-secondary-left {
+  @include border("left", 1px, $border-color);
+}

@@ -1,8 +1,11 @@
-node_modules
+node_modules/
 temp
-dist
 *.log
 example/.cache
 .DS_Store
 .vscode
-/build/
+/website/build/
+/components/build/
+/stylesheets/dist/
+/stylesheets/build/
+.sass-cache

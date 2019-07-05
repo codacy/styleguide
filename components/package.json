@@ -1,0 +1,92 @@
+{
+  "name": "codacy-react-styleguide",
+  "version": "0.1.0",
+  "author": "Codacy <code@codacy.com>",
+  "repository": "codacy/codacy-react-styleguide",
+  "description": "React Components for Codacy's Web APIs and elements",
+  "keywords": [
+    "react",
+    "components",
+    "codacy"
+  ],
+  "license": "MIT",
+  "main": "./build/index.js",
+  "typings": "./build/index.d.ts",
+  "scripts": {
+    "start": "NODE_ENV=development babel -w ./src --out-dir ./build --extensions \".ts,.tsx\"",
+    "build": "NODE_ENV=production npm run clean && babel ./src --out-dir ./build --extensions \".ts,.tsx\" && tsc",
+    "clean": "rimraf build",
+    "format": "prettier --trailing-comma es5 --single-quote --write 'src/**/*' 'README.md'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "prepare": "npm run build",
+    "precommit": "lint-staged",
+    "deploy": "np"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@babel/runtime": "^7.1.5",
+    "@khanacademy/tota11y": "^0.2.0",
+    "@sentisis/react-tags-input": "^1.0.5",
+    "@testing-library/react": "^8.0.4",
+    "@types/jest": "^23.3.9",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-select": "^3.0.0",
+    "@types/react-tag-input": "^6.1.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^24.8.0",
+    "fs-extra": "^8.1.0",
+    "jest": "^24.8.0",
+    "jest-dom": "^3.5.0",
+    "lint-staged": "^9.0.2",
+    "np": "^5.0.3",
+    "prettier": "^1.18.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "rimraf": "^2.6.3",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.2"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/jest.setup.ts"
+    ],
+    "testRegex": "test.tsx?$",
+    "moduleDirectories": [
+      "./node_modules",
+      "./src"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "npm run format",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "semi": true
+  }
+}

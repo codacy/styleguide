@@ -1,0 +1,167 @@
+//
+// Navs
+// --------------------------------------------------
+
+
+// Base class
+// --------------------------------------------------
+
+.nav {
+
+  > li {
+
+    > a {
+      color: $gray-darker;
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+        background-color: transparent;
+      }
+    }
+
+    &.disabled > a {
+
+      &,
+      &:hover,
+      &:focus {
+        color: $gray;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: $cursor-disabled;
+      }
+    }
+  }
+}
+
+
+// Tabs
+// -------------------------
+
+// Give the tabs something to sit on
+.nav-tabs {
+  border-bottom: 1px solid $border-color;
+  margin: 10px 0 20px;
+  float: left;
+
+  > li {
+
+    // Actual tabs (as links)
+    > a {
+      border: 0;
+      color: $gray;
+      font-weight: 400;
+      margin-right: 0;
+
+      &:hover,
+      &:focus {
+        color: $brand-primary;
+        text-decoration: none;
+      }
+    }
+
+    // Active state, and its :hover to override normal :hover
+    &.active > a {
+      border: 0;
+      border-bottom: 3px solid $brand-primary;
+      font-weight: 700;
+
+      &:hover,
+      &:focus {
+        color: $brand-primary;
+        background-color: transparent;
+        border: 0;
+        border-bottom: 3px solid $brand-primary;
+      }
+
+      &,
+      &:focus { color: $gray-darker; }
+    }
+  }
+}
+
+
+// Pills
+// -------------------------
+.nav-pills {
+
+  > li {
+    float: left;
+
+    // Links rendered as pills
+    > a {
+      border-radius: 0;
+      background-color: $white;
+      border: 0;
+      border-bottom: 1px solid $border-color;
+      font-weight: 400;
+
+      // Hover state
+      &:hover,
+      &:focus {
+        background-color: $table-bg-accent;
+        color: inherit;
+        text-decoration: none;
+
+        &::after { right: 10px; }
+      }
+
+      &::after {
+        content: "\f105";
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: inherit;
+        right: 15px;
+        position: absolute;
+        color: $brand-primary;
+        -webkit-transition: right 0.3s; /* Safari */
+        transition: right 0.3s;
+      }
+    }
+
+    + li {
+      margin-left: 2px;
+    }
+
+    // Active state
+    &.active > a {
+
+      &,
+      &:hover,
+      &:focus {
+        z-index: 2; // Place active items above their siblings for proper border styling
+        color: inherit;
+        font-weight: bold;
+        background-color: $white;
+      }
+
+      &::after { color: inherit; }
+    }
+  }
+
+  //When the arrows aren't needed but we still have a linked list
+  &.nav-list {
+
+    > li > a {
+
+      &:hover,
+      &:focus { background-color: #fff; }
+
+      &::after { content: ""; }
+    }
+  }
+}
+
+
+// Stacked pills
+.nav-stacked {
+
+  > li {
+    float: none;
+
+    + li {
+      margin-top: 0;
+      margin-left: 0; // no need for this gap between nav items
+    }
+  }
+}

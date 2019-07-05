@@ -1,0 +1,70 @@
+.breadcrumb.breadcrumb-checks {
+  background-color: transparent;
+  padding: 0;
+
+  > li {
+
+    a {
+      font-size: $font-sm;
+      font-weight: normal;
+    }
+
+    &::before {
+      border: 1px solid transparent;
+      background-color: $gray-lighter;
+      border-radius: 50%;
+      color: $brand-primary;
+      content: "\f00c";
+      font-family: FontAwesome;
+      display: inline-block;
+      font-size: 8px;
+      height: 12px;
+      line-height: 10px;
+      margin: 0 10px 0 0;
+      padding: 0 1px;
+      position: relative;
+      top: 0;
+      width: 12px;
+    }
+
+    //Override bootstrap style
+    + li::before {
+      content: "\f00c";
+      color: $brand-primary;
+      padding: 0 1px;
+      margin-left: 35px;
+    }
+
+    &.active {
+
+      a {
+        font-weight: bold;
+      }
+
+      &, ~ li {
+
+        a {
+          color: $gray;
+          cursor: not-allowed;
+        }
+
+        &::before {
+          content: " ";
+          top: 2px;
+        }
+      }
+
+      &::before {
+        background-color: $gray-lighter;
+      }
+
+      ~ li {
+
+        &::before {
+          background-color: transparent;
+          border-color: $gray-lighter;
+        }
+      }
+    }
+  }
+}

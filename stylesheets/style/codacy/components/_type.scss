@@ -1,0 +1,108 @@
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  font-weight: 400;
+}
+
+//
+// Typography
+// --------------------------------------------------
+
+// Headings
+// -------------------------
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: bold;
+  color: $black;
+}
+
+h1,
+.h1 { font-size: calc(#{$font-normal} + 8px); } //22px
+
+h2,
+.h2 { font-size: $font-lg; } //18px
+
+h3,
+.h3 { font-size: $font-lg; } //18px
+
+h4,
+.h4 { font-size: $font-md; } //16px
+
+h5,
+.h5 { font-size: $font-normal; } //14px
+
+h6,
+.h6 { font-size: $font-sm; } //12px
+
+// Emphasis & misc
+// -------------------------
+
+.text-normal { font-weight: normal; }
+
+.strong { font-weight: bold; }
+
+// Contextual colors
+
+@include text-emphasis-variant('.text-white', $white);
+
+@include text-emphasis-variant('.text-secondary', $gray);
+
+@include text-emphasis-variant('.text-primary', $brand-primary);
+
+@include text-emphasis-variant('.text-accent', $brand-accent);
+
+@include text-emphasis-variant('.text-success', $brand-success);
+
+@include text-emphasis-variant('.text-info', $brand-info);
+
+@include text-emphasis-variant('.text-warning', $brand-warning);
+
+@include text-emphasis-variant('.text-danger', $brand-danger);
+
+// Lists
+// -------------------------
+
+// Description Lists
+
+dd,
+dt { line-height: 28px; }
+
+dl { margin-bottom: 0; }
+
+dd { color: $black; }
+
+// Horizontal description lists
+
+.dl-horizontal dt {
+  font-weight: normal;
+  color: $gray;
+  text-align: left;
+}
+
+// Emphasis & misc
+// -------------------------
+small,
+.small {
+  color: $gray;
+}
+
+// Blockquotes
+blockquote {
+  color: $blockquote-small-color;
+  border-radius: 3px;
+  border: 1px solid $border-color;
+  footer, small, .small, header {
+    display: block;
+    font-size: 80%;
+    line-height: $line-height-base;
+    .name {
+      font-weight: bold;
+      color: $text-color;
+    }
+  }
+  p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}

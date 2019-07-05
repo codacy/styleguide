@@ -1,0 +1,193 @@
+.alert {
+  padding: 10px;
+
+  h4 + p:first-of-type {
+    &:before {
+      content: '';
+      margin-right: 0;
+    }
+  }
+
+  &.alert-dismissible { padding-right: 35px; }
+
+  button.close {
+    font-size: 14px;
+    line-height: 24px;
+    opacity: 1;
+    text-shadow: none;
+  }
+}
+
+// Alternate styles
+//
+// Generate contextual modifier classes for colorizing the alert.
+
+.alert-success {
+  @include alert-variant($alert-success-bg, $alert-success-text);
+}
+
+.alert-info {
+  @include alert-variant($alert-info-bg, $alert-info-text);
+}
+
+.alert-warning {
+  @include alert-variant($alert-warning-bg, $alert-warning-text);
+}
+
+.alert-danger {
+  @include alert-variant($alert-danger-bg, $alert-danger-text);
+}
+
+a.alert-clickable {
+  @include general-type();
+}
+
+//== Alert style for hotspots
+.alert-hotspot {
+  border: 1px solid $brand-primary;
+  padding: 10px;
+  background-color: $white;
+  @include box-shadow(0 3px 2px rgba($brand-primary, .05));
+  @include rounded();
+
+  &:hover {
+    background-color: rgba($brand-primary, .05);
+    @include box-shadow(0 3px 3px rgba($brand-primary, .1));
+    @include transition (all 0.2s ease-in-out);
+  }
+
+  p {
+    line-height: 17px;
+    margin-bottom: 5px;
+  }
+
+  &.alert-dismissible {
+    .close {
+      top: -15px;
+      right: -15px;
+      color: $brand-primary;
+      background-color: $gray-lighter;
+      font-size: 11px;
+      opacity: 1;
+      width: 18px;
+      border-radius: 50%;
+      height: 18px;
+      text-shadow: 0 0;
+
+      &::after {
+        content: "\f00d";
+        font-family: FontAwesome;
+      }
+
+      &:hover {
+        color: darken($brand-primary, 20%);
+        @include box-shadow(0 3px 3px rgba($brand-primary, .1));
+        @include translate(0, -2px);
+        @include transition (all 0.2s ease-in-out);
+      }
+    }
+  }
+}
+
+//== for each alert darken the background color when .alert-clickable
+$alerts: (
+alert-info: $alert-info-bg,
+alert-danger: $alert-danger-bg,
+alert-warning: $alert-warning-bg,
+alert-success: $alert-success-bg,
+);
+
+@each $alert, $color in $alerts {
+  a.alert-clickable .#{$alert} {
+    &:hover {
+      background-color: darken($color, 5%);
+      @include transition (all 0.2s ease-in-out);
+      @include box-shadow(0px 4px 4px rgba($color, 0.3));
+    }
+  }
+}
+
+//== for each alert give an icon
+$alert-icons: (
+alert-info: '\f0eb',
+alert-danger: '\f05c',
+alert-warning: '\f06a',
+alert-success: '\f05d',
+);
+
+@each $alert, $icon in $alert-icons {
+  .#{$alert} {
+    p:first-of-type:before {
+      content: $icon;
+      font-family: FontAwesome;
+      margin-right: 10px;
+      font-size: $font-lg;
+    }
+  }
+}
+
+//== Toast alerts need a div around .alert to provide a space from top
+.alert-space { height: $margin-lg; }
+
+.side-toast {
+  padding: 10px 30px;
+  position: fixed;
+  right: 25px;
+  bottom: 95px;
+  z-index: 10000;
+  background-color: lighten($gray-lighter, 9%);
+  border: 1px solid $gray-lighter;
+  border-radius: 3px;
+  max-width: 260px;
+  @include box-shadow(0px 3px 10px rgba($gray-lighter, 0.8));
+
+  &:before {
+    font-family: FontAwesome;
+    position: absolute;
+    left: 10px;
+  }
+
+  &.toast-success {
+
+    &:before {
+      content: "\f05d";
+      color: $brand-success;
+    }
+  }
+
+  &.toast-danger {
+
+    &:before {
+      content: "\f05c";
+      color: $brand-danger;
+    }
+  }
+
+  &.toast-info {
+
+    &:before {
+      content: "\f0eb";
+      color: $brand-primary;
+    }
+  }
+
+  &.toast-warning {
+
+    &:before {
+      content: "\f06a";
+      color: $brand-warning;
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .fa-times {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: $gray-lighter;
+    cursor: pointer;
+  }
+}

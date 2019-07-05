@@ -1,0 +1,300 @@
+$black:                  #0D192C !default;
+$gray-base:              #101e35 !default;
+$gray-darker:            #15294A !default;
+$gray-dark:              #1D3660 !default;
+$gray:                   #7E90B2 !default;
+$gray-light:             #C9D8EF !default;
+$gray-lighter:           #E5ECF5 !default;
+$white:                  #FFF !default;
+
+// blue
+$brand-primary:          #2A6CFF !default;
+$brand-primary-darker:   darken($brand-primary, 20%);
+$brand-primary-light:    lighten($brand-primary, 38%);
+
+// green
+$brand-success:          #21C178 !default;
+$brand-success-darker:   #0A5D36;
+$brand-success-light:    lighten($brand-success, 20%);
+
+// yellow
+$brand-warning:          #FFAB00 !default;
+$brand-warning-darker:   darken($brand-warning, 20%);
+$brand-warning-light:    lighten($brand-warning, 20%);
+
+// red
+$brand-danger:           #EF5454 !default;
+$brand-danger-darker:    darken($brand-danger, 20%);
+$brand-danger-light:     lighten($brand-danger, 20%);
+
+// accent
+$brand-accent:           $brand-primary !default;
+
+//secondary
+$brand-purple:           #5960BE !default;
+$brand-orange:           #FFA101 !default;
+
+//duplication
+$duplication:            #D9E1F9 !default;
+$duplication-darker:     #99B5FF !default;
+$duplication-light:      #E6ECFF !default;
+$duplication-lighter:    #F1F3FF !default;
+
+/// Typography
+$font-stack:  'Clear-Sans', arial, sans-serif;
+$font-family-icon: 'FontAwesome' !default;
+$btn-font-weight:       bold;
+
+$font-normal: 14px;
+$font-xs: calc(#{$font-normal} - 4px);
+$font-sm: calc(#{$font-normal} - 2px);
+$font-md: calc(#{$font-normal} + 2px);
+$font-lg: calc(#{$font-normal} + 4px);
+
+$font-sizes: (
+  xs: $font-xs,
+  sm: $font-sm,
+  md: $font-md,
+  lg: $font-lg
+);
+
+
+//** Horizontal offset for forms and lists.
+//** Headings small color
+$headings-small-color:        $gray-dark !default;
+//** Blockquote small color
+$blockquote-small-color:      $gray-base !default;
+
+
+// Format
+$margin-normal: 30px;
+$margin-sm: calc(#{$margin-normal} - 10px); //20px
+$margin-xs: calc(#{$margin-sm} - 5px); //15px
+$margin-xxs: calc(#{$margin-xs} - 5px); //10px
+$margin-md: calc(#{$margin-normal} + 10px); //40px
+$margin-lg: calc(#{$margin-md} + 15px); //55px
+
+$spacers: (
+  xxs: $margin-xxs,
+  xs: $margin-xs,
+  sm: $margin-sm,
+  md: $margin-md,
+  lg: $margin-lg
+);
+
+//Forms
+$color-red-error: $brand-danger;
+$color-grey-arrow: $brand-success;
+
+$width-default: 220px; // 3 960px-grid columns
+
+$zindex-select-dropdown: 1060; // must be higher than a modal background (1050)
+
+$dropdown-link-hover-bg: $gray-lighter;
+
+//checkbox
+$fa-var-check: "\f00c" !default;
+$check-icon: $fa-var-check !default;
+
+//** Placeholder text color
+$input-color-placeholder: $gray-light;
+
+$input-border: $gray-light;
+
+//borders
+$border-color: $gray-lighter;
+$border-radius-base:        3px !default;
+$border-radius-lg:          6px !default;
+$border-radius-sm:          2px !default;
+
+
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+
+
+$state-success-text:             $brand-success-darker !default;
+$state-success-border:           $brand-success !default;
+$state-success-bg:               lighten($brand-success, 45%) !default;
+
+$state-info-text:                darken($brand-primary, 25%) !default;
+$state-info-border:              $brand-primary !default;
+$state-info-bg:                  $brand-primary-light !default;
+
+$state-warning-text:             darken($brand-warning, 35%) !default;
+$state-warning-border:           $brand-warning !default;
+$state-warning-bg:               lighten($brand-warning, 35%) !default;
+
+$state-danger-text:              darken($brand-danger, 35%) !default;
+$state-danger-border:            $brand-danger !default;
+$state-danger-bg:                lighten($brand-danger, 30%) !default;
+
+//== Alerts
+//
+//## Define alert colors, border radius, and padding.
+
+$alert-padding:               15px !default;
+$alert-border-radius:         $border-radius-base !default;
+$alert-link-font-weight:      bold !default;
+
+$alert-success-bg:            $state-success-bg !default;
+$alert-success-text:          $state-success-text !default;
+$alert-success-border:        $state-success-border !default;
+
+$alert-info-bg:               $state-info-bg !default;
+$alert-info-text:             $state-info-text !default;
+$alert-info-border:           $state-info-border !default;
+
+$alert-warning-bg:            $state-warning-bg !default;
+$alert-warning-text:          $state-warning-text !default;
+$alert-warning-border:        $state-warning-border !default;
+
+$alert-danger-bg:             $state-danger-bg !default;
+$alert-danger-text:           $state-danger-text !default;
+$alert-danger-border:         $state-danger-border !default;
+
+
+//== Progress bar
+$progress-bg:     lighten($gray-light, 5%);
+
+//** Default progress bar color
+$progress-bar-bg:             $brand-accent;
+//** Success progress bar color
+$progress-bar-success-bg:     $brand-success;
+//** Warning progress bar color
+$progress-bar-warning-bg:     $brand-warning;
+//** Danger progress bar color
+$progress-bar-danger-bg:      $brand-danger;
+//** Info progress bar color
+$progress-bar-info-bg:        $brand-primary;
+
+//** secondary Purple progress bar to match graph's captions, doesn't indicate state
+$progress-bar-purple-bg:      $brand-purple;
+//** secondary Orange progress bar to match graph's captions, doesn't indicate state
+$progress-bar-orange-bg:      $brand-orange;
+
+
+//==Tables
+$table-bg:             $white !default;
+$table-bg-accent:      lighten($brand-primary, 40%) !default;
+$table-bg-hover:       lighten($brand-primary, 38%) !default;
+
+
+//==Panels
+$panel-body-padding:          20px !default;
+$panel-heading-padding:       20px 20px 0 !default;
+$panel-footer-padding:        0 20px 20px !default;
+$panel-warning-code-bg:       lighten($brand-warning, 30%) !default;
+$panel-info-code-bg:          lighten($brand-primary, 30%) !default;
+$panel-danger-code-bg:        $brand-danger-light !default;
+$code-bg:                     #f4f9f9 !default;
+
+//** Border color for table and cell borders.
+$table-border-color:            $gray-lighter !default;
+
+//==List
+$list-group-border:             $border-color;
+$list-group-hover-bg:           $table-bg-hover;
+
+$list-group-link-color:         $gray-darker !default;
+$list-group-link-hover-color:   $list-group-link-color !default;
+$list-group-link-heading-color: $gray-darker !default;
+
+//==Labels
+//** Default label background color
+$label-default-text:             $state-info-text !default;
+$label-default-bg:               $state-info-bg !default;
+//** Primary label background color
+$label-primary-text:             $state-info-text !default;
+$label-primary-bg:               $state-info-bg !default;
+//** Success label background color
+$label-success-text:             $state-success-text !default;
+$label-success-bg:               $state-success-bg !default;
+//** Info label background color
+$label-info-text:                $state-info-text !default;
+$label-info-bg:                  $state-info-bg !default;
+//** Warning label background color
+$label-warning-text:             $state-warning-text !default;
+$label-warning-bg:               $state-warning-bg !default;
+//** Danger label background color
+$label-danger-text:              $state-danger-text !default;
+$label-danger-bg:                $state-danger-bg !default;
+
+//** Default text color of a linked label
+$label-link-hover-color:      #fff !default;
+
+//==Dropdowns
+//
+//## Dropdown menu container and contents.
+
+//** Background for the dropdown menu.
+$dropdown-bg:                    $white !default;
+//** Dropdown menu `border-color`.
+$dropdown-border:                $brand-primary !default;
+//** Dropdown menu `border-color` **for IE8**.
+$dropdown-fallback-border:       $brand-primary !default;
+//** Divider color for between dropdown items.
+$dropdown-divider-bg:            $gray-lighter !default;
+
+//** Dropdown link text color.
+$dropdown-link-color:            $gray-base !default;
+//** Hover color for dropdown links.
+$dropdown-link-hover-color:      $gray-base !default;
+//** Hover background for dropdown links.
+$dropdown-link-hover-bg:         $gray-lighter !default;
+
+//** Active dropdown menu item text color.
+$dropdown-link-active-color:     $gray-base !default;
+//** Active dropdown menu item background color.
+$dropdown-link-active-bg:        $white !default;
+
+//==Shadows
+$shadow-hover: 0px 3px 4px 3px rgba(153, 153, 153, 0.2);
+
+//==Buttons
+$disabled-color:      $gray-lighter !default;
+$button-border:       1px !default;
+$button-xs:           24px !default;
+$button-padding-xs:   7px !default;
+$button-sm:           25px !default;
+$button-padding-sm:   12px !default;
+$button-md:           28px !default;
+$button-padding-md:   16px !default;
+$button-lg:           32px !default;
+$button-padding-lg:   18px !default;
+$button-radio-bg:    lighten($brand-primary, 55%) !default;
+
+//== Badges
+//
+//##
+
+$badge-color:                 $state-info-text !default;
+//** Linked badge text color on hover
+$badge-link-hover-color:      $state-info-text !default;
+$badge-bg:                    $state-info-bg !default;
+
+//** Badge text color in active nav link
+$badge-active-color:          $state-info-text !default;
+//** Badge background color in active nav link
+$badge-active-bg:             $white !default;
+
+$badge-font-weight:           bold !default;
+$badge-line-height:           1 !default;
+$badge-border-radius:         3px !default;
+
+//== Tooltips
+//
+//##
+
+//** Tooltip max width
+$tooltip-max-width:           200px !default;
+//** Tooltip text color
+$tooltip-color:               $gray-base !default;
+//** Tooltip background color
+$tooltip-bg:                  $white !default;
+$tooltip-opacity:             1 !default;
+
+//** Tooltip arrow width
+$tooltip-arrow-width:         5px !default;
+//** Tooltip arrow color
+$tooltip-arrow-color:         $tooltip-bg !default;

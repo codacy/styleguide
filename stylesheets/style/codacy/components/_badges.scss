@@ -1,0 +1,12 @@
+//
+// Badges
+// --------------------------------------------------
+
+
+// Base class
+.badge {
+  font-weight: $badge-font-weight;
+  color: $badge-color;
+  background-color: $badge-bg;
+  border-radius: $badge-border-radius;
+}

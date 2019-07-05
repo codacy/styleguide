@@ -1,0 +1,62 @@
+//
+// Code (inline and block)
+// --------------------------------------------------
+
+pre {
+  background-color: $code-bg;
+  border-color: $gray-lighter;
+}
+
+//Code lines
+.line-number {
+  flex-basis: 0;
+  flex-grow: 1;
+  width: 42px;
+  max-width: 42px;
+  overflow-x: hidden;
+  background-color: $gray-lighter;
+  display: flex;
+  justify-content: flex-end !important;
+  padding-right: 4px;
+  color: $gray-dark;
+  font-weight: normal;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.line-number span, .code-line {
+  align-self: center;
+}
+
+pre.source-code {
+  flex-basis: 0;
+  flex-grow: 1;
+  border: none;
+  background-color: $white;
+  display: flex;
+  overflow-x: hidden;
+  border-radius: 0;
+}
+
+.code-duplicated {
+
+  .line-number {
+    background-color: $duplication-light;
+  }
+
+  .line-duplicated {
+
+    .source-code {
+      background-color: $duplication-lighter;
+    }
+  }
+}
+
+.code-issues {
+
+  .source-code {
+    background-color: $code-bg;
+  }
+}

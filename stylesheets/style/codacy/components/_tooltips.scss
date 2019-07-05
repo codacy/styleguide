@@ -1,0 +1,7 @@
+// Base class
+.tooltip {
+  border: 1px solid $border-color;
+  background-color: $tooltip-bg;
+  border-radius: $border-radius-base;
+  box-shadow: 0 2px 3px transparentize($brand-primary, 0.8);
+}

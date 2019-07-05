@@ -1,0 +1,306 @@
+//
+// Panels
+// --------------------------------------------------
+
+
+// Base class
+.panel {
+  margin-bottom: $line-height-computed;
+  background-color: $panel-bg;
+  border: 1px solid $border-color;
+  border-radius: $panel-border-radius;
+  box-shadow: none;
+
+  &.panel-sm {
+    .panel-body {
+      padding: $margin-xxs;
+    }
+  }
+
+  &.panel-md {
+    .panel-body {
+      padding: $margin-normal;
+    }
+  }
+
+  .panel-body {
+    padding: $panel-body-padding;
+
+    .avatar {
+      float: left;
+    }
+
+    h1:first-child, h2:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .panel-heading {
+    background-color: $white;
+    border: 0;
+    font-weight: bold;
+    padding: $panel-heading-padding;
+  }
+
+  .panel-footer {
+    background-color: $white;
+    border: 0;
+    padding: $panel-footer-padding;
+  }
+
+  &.panel-issue {
+
+    &.panel-warning {
+      border-top: 5px solid $brand-warning;
+
+      .has-issue {
+        .source-code {
+          background: $panel-warning-code-bg;
+        }
+      }
+    }
+
+    &.panel-info {
+      border-top: 5px solid $brand-primary;
+
+      .has-issue {
+        .source-code {
+          background: $panel-info-code-bg;
+        }
+      }
+    }
+
+    &.panel-error {
+      border-top: 5px solid $brand-danger;
+
+      .has-issue {
+        .source-code {
+          background: $panel-danger-code-bg;
+        }
+      }
+    }
+
+    .panel-heading {
+      padding: 10px 20px;
+
+      &:not(.not-expandable) {
+        cursor: pointer;
+
+        > h5 {
+          &:after {
+            content: "\f078";
+            font-family: FontAwesome;
+            float: right;
+          }
+        }
+
+        &.open {
+          > h5 {
+            &:after {
+              content: "\f077";
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.panel-status {
+    border-radius: 0;
+    margin-bottom: 10px;
+
+    &:hover {
+      background-color: $code-bg;
+    }
+
+    .panel-heading {
+      position: relative;
+      padding: 15px 70px 15px 50px;
+      color: $gray-darker;
+      font-weight: normal;
+      background-color: transparent;
+      font-size: $font-md;
+
+      &:before {
+        font-family: FontAwesome;
+        position: absolute;
+        left: 15px;
+        font-size: $font-lg;
+      }
+
+      &[data-toggle="collapse"] {
+        cursor: pointer;
+
+        &:after {
+          content: "\f078";
+          font-family: FontAwesome;
+          position: absolute;
+          right: 30px;
+          top: 15px;
+          font-size: $font-normal;
+          color: $gray-lighter;
+        }
+
+        &[aria-expanded="true"] {
+          &::after {
+            content: "\f077";
+          }
+        }
+
+        &:hover,
+        &[aria-expanded="true"] {
+          &::after {
+            color: $gray;
+          }
+        }
+      }
+    }
+
+    .panel-body {
+      padding: 0 50px;
+    }
+
+    &.panel-success {
+      border-left: 5px solid $brand-success;
+
+      .panel-heading {
+
+        &:before {
+          content: "\f05d";
+          color: $brand-success;
+        }
+      }
+    }
+
+    &.panel-danger {
+      border-left: 5px solid $brand-danger;
+
+      .panel-heading {
+
+        &:before {
+          content: "\f05c";
+          color: $brand-danger;
+        }
+      }
+    }
+
+    .log-stacktrace {
+      margin: 5px 0;
+      background-color: $gray-dark;
+      min-height: 120px;
+      color: $white;
+      white-space: pre;
+    }
+  }
+
+  &.panel-inactive {
+
+    .panel-heading,
+    .panel-body { opacity: 0.4; }
+  }
+}
+
+a.panel-clickable {
+  display: block;
+
+  .panel {
+    @include box-shadow(0px 2px 2px rgba($brand-primary, 0.05));
+    @include transition (all 0.2s ease-in-out);
+
+    &:hover {
+      @include box-shadow(0px 3px 6px rgba($brand-primary, 0.1));
+    }
+
+    .panel-body {
+      p {
+        @include general-type();
+      }
+    }
+
+    //== Project empty state simulation
+    &.panel-empty {
+      min-height: 131px;
+      border: 0px;
+      @include border-dashed();
+      @include transition(all 0.15s ease-in-out);
+
+      &:hover {
+        background-color: lighten($brand-primary, 57%);
+
+        &:before { border-color: $brand-primary; }
+      }
+    }
+
+    .cta-add-project {
+      padding-top: 40px;
+      font-size: $font-md;
+      text-align: center;
+
+      &:before {
+        content: "\f055";
+        font-family: FontAwesome;
+        margin-right: 5px;
+      }
+    }
+
+    .empty-project span {
+      background-color: $gray-lighter;
+      display: block;
+      margin-right: 15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+  }
+
+  .panel-disabled & {
+    pointer-events: none;
+
+    .panel {
+
+      .panel-heading { color: $gray; }
+
+      .panel-body {
+        p { color: $gray; }
+      }
+    }
+  }
+}
+
+.panel-disabled {
+  cursor: not-allowed;
+}
+
+.panel ~ a:hover {
+  text-decoration: none;
+
+  h5, p {
+    text-decoration: none;
+  }
+}
+
+// List panels, with number indicating order
+// CssTrick: https://css-tricks.com/custom-list-number-styling/
+ol.panel-ordered-group {
+ list-style: none;
+ counter-reset: my-awesome-counter;
+ padding-left: 10px;
+
+  &> li {
+  counter-increment: my-awesome-counter;
+
+    &::before {
+      content: counter(my-awesome-counter);
+      color: $gray;
+      font-weight: bold;
+      font-size: 1.2rem;
+      background: $gray-lighter;
+      position: absolute;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      margin-left: -10px;
+      margin-top: -10px;
+    }
+  }
+}

@@ -1,0 +1,636 @@
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: $line-height-computed;
+  font-size: ($font-size-base * 1.5); //20px
+  line-height: inherit;
+  color: $gray-darker;
+  padding-bottom: 8px;
+  border: 0 !important;
+  font-weight: bold;
+}
+
+label {
+  font-weight: normal;
+}
+
+//Date broken in safari, line-height isn't really needed. It comes from the boostrap (I suppose)
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"],
+  input[type="month"] {
+    &.form-control {
+      line-height: normal;
+    }
+  }
+}
+
+.form-control {
+  // Disabled and read-only inputs
+  //
+  // HTML5 says that controls under a fieldset > legend:first-child won't be
+  // disabled if the fieldset is disabled. Due to implementation difficulty, we
+  // don't honor that edge case; we style them as disabled anyway.
+  border: 1px solid $gray-light;
+  box-shadow: none;
+  border-radius: $border-radius-small;
+  color: $gray-darker;
+  font-size: $font-normal;
+  height: 28px;
+  padding: 4px 12px;
+  transition: all 0.2s linear;
+
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    background-color: $white;
+    border: 1px solid $gray-lighter;
+    opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
+    box-shadow: none;
+    color: $gray-light;
+  }
+
+  &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: $gray;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: $gray;
+    opacity: 1;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: $gray;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: $gray;
+  }
+
+  &:focus {
+    box-shadow: none;
+    border-color: $brand-primary;
+    color: $gray-darker;
+  }
+
+  + p {
+    margin-top: 5px;
+  }
+}
+
+.form-group {
+  margin-bottom: $margin-normal;
+
+  p {
+    font-size: $font-sm;
+    color: $gray;
+    position: absolute;
+  }
+
+  &.optional {
+    label::after {
+      content: "(optional)";
+      @include general-type;
+      color: $gray;
+      font-size: $font-sm;
+      margin-left: $margin-xs;
+    }
+  }
+
+  &.has-feedback {
+    .form-control-feedback {
+      top: -2px;
+      opacity: 0;
+    }
+
+    .checkbox {
+      margin-bottom: 0;
+    }
+
+    //Make space for col padding
+    &[class*="col-"] .form-control-feedback {
+      right: 15px;
+    }
+
+    //== Make error message invisible. When the feedback shows up, form doesn't jump
+    p {
+      margin-top: 3px;
+      transition-duration: 0.5s;
+      opacity: 0;
+    }
+
+    //== If has a label in the form-group the top is bigger
+    label~.form-control-feedback { top: 18px; }
+
+    //== Just add a padding for the feedback when we give it a type (error/success)
+    .form-control { padding-right: 12px; }
+
+    &.has-error {
+      p, .form-control-feedback { opacity: 1; }
+
+      .form-control { padding-right: 30px; }
+    }
+  }
+
+  label {
+    color: $gray;
+    font-size: $font-sm;
+    margin-bottom: 0;
+  }
+}
+
+input[disabled] ~ label {
+    cursor: not-allowed;
+    pointer-events: all !important;
+}
+
+
+//== Use this class for any inputs with a icon before
+.form-icon {
+  position: relative;
+
+  .form-control { padding-left: 40px; }
+
+  //in case we have a label before de input
+  label + .form-control-icon { top: 25px; }
+}
+
+.form-control-icon {
+  position: absolute;
+  top: 3px;
+  left: 13px;
+  z-index: 3;
+}
+
+//change placeholder colour if input is disabled
+input:disabled {
+  @include placeholder($color: $gray);
+}
+
+// input:invalid, textarea:invalid {
+//       box-shadow: 0px 0px 2px $brand-danger-darker;
+// }
+
+// Feedback states
+.has-success {
+  // For now, we defined to not have a success visual feedback. Success = Normal input state.
+  // We still need to change this because the plugin for validation will always apply this success class.
+  @include form-control-validation($gray-dark, $gray-light, lighten($gray-lighter, 20%));
+}
+.has-warning {
+  @include form-control-validation($state-warning-text, $state-warning-border, $state-warning-bg);
+}
+.has-error {
+  @include form-control-validation($state-danger-text, $state-danger-border, $state-danger-bg);
+}
+
+.input-group {
+  .bootstrap-select {
+    max-width: 225px;
+
+    .btn {
+      height: 34px;
+    }
+  }
+}
+
+.input-group-addon {
+    background-color: lighten($gray-lighter, 20%);
+    border-color: $border-color;
+    color: $gray-dark;
+
+    ~.form-control {
+        &[disabled] {
+            background: $white;
+            border-bottom: 1px solid $border-color;
+        }
+    }
+}
+
+.input-group-addon ~ .bootstrap-select.btn-group.disabled {
+  margin-left: 4px;
+}
+
+.bootstrap-select > .dropdown-toggle.btn-default.disabled:hover {
+  color: #90A4AE;
+}
+
+
+//
+// Checkboxes
+// --------------------------------------------------
+.checkbox {
+  padding-left: 20px;
+
+  label {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    padding-left: 5px;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      left: 0;
+      margin-left: -20px;
+      border: 1px solid $input-border;
+      border-radius: $border-radius-base;
+      background-color: #FFF;
+    }
+
+    &::after {
+      display: inline-block;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 0;
+      top: 0;
+      margin-left: -20px;
+      padding-left: 3px;
+      padding-top: 0;
+      font-size: 11px;
+      color: $brand-primary;
+    }
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+
+    &:focus + label::before {
+      @include tab-focus();
+      outline-style: none;
+      box-shadow: none;
+      content: "";
+    }
+
+    &:checked + label::after {
+      font-family: $font-family-icon;
+      content: $check-icon;
+      color: $brand-primary;
+    }
+
+    &:indeterminate + label::after {
+      display: block;
+      content: "";
+      width: 10px;
+      height: 3px;
+      background-color: #555555;
+      border-radius: $border-radius-small;
+      margin-left: -16.5px;
+      margin-top: 7px;
+      color: $brand-primary;
+    }
+
+    &:disabled + label {
+      opacity: 0.65;
+
+      &::before{
+        background-color: $input-bg-disabled;
+        cursor: not-allowed;
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+  }
+
+  &.checkbox-circle label::before {
+    border-radius: 50%;
+  }
+
+  &.checkbox-inline {
+    margin-top: 0;
+  }
+
+  &.checkbox-md {
+    label {
+      padding-left: 12px;
+      line-height: 22px;
+      font-size: $font-md;
+
+      &::before {
+        width: 24px;
+        height: 24px;
+      }
+
+      &::after {
+        width: 18px;
+        height: 18px;
+        font-size: $font-md;
+        padding-top: 1px;
+        margin-left: -18px;
+      }
+    }
+  }
+
+  &.checkbox-lg {
+    label {
+      &::before {
+        width: 28px;
+        height: 28px;
+      }
+
+      &::after {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+}
+
+@include checkbox-variant('.checkbox-primary', $brand-primary);
+@include checkbox-variant('.checkbox-danger', $brand-danger);
+@include checkbox-variant('.checkbox-info', $brand-info);
+@include checkbox-variant('.checkbox-warning', $brand-warning);
+@include checkbox-variant('.checkbox-success', $brand-success);
+
+
+@include checkbox-variant-indeterminate('.checkbox-primary', $brand-primary);
+@include checkbox-variant-indeterminate('.checkbox-danger', $brand-danger);
+@include checkbox-variant-indeterminate('.checkbox-info', $brand-info);
+@include checkbox-variant-indeterminate('.checkbox-warning', $brand-warning);
+@include checkbox-variant-indeterminate('.checkbox-success', $brand-success);
+
+//
+// Radios
+// --------------------------------------------------
+
+.radio {
+  padding-left: 20px;
+
+  label {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    padding-left: 5px;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      left: 0;
+      margin-left: -20px;
+      border: 1px solid $input-border;
+      border-radius: 50%;
+      background-color: #fff;
+      @include transition(background-color 0.15s ease-in-out, background-color 0.15s ease-in-out);
+    }
+
+    &::after {
+      display: inline-block;
+      position: absolute;
+      content: "";
+      width: 9px;
+      height: 9px;
+      left: 4px;
+      top: 4px;
+      margin-left: -20px;
+      border-radius: 50%;
+      background-color: $brand-primary;
+      @include scale(0, 0);
+      @include transition-transform(.15s cubic-bezier(.8,-0.33,.2,1.33));
+      //curve - http://cubic-bezier.com/#.8,-0.33,.2,1.33
+    }
+  }
+
+  input[type="radio"]{
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+
+    &:focus + label::before{
+      @include tab-focus();
+      outline-style: none;
+      box-shadow: none;
+    }
+
+    &:checked + label::after{
+      @include scale(1, 1);
+    }
+
+    &:disabled + label{
+      opacity: 0.65;
+
+      &::before{
+        cursor: not-allowed;
+        background-color: $gray-light;
+        border-color: $gray-light;
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &.radio-inline{
+    margin-top: 0;
+  }
+
+  &.radio-md {
+    label {
+      padding-left: 12px;
+      line-height: 22px;
+      font-size: $font-md;
+
+      &::before {
+        width: 24px;
+        height: 24px;
+      }
+
+      &::after {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+@include radio-variant('.radio-primary', $brand-primary);
+@include radio-variant('.radio-danger', $brand-danger);
+@include radio-variant('.radio-info', $brand-info);
+@include radio-variant('.radio-warning', $brand-warning);
+@include radio-variant('.radio-success', $brand-success);
+
+
+input[type="checkbox"],
+input[type="radio"] {
+  &.styled:checked + label::after {
+    font-family: $font-family-icon;
+    content: $check-icon;
+  }
+  .styled:checked + label {
+    &::before {
+      color: $white;
+    }
+    &::after {
+      color: $white;
+    }
+  }
+}
+
+.switch-container {
+  @include user-select(none);
+  position: relative;
+  width: 30px;
+  height: 16px;
+  margin-bottom: 10px;
+
+  &.switch-md {
+    width: 50px;
+    height: 26px;
+  }
+}
+
+label + .switch-md {
+  margin-top: 4px;
+}
+
+.switch-button {
+  display: none;
+
+  &:checked + .switch-label {
+    background-color: transparent;
+    border: 1px solid $border-color;
+
+    &::before {
+      right: 0;
+      background-color: $brand-success;
+      font-family: $font-family-icon;
+      content: "\f00c";
+      text-align: center;
+      line-height: 18px;
+      color: $white;
+      font-size: calc(#{$font-normal} - 4px); //10px
+    }
+  }
+}
+
+.switch-button:disabled + .switch-label::before {
+  background-color: $white;
+  border: 1px solid $border-color;
+}
+
+.switch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  height: 16px;
+  padding: 0;
+  line-height: 12px;
+  border: 1px solid $border-color;
+  border-radius: 18px;
+  background-color: transparent;
+
+  &::before {
+    content: "";
+    display: block;
+    height: 18px;
+    width: 18px;
+    margin: -1px;
+    background: $gray-light;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 14px;
+    border-radius: 50%;
+    transition: right 0.4s ease;
+  }
+}
+
+.switch-md {
+  .switch-label {
+    height: 24px;
+
+    &::before {
+      height: 26px;
+      width: 26px;
+      right: 26px;
+      line-height: 26px !important;
+      font-size: $font-normal !important;
+    }
+  }
+}
+
+.switch-button:checked + .switch-label,
+.switch-button:checked + .switch-label:before {
+  border-color: $border-color;
+}
+
+.switch-button:checked + .switch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+
+.input-group-addon.checkbox input[type="checkbox"],
+.input-group-addon.radio input[type="radio"] {
+    display: none;
+}
+
+.required label {
+  &:after {
+    position: absolute;
+    font-family: $font-family-icon;
+    font-size: calc(#{$font-normal} - 6px); //8px
+    content: "\f111";
+    color: $brand-danger;
+    right: 20px;
+  }
+}
+
+input:invalid, textarea:invalid {
+  border-radius: $border-radius-base;
+}
+
+.btn-toggle {
+
+  .btn-link {
+    font-size: 12px;
+    font-weight: normal;
+
+    &.active {
+      font-weight: bold;
+      background-color: $button-radio-bg;
+    }
+  }
+}
+
+.has-card:not(.has-error) {
+
+  .form-control { padding-right: 45px; }
+
+  .card {
+
+    &::after {
+      content: " ";
+      width: 40px;
+      height: 20px;
+      display: block;
+      position: absolute;
+      top: 25px;
+      right: 18px;
+    }
+
+    &.card-visa::after { background: url("../images/cards/visa.svg") no-repeat center center; }
+
+    &.card-mastercard::after { background: url("../images/cards/mastercard.svg") no-repeat center center; }
+
+    &.card-discover::after { background: url("../images/cards/discover.svg") no-repeat center center; }
+
+    &.card-americanexpress::after { background: url("../images/cards/americanexpress.svg") no-repeat center center; }
+  }
+}
+
+//Needed to override style of phone number library
+.intl-tel-input {
+  display: block;
+}

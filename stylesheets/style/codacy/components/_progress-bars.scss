@@ -1,0 +1,167 @@
+.progress {
+  box-shadow: none;
+  background-color: $progress-bg;
+  border-radius: 10px;
+
+  &.progress-sm {
+    height: calc(#{$line-height-computed} - 5px);
+
+    .progress-bar {
+      line-height: calc(#{$line-height-computed} - 5px);
+    }
+  }
+
+  &.progress-xs {
+    height: calc(#{$line-height-computed} - 8px);
+
+    .progress-bar {
+      line-height: calc(#{$line-height-computed} - 8px);
+    }
+  }
+
+  &.progress-xxs {
+    height: 8px;
+    margin-bottom: 0;
+
+    .progress-bar {
+      line-height: 8px;
+    }
+  }
+
+  .progress-bar {
+    box-shadow: none;
+    border-radius: 10px;
+    position: relative;
+  }
+}
+
+
+// Variations
+// -------------------------
+
+.progress-bar-success {
+  @include progress-bar-variant($progress-bar-success-bg);
+}
+.progress-bar-info {
+  @include progress-bar-variant($progress-bar-info-bg);
+}
+.progress-bar-warning {
+  @include progress-bar-variant($progress-bar-warning-bg);
+}
+.progress-bar-danger {
+  @include progress-bar-variant($progress-bar-danger-bg);
+}
+.progress-bar-purple {
+  @include progress-bar-variant($progress-bar-purple-bg);
+}
+.progress-bar-orange {
+  @include progress-bar-variant($progress-bar-orange-bg);
+}
+
+/*Form Wizard*/
+.progress-wizard {
+  padding: 0 0 10px 0;
+
+  .progress-wizard-step {
+    padding: 0;
+    position: relative;
+
+    .progress-wizard-stepnum {
+      color: $gray-dark;
+      font-size: $font-sm;
+      margin-bottom: 5px;
+    }
+
+    .progress-wizard-info {
+      color: $gray-dark;
+    }
+
+    .progress-wizard-dot {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      display: block;
+      background: $brand-accent;
+      top: 45px;
+      left: 50%;
+      margin-top: -13px;
+      margin-left: -10px;
+      border-radius: 50%;
+    }
+
+    .progress {
+      position: relative;
+      border-radius: 0px;
+      height: 8px;
+      box-shadow: none;
+      margin: 15px 0;
+
+      .progress-bar {
+        width:0px;
+        box-shadow: none;
+        background: $brand-accent;
+        border-radius: 0;
+      }
+    }
+
+    &.complete {
+      .progress {
+        .progress-bar {
+          width:100%;
+        }
+      }
+    }
+
+    &.active {
+      .progress {
+        .progress-bar {
+          width:50%;
+        }
+      }
+    }
+
+    &:first-child {
+      .progress {
+        left: 50%;
+        width: 50%;
+      }
+
+      &.active {
+        .progress {
+          .progress-bar {
+            width:0%;
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      .progress {
+        width: 50%;
+      }
+
+      &.active {
+        .progress {
+          .progress-bar {
+            width:100%;
+          }
+        }
+      }
+    }
+
+    &.disabled {
+      .progress-wizard-dot {
+        background-color: $progress-bg;
+
+        &:after {
+          opacity: 0;
+        }
+      }
+
+      a.progress-wizard-dot {
+        pointer-events: none;
+      }
+    }
+  }
+  .progress-wizard-step + .progress-wizard-step {}
+}

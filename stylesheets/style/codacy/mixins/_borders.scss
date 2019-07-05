@@ -1,0 +1,19 @@
+@mixin border-dashed() {
+  overflow: hidden;
+  position: relative;
+  border: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    border: 6px dashed $border-color;
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+  }
+}
+
+@mixin border($side, $width, $color) {
+  border-#{$side}: $width solid $color;
+}
