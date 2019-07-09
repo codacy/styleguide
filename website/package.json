@@ -21,9 +21,10 @@
     "typescript": "^3.5.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "cp ../stylesheets/build/webjar/src/main/resources/META-INF/resources/webjars/codacy-react-styleguide/1.0.0/css/template.min.css ./src/styles/stylesheet/ && react-scripts build",
-    "test": "react-scripts test",
+    "copy:css": "cp ../stylesheets/build/webjar/src/main/resources/META-INF/resources/webjars/codacy-react-styleguide/1.0.0/css/template.min.css ./src/styles/stylesheet/",
+    "start": "npm run copy:css && react-scripts start",
+    "build": "npm run copy:css && react-scripts build",
+    "test": "npm run copy:css && react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
