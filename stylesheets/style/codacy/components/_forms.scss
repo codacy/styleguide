@@ -620,13 +620,13 @@ input:invalid, textarea:invalid {
       right: 18px;
     }
 
-    &.card-visa::after { background: url("../images/cards/visa.svg") no-repeat center center; }
+    &.card-visa::after { background: inline-image("cards/visa.svg") no-repeat center center; }
 
-    &.card-mastercard::after { background: url("../images/cards/mastercard.svg") no-repeat center center; }
+    &.card-mastercard::after { background: inline-image("cards/mastercard.svg") no-repeat center center; }
 
-    &.card-discover::after { background: url("../images/cards/discover.svg") no-repeat center center; }
+    &.card-discover::after { background: inline-image("cards/discover.svg") no-repeat center center; }
 
-    &.card-americanexpress::after { background: url("../images/cards/americanexpress.svg") no-repeat center center; }
+    &.card-americanexpress::after { background: inline-image("cards/americanexpress.svg") no-repeat center center; }
   }
 }
 
