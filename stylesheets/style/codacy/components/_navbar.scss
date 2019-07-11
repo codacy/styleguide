@@ -29,15 +29,21 @@
   }
 }
 
+.navbar-header {
+
+  img { width: 35px; }
+}
+
 .navbar-brand {
   padding: 0 15px;
   line-height: 60px;
-  background: no-repeat center;
-  background-image: url('');
-  background-size: 35px 35px;
-  display: block;
   height: 60px;
   width: 95px;
+  text-align: center;
+
+  > img {
+    display: inline;
+  }
 }
 
 .navbar-inverse {
@@ -45,11 +51,6 @@
 
   .navbar-nav {
     margin: 0;
-
-    .navbar-header {
-
-      img { width: 35px; }
-    }
 
     > li > a {
       color: $gray;
@@ -111,7 +112,7 @@
       content: "|";
     }
 
-    &.navbar-left .project-name::before {
+    &:not(.navbar-right) .dropdown + .dropdown::before {
       color: $gray-dark;
       content: "/";
       font-size: 18px;
@@ -122,65 +123,57 @@
     //specially for dropdown of selects
     .dropdown {
 
-      .bootstrap-select {
+      //remove the .fa color that is in the .dropdown-menu outside bootstrap-select, and do this .fa instead:
+      .dropdown-menu {
 
-        //remove the .fa color that is in the .dropdown-menu outside bootstrap-select, and do this .fa instead:
-        .dropdown-menu {
+        .fa { color: $gray; }
+      }
 
-          .fa { color: $gray; }
-        }
+      //removing fixed width of select
+      &,
+      .filter-option { width: auto; }
 
-        //removing fixed width of select
-        &,
-        .filter-option { width: auto; }
+      //remove style from button
+      .dropdown-toggle,
+      .dropdown-toggle.btn.btn-default {
+        letter-spacing: inherit;
+        height: auto;
+        line-height: 60px;
+        padding: 0px 15px;
+        background-color: transparent;
+        border: 0;
+        box-shadow: none;
+        color: $gray;
+        font-size: 18px;
+        font-weight: 700;
+        transform: none;
 
-        //to remove a shadow effect when selected
-        .dropdown-toggle {
-          &:focus {
-            outline: none !important;
-          }
+        &:focus {
           //code from template has important
+          outline: none !important;
         }
 
-        //remove style from button
-        .btn {
-          letter-spacing: inherit;
-          height: auto;
-          line-height: 60px;
-          padding: 0px 15px;
+        //to make caret from select change to a icon of font awesome
+        .caret {
+          color: $gray;
+          font-family: 'FontAwesome';
+          position: relative;
+          right: 0;
 
-          &.btn-default {
-            background-color: transparent;
-            border: 0;
-            box-shadow: none;
-            color: $gray;
-            font-size: 18px;
-            font-weight: 700;
-            transform: none;
+          &::before {
+            content: "\f078";
+          }
+        }
 
-            //to make caret from select change to a icon of font awesome
-            .caret {
-              color: $gray;
-              font-family: 'FontAwesome';
-              position: relative;
-              right: 0;
+        &:hover,
+        &:focus,
+        &:active {
+          color: $white;
 
-              &::before {
-                content: "\f078";
-              }
-            }
-
-            &:hover,
-            &:focus,
-            &:active {
-              color: $white;
-
-              //both text and caret
-              &,
-              .caret {
-                color: $white;
-              }
-            }
+          //both text and caret
+          &,
+          .caret {
+            color: $white;
           }
         }
       }
