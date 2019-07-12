@@ -1,13 +1,14 @@
 {
-  "name": "codacy-react-styleguide-stylesheets",
+  "name": "codacy-stylesheets",
   "version": "0.1.0",
   "author": "Codacy <code@codacy.com>",
-  "repository": "codacy/codacy-react-styleguide",
-  "description": "Stylesheets for React Components of Codacy's",
+  "repository": "codacy/codacy-styleguide",
+  "description": "Codacy Stylesheets",
   "license": "MIT",
   "scripts": {
     "build": "grunt",
-    "clean": "rimraf build"
+    "clean": "rimraf dist",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "rimraf": "^2.6.3",
@@ -21,5 +22,14 @@
     "grunt-contrib-cssmin": "^3.0.0",
     "grunt-contrib-imagemin": "^3.1.0",
     "grunt-contrib-sass": "^1.0.0"
-  }
+  },
+  "main": "dist/out/css/template.css",
+  "browser": "dist/out/css/template.css",
+  "style": "dist/out/css/template.css",
+  "sass": "style/codacy/template.scss",
+  "files": [
+    "dist/out/{css,scss}/*.{css,scss}",
+    "style/**/*.scss",
+    "images/**/*.svg"
+  ]
 }

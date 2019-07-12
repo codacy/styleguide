@@ -1,17 +1,21 @@
 {
-  "name": "codacy-react-styleguide",
+  "name": "codacy-react-components",
   "version": "0.1.0",
   "author": "Codacy <code@codacy.com>",
-  "repository": "codacy/codacy-react-styleguide",
-  "description": "React Components for Codacy's Web APIs and elements",
+  "repository": "codacy/codacy-styleguide",
+  "description": "Codacy React Components",
   "keywords": [
+    "codacy",
     "react",
-    "components",
-    "codacy"
+    "components"
   ],
   "license": "MIT",
   "main": "./build/index.js",
   "typings": "./build/index.d.ts",
+  "files": [
+    "build/*.{js,ts}",
+    "src/*.{ts,tsx}"
+  ],
   "scripts": {
     "start": "NODE_ENV=development babel -w ./src --out-dir ./build --extensions \".ts,.tsx\"",
     "build": "NODE_ENV=production npm run clean && babel ./src --out-dir ./build --extensions \".ts,.tsx\" && tsc",
