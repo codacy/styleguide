@@ -731,7 +731,7 @@ const App = () => {
 
               <Panel>
                 <Panel.Body>
-                  <Checkbox id="checkbox-big-example" name="checkbox-big-example" checked={true} label="Big" size="md" />
+                  <Checkbox id="checkbox-big-example" name="checkbox-big-example" defaultChecked={true} label="Big" size="md" />
 
                   <CodeExample>
                     <Checkbox id="checkbox-default-example" name="checkbox-default-example" label="Default" />
@@ -741,7 +741,7 @@ const App = () => {
                   <p>Usually only used when yada yada</p>
 
                   <CodeExample>
-                    <Checkbox id="checkbox-without-label" name="checkbox-without-label" value="option1" checked={true} />
+                    <Checkbox id="checkbox-without-label" name="checkbox-without-label" value="option1" defaultChecked={true} />
                   </CodeExample>
 
                   <h4>Inline checkboxes</h4>
@@ -759,14 +759,14 @@ const App = () => {
 
                   <CodeExample>
                     <Checkbox id="checkbox-disabled-1" name="checkbox-disabled" value="option1" disabled={true} inline={true} label="Can't check this" />
-                    <Checkbox id="checkbox-disabled-2" name="checkbox-disabled" value="option2" disabled={true} inline={true} checked={true} label="This too" />
+                    <Checkbox id="checkbox-disabled-2" name="checkbox-disabled" value="option2" disabled={true} inline={true} defaultChecked={true} label="This too" />
                   </CodeExample>
 
                   <h4>Switch</h4>
 
                   <CodeExample>
-                    <Switch id="checkbox-switch-1" name="checkbox-switch" checked={true} big={true} />
-                    <Switch id="checkbox-switch-2" name="checkbox-switch" checked={true} />
+                    <Switch id="checkbox-switch-1" name="checkbox-switch" defaultChecked={true} big={true} />
+                    <Switch id="checkbox-switch-2" name="checkbox-switch" defaultChecked={true} />
                   </CodeExample>
                 </Panel.Body>
               </Panel>
@@ -965,7 +965,7 @@ const App = () => {
                           <p>
                             <a href="#">Portal</a> has
                                   <strong>broken the build 7 times</strong> in the last
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      2 days.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                2 days.
                                   </p>
                         </div>
                       </div>
