@@ -1,40 +1,20 @@
 module.exports = function(grunt) {
-
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
+    pkg: grunt.file.readJSON("package.json"),
 
     compass: {
       dist: {
         options: {
-          sassDir: 'style/codacy/',
-          cssDir: 'dist/css/'
+          sassDir: "style/codacy/",
+          cssDir: "dist/intermediate/css/"
         }
       }
     },
+
     sass: {
       dist: {
         files: {
-          'dist/css/template.css': 'style/codacy/template.scss'
-        }
-      }
-    },
-
-    watch: {
-      css: {
-        files: 'style/codacy/**/*.scss',
-        tasks: ['compass', 'cssmin', 'copy']
-      },
-      options: {
-        livereload: true,
-      }
-    },
-
-    connect: {
-      server: {
-        options: {
-          port: 16009,
-          hostname: 'localhost',
-          open: true
+          "dist/intermediate/css/template.css": "style/codacy/template.scss"
         }
       }
     },
@@ -42,7 +22,9 @@ module.exports = function(grunt) {
     cssmin: {
       css: {
         files: {
-          'dist/css/template.min.css': ['dist/css/template.css']
+          "dist/intermediate/css/template.min.css": [
+            "dist/intermediate/css/template.css"
+          ]
         }
       }
     },
@@ -52,40 +34,34 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: './dist/',
-            src: ['**'],
-            dest: './build/webjar/src/main/resources/META-INF/resources/webjars/codacy-react-styleguide/1.0.0'
+            cwd: "./dist/intermediate/",
+            src: ["**"],
+            dest: "./dist/out/"
           },
           {
             expand: true,
-            cwd: './style/codacy/essentials/',
-            src: ['_variables.scss'],
-            dest: './build/webjar/src/main/resources/META-INF/resources/webjars/codacy-react-styleguide/1.0.0/scss'
-          },
-          {
-            expand: true,
-            cwd: './images/',
-            src: ['**'],
-            dest: './build/webjar/src/main/resources/META-INF/resources/webjars/codacy-react-styleguide/1.0.0/images'
-          }]
+            cwd: "./style/codacy/essentials/",
+            src: ["_variables.scss"],
+            dest: "./dist/out/scss/"
+          }
+        ]
       }
     }
-
   });
 
   // Load the plugin that provides the "compass" task.
-  grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks("grunt-contrib-compass");
 
   // Load the plugin that provides the "sass" task.
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks("grunt-contrib-sass");
 
   // Load the plugin that provides the "cssmin" task.
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks("grunt-contrib-cssmin");
 
   // Load the plugin that provides the "copy" task.
-  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks("grunt-contrib-copy");
 
   // Default task(s).
-  grunt.registerTask('default', ['compass', 'cssmin', 'copy']);
-  grunt.registerTask('dist', ['compass', 'cssmin', 'copy']);
+  grunt.registerTask("default", ["compass", "cssmin", "copy"]);
+  grunt.registerTask("dist", ["compass", "cssmin", "copy"]);
 };

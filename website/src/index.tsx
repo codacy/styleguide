@@ -1,21 +1,19 @@
 import React from 'react';
-import ReactDOM, { render } from 'react-dom';
-import { Button, ButtonGroup, Col, Collapse, Grid, ListGroup, ListGroupItem, MenuItem, Row, SplitButton } from 'react-bootstrap';
+import ReactDOM from 'react-dom';
+import { Button, ButtonGroup, Col, Grid, MenuItem, Row, SplitButton } from 'react-bootstrap';
 import { CodeExample } from './CodeExample';
 import { Header } from './Header';
-import './styles/stylesheet/template.min.css';
 import { Sidebar } from './Sidebar';
+import 'codacy-stylesheets';
 
-class App extends React.Component {
-  state = {open: false};
-
-  render() {
-    return <React.Fragment>
+const App = () => {
+  return (
+    <React.Fragment>
       <Header />
       <Grid>
         <Row>
           <Col xs={3} className="border-secondary-right">
-            <Sidebar/>
+            <Sidebar />
             <p><small> Version #1.0.38</small></p>
           </Col>
           <Col xs={9}>
@@ -210,8 +208,8 @@ class App extends React.Component {
                         All paragraphs should be written inside a
                               <code>&lt;p&gt;</code> tag. Ideally, on blocks of text,
                               the <code>&lt;strong&gt;</code> tag should be used to
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            highlight important text, making readability easier.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            Bellow there's an example of a block of text with a link.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        highlight important text, making readability easier.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Bellow there's an example of a block of text with a link.
                               </p>
 
                       <p>
@@ -226,8 +224,8 @@ class App extends React.Component {
                             The quick, brown fox jumps over a lazy dog. DJs flock
                             by when MTV ax quiz prog. Junk MTV
                                   <strong>quiz graced by fox whelps.</strong> Bawds jog,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        flick quartz, vex nymphs. Waltz, bad nymph, for quick
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        jigs vex! Fox nymphs grab quick-jived waltz.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    flick quartz, vex nymphs. Waltz, bad nymph, for quick
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    jigs vex! Fox nymphs grab quick-jived waltz.
                                   <strong>Brick quiz whangs</strong> jumpy veldt fox.
                                   <a href="#">Bright vixens jump; dozy fowl quack.</a>
                             Quick wafting zephyrs vex bold Jim. Quick zephyrs
@@ -1137,7 +1135,7 @@ class App extends React.Component {
                           <p>
                             <a href="#">Portal</a> has
                                   <strong>broken the build 7 times</strong> in the last
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        2 days.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    2 days.
                                   </p>
                         </div>
                       </div>
@@ -2666,31 +2664,31 @@ String generateSecretToken() {
               </div>
             </section>
             <section id="pagination">
-                <div className="row">
-                  <hr />
-                  <div className="col-md-12">
-                    <nav aria-label="Page navigation" className="sg-code">
-                      <ul className="pagination">
-                        <li className="disabled">
-                          <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                          </a>
-                        </li>
-                        <li className="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                          <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
+              <div className="row">
+                <hr />
+                <div className="col-md-12">
+                  <nav aria-label="Page navigation" className="sg-code">
+                    <ul className="pagination">
+                      <li className="disabled">
+                        <a href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                      </li>
+                      <li className="active"><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">5</a></li>
+                      <li>
+                        <a href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
                 </div>
-              </section>
+              </div>
+            </section>
             <div className="side-toast toast-success">
               <p>This issue will be ignored in your next analysis.</p>
               <i className="fa fa-times"></i>
@@ -2699,10 +2697,10 @@ String generateSecretToken() {
         </Row>
       </Grid>
     </React.Fragment>
-  }
-}
+  );
+};
 
 ReactDOM.render(
-  <App/>,
+  <App />,
   document.getElementById("root") as HTMLElement
 );
