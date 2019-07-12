@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button, ButtonGroup, Col, Grid, MenuItem, Row, SplitButton } from 'react-bootstrap';
+import { Button, ButtonGroup, Col, Grid, MenuItem, Panel, Row, SplitButton, FormGroup, ControlLabel, FormControl, OverlayTrigger, Tooltip, InputGroup, Clearfix } from 'react-bootstrap';
 import { CodeExample } from './CodeExample';
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
+import { ColorCard } from './ColorCard';
+import { Checkbox } from './Checkbox';
+import { InputWithCheckbox } from './InputWithCheckbox';
+import { Switch } from './Switch';
+
 import '@codacy/stylesheets';
 
 const App = () => {
@@ -102,960 +107,785 @@ const App = () => {
             </div>
             <section id="colors">
               <h1>Colour Palette</h1>
-              <div className="row">
-                <div className="col-md-4">
-                  <div className="color-container">
-                    <div className="color-container-tint gray-base"></div>
-                    <p>
-                      <code>$gray-base</code> is used for solid backgrounds and
-                      headlines.
-                          </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="color-container">
-                    <div className="color-container-tint gray-dark"></div>
-                    <p><code>$gray-dark</code> is used for body text.</p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="color-container">
-                    <div className="color-container-tint gray"></div>
-                    <p>
-                      <code>$gray</code> is used for placeholder and additional
-                      text.
-                          </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="color-container">
-                    <div className="color-container-tint gray-lighter"></div>
-                    <p>
-                      <code>$gray-lighter</code> is used for light background,
-                      borders and separators.
-                          </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="color-container">
-                    <div className="color-container-tint primary"></div>
-                    <p>
-                      <code>$brand-primary</code> is used for buttons, links,
-                      inputs on focus.
-                          </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="color-container">
-                    <div className="color-container-tint success"></div>
-                    <p>
-                      <code>$brand-success</code> is used for successful status
-                      and feedback.
-                          </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="color-container">
-                    <div className="color-container-tint warning"></div>
-                    <p><code>$brand-warning</code> is used for warning status.</p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="color-container">
-                    <div className="color-container-tint danger"></div>
-                    <p>
-                      <code>$brand-danger</code> is used for error status and
-                      feedback.
-                          </p>
-                  </div>
-                </div>
-              </div>
+              <Row>
+                <Col xs={4}>
+                  <ColorCard color="gray-base">
+                    <code>$gray-base</code> is used for solid backgrounds and headlines.
+                  </ColorCard>
+                </Col>
+                <Col xs={4}>
+                  <ColorCard color="gray-dark">
+                    <code>$gray-dark</code> is used for body text.
+                  </ColorCard>
+                </Col>
+                <Col xs={4}>
+                  <ColorCard color="gray">
+                    <code>$gray</code> is used for placeholder and additional text.
+                  </ColorCard>
+                </Col>
+                <Col xs={4}>
+                  <ColorCard color="gray-lighter">
+                    <code>$gray-lighter</code> is used for light background, borders and separators.
+                  </ColorCard>
+                </Col>
+                <Col xs={4}>
+                  <ColorCard color="primary">
+                    <code>$brand-primary</code> is used for buttons, links, inputs on focus.
+                  </ColorCard>
+                </Col>
+                <Col xs={4}>
+                  <ColorCard color="success">
+                    <code>$brand-success</code> is used for successful status and feedback.
+                  </ColorCard>
+                </Col>
+                <Col xs={4}>
+                  <ColorCard color="warning">
+                    <code>$brand-warning</code> is used for warning status.
+                  </ColorCard>
+                </Col>
+                <Col xs={4}>
+                  <ColorCard color="danger">
+                    <code>$brand-danger</code> is used for error status and feedback.
+                  </ColorCard>
+                </Col>
+              </Row>
             </section>
 
             <section id="typo">
-              <div className="row">
-                <div className="col-md-12">
-                  <h1>Typography</h1>
+              <h1>Typography</h1>
+              <p> The main typeface is Clear sans. It should be used on every
+                text in the application. If, for some reason, Clear sans is
+                not rendered, the alternate typeface is Arial. </p>
+              <Panel>
+                <Panel.Body>
+                  <h1>H1 header</h1>
+                  <p>26px</p>
+                  <pre>&lt;h1&gt;header&lt;/h1&gt;</pre>
+                  <h2>H2 header</h2>
+                  <p>22px</p>
+                  <pre>&lt;h2&gt;header&lt;/h2&gt;</pre>
+                  <h3>H3 header</h3>
+                  <p>18px</p>
+                  <pre>&lt;h3&gt;header&lt;/h3&gt;</pre>
+                  <h4>H4 header</h4>
+                  <p>16px</p>
+                  <pre>&lt;h4&gt;header&lt;/h4&gt;</pre>
+                  <h5>H5 header</h5>
+                  <p>14px</p>
+                  <pre>&lt;h5&gt;header&lt;/h5&gt;</pre>
+                  <h6>h6 header</h6>
+                  <p>12px</p>
+                  <pre>&lt;h6&gt;header&lt;/h6&gt;</pre>
+
+                  <h2>Paragraphs</h2>
+                  <p> All paragraphs should be written inside a <code>&lt;p&gt;</code> tag. Ideally, on blocks of text,
+                    the <code>&lt;strong&gt;</code> tag should be used to highlight important text, making readability easier.
+                    Bellow there's an example of a block of text with a link.
+                  </p>
                   <p>
-                    The main typeface is Clear sans. It should be used on every
-                    text in the application. If, for some reason, Clear sans is
-                    not rendered, the alternate typeface is Arial.
-                          </p>
+                    Other styles can be used, such as<code>&lt;em&gt;</code> for <em>italic</em> and
+                    <code>&lt;u&gt;</code> for <u>underline.</u>
+                  </p>
+
+                  <Panel>
+                    <Panel.Body>
+                      <p>The quick, brown fox jumps over a lazy dog. DJs flock
+                        by when MTV ax quiz prog. Junk MTV <strong>quiz graced by fox whelps.</strong> Bawds jog,
+                        flick quartz, vex nymphs. Waltz, bad nymph, for quick
+                        jigs vex! Fox nymphs grab quick-jived waltz.
+                        <strong>Brick quiz whangs</strong> jumpy veldt fox.
+                        <a href="#">Bright vixens jump; dozy fowl quack.</a>
+                        Quick wafting zephyrs vex bold Jim. Quick zephyrs
+                        blow, vexing daft Jim.
+                      </p>
+
+                      <p>The quick, brown fox jumps over a lazy dog. <a href="#" target="_blank">Learn more</a>.</p>
+                    </Panel.Body>
+                  </Panel>
+
+                  <p>For small prints, updates, conditions and copyrights, use the tag <code>&lt;small&gt;</code>.</p>
+
+                  <Panel>
+                    <Panel.Body>
+                      <CodeExample>
+                        <small>© 2016 - CODACY AUTOMATED CODE REVIEW</small>
+                      </CodeExample>
+                    </Panel.Body>
+                  </Panel>
+
+                  <h2>Utility classes</h2>
+                  <p>Utility classes can be used as needed. Although, if many
+                    elements in a container require the same utility class,
+                    please create a parent class with the proper rule.
+                  </p>
 
                   <div className="panel">
                     <div className="panel-body">
-                      <h1>H1 header</h1>
-                      <p>26px</p>
-                      <pre>&lt;h1&gt;header&lt;/h1&gt;</pre>
-                      <h2>H2 header</h2>
-                      <p>22px</p>
-                      <pre>&lt;h2&gt;header&lt;/h2&gt;</pre>
-                      <h3>H3 header</h3>
-                      <p>18px</p>
-                      <pre>&lt;h3&gt;header&lt;/h3&gt;</pre>
-                      <h4>H4 header</h4>
-                      <p>16px</p>
-                      <pre>&lt;h4&gt;header&lt;/h4&gt;</pre>
-                      <h5>H5 header</h5>
-                      <p>14px</p>
-                      <pre>&lt;h5&gt;header&lt;/h5&gt;</pre>
-                      <h6>h6 header</h6>
-                      <p>12px</p>
-                      <pre>&lt;h6&gt;header&lt;/h6&gt;</pre>
+                      <h3>Alignment classes</h3>
+                      <CodeExample>
+                        <p className="text-left">Left aligned text.</p>
+                        <p className="text-center">Center aligned text.</p>
+                        <p className="text-right">Right aligned text.</p>
+                        <p className="text-justify">Justified text.</p>
+                        <p className="text-nowrap">No wrap text.</p>
+                      </CodeExample>
 
-                      <h2>Paragraphs</h2>
-                      <p>
-                        All paragraphs should be written inside a
-                              <code>&lt;p&gt;</code> tag. Ideally, on blocks of text,
-                              the <code>&lt;strong&gt;</code> tag should be used to
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        highlight important text, making readability easier.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Bellow there's an example of a block of text with a link.
-                              </p>
+                      <h3>Transformation classes</h3>
+                      <CodeExample>
+                        <p className="text-lowercase">Lowercased text.</p>
+                        <p className="text-uppercase">Uppercased text.</p>
+                        <p className="text-capitalize">Capitalized text.</p>
+                      </CodeExample>
 
+                      <h3>Abbreviation</h3>
                       <p>
-                        Other styles can be used, such as
-                              <code>&lt;em&gt;</code> for <em>italic</em> and
-                              <code>&lt;u&gt;</code> for <u>underline.</u>
+                        An abbreviation of the word attribute is
+                        <CodeExample>
+                          <abbr title="attribute">attr.</abbr>
+                        </CodeExample>
                       </p>
-
-                      <div className="panel">
-                        <div className="panel-body">
-                          <p>
-                            The quick, brown fox jumps over a lazy dog. DJs flock
-                            by when MTV ax quiz prog. Junk MTV
-                                  <strong>quiz graced by fox whelps.</strong> Bawds jog,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    flick quartz, vex nymphs. Waltz, bad nymph, for quick
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    jigs vex! Fox nymphs grab quick-jived waltz.
-                                  <strong>Brick quiz whangs</strong> jumpy veldt fox.
-                                  <a href="#">Bright vixens jump; dozy fowl quack.</a>
-                            Quick wafting zephyrs vex bold Jim. Quick zephyrs
-                            blow, vexing daft Jim.
-                                  </p>
-
-                          <p>
-                            The quick, brown fox jumps over a lazy dog.
-                                  <a href="#" target="_blank">Learn more</a>.
-                                  </p>
-                        </div>
-                      </div>
-
-                      <p>
-                        For small prints, updates, conditions and copyrights, use
-                              the tag <code>&lt;small&gt;</code>.
-                              </p>
-                      <div className="panel">
-                        <div className="panel-body">
-                          <p className="sg-code">
-                            <CodeExample>
-                              <small>© 2016 - CODACY AUTOMATED CODE REVIEW</small>
-                            </CodeExample>
-                          </p>
-                        </div>
-                      </div>
-
-                      <h2>Utility classes</h2>
-                      <p>
-                        Utility classes can be used as needed. Although, if many
-                        elements in a container require the same utility class,
-                        please create a parent class with the proper rule.
-                              </p>
-
-                      <div className="panel">
-                        <div className="panel-body">
-                          <h3>Alignment classes</h3>
-                          <CodeExample>
-                            <div>
-                              <p className="text-left">Left aligned text.</p>
-                              <p className="text-center">Center aligned text.</p>
-                              <p className="text-right">Right aligned text.</p>
-                              <p className="text-justify">Justified text.</p>
-                              <p className="text-nowrap">No wrap text.</p>
-                            </div>
-                          </CodeExample>
-
-                          <h3>Transformation classes</h3>
-                          <CodeExample>
-                            <div>
-                              <p className="text-lowercase">Lowercased text.</p>
-                              <p className="text-uppercase">Uppercased text.</p>
-                              <p className="text-capitalize">Capitalized text.</p>
-                            </div>
-                          </CodeExample>
-
-                          <h3>Abbreviation</h3>
-                          <p>
-                            An abbreviation of the word attribute is
-                                                          <CodeExample>
-                              <abbr title="attribute">attr.</abbr>
-                            </CodeExample>
-                          </p>
-                        </div>
-                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </Panel.Body>
+              </Panel>
             </section>
 
             <section id="buttons">
-              <div className="row">
-                <div className="col-md-12">
-                  <h1>Buttons</h1>
-                  <p>
-                    Buttons are to be used whenever there's an action a user can
-                    make, therefore, there should be <strong>one primary button per page.</strong></p>
-                  <p>
-                    <code>bsStyle="default"</code> and <code>bsStyle="link"</code> are the
-                    only buttons that can repeatedly appear in a page and <strong>should not
-                    be used for primary or breaking actions.</strong>
-                  </p>
-                  <p>
-                    Buttons should be positioned on the left. When there's a group
-                    of buttons, the primary button stands on the far right.
-                  </p>
+              <h1>Buttons</h1>
+              <p>Buttons are to be used whenever there's an action a user can
+                make, therefore, there should be <strong>one primary button per page.</strong>
+              </p>
+              <p><code>bsStyle="default"</code> and <code>bsStyle="link"</code> are the
+                only buttons that can repeatedly appear in a page and <strong>should not
+                be used for primary or breaking actions.</strong>
+              </p>
+              <p>Buttons should be positioned on the left. When there's a group
+                of buttons, the primary button stands on the far right.
+              </p>
 
-                  <div className="panel">
-                    <div className="panel-body">
-                      <div className="row">
-                        <div className="col-xs-6">
-                          <CodeExample>
-                            <Button type="submit" bsStyle="default">Default</Button>
-                          </CodeExample>
-                          <CodeExample>
-                            <Button type="submit" bsStyle="primary">Primary</Button>
-                          </CodeExample>
-                          <CodeExample>
-                            <Button type="submit" bsStyle="link">Link</Button>
-                          </CodeExample>
-                          <CodeExample>
-                            <Button type="submit" bsStyle="success">Success</Button>
-                          </CodeExample>
-                          <CodeExample>
-                            <Button type="submit" bsStyle="danger">Danger</Button>
-                          </CodeExample>
-                        </div>
-                        <div className="col-xs-6">
-                          <CodeExample>
-                            <Button type="submit" bsStyle="default" disabled={true}>Default disabled</Button>
-                          </CodeExample>
-                          <CodeExample>
-                            <Button type="submit" bsStyle="primary" disabled={true}>Primary disabled</Button>
-                          </CodeExample>
-                          <CodeExample>
-                            <Button type="submit" bsStyle="link" disabled={true}>Link disabled</Button>
-                          </CodeExample>
-                          <CodeExample>
-                            <Button type="submit" bsStyle="success" disabled={true}>Success disabled</Button>
-                          </CodeExample>
-                          <CodeExample>
-                            <Button type="submit" bsStyle="danger" disabled={true}>Danger disabled</Button>
-                          </CodeExample>
-                        </div>
-                      </div>
-
-                      <h2>Different sizes</h2>
-                      <p>Some description here mentioning layout and position.</p>
-                      <p>
-                        You can change the button size just by simply adding
-                              <code>bsSize="lg"</code>, <code>bsSize="sm"</code>,
-                              <code>bsSize="xs"</code> to the button properties.
-                      </p>
-
-                      <Button type="submit" bsStyle="default" bsSize="lg">Lg button</Button>
-                      <Button type="submit" bsStyle="default">button</Button>
-                      <Button type="submit" bsStyle="default" bsSize="sm">Sm button</Button>
-                      <Button type="submit" bsStyle="default" bsSize="xs">Xs button</Button>
-
-                      <h2>Button groups</h2>
+              <Panel>
+                <Panel.Body>
+                  <Row>
+                    <Col xs={6}>
                       <CodeExample>
-                        <ButtonGroup>
-                          <Button type="button" bsStyle="default">Left</Button>
-                          <Button type="button" bsStyle="default">Middle</Button>
-                          <Button type="button" bsStyle="default">Right</Button>
-                        </ButtonGroup>
+                        <Button bsStyle="default">Default</Button>
                       </CodeExample>
-
-                      <h2>Split buttons</h2>
                       <CodeExample>
-                        <SplitButton
-                          bsStyle="default"
-                          title="I'm an action"
-                          id="bla"
-                        >
-                          <MenuItem eventKey="1">And another one</MenuItem>
-                          <MenuItem eventKey="2">A different one</MenuItem>
-                          <MenuItem eventKey="3">An action</MenuItem>
-                        </SplitButton>
+                        <Button bsStyle="primary">Primary</Button>
                       </CodeExample>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                      <CodeExample>
+                        <Button bsStyle="link">Link</Button>
+                      </CodeExample>
+                      <CodeExample>
+                        <Button bsStyle="success">Success</Button>
+                      </CodeExample>
+                      <CodeExample>
+                        <Button bsStyle="danger">Danger</Button>
+                      </CodeExample>
+                    </Col>
+                    <Col xs={6}>
+                      <CodeExample>
+                        <Button bsStyle="default" disabled={true}>Default disabled</Button>
+                      </CodeExample>
+                      <CodeExample>
+                        <Button bsStyle="primary" disabled={true}>Primary disabled</Button>
+                      </CodeExample>
+                      <CodeExample>
+                        <Button bsStyle="link" disabled={true}>Link disabled</Button>
+                      </CodeExample>
+                      <CodeExample>
+                        <Button bsStyle="success" disabled={true}>Success disabled</Button>
+                      </CodeExample>
+                      <CodeExample>
+                        <Button bsStyle="danger" disabled={true}>Danger disabled</Button>
+                      </CodeExample>
+                    </Col>
+                  </Row>
+
+                  <h2>Different sizes</h2>
+                  <p>Some description here mentioning layout and position.</p>
+                  <p>You can change the button size just by simply adding
+                    <code>bsSize="lg"</code>, <code>bsSize="sm"</code>,
+                    <code>bsSize="xs"</code> to the button properties.
+                  </p>
+
+                  <CodeExample>
+                    <Button bsStyle="default" bsSize="lg">Lg button</Button>
+                    <Button bsStyle="default">button</Button>
+                    <Button bsStyle="default" bsSize="sm">Sm button</Button>
+                    <Button bsStyle="default" bsSize="xs">Xs button</Button>
+                  </CodeExample>
+
+                  <h2>Button groups</h2>
+                  <CodeExample>
+                    <ButtonGroup>
+                      <Button bsStyle="default">Left</Button>
+                      <Button bsStyle="default">Middle</Button>
+                      <Button bsStyle="default">Right</Button>
+                    </ButtonGroup>
+                  </CodeExample>
+
+                  <h2>Split buttons</h2>
+                  <CodeExample>
+                    <SplitButton
+                      bsStyle="default"
+                      title="I'm an action"
+                      id="bla"
+                    >
+                      <MenuItem eventKey="1">And another one</MenuItem>
+                      <MenuItem eventKey="2">A different one</MenuItem>
+                      <MenuItem eventKey="3">An action</MenuItem>
+                    </SplitButton>
+                  </CodeExample>
+                </Panel.Body>
+              </Panel>
             </section>
 
             <section id="forms">
-              <div className="row">
-                <div className="col-md-12">
-                  <h1>Forms</h1>
-                  <p>
-                    Inputs can be used in a form group or individually. It's
-                    mandatory that each input has a label. Inputs should have the
-                    appropriate width according to the content it's going to
-                    receive - to size the width of an input add the class
-                          <code>.col-*-*</code> to <code>.form-group</code>, and to size
-                          the height use <code>.input-*</code> or
-                          <code>.form-group-*</code> when using
-                          <code>.form-group</code>s.
-                          </p>
+              <h1>Forms</h1>
+              <p>Inputs can be used in a form group or individually. It's
+                mandatory that each input has a label. Inputs should have the
+                appropriate width according to the content it's going to
+                receive - to size the width of an input add the class
+                <code>.col-*-*</code> to <code>.form-group</code>, and to size
+                the height use <code>.input-*</code> or
+                <code>.form-group-*</code> when using
+                <code>.form-group</code>s.
+              </p>
 
-                  <p>
-                    Optional fields should be indicated instead of required
-                    fields. Placeholders should always give some hint to the user
-                          on what is the expected input.<br />
-                    In case of
-                          <strong
-                    >inputs with feedback, the input should return to it's
-                              normal state when it becomes active.</strong
+              <p>Optional fields should be indicated instead of required
+                fields. Placeholders should always give some hint to the user
+                on what is the expected input.<br />
+                In case of <strong>inputs with feedback, the input should return to it's
+                normal state when it becomes active.</strong>
+              </p>
+
+              <h2>Inputs</h2>
+
+              <Panel>
+                <Panel.Body>
+                  <h3>Normal inputs</h3>
+
+                  <CodeExample>
+                    <FormGroup controlId="input-normal-email" bsClass="form-group col-xs-6">
+                      <ControlLabel>Email address</ControlLabel>
+                      <FormControl type="text" placeholder="youremail@email.com" name="email" />
+                    </FormGroup>
+                  </CodeExample>
+
+                  <CodeExample>
+                    <FormGroup controlId="input-card-number" bsClass="form-group has-card col-xs-6">
+                      <ControlLabel>Card number</ControlLabel>
+                      <FormControl type="text" placeholder="xxxx xxxx xxxx xxxx" name="card" />
+                      <div className="card card-visa"></div>
+                    </FormGroup>
+                  </CodeExample>
+
+                  <h3>Disabled input</h3>
+
+                  <CodeExample>
+                    <FormGroup controlId="input-disabled" bsClass="form-group col-xs-6">
+                      <ControlLabel>Username</ControlLabel>
+                      <FormControl type="text" placeholder="Name" name="card" disabled={true} />
+                    </FormGroup>
+                  </CodeExample>
+
+                  <h3>With help</h3>
+
+                  <CodeExample>
+                    <FormGroup controlId="input-help" bsClass="form-group col-xs-6">
+                      <ControlLabel>
+                        Name <OverlayTrigger overlay={<Tooltip>Changing the username will also change the URL of your projects.</Tooltip>}>
+                          <i className="fa fa-question-circle-o" ></i>
+                        </OverlayTrigger>
+                      </ControlLabel>
+                      <FormControl type="text" placeholder="your-name" name="name" />
+                      <p>letters, digits, _ (underscores) and - (dashes) only. 3 chars min.</p>
+                    </FormGroup>
+                  </CodeExample>
+
+                  <h3>Optional fields</h3>
+
+                  <CodeExample>
+                    <FormGroup controlId="input-optional" bsClass="form-group optional col-xs-6">
+                      <ControlLabel>Name</ControlLabel>
+                      <FormControl type="text" placeholder="Name" name="name" />
+                    </FormGroup>
+                  </CodeExample>
+
+                  <h3>Feedback error</h3>
+
+                  <CodeExample>
+                    <FormGroup controlId="input-feedback-error" bsClass="form-group has-feedback has-error col-xs-6">
+                      <ControlLabel>Email</ControlLabel>
+                      <FormControl type="email" placeholder="Name" name="Email" />
+                      <div className="form-control-feedback fa fa-times"></div>
+                      <p>This is not an email address</p>
+                    </FormGroup>
+                  </CodeExample>
+
+                  <CodeExample>
+                    <FormGroup bsClass="form-group has-feedback has-error col-xs-6">
+                      <Checkbox id="input-feedback-error-checkbox" name="checkbox-error" label="Select me" />
+                      <p>This field is required</p>
+                    </FormGroup>
+                  </CodeExample>
+
+                  <form>
+                    <div
+                      className="form-group has-feedback has-error col-md-6 sg-code"
                     >
-                  </p>
+                      <select
+                        id="developers"
+                        className="selectpicker"
+                        data-width="100%"
+                        title="Select an option"
+                        required
+                      >
+                        <option>1-4</option>
+                        <option>4-20</option>
+                        <option>21-100</option>
+                        <option>101-500</option>
+                        <option>501+</option>
+                      </select>
+                      <p>This field is required</p>
+                    </div>
+                  </form>
 
-                  <div className="panel">
-                    <div className="panel-body">
-                      <h2>Inputs</h2>
+                  <h3>Input with an addon</h3>
 
-                      <h3>Normal inputs</h3>
-                      <form>
-                        <div className="form-group col-md-6 sg-code">
-                          <pre><code>
-                            {`
-                                                      <label htmlFor="email">Email address</label>
-                                                      <input
-                                                          type="email"
-                                                          className="form-control"
-                                                          name="email"
-                                                          placeholder="youremail@email.com"
-                                                      />`}
-                          </code></pre>
-                        </div>
-                      </form>
-                      <form>
-                        <div className="form-group has-card col-md-6 sg-code">
-                          <label htmlFor="card">Card number</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            name="card"
-                            placeholder="xxxx xxxx xxxx xxxx"
-                          />
-                          <div className="card card-visa"></div>
-                        </div>
-                      </form>
-                      <h3>Disabled input</h3>
-                      <form>
-                        <div className="form-group col-md-6 sg-code"><label htmlFor="exampleName">Username</label>
-                          <input
-                            type="name"
-                            className="form-control"
-                            id="exampleName"
-                            placeholder="Name"
-                            disabled
-                          />
-                        </div>
-                      </form>
-                      <h3>With help</h3>
-                      <form>
-                        <div className="form-group col-md-6 sg-code"><label htmlFor="name"
-                        >Name
-                                  <i
-                            className="fa fa-question-circle-o"
-                            data-toggle="tooltip"
-                            title="Changing the username will also change the URL of your projects."
-                          ></i
-                          ></label>
-                          <input
-                            type="name"
-                            className="form-control"
-                            name="name"
-                            placeholder="your-name"
-                          />
-                          <p>
-                            letters, digits, _ (underscores) and - (dashes) only.
-                            3 chars min.
-                                  </p>
-                        </div>
-                      </form>
-                      <h3>Optional fields</h3>
-                      <form>
-                        <div className="form-group optional col-md-6 sg-code"><label htmlFor="name">Name</label>
-                          <input
-                            type="name"
-                            className="form-control"
-                            name="name"
-                            placeholder="Name"
-                          />
-                        </div>
-                      </form>
-                      <h3>Feedback error</h3>
-                      <form>
-                        <div
-                          className="form-group has-feedback has-error col-md-6 sg-code"
-                        ><label htmlFor="email">Email</label>
-                          <input
-                            type="email"
-                            className="form-control"
-                            name="email"
-                            placeholder="Email"
-                          />
-                          <div
-                            className="form-control-feedback fa fa-times"
-                          ></div>
-                          <p>This is not an email address</p>
-                        </div>
-                        <div
-                          className="form-group has-feedback has-error col-md-6 sg-code"
-                        >
-                          <div className="checkbox">
-                            <input id="checkbox54" type="checkbox" /><label htmlFor="checkbox54">Big</label>
-                          </div>
-                          <p>This field is required</p>
-                        </div>
-                        <div
-                          className="form-group has-feedback has-error col-md-6 sg-code"
-                        >
-                          <select
-                            id="developers"
-                            className="selectpicker"
-                            data-width="100%"
-                            title="Select an option"
-                            required
-                          >
-                            <option>1-4</option>
-                            <option>4-20</option>
-                            <option>21-100</option>
-                            <option>101-500</option>
-                            <option>501+</option>
-                          </select>
-                          <p>This field is required</p>
-                        </div>
-                      </form>
-                      <h3>Input with an addon</h3>
-                      <form>
-                        <div className="form-group col-md-6 sg-code"><label htmlFor="email">Email</label>
-                          <div className="input-group">
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Username"
-                              aria-describedby="basic-addon2"
-                            />
-                            <span className="input-group-addon" id="basic-addon2"
-                            >@example.com</span
-                            >
-                          </div>
-                        </div>
-                      </form>
-                      <h3>Checkboxes addon</h3>
-                      <form className="form-group col-md-6 sg-code">
-                        <label>Some label</label>
-                        <div className="input-group">
-                          <div className="input-group-addon checkbox checkbox-lg">
-                            <input
-                              type="checkbox"
-                              id="addon-checkbox"
-                              aria-label="Checkbox for following text input"
-                            /* onClick={() => document ? document.getElementById('addon-input').setAttribute('disabled', false) : null} */
-                            />
-                            <label htmlFor="addon-checkbox"></label>
-                          </div>
-                          <input
-                            id="addon-input"
-                            type="text"
-                            className="form-control"
-                            aria-label="Text input with checkbox"
-                            placeholder="Check to enable"
-                            disabled />
-                        </div>
-                      </form>
-                      <h3>Inputs with tag boxes</h3>
-                      <form>
-                        <div className="form-group col-md-6 sg-code"><label htmlFor="email">Email address</label>
-                          <input
-                            type="email"
-                            className="form-control form-md"
-                            name="email"
-                            placeholder="email@email.com, email@email.com"
-                            data-role="tagsinput"
-                          />
-                        </div>
-                      </form>
+                  <CodeExample>
+                    <FormGroup controlId="input-addon" bsClass="form-group col-xs-6">
+                      <ControlLabel>Email</ControlLabel>
+                      <InputGroup>
+                        <FormControl type="text" placeholder="Username" />
+                        <InputGroup.Addon>@example.com</InputGroup.Addon>
+                      </InputGroup>
+                    </FormGroup>
+                  </CodeExample>
+
+                  <h3>Checkboxes addon</h3>
+
+                  <CodeExample>
+                    <InputWithCheckbox />
+                  </CodeExample>
+                  <Clearfix />
+                  <h3>Inputs with tag boxes</h3>
+                  <form>
+                    <div className="form-group col-md-6 sg-code"><label htmlFor="email">Email address</label>
+                      <input
+                        type="email"
+                        className="form-control form-md"
+                        name="email"
+                        placeholder="email@email.com, email@email.com"
+                        data-role="tagsinput"
+                      />
+                    </div>
+                  </form>
+                </Panel.Body>
+              </Panel>
+
+              <h2>Selection with dropdowns</h2>
+
+              <Panel>
+                <Panel.Body>
+                  <select className="selectpicker" multiple>
+                    <option>All teams</option>
+                    <option>Core</option>
+                    <option data-divider="true"></option>
+                    <option>Frontend</option>
+                  </select>
+                  <div className="dropdown sg-code">
+                    <button
+                      className="btn btn-dropdown dropdown-toggle"
+                      type="button"
+                      id="dropdownMenu1"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="true"
+                    >
+                      <i className="fa fa-filter"></i>
+                    </button>
+                    <ul
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenu1"
+                    >
+                      <li className="active"><a href="#">Action</a></li>
+                      <li><a href="#">Another action</a></li>
+                      <li><a href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+                  <h3>Filter Component</h3>
+                  <div className="filter-container sg-code">
+                    <select className="selectpicker" data-width="fit">
+                      <option>All teams</option>
+                      <option>Core</option>
+                      <option data-divider="true"></option>
+                      <option>Frontend</option>
+                    </select>
+                    <select className="selectpicker" data-width="fit">
+                      <option>All teams</option>
+                      <option selected>Core</option>
+                      <option data-divider="true"></option>
+                      <option>Frontend</option>
+                    </select>
+                  </div>
+                  <div className="filter-container sg-code">
+                    <div className="btn-group">
+                      <button
+                        className="btn btn-dropdown dropdown-toggle"
+                        type="button"
+                        id="dropdownMenu1"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="true"
+                      >
+                        All languages
+                              </button>
+                      <ul
+                        className="dropdown-menu"
+                        aria-labelledby="dropdownMenu1"
+                      >
+                        <li className="active"><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                      </ul>
+                    </div>
+                    <div className="btn-group">
+                      <button
+                        className="btn btn-dropdown dropdown-toggle"
+                        type="button"
+                        id="dropdownMenu1"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="true"
+                      >
+                        All patterns
+                              </button>
+                      <ul
+                        className="dropdown-menu"
+                        aria-labelledby="dropdownMenu1"
+                      >
+                        <li className="dropdown-header">Pattern</li>
+                        <li><a href="#">Action</a></li>
+                        <li className="active">
+                          <a href="#">Another action</a>
+                        </li>
+                        <li><a href="#">Something else here</a></li>
+                      </ul>
+                    </div>
+                    <div className="btn-group">
+                      <button
+                        className="btn btn-dropdown dropdown-toggle"
+                        type="button"
+                        id="dropdownMenu1"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="true"
+                      >
+                        All levels
+                              </button>
+                      <ul
+                        className="dropdown-menu"
+                        aria-labelledby="dropdownMenu1"
+                      >
+                        <li><a href="#">Action</a></li>
+                        <li className="active">
+                          <a href="#">Another action</a>
+                        </li>
+                        <li><a href="#">Something else here</a></li>
+                      </ul>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="col-md-12">
-                  <h2>Selection with dropdowns</h2>
-
-                  <div className="panel">
-                    <div className="panel-body">
-                      <select className="selectpicker" multiple>
-                        <option>All teams</option>
-                        <option>Core</option>
-                        <option data-divider="true"></option>
-                        <option>Frontend</option>
+                  <h3>Dropdown with search</h3>
+                  <div className="row">
+                    <div className="col-md-6">
+                      <select
+                        className="selectpicker"
+                        data-live-search="true"
+                        title="Search users"
+                      >
+                        <option data-tokens="ketchup mustard"
+                        >João Machado</option
+                        >
+                        <option data-tokens="mustard"
+                        >Rodrigo Fernandes</option
+                        >
+                        <option data-tokens="frosting">Rafael Cortes</option>
+                        <option data-tokens="frosting"
+                        >johannegger/dependenciesscala-edited-online-with-bit-1502274565854</option
+                        >
                       </select>
+                    </div>
+                    <div className="col-md-6">
+                      <select className="selectpicker" multiple>
+                        <option>Mustard</option>
+                        <option>Ketchup</option>
+                        <option>Relish</option>
+                      </select>
+                    </div>
+                  </div>
+                  <h3>with avatar</h3>
+                  <select className="selectpicker" title="Search users">
+                    <option
+                      data-content="<img alt='Joao Machado' className='avatar avatar-xxs' src='https://lorempixel.com/50/50/people/'><p>Joao Machado</p>"
+                      data-tokens="Joao Machado"
+                    ></option>
+                    <option
+                      data-content="<img alt='Rafael Cortez' className='avatar avatar-xxs' src='https://lorempixel.com/50/50/people/'><p>Rafael Cortes</p>"
+                      data-tokens="Rafael Cortez"
+                    ></option>
+                    <option
+                      data-content="<img alt='Rodrigo Fernandes' className='avatar avatar-xxs' src='https://lorempixel.com/50/50/people/'><p>Rodrigo Fernandes</p>"
+                      data-tokens="Rodrigo Fernandes"
+                    ></option>
+                  </select>
+                  <div className="row">
+                    <div className="col-md-6">
+                      <h3>With multiple levels</h3>
                       <div className="dropdown sg-code">
                         <button
-                          className="btn btn-dropdown dropdown-toggle"
+                          className="btn btn-default dropdown-toggle"
                           type="button"
-                          id="dropdownMenu1"
                           data-toggle="dropdown"
-                          aria-haspopup="true"
-                          aria-expanded="true"
                         >
-                          <i className="fa fa-filter"></i>
+                          Tutorials <i className="fa fa-angle-down"></i>
                         </button>
-                        <ul
-                          className="dropdown-menu"
-                          aria-labelledby="dropdownMenu1"
-                        >
-                          <li className="active"><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
+                        <ul className="dropdown-menu">
+                          <li><a tabIndex={-1} href="#">HTML</a></li>
+                          <li><a tabIndex={-1} href="#">CSS</a></li>
+                          <li className="dropdown-submenu"><a className="test" tabIndex={-1} href="#"
+                          >New dropdown</a
+                          >
+                            <ul className="dropdown-menu">
+                              <li><a tabIndex={-1} href="#"
+                              >2nd level dropdown</a>
+                              </li>
+                              <li><a tabIndex={-1} href="#">2nd level dropdown</a>
+                              </li>
+                            </ul>
+                          </li>
                         </ul>
                       </div>
-                      <h3>Filter Component</h3>
-                      <div className="filter-container sg-code">
-                        <select className="selectpicker" data-width="fit">
-                          <option>All teams</option>
-                          <option>Core</option>
-                          <option data-divider="true"></option>
-                          <option>Frontend</option>
-                        </select>
-                        <select className="selectpicker" data-width="fit">
-                          <option>All teams</option>
-                          <option selected>Core</option>
-                          <option data-divider="true"></option>
-                          <option>Frontend</option>
-                        </select>
-                      </div>
-                      <div className="filter-container sg-code">
-                        <div className="btn-group">
-                          <button
-                            className="btn btn-dropdown dropdown-toggle"
-                            type="button"
-                            id="dropdownMenu1"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="true"
+                    </div>
+                    <div className="col-md-6">
+                      <h3>Opening aligned to the right</h3>
+                      <div className="dropdown pull-left">
+                        <button
+                          className="btn btn-default dropdown-toggle"
+                          type="button"
+                          data-toggle="dropdown"
+                        >
+                          Tutorials <i className="fa fa-angle-down"></i>
+                        </button>
+                        <ul className="dropdown-menu dropdown-menu-right">
+                          <li><a tabIndex={-1} href="#">HTML</a></li>
+                          <li><a tabIndex={-1} href="#">CSS</a></li>
+                          <li className="dropdown-submenu"><a className="test" tabIndex={-1} href="#"
+                          >New dropdown</a
                           >
-                            All languages
-                                  </button>
-                          <ul
-                            className="dropdown-menu"
-                            aria-labelledby="dropdownMenu1"
-                          >
-                            <li className="active"><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                          </ul>
-                        </div>
-                        <div className="btn-group">
-                          <button
-                            className="btn btn-dropdown dropdown-toggle"
-                            type="button"
-                            id="dropdownMenu1"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="true"
-                          >
-                            All patterns
-                                  </button>
-                          <ul
-                            className="dropdown-menu"
-                            aria-labelledby="dropdownMenu1"
-                          >
-                            <li className="dropdown-header">Pattern</li>
-                            <li><a href="#">Action</a></li>
-                            <li className="active">
-                              <a href="#">Another action</a>
-                            </li>
-                            <li><a href="#">Something else here</a></li>
-                          </ul>
-                        </div>
-                        <div className="btn-group">
-                          <button
-                            className="btn btn-dropdown dropdown-toggle"
-                            type="button"
-                            id="dropdownMenu1"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="true"
-                          >
-                            All levels
-                                  </button>
-                          <ul
-                            className="dropdown-menu"
-                            aria-labelledby="dropdownMenu1"
-                          >
-                            <li><a href="#">Action</a></li>
-                            <li className="active">
-                              <a href="#">Another action</a>
-                            </li>
-                            <li><a href="#">Something else here</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <h3>Dropdown with search</h3>
-                      <div className="row">
-                        <div className="col-md-6">
-                          <select
-                            className="selectpicker"
-                            data-live-search="true"
-                            title="Search users"
-                          >
-                            <option data-tokens="ketchup mustard"
-                            >João Machado</option
-                            >
-                            <option data-tokens="mustard"
-                            >Rodrigo Fernandes</option
-                            >
-                            <option data-tokens="frosting">Rafael Cortes</option>
-                            <option data-tokens="frosting"
-                            >johannegger/dependenciesscala-edited-online-with-bit-1502274565854</option
-                            >
-                          </select>
-                        </div>
-                        <div className="col-md-6">
-                          <select className="selectpicker" multiple>
-                            <option>Mustard</option>
-                            <option>Ketchup</option>
-                            <option>Relish</option>
-                          </select>
-                        </div>
-                      </div>
-                      <h3>with avatar</h3>
-                      <select className="selectpicker" title="Search users">
-                        <option
-                          data-content="<img alt='Joao Machado' className='avatar avatar-xxs' src='https://lorempixel.com/50/50/people/'><p>Joao Machado</p>"
-                          data-tokens="Joao Machado"
-                        ></option>
-                        <option
-                          data-content="<img alt='Rafael Cortez' className='avatar avatar-xxs' src='https://lorempixel.com/50/50/people/'><p>Rafael Cortes</p>"
-                          data-tokens="Rafael Cortez"
-                        ></option>
-                        <option
-                          data-content="<img alt='Rodrigo Fernandes' className='avatar avatar-xxs' src='https://lorempixel.com/50/50/people/'><p>Rodrigo Fernandes</p>"
-                          data-tokens="Rodrigo Fernandes"
-                        ></option>
-                      </select>
-                      <div className="row">
-                        <div className="col-md-6">
-                          <h3>With multiple levels</h3>
-                          <div className="dropdown sg-code">
-                            <button
-                              className="btn btn-default dropdown-toggle"
-                              type="button"
-                              data-toggle="dropdown"
-                            >
-                              Tutorials <i className="fa fa-angle-down"></i>
-                            </button>
                             <ul className="dropdown-menu">
-                              <li><a tabIndex={-1} href="#">HTML</a></li>
-                              <li><a tabIndex={-1} href="#">CSS</a></li>
-                              <li className="dropdown-submenu"><a className="test" tabIndex={-1} href="#"
-                              >New dropdown</a
+                              <li><a tabIndex={-1} href="#"
+                              >2nd level dropdown</a
                               >
-                                <ul className="dropdown-menu">
-                                  <li><a tabIndex={-1} href="#"
-                                  >2nd level dropdown</a>
-                                  </li>
-                                  <li><a tabIndex={-1} href="#">2nd level dropdown</a>
-                                  </li>
-                                </ul>
+                              </li>
+                              <li><a tabIndex={-1} href="#"
+                              >2nd level dropdown</a
+                              >
                               </li>
                             </ul>
-                          </div>
-                        </div>
-                        <div className="col-md-6">
-                          <h3>Opening aligned to the right</h3>
-                          <div className="dropdown pull-left">
-                            <button
-                              className="btn btn-default dropdown-toggle"
-                              type="button"
-                              data-toggle="dropdown"
-                            >
-                              Tutorials <i className="fa fa-angle-down"></i>
-                            </button>
-                            <ul className="dropdown-menu dropdown-menu-right">
-                              <li><a tabIndex={-1} href="#">HTML</a></li>
-                              <li><a tabIndex={-1} href="#">CSS</a></li>
-                              <li className="dropdown-submenu"><a className="test" tabIndex={-1} href="#"
-                              >New dropdown</a
-                              >
-                                <ul className="dropdown-menu">
-                                  <li><a tabIndex={-1} href="#"
-                                  >2nd level dropdown</a
-                                  >
-                                  </li>
-                                  <li><a tabIndex={-1} href="#"
-                                  >2nd level dropdown</a
-                                  >
-                                  </li>
-                                </ul>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
+                          </li>
+                        </ul>
                       </div>
-                      <div className="col-md-6">
-                        <h3>Submenu to the left</h3>
-                        <div className="dropdown pull-left">
-                          <button
-                            className="btn btn-default dropdown-toggle"
-                            type="button"
-                            data-toggle="dropdown"
-                          >
-                            Tutorials <i className="fa fa-angle-down"></i>
-                          </button>
-                          <ul className="dropdown-menu dropdown-menu-right">
-                            <li><a tabIndex={-1} href="#">HTML</a></li>
-                            <li><a tabIndex={-1} href="#">CSS</a></li>
-                            <li className="dropdown-submenu pull-left"><a className="test" tabIndex={-1} href="#">New dropdown</a>
-                              <ul className="dropdown-menu">
-                                <li><a tabIndex={-1} href="#">2nd level dropdown</a>
-                                </li>
-                                <li><a tabIndex={-1} href="#">2nd level dropdown second</a>
-                                </li>
-                              </ul>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <h3>Submenu to the left</h3>
+                    <div className="dropdown pull-left">
+                      <button
+                        className="btn btn-default dropdown-toggle"
+                        type="button"
+                        data-toggle="dropdown"
+                      >
+                        Tutorials <i className="fa fa-angle-down"></i>
+                      </button>
+                      <ul className="dropdown-menu dropdown-menu-right">
+                        <li><a tabIndex={-1} href="#">HTML</a></li>
+                        <li><a tabIndex={-1} href="#">CSS</a></li>
+                        <li className="dropdown-submenu pull-left"><a className="test" tabIndex={-1} href="#">New dropdown</a>
+                          <ul className="dropdown-menu">
+                            <li><a tabIndex={-1} href="#">2nd level dropdown</a>
+                            </li>
+                            <li><a tabIndex={-1} href="#">2nd level dropdown second</a>
                             </li>
                           </ul>
-                        </div>
-                      </div>
+                        </li>
+                      </ul>
                     </div>
                   </div>
-                </div>
-              </div>
+                </Panel.Body>
+              </Panel>
 
-              <div className="row">
-                <div className="col-md-12">
-                  <h2>Checkbox</h2>
-                  <p>Checkboxes should be used when yada yada</p>
+              <h2>Checkbox</h2>
+              <p>Checkboxes should be used when yada yada</p>
 
-                  <div className="panel">
-                    <div className="panel-body">
-                      <div className="checkbox checkbox-md">
-                        <input id="checkbox12" type="checkbox" checked /><label htmlFor="checkbox12">Big</label>
-                      </div>
-                      <div className="checkbox sg-code">
-                        <input id="checkbox1" type="checkbox" /><label htmlFor="checkbox1">Default</label>
-                      </div>
-                      <h4>Checkboxes without label text</h4>
-                      <p>Usually only used when yada yada</p>
-                      <div className="checkbox sg-code">
-                        <input
-                          type="checkbox"
-                          className="styled styled-primary"
-                          id="singleCheckbox2"
-                          value="option2"
-                          checked
-                          aria-label="Single checkbox Two"
-                        />
-                        <label></label>
-                      </div>
-                      <h4>Checkboxes with indeterminate state</h4>
-                      <p>Usually only used when yada yada</p>
-                      <div className="checkbox sg-code">
-                        <input
-                          id="indeterminateCheckbox"
-                          className="styled"
-                          type="checkbox"
-                        /* onclick="changeState(this)" */
-                        />
-                        <label></label>
-                      </div>
-                      <h4>Inline checkboxes</h4>
-                      <p>
-                        Used when yada yada. Simply add
-                              <code>.checkbox-inline</code> to the parent. <br />
-                        Check the following code and repeat for all checkboxes.
-                              </p>
-                      <div className="checkbox checkbox-inline">
-                        <input
-                          type="checkbox"
-                          className="styled"
-                          id="inlineCheckbox1"
-                          value="option1"
-                        /><label htmlFor="inlineCheckbox1"> Inline One </label>
-                      </div>
-                      <div className="checkbox checkbox-inline sg-code">
-                        <input
-                          type="checkbox"
-                          className="styled"
-                          id="inlineCheckbox2"
-                          value="option1"
-                        /><label htmlFor="inlineCheckbox2"> Inline Two </label>
-                      </div>
-                      <h4>Disabled state also supported.</h4>
-                      <p>Use when yada yada</p>
-                      <div className="checkbox sg-code">
-                        <input
-                          className="styled"
-                          id="checkbox9"
-                          type="checkbox"
-                          disabled
-                        /><label htmlFor="checkbox9">Can't check this</label>
-                      </div>
-                      <div className="checkbox">
-                        <input
-                          className="styled styled"
-                          id="checkbox10"
-                          type="checkbox"
-                          disabled
-                          checked
-                        /><label htmlFor="checkbox10">This too</label>
-                      </div>
-                      <h4>Switch</h4>
-                      <div className="switch-container switch-md">
-                        <input
-                          type="checkbox"
-                          id="switch2"
-                          name="switch"
-                          className="switch-button"
-                          data-url=""
-                          checked
-                        /><label className="switch-label" htmlFor="switch2"></label>
-                      </div>
-                      <div className="switch-container sg-code">
-                        <input
-                          type="checkbox"
-                          id="switch1"
-                          name="switch"
-                          className="switch-button"
-                          data-url=""
-                          checked
-                        /><label className="switch-label" htmlFor="switch1"></label>
-                      </div>
+              <Panel>
+                <Panel.Body>
+                  <Checkbox id="checkbox-big-example" name="checkbox-big-example" checked={true} label="Big" size="md" />
+
+                  <CodeExample>
+                    <Checkbox id="checkbox-default-example" name="checkbox-default-example" label="Default" />
+                  </CodeExample>
+
+                  <h4>Checkboxes without label text</h4>
+                  <p>Usually only used when yada yada</p>
+
+                  <CodeExample>
+                    <Checkbox id="checkbox-without-label" name="checkbox-without-label" value="option1" checked={true} />
+                  </CodeExample>
+
+                  <h4>Inline checkboxes</h4>
+                  <p>Used when yada yada. Simply add <code>.checkbox-inline</code> to the parent. <br />
+                    Check the following code and repeat for all checkboxes.
+                  </p>
+
+                  <CodeExample>
+                    <Checkbox id="checkbox-inline-1" name="checkbox-inline" value="option1" inline={true} label="Inline one" />
+                    <Checkbox id="checkbox-inline-2" name="checkbox-inline" value="option2" inline={true} label="Inline Two" />
+                  </CodeExample>
+
+                  <h4>Disabled state also supported</h4>
+                  <p>Use when yada yada</p>
+
+                  <CodeExample>
+                    <Checkbox id="checkbox-disabled-1" name="checkbox-disabled" value="option1" disabled={true} inline={true} label="Can't check this" />
+                    <Checkbox id="checkbox-disabled-2" name="checkbox-disabled" value="option2" disabled={true} inline={true} checked={true} label="This too" />
+                  </CodeExample>
+
+                  <h4>Switch</h4>
+
+                  <CodeExample>
+                    <Switch id="checkbox-switch-1" name="checkbox-switch" checked={true} big={true} />
+                    <Switch id="checkbox-switch-2" name="checkbox-switch" checked={true} />
+                  </CodeExample>
+                </Panel.Body>
+              </Panel>
+
+              <h2>Radio buttons</h2>
+              <p>Add a usage description here</p>
+
+              <Panel>
+                <Panel.Body>
+                  <div className="radio">
+                    <input
+                      type="radio"
+                      name="radio1"
+                      id="radio1"
+                      value="option1"
+                      checked
+                    /><label htmlFor="radio1">Small</label>
+                  </div>
+                  <div className="radio radio-md sg-code">
+                    <input
+                      type="radio"
+                      name="radio1"
+                      id="radio2"
+                      value="option2"
+                    /><label htmlFor="radio2">Big</label>
+                  </div>
+                  <h4>Radios without label text</h4>
+                  <p>Lala lala</p>
+                  <div className="sg-code">
+                    <div className="radio">
+                      <input
+                        type="radio"
+                        id="singleRadio1"
+                        value="option1"
+                        name="radio2"
+                        aria-label="Single radio One"
+                      />
+                      <label></label>
+                    </div>
+                    <div className="radio">
+                      <input
+                        type="radio"
+                        id="singleRadio2"
+                        value="option2"
+                        name="radio2"
+                        aria-label="Single radio Two"
+                        checked
+                      />
+                      <label></label>
                     </div>
                   </div>
-                </div>
-                <div className="col-md-12">
-                  <h2>Radio buttons</h2>
-                  <p>Add a usage description here</p>
-                  <div className="panel">
-                    <div className="panel-body">
-                      <div className="radio">
-                        <input
-                          type="radio"
-                          name="radio1"
-                          id="radio1"
-                          value="option1"
-                          checked
-                        /><label htmlFor="radio1">Small</label>
-                      </div>
-                      <div className="radio radio-md sg-code">
-                        <input
-                          type="radio"
-                          name="radio1"
-                          id="radio2"
-                          value="option2"
-                        /><label htmlFor="radio2">Big</label>
-                      </div>
-                      <h4>Radios without label text</h4>
-                      <p>Lala lala</p>
-                      <div className="sg-code">
-                        <div className="radio">
-                          <input
-                            type="radio"
-                            id="singleRadio1"
-                            value="option1"
-                            name="radio2"
-                            aria-label="Single radio One"
-                          />
-                          <label></label>
-                        </div>
-                        <div className="radio">
-                          <input
-                            type="radio"
-                            id="singleRadio2"
-                            value="option2"
-                            name="radio2"
-                            aria-label="Single radio Two"
-                            checked
-                          />
-                          <label></label>
-                        </div>
-                      </div>
-                      <h4>Inline radios</h4>
-                      <p>Used when yada yada</p>
-                      <div className="sg-code">
-                        <div className="radio radio-inline">
-                          <input
-                            type="radio"
-                            id="inlineRadio1"
-                            value="option1"
-                            name="radioInline"
-                            checked
-                          /><label htmlFor="inlineRadio1"> Inline One </label>
-                        </div>
-                        <div className="radio radio-inline">
-                          <input
-                            type="radio"
-                            id="inlineRadio2"
-                            value="option2"
-                            name="radioInline"
-                          /><label htmlFor="inlineRadio2"> Inline Two </label>
-                        </div>
-                      </div>
-                      <h4>Disabled</h4>
-                      <p>Disabled state also supported.</p>
-                      <div className="radio radio-primary">
-                        <input
-                          type="radio"
-                          name="radio3"
-                          id="radio5"
-                          value="option1"
-                          disabled
-                        /><label htmlFor="radio5"> Next </label>
-                      </div>
-                      <div className="radio sg-code">
-                        <input
-                          type="radio"
-                          name="radio3"
-                          id="radio6"
-                          value="option2"
-                          checked
-                          disabled
-                        /><label htmlFor="radio6"> One </label>
-                      </div>
-                      <h4>Buttons with radio behaviour</h4>
-                      <div className="btn-toggle sg-code" data-toggle="buttons">
-                        <label className="btn btn-link">
-                          <input
-                            type="radio"
-                            name="options"
-                            id="option1"
-                            autoComplete="off"
-                          />
-                          Last 7 days
-                                                  </label>
-                        <label className="btn btn-link active">
-                          <input
-                            type="radio"
-                            name="options"
-                            id="option2"
-                            autoComplete="off"
-                            checked
-                          />
-                          Last 31 days
-                              </label>
-                      </div>
+                  <h4>Inline radios</h4>
+                  <p>Used when yada yada</p>
+                  <div className="sg-code">
+                    <div className="radio radio-inline">
+                      <input
+                        type="radio"
+                        id="inlineRadio1"
+                        value="option1"
+                        name="radioInline"
+                        checked
+                      /><label htmlFor="inlineRadio1"> Inline One </label>
+                    </div>
+                    <div className="radio radio-inline">
+                      <input
+                        type="radio"
+                        id="inlineRadio2"
+                        value="option2"
+                        name="radioInline"
+                      /><label htmlFor="inlineRadio2"> Inline Two </label>
                     </div>
                   </div>
-                </div>
-              </div>
+                  <h4>Disabled</h4>
+                  <p>Disabled state also supported.</p>
+                  <div className="radio radio-primary">
+                    <input
+                      type="radio"
+                      name="radio3"
+                      id="radio5"
+                      value="option1"
+                      disabled
+                    /><label htmlFor="radio5"> Next </label>
+                  </div>
+                  <div className="radio sg-code">
+                    <input
+                      type="radio"
+                      name="radio3"
+                      id="radio6"
+                      value="option2"
+                      checked
+                      disabled
+                    /><label htmlFor="radio6"> One </label>
+                  </div>
+                  <h4>Buttons with radio behaviour</h4>
+                  <div className="btn-toggle sg-code" data-toggle="buttons">
+                    <label className="btn btn-link">
+                      <input
+                        type="radio"
+                        name="options"
+                        id="option1"
+                        autoComplete="off"
+                      />
+                      Last 7 days
+                                              </label>
+                    <label className="btn btn-link active">
+                      <input
+                        type="radio"
+                        name="options"
+                        id="option2"
+                        autoComplete="off"
+                        checked
+                      />
+                      Last 31 days
+                          </label>
+                  </div>
+                </Panel.Body>
+              </Panel>
             </section>
+
             <section id="alerts">
               <div className="row">
                 <div className="col-md-12">
@@ -1135,7 +965,7 @@ const App = () => {
                           <p>
                             <a href="#">Portal</a> has
                                   <strong>broken the build 7 times</strong> in the last
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    2 days.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      2 days.
                                   </p>
                         </div>
                       </div>
