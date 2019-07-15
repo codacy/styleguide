@@ -4,9 +4,9 @@ export interface SwitchProps {
     id: string;
     name: string;
     big?: boolean;
-    checked?: boolean;
     defaultChecked?: boolean;
-    onClick?: () => void;
+    checked?: boolean;
+    onChange?: () => void;
 }
 
 export const Switch = (props: SwitchProps) => {
@@ -14,16 +14,18 @@ export const Switch = (props: SwitchProps) => {
         id,
         name,
         big = false,
-        checked,
         defaultChecked = false,
-        onClick
+        checked,
+        onChange
     } = props;
 
     const typeClass = "switch-container";
     const sizeClass = big ? 'switch-md' : '';
     const className = [typeClass, sizeClass].join(" ");
 
-    const attributes = { id, name, checked, defaultChecked, onClick };
+    const checkedControls = (checked !== undefined && onChange !== undefined) ? { checked, onChange } : { defaultChecked }
+
+    const attributes = { id, name, ...checkedControls };
 
     return (
         <div className={className}>

@@ -238,12 +238,11 @@ const App = () => {
                       </CodeExample>
 
                       <h3>Abbreviation</h3>
-                      <p>
-                        An abbreviation of the word attribute is
-                        <CodeExample>
-                          <abbr title="attribute">attr.</abbr>
-                        </CodeExample>
-                      </p>
+                      <CodeExample>
+                        <p>
+                          An abbreviation of the word attribute is <abbr title="attribute">attr.</abbr>
+                        </p>
+                      </CodeExample>
                     </div>
                   </div>
                 </Panel.Body>
@@ -395,7 +394,8 @@ const App = () => {
                   <CodeExample>
                     <FormGroup controlId="input-help" bsClass="form-group col-xs-6">
                       <ControlLabel>
-                        Name <OverlayTrigger overlay={<Tooltip>Changing the username will also change the URL of your projects.</Tooltip>}>
+                        Name
+                        <OverlayTrigger overlay={<Tooltip id="change-name-tooltip">Changing the username will also change the URL of your projects.</Tooltip>}>
                           <i className="fa fa-question-circle-o" ></i>
                         </OverlayTrigger>
                       </ControlLabel>
@@ -523,9 +523,9 @@ const App = () => {
                       <option data-divider="true"></option>
                       <option>Frontend</option>
                     </select>
-                    <select className="selectpicker" data-width="fit">
+                    <select defaultValue="Core" className="selectpicker" data-width="fit">
                       <option>All teams</option>
-                      <option selected>Core</option>
+                      <option>Core</option>
                       <option data-divider="true"></option>
                       <option>Frontend</option>
                     </select>
@@ -782,7 +782,7 @@ const App = () => {
                       name="radio1"
                       id="radio1"
                       value="option1"
-                      checked
+                      defaultChecked
                     /><label htmlFor="radio1">Small</label>
                   </div>
                   <div className="radio radio-md sg-code">
@@ -813,7 +813,7 @@ const App = () => {
                         value="option2"
                         name="radio2"
                         aria-label="Single radio Two"
-                        checked
+                        defaultChecked
                       />
                       <label></label>
                     </div>
@@ -827,7 +827,7 @@ const App = () => {
                         id="inlineRadio1"
                         value="option1"
                         name="radioInline"
-                        checked
+                        defaultChecked
                       /><label htmlFor="inlineRadio1"> Inline One </label>
                     </div>
                     <div className="radio radio-inline">
@@ -856,7 +856,7 @@ const App = () => {
                       name="radio3"
                       id="radio6"
                       value="option2"
-                      checked
+                      defaultChecked
                       disabled
                     /><label htmlFor="radio6"> One </label>
                   </div>
@@ -877,7 +877,7 @@ const App = () => {
                         name="options"
                         id="option2"
                         autoComplete="off"
-                        checked
+                        defaultChecked
                       />
                       Last 31 days
                           </label>
@@ -965,7 +965,7 @@ const App = () => {
                           <p>
                             <a href="#">Portal</a> has
                                   <strong>broken the build 7 times</strong> in the last
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                2 days.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              2 days.
                                   </p>
                         </div>
                       </div>

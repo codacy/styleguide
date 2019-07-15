@@ -29,13 +29,15 @@ export const Header = () => {
                 <NavItem eventKey={2} href="#">
                     Admin
                 </NavItem>
-                <li role="presentation">
-                    <div className="navbar-btn">
-                        <Button bsStyle="primary" href="#">Sign up</Button>
-                    </div>
-                </li>
+                <React.Fragment>{/* <React.Fragment /> required to swallow NavItem injected activeKey, activeHref prop */}
+                    <li role="presentation">
+                        <div className="navbar-btn">
+                            <Button bsStyle="primary" href="#">Sign up</Button>
+                        </div>
+                    </li>
+                </React.Fragment>
                 <NavDropdown eventKey={3} id="organization-dropdown"
-                    title={<img src="https://secure.gravatar.com/avatar/fa4dbf28653d739aae161f3532225878?s=256&d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-1.png"/>}>
+                    title={<img src="https://secure.gravatar.com/avatar/fa4dbf28653d739aae161f3532225878?s=256&d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-1.png" />}>
                     <MenuItem eventKey={3.1}>Action</MenuItem>
                     <MenuItem eventKey={3.2}>Another action</MenuItem>
                     <MenuItem eventKey={3.3}>Something else here</MenuItem>
@@ -43,7 +45,7 @@ export const Header = () => {
                         <form action="/logout" method="POST" id="logoutForm">
                             <input type="hidden"
                                 name="csrfToken"
-                                value="4ae8220f83157d735137ce7a762917ba7a4917f6-1511345663270-1ef6729026175f7916b3132e"/>
+                                value="4ae8220f83157d735137ce7a762917ba7a4917f6-1511345663270-1ef6729026175f7916b3132e" />
                             <a id="signout-form" href="#"><i className="fa fa-sign-out"></i> Sign Out</a>
                         </form>
                     </li>

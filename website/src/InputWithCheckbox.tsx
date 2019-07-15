@@ -25,7 +25,7 @@ export const InputWithCheckbox = (props: InputWithCheckboxProps) => {
     <FormGroup controlId="input-addon-checkbox" bsClass="form-group col-xs-6">
       <ControlLabel>{label}</ControlLabel>
       <InputGroup>
-        <Checkbox id="addon-checkbox" name="addon" size="lg" extraClass="input-group-addon" checked={checked} onClick={() => setChecked(!checked)} />
+        <Checkbox id="addon-checkbox" name="addon" size="lg" extraClass="input-group-addon" checked={checked} onChange={() => setChecked(!checked)} />
         <FormControl type="text" onChange={(e) => { onTextChange((e.target as HTMLInputElement).value) }} placeholder={checked ? checkedPlaceholder : uncheckedPlaceholder} disabled={!checked} />
       </InputGroup>
     </FormGroup>
