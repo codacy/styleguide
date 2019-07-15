@@ -10,11 +10,11 @@ export interface CheckboxProps {
     label?: string;
     extraClass?: string;
     inline?: boolean;
-    checked?: boolean;
     defaultChecked?: boolean;
+    checked?: boolean;
+    onChange?: () => void;
     disabled?: boolean;
     size?: CheckboxSize;
-    onClick?: () => void;
 }
 
 export const Checkbox = (props: CheckboxProps) => {
@@ -25,11 +25,11 @@ export const Checkbox = (props: CheckboxProps) => {
         label = "",
         extraClass = "",
         inline = false,
-        checked,
         defaultChecked = false,
+        checked,
+        onChange,
         disabled = false,
         size = defaultSize,
-        onClick
     } = props;
 
     const typeClass = "checkbox";
@@ -37,11 +37,13 @@ export const Checkbox = (props: CheckboxProps) => {
     const inlineClass = inline ? 'checkbox-inline' : '';
     const className = [typeClass, sizeClass, inlineClass, extraClass].join(" ");
 
-    const attributes = { id, name, value, disabled, checked, defaultChecked };
+    const checkedControls = (checked !== undefined && onChange !== undefined) ? { checked, onChange } : { defaultChecked }
+
+    const attributes = { id, name, value, disabled, ...checkedControls };
 
     return (
         <div className={className}>
-            <input {...attributes} type="checkbox" onClick={onClick} />
+            <input {...attributes} type="checkbox" />
             <label htmlFor={id}>{label}</label>
         </div>
     );
