@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 type CheckboxSize = 'lg' | 'md' | 'default';
 const defaultSize: CheckboxSize = 'default';
@@ -33,7 +33,7 @@ export const Checkbox = (props: CheckboxProps) => {
     } = props;
 
     const typeClass = "checkbox";
-    const sizeClass = size == 'default' ? '' : `checkbox-${size}`;
+    const sizeClass = size === 'default' ? '' : `checkbox-${size}`;
     const inlineClass = inline ? 'checkbox-inline' : '';
     const className = [typeClass, sizeClass, inlineClass, extraClass].join(" ");
 

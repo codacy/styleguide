@@ -8,6 +8,8 @@ import { ColorCard } from './ColorCard';
 import { Checkbox } from './Checkbox';
 import { InputWithCheckbox } from './InputWithCheckbox';
 import { Switch } from './Switch';
+import { Select, SelectOption } from "./Select";
+// import { SelectOptionGroup, Select, SelectOption } from "./Select";
 
 import '@codacy/stylesheets';
 
@@ -105,6 +107,43 @@ const App = () => {
                 </div>
               </div>
             </div>
+            <section>
+              <h1>Select</h1>
+              <Row>
+                <Col xs={12}>
+                  <Select defaultOption="codacy">
+                    {/* <SelectOptionGroup groupKey="cool"> */}
+                    <SelectOption optionKey="codacy">
+                      <img
+                        alt="Codacy"
+                        className="avatar avatar-xxs"
+                        src="https://lorempixel.com/50/50/people/"
+                      />
+                      <span>Codacy</span>
+                    </SelectOption>
+                    {/* </SelectOptionGroup> */}
+                    {/* <SelectOptionGroup groupKey="others"> */}
+                    <SelectOption optionKey="code-climate">
+                      <img
+                        alt="Code Climate"
+                        className="avatar avatar-xxs"
+                        src="https://lorempixel.com/50/50/people/"
+                      />
+                      <span>Code Climate</span>
+                    </SelectOption>
+                    <SelectOption optionKey="sonar-cloud">
+                      <img
+                        alt="Sonar Cloud"
+                        className="avatar avatar-xxs"
+                        src="https://lorempixel.com/50/50/people/"
+                      />
+                      <span>Sonar Cloud</span>
+                    </SelectOption>
+                    {/* </SelectOptionGroup> */}
+                  </Select>
+                </Col>
+              </Row>
+            </section>
             <section id="colors">
               <h1>Colour Palette</h1>
               <Row>
@@ -965,7 +1004,7 @@ const App = () => {
                           <p>
                             <a href="#">Portal</a> has
                                   <strong>broken the build 7 times</strong> in the last
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              2 days.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      2 days.
                                   </p>
                         </div>
                       </div>
