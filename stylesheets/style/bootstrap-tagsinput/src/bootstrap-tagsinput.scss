@@ -1,0 +1,85 @@
+.bootstrap-tagsinput {
+  display: inline-block;
+  padding: 4px 6px;
+  vertical-align: middle;
+  border-radius: 4px;
+  max-width: 100%;
+  line-height: 22px;
+  cursor: text;
+  overflow-x: auto;
+
+  &.form-md {
+    overflow-y: auto;
+    height: 54px;
+  }
+
+  input {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0 6px;
+    margin: 0;
+    width: auto;
+    max-width: inherit;
+    line-height: 30px;
+
+    &:focus {
+      border: none;
+      box-shadow: none;
+    }
+
+    &::-webkit-input-placeholder,
+    &:-ms-input-placeholder,
+    &::-moz-placeholder { color: #777; }
+
+    &::-moz-placeholder { opacity: 1; }
+  }
+
+  .tag {
+    display: inline;
+    border-radius: 3px;
+    padding: .2em 1em;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    margin-right: 2px;
+    line-height: 30px;
+    letter-spacing: 0;
+    font-size: 13px;
+    font-weight: normal;
+
+    &.tag-default {
+      background-color: $white;
+      border: 1px solid $gray-lighter;
+      color: $gray-light;
+    }
+
+    &.tag-danger {
+      background-color: $brand-danger-light;
+      color: $brand-danger-darker;
+      border: none;
+
+      [data-role="remove"] {
+
+        &:after {
+          color: $brand-danger-darker;
+        }
+      }
+    }
+
+    [data-role="remove"] {
+      margin-left: 8px;
+      cursor: pointer;
+
+      &:after {
+        font-size: 12px;
+        content: "\f00d";
+        font-family: FontAwesome;
+        padding: 0px 2px;
+        color: transparentize($gray-light, 0.5);
+      }
+    }
+  }
+}
