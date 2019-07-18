@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Dropdown, MenuItem } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,7 +16,19 @@ interface SelectOptionProps {
 }
 
 export const SelectOption: React.FC<SelectOptionProps> =
-    (props: SelectOptionProps): React.ReactElement<SelectOptionProps> => <React.Fragment>{props.children}</React.Fragment>
+    (props: SelectOptionProps): React.ReactElement<SelectOptionProps> =>
+        <React.Fragment>{props.children}</React.Fragment>
+
+interface SelectOptionGroupProps {
+    label?: string;
+    children: React.ReactElement<SelectOptionProps> | React.ReactElement<SelectOptionProps>[];
+}
+
+export const SelectOptionGroup: React.FC<SelectOptionGroupProps> =
+    (props: SelectOptionGroupProps): React.ReactElement<SelectOptionGroupProps> =>
+        <React.Fragment>
+            {props.children}
+        </React.Fragment>
 
 const itemSelected = (
     itemSelectedKey: string | undefined,
@@ -55,7 +67,7 @@ const filterOptions = (
 
 interface SelectProps {
     defaultOption?: string;
-    children: React.ReactElement<SelectOptionProps>[];
+    children: React.ReactElement<SelectOptionGroupProps> | React.ReactElement<SelectOptionGroupProps>[];
 }
 
 export const Select: React.FC<SelectProps> = ({
@@ -63,51 +75,84 @@ export const Select: React.FC<SelectProps> = ({
     children = []
 }: {
     defaultOption?: string;
-    children: React.ReactElement<SelectOptionProps> | React.ReactElement<SelectOptionProps>[];
+    children: React.ReactElement<SelectOptionGroupProps> | React.ReactElement<SelectOptionGroupProps>[];
 }): React.ReactElement => {
-    const childrenArray: React.ReactElement<SelectOptionProps>[] = React.Children.toArray(children);
+    const optionGroups: React.ReactElement<SelectOptionGroupProps>[] = React.Children.toArray(children);
 
     const [open, setOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [itemSelectedKey, setItemSelectedKey] = useState(defaultOption);
 
-    const filteredOptions = filterOptions(searchQuery, childrenArray);
+    const filteredOptionGroups: React.ReactElement<SelectOptionGroupProps>[] = optionGroups
+        .map((optionGroup) => {
+            const children = filterOptions(searchQuery, React.Children.toArray(optionGroup.props.children))
+            const filteredOptionGroup: React.ReactElement<SelectOptionGroupProps> = React.cloneElement(
+                optionGroup,
+                {},
+                children
+            )
+            return filteredOptionGroup;
+        })
+        .filter((optionGroup) => React.Children.toArray(optionGroup.props.children).length > 0);
 
     const [idx, setIdx] = useState(0);
-    const filteredOptionsLength = filteredOptions.length || 0
+    const filteredOptions = filteredOptionGroups
+        .flatMap((optionGroup) => React.Children.toArray(optionGroup.props.children))
+    const filteredOptionsLength = filteredOptions.length
     const filteredOptionsNonEmpty = filteredOptionsLength > 0 || false
     const itemActiveKey = (filteredOptionsNonEmpty && filteredOptions[idx].props.optionKey) || undefined
 
-    const menuItemOptions: React.ReactElement<SelectOptionProps>[] = filteredOptions.map(child => {
-        return (
-            <MenuItem
-                onKeyDown={(event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    if (event.key === "ArrowDown") {
-                        console.log("MenuItem.onKeyDown.ArrowDown");
-                        setIdx(i => (i + 1) % filteredOptionsLength);
-                    } else if (event.key === "ArrowUp") {
-                        console.log("MenuItem.onKeyDown.ArrowUp");
-                        setIdx(i => (i - 1 + filteredOptionsLength) % filteredOptionsLength);
-                    } else if (event.key === "Enter" && filteredOptionsNonEmpty) {
-                        console.log("MenuItem.onKeyDown.Enter");
-                        setItemSelectedKey(itemActiveKey);
-                        setOpen(false);
-                    } else {
-                        console.log("MenuItem.onKeyDown.Other");
+    const menuItemOptions = filteredOptionGroups
+        .map((optionGroup) => {
+            const children = React.Children.toArray(optionGroup.props.children).map((option) => {
+                return (
+                    <MenuItem
+                        onKeyDown={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            if (event.key === "ArrowDown") {
+                                console.log("MenuItem.onKeyDown.ArrowDown");
+                                setIdx(i => (i + 1) % filteredOptionsLength);
+                            } else if (event.key === "ArrowUp") {
+                                console.log("MenuItem.onKeyDown.ArrowUp");
+                                setIdx(i => (i - 1 + filteredOptionsLength) % filteredOptionsLength);
+                            } else if (event.key === "Enter" && filteredOptionsNonEmpty) {
+                                console.log("MenuItem.onKeyDown.Enter");
+                                setItemSelectedKey(itemActiveKey);
+                                setOpen(false);
+                            } else {
+                                console.log("MenuItem.onKeyDown.Other");
+                            }
+                        }}
+                        id={option.props.optionKey}
+                        key={option.props.optionKey}
+                        eventKey={option.props.optionKey}
+                        active={itemActiveKey === option.props.optionKey}
+                        className={itemSelectedKey === option.props.optionKey ? "selected" : ""}
+                    >
+                        {option}
+                    </MenuItem>
+                );
+            });
+
+            return (
+                <React.Fragment>
+                    {optionGroup.props.label ?
+                        <li className="dropdown-header">{optionGroup.props.label}</li> :
+                        undefined
                     }
-                }}
-                id={child.props.optionKey}
-                key={child.props.optionKey}
-                eventKey={child.props.optionKey}
-                active={itemActiveKey === child.props.optionKey}
-                className={itemSelectedKey === child.props.optionKey ? "selected" : ""}
-            >
-                {child}
-            </MenuItem>
+                    {children}
+                </React.Fragment>
+            );
+        })
+        .reduce((prev, curr, idx) =>
+            <React.Fragment>
+                {prev}
+                {idx ? <MenuItem divider /> : undefined}
+                {curr}
+            </React.Fragment>,
+            <React.Fragment />
         );
-    });
 
     return (
         <Dropdown
@@ -131,7 +176,7 @@ export const Select: React.FC<SelectProps> = ({
                 className="btn btn btn-default"
             >
                 <span className="filter-option pull-left">
-                    {itemSelected(itemSelectedKey, childrenArray)}
+                    {itemSelected(itemSelectedKey, filteredOptions)}
                 </span>
                 <FontAwesomeIcon
                     style={{ margin: "0 10px" }}
@@ -169,7 +214,7 @@ export const Select: React.FC<SelectProps> = ({
                     />
                 </li>
                 <MenuItem divider />
-                {menuItemOptions.length ? (
+                {filteredOptionsNonEmpty ? (
                     menuItemOptions
                 ) : (
                         <li key="feedback" role="presentation">
@@ -178,17 +223,6 @@ export const Select: React.FC<SelectProps> = ({
                             </span>
                         </li>
                     )}
-                {/* <MenuItem divider />
-                <li key="search" role="presentation">
-                    <a href="#add-new-organization">
-                        <FontAwesomeIcon
-                            style={{ margin: "0 10px 0 0" }}
-                            icon={faPlus}
-                            size="1x"
-                        />
-                        <span>Add new organization</span>
-                    </a>
-                </li> */}
             </Dropdown.Menu>
         </Dropdown>
     );
