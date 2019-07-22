@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Codacy styleguide</title>
+    <!-- Style -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="styleguide-code-theme.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    <link href="dist/css/template.min.css" rel="stylesheet">
+</head>
+
+<body onload="PR.prettyPrint()">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li class="navbar-header">
+            <a href="#"><img src="images/codacy-white.svg" alt="logo"></a>
+          </li>
+          <li class="dropdown">
+            <select class="selectpicker">
+              <option selected data-tokens="codacy">Codacy</option>
+              <option data-tokens="codacy2">Codacy2</option>
+              <option data-tokens="cenas">Cenas</option>
+            </select>
+          </li>
+          <li class="dropdown project-name">
+            <select class="selectpicker select2-selected" data-live-search="true" data-live-search-placeholder="Project name...">
+              <option selected data-tokens="My Projects">My Projects</option>
+              <option data-tokens="Rodrigo Fernandes">Rodrigo Fernandes</option>
+              <option data-tokens="Rafael Cortes">Rafael Cortes</option>
+              <option data-divider="true">divider</option>
+              <option data-tokens=" " data-icon="fa-plus"> Add new project</option>
+            </select>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Docs</a></li>
+          <li><a href="#">Admin</a></li>
+          <li>
+              <div class="navbar-btn">
+                <a class="btn btn-primary" href="#">Sign up</a>
+              </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <img src="https://secure.gravatar.com/avatar/fa4dbf28653d739aae161f3532225878?s=256&d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-1.png">
+          <i class="fa fa-chevron-down caret" aria-hidden="true"></i>
+        </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li>
+
+
+              <form action="/logout" method="POST" id="logoutForm">
+
+                              <input type="hidden" name="csrfToken" value="4ae8220f83157d735137ce7a762917ba7a4917f6-1511345663270-1ef6729026175f7916b3132e">
+                                <a id="signout-form" href="#" onclick=" logoutForm.submit();">
+                                  <i class="fa fa-sign-out"></i> Sign Out
+                                </a>
+
+              </form>
+
+                            </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <div class="container">
+        <div class="row">
+            <aside>
+                <div class="col-md-3 border-secondary-right">
+                    <div class="list-group side-menu">
+                        <a href="/css-guidelines.html" class="list-group-item list-group-item-action">CSS/SASS guidelines</a>
+                        <a href="/css-guidelines.html" class="list-group-item list-group-item-action">Layout</a>
+
+                        <a class="list-group-item has-submenu" data-remote="true" href="#collapse-list-group-submenu" data-toggle="collapse" data-parent="#collapse-list-group-submenu">Components</a>
+                        <div class="collapse list-group-submenu" id="collapse-list-group-submenu">
+                            <a href="#colors" class="list-group-item sub-item">Colour palette</a>
+                            <a href="#typo" class="list-group-item sub-item">Typography</a>
+                            <a href="#buttons" class="list-group-item sub-item">Buttons</a>
+                            <a href="#forms" class="list-group-item sub-item">Forms</a>
+                            <a href="#alerts" class="list-group-item sub-item">Alerts</a>
+                            <a href="#panels" class="list-group-item sub-item">Panels</a>
+                            <a href="#progress-bar" class="list-group-item sub-item">Progress Bars</a>
+                            <a href="#tables" class="list-group-item sub-item">Tables</a>
+                            <a href="#deltas" class="list-group-item sub-item">Deltas</a>
+                            <a href="#navbar" class="list-group-item sub-item">Navigation</a>
+                            <a href="#pagination" class="list-group-item sub-item">Pagination</a>
+                        </div>
+                    </div>
+                    <p><small> Version #1.0.38</small></p>
+                </div>
+            </aside>
+            <main>
+                <a id="logs_open" class="margin-left-xs font-xs" data-toggle="modal" href="#" data-target="#logsExample">View logs</a>
+                <div id="logsExample" class="modal right fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div data-dismiss="modal" aria-label="Close" class="close">
+                                    <h2>View logs</h2>
+                                </div>
+                                <p class="text-secondary margin-bottom-xs"><strong>Time to analyse: </strong> 00:00:36</p>
+                                <div class="panel panel-success panel-status">
+                                    <div class="panel-heading" data-toggle="collapse" data-target="#success-log">
+                                        <div class="clearfix">
+                                            <div class="pull-left">
+                                                Preparing Source Code
+                                            </div>
+                                            <div class="pull-right">
+                                                00:00:08
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="success-log" class="panel-body collapse">
+                                        <pre class="log-stacktrace">@stackTrace</pre>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-danger panel-status">
+                                    <div class="panel-heading" data-toggle="collapse" href="#danger-log">
+                                        <div class="clearfix">
+                                            <div class="pull-left">
+                                                Preparing Source Code
+                                            </div>
+                                            <div class="pull-right">
+                                                00:00:08
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="danger-log" class="panel-body collapse">
+                                        <p class="message-error">
+                                            An error occurred during this step. Please, <a href="#">retry your analysis</a> or <a href="#">contact support.</a>
+                                        </p><pre class="log-stacktrace">@stackTrace</pre>
+                                    </div>
+                                </div>
+                                <div class="panel panel-success panel-status">
+                                    <div class="panel-heading">
+                                        <div class="clearfix">
+                                            <div class="pull-left">
+                                                Preparing Source Code
+                                            </div>
+                                            <div class="pull-right">
+                                                00:00:08
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <section id="colors">
+                        <h1>Colour Palette</h1>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="color-container">
+                                    <div class="color-container-tint gray-base"></div>
+                                    <p><code>$gray-base</code> is used for solid backgrounds and headlines.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="color-container">
+                                    <div class="color-container-tint gray-dark"></div>
+                                    <p><code>$gray-dark</code> is used for body text.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="color-container">
+                                    <div class="color-container-tint gray"></div>
+                                    <p><code>$gray</code> is used for placeholder and additional text.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="color-container">
+                                    <div class="color-container-tint gray-lighter"></div>
+                                    <p><code>$gray-lighter</code> is used for light background, borders and separators.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="color-container">
+                                    <div class="color-container-tint primary"></div>
+                                    <p><code>$brand-primary</code> is used for buttons, links, inputs on focus.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="color-container">
+                                    <div class="color-container-tint success"></div>
+                                    <p><code>$brand-success</code> is used for successful status and feedback.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="color-container">
+                                    <div class="color-container-tint warning"></div>
+                                    <p><code>$brand-warning</code> is used for warning status.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="color-container">
+                                    <div class="color-container-tint danger"></div>
+                                    <p><code>$brand-danger</code> is used for error status and feedback.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.row-->
+                    </section>
+
+                    <section id="typo">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Typography</h1>
+                                <p>The main typeface is Clear sans. It should be used on every text in the application. If, for some reason, Clear sans is not rendered, the alternate typeface is Arial.</p>
+
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <h1>H1 header</h1>
+                                        <p>26px</p>
+                                        <pre>&lt;h1&gt;header&lt;/h1&gt;</pre>
+                                        <h2>H2 header</h2>
+                                        <p>22px</p>
+                                        <pre>&lt;h2&gt;header&lt;/h2&gt;</pre>
+                                        <h3>H3 header</h3>
+                                        <p>18px</p>
+                                        <pre>&lt;h3&gt;header&lt;/h3&gt;</pre>
+                                        <h4>H4 header</h4>
+                                        <p>16px</p>
+                                        <pre>&lt;h4&gt;header&lt;/h4&gt;</pre>
+                                        <h5>H5 header</h5>
+                                        <p>14px</p>
+                                        <pre>&lt;h5&gt;header&lt;/h5&gt;</pre>
+                                        <h6>h6 header</h6>
+                                        <p>12px</p> <pre>&lt;h6&gt;header&lt;/h6&gt;</pre>
+
+                                        <h2>Paragraphs</h2>
+                                        <p>All paragraphs should be written inside a <code>&lt;p&gt;</code> tag. Ideally, on blocks of text, the <code>&lt;strong&gt;</code> tag should be used to highlight important text, making readability easier. Bellow
+                                            there's an example of a block of text with a link.</p>
+
+                                        <p>Other styles can be used, such as <code>&lt;em&gt;</code> for <em>italic</em> and <code>&lt;u&gt;</code> for <u>underline.</u></p>
+
+                                        <div class="panel">
+                                            <div class="panel-body">
+                                                <p>The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV <strong>quiz graced by fox whelps.</strong> Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph, for quick jigs
+                                                    vex! Fox nymphs grab quick-jived waltz. <strong>Brick quiz whangs</strong> jumpy veldt fox. <a href="#">Bright vixens jump; dozy fowl quack.</a> Quick wafting zephyrs vex bold Jim. Quick zephyrs blow,
+                                                    vexing daft Jim.</p>
+
+                                                <p>The quick, brown fox jumps over a lazy dog. <a href="#" target="_blank">Learn more</a>.</p>
+                                            </div>
+                                        </div>
+
+                                        <p>For small prints, updates, conditions and copyrights, use the tag <code>&lt;small&gt;</code>.</p>
+                                        <div class="panel">
+                                            <div class="panel-body">
+                                                <p class="sg-code"><small>© 2016 - CODACY AUTOMATED CODE REVIEW</small></p>
+                                            </div>
+                                        </div>
+
+                                        <h2>Utility classes</h2>
+                                        <p>Utility classes can be used as needed. Although, if many elements in a container require the same utility class, please create a parent class with the proper rule.</p>
+
+                                        <div class="panel">
+                                            <div class="panel-body">
+                                                <h3>Alignment classes</h3>
+                                                <div class="sg-code">
+                                                    <p class="text-left">Left aligned text.</p>
+                                                    <p class="text-center">Center aligned text.</p>
+                                                    <p class="text-right">Right aligned text.</p>
+                                                    <p class="text-justify">Justified text.</p>
+                                                    <p class="text-nowrap">No wrap text.</p>
+                                                </div>
+
+                                                <h3>Transformation classes</h3>
+                                                <div class="sg-code">
+                                                    <p class="text-lowercase">Lowercased text.</p>
+                                                    <p class="text-uppercase">Uppercased text.</p>
+                                                    <p class="text-capitalize">Capitalized text.</p>
+                                                </div>
+
+                                                <h3>Abbreviation</h3>
+                                                <p>An abbreviation of the word attribute is <abbr title="attribute" class="sg-code">attr.</abbr></p>
+                                            </div>
+                                        </div>
+                                        <!--/.panel-->
+                                    </div>
+                                    <!--/.panel-body-->
+                                </div>
+                                <!--/panel typography examples-->
+
+                                <!-- <h2>Blockquotes</h2>
+                                <blockquote class="sg-code">
+                                    <header><span class="name">First and Last Name</span> Developer in some company</header>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                </blockquote> -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="buttons">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Buttons</h1>
+                                <p>Buttons are to be used whenever there's an action a user can make, therefore, there should be <strong>one primary button per page.</strong><br/> <code>.btn-default</code> and <code>.btn-link</code> are the only buttons
+                                    that can repeatedly appear in a page and <strong>should not be used for primary or breaking actions.</strong> Buttons should be positioned on the left. When there's a group of buttons, the primary button stands on the
+                                    far right.</p>
+
+                                <div class="panel">
+                                    <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <button class="btn btn-default sg-code" type="submit">Default</button>
+                                            <button class="btn btn-primary sg-code" type="submit">Primary</button>
+                                            <button class="btn btn-link sg-code" type="submit">Link</button>
+                                            <button class="btn btn-success sg-code" type="submit">Success</button>
+                                            <button class="btn btn-danger sg-code" type="submit">Danger</button>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <button class="btn btn-default disabled sg-code" type="submit">Default disabled</button>
+                                            <button class="btn btn-primary disabled sg-code" type="submit">Primary disabled</button>
+                                            <button class="btn btn-link disabled sg-code" type="submit">Link disabled</button>
+                                            <button class="btn btn-success disabled sg-code" type="submit">Success disabled</button>
+                                            <button class="btn btn-danger disabled sg-code" type="submit">Danger disabled</button>
+                                        </div>
+                                    </div>
+
+                                        <h2>Different sizes</h2>
+                                        <p>Some description here mentioning layout and position.</p>
+                                        <p>You can change the button size just by simply adding <code>.btn-lg</code>, <code>.btn-sm</code>, <code>.btn-xs</code> to the button class.</p>
+
+                                        <button class="btn btn-default btn-lg">Lg button</button>
+                                        <button class="btn btn-default">button</button>
+                                        <button class="btn btn-default btn-sm">Sm button</button>
+                                        <button class="btn btn-default btn-xs">Xs button</button>
+
+                                        <h2>Button groups</h2>
+                                        <div class="btn-group sg-code" role="group">
+                                            <button type="button" class="btn btn-default">Left</button>
+                                            <button type="button" class="btn btn-default">Middle</button>
+                                            <button type="button" class="btn btn-default">Right</button>
+                                        </div>
+
+                                        <h2>Split buttons</h2>
+                                        <div class="btn-group sg-code">
+                                            <button type="button" class="btn btn-default">I'm an action</button>
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                          </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">And another one</a></li>
+                                                <li><a href="#">A different one</a></li>
+                                                <li><a href="#">An action</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/.panel-->
+
+                                <!-- <div class="col-md-12">
+                                        <div class="btn-group-vertical sg-code" role="group">
+                                            <button type="button" class="btn btn-default">Top</button>
+                                            <button type="button" class="btn btn-default">Middle</button>
+                                            <button type="button" class="btn btn-default">Bottom</button>
+                                        </div>
+                                    </div> -->
+
+                                <!-- <h3>Justified button group</h3>
+                                <div class="btn-group btn-group-justified sg-code" role="group">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default">Left</button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default">Middle 1</button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default">Middle 2</button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default">Right</button>
+                                    </div>-->
+                            </div>
+                        </div>
+                        <!--.row-->
+                    </section>
+
+                    <section id="forms">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Forms</h1>
+                                <p>Inputs can be used in a form group or individually. It's mandatory that each input has a label. Inputs should have the appropriate width according to the content it's going to receive - to size the width of an input add
+                                    the class <code>.col-*-*</code> to <code>.form-group</code>, and to size the height use <code>.input-*</code> or <code>.form-group-*</code> when using <code>.form-group</code>s.</p>
+
+                                <p>Optional fields should be indicated instead of required fields. Placeholders should always give some hint to the user on what is the expected input.<br/> In case of <strong>inputs with feedback, the input should return to it's normal state when it becomes active.</strong></p>
+
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <h2>Inputs</h2>
+
+
+                                        <h3>Normal inputs</h3>
+                                        <form>
+                                            <div class="form-group col-md-6 sg-code">
+                                                <label for="email">Email address</label>
+                                                <input type="email" class="form-control" name="email" placeholder="youremail@email.com">
+                                            </div>
+                                        </form>
+                                        <form>
+                                            <div class="form-group has-card col-md-6 sg-code">
+                                                <label for="card">Card number</label>
+                                                <input type="text" class="form-control" name="card" placeholder="xxxx xxxx xxxx xxxx">
+                                                <div class="card card-visa"></div>
+                                            </div>
+                                        </form>
+                                        <h3>Disabled input</h3>
+                                        <form>
+                                            <div class="form-group col-md-6 sg-code">
+                                                <label for="exampleName">Username</label>
+                                                <input type="name" class="form-control" id="exampleName" placeholder="Name" disabled>
+                                            </div>
+                                        </form>
+                                        <h3>With help</h3>
+                                        <form>
+                                            <div class="form-group col-md-6 sg-code">
+                                                <label for="name">Name <i class="fa fa-question-circle-o" data-toggle="tooltip" title="Changing the username will also change the URL of your projects."></i></label>
+                                                <input type="name" class="form-control" name="name" placeholder="your-name">
+                                                <p>letters, digits, _ (underscores) and - (dashes) only. 3 chars min.</p>
+                                            </div>
+                                        </form>
+                                        <!-- <div class="col-md-6">
+                                            <h3>Required</h3>
+                                            <form>
+                                                <div class="form-group required sg-code">
+                                                    <label for="name">Name</label>
+                                                    <input type="name" class="form-control" name="name" placeholder="Name">
+                                                </div>
+                                            </form>
+                                        </div> -->
+                                        <h3>Optional fields</h3>
+                                        <form>
+                                            <div class="form-group optional col-md-6 sg-code">
+                                                <label for="name">Name</label>
+                                                <input type="name" class="form-control" name="name" placeholder="Name">
+                                            </div>
+                                        </form>
+                                        <h3>Feedback error</h3>
+                                        <form>
+                                            <div class="form-group has-feedback has-error col-md-6 sg-code">
+                                                <label for="email">Email</label>
+                                                <input type="email" class="form-control" name="email" placeholder="Email">
+                                                <div class="form-control-feedback fa fa-times"></div>
+                                                <p>This is not an email address</p>
+                                            </div>
+                                          <div class="form-group has-feedback has-error col-md-6 sg-code">
+                                            <div class="checkbox">
+                                              <input id="checkbox54" type="checkbox">
+                                              <label for="checkbox54">Big</label>
+                                            </div>
+                                            <p>This field is required</p>
+                                          </div>
+                                          <div class="form-group has-feedback has-error col-md-6 sg-code">
+                                            <select id="developers" class="selectpicker" data-width="100%" title="Select an option" required>
+                                              <option>1-4</option>
+                                              <option>4-20</option>
+                                              <option>21-100</option>
+                                              <option>101-500</option>
+                                              <option>501+</option>
+                                            </select>
+                                            <p>This field is required</p>
+                                          </div>
+                                        </form>
+                                        <h3>Input with an addon</h3>
+                                        <form>
+                                            <div class="form-group col-md-6 sg-code">
+                                                <label for="email">Email</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon2">
+                                                    <span class="input-group-addon" id="basic-addon2">@example.com</span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <h3>Checkboxes addon</h3>
+                                        <form class="form-group col-md-6 sg-code">
+                                            <label>Some label</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon checkbox checkbox-lg">
+                                                    <input type="checkbox" id="addon-checkbox" aria-label="Checkbox for following text input" onclick="enableInput(this)">
+                                                    <label for="addon-checkbox"></label>
+                                                </div>
+                                                <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Check to enable" disabled>
+                                            </div>
+                                        </form>
+                                        <h3>Inputs with tag boxes</h3>
+                                        <form>
+                                            <div class="form-group col-md-6 sg-code">
+                                                <label for="email">Email address</label>
+                                                <input type="email" class="form-control form-md" name="email" placeholder="email@email.com, email@email.com" data-role="tagsinput">
+                                            </div>
+                                        </form>
+                                        <!-- <div class="col-md-6">
+                                <h3>Inline forms</h3>
+                                <form class="form-inline sg-code">
+                                    <div class="form-group">
+                                        <label class="control-label" for="name">Name</label>
+                                        <input type="text" class="form-control" id="name">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Inline forms and right aligned label</h3>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4" for="name">Last Name</label>
+                                        <div class="col-sm-8">
+                                            <input type="name" class="form-control">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <form class="form-horizontal sg-code">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4" for="name">First and Last Name</label>
+                                    <div class="col-sm-8">
+                                        <input type="name" class="form-control">
+                                    </div>
+                                </div>
+                            </form> -->
+                                        <!-- <h3>Control sizing</h3>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Height sizing</h4>
+                                    <input class="form-control input-lg" type="text" placeholder=".input-lg">
+                                    <input class="form-control" type="text" placeholder="Default input">
+                                    <input class="form-control input-sm sg-code" type="text" placeholder=".input-sm">
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Width sizing</h4>
+                                    <div class="row sg-code">
+                                        <div class="col-sm-4">
+                                            <input class="form-control" type="text" placeholder=".col-sm-4">
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input class="form-control" type="text" placeholder=".col-sm-8">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                                    </div>
+                                </div>
+                                <!--/.panel-->
+                            </div>
+                            <!--/.col-->
+                        </div>
+                        <!--/.row-->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>Selection with dropdowns</h2>
+
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <select class="selectpicker" multiple>
+                                    <option>All teams</option>
+                                    <option>Core</option>
+                                    <option data-divider="true"></option>
+                                    <option>Frontend</option>
+                                </select>
+                                        <div class="dropdown sg-code">
+                                            <button class="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fa fa-filter"></i></button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                <li class="active"><a href="#">Action</a></li>
+                                                <li><a href="#">Another action</a></li>
+                                                <li><a href="#">Something else here</a></li>
+                                            </ul>
+                                        </div>
+                                        <h3>Filter Component</h3>
+                                        <div class="filter-container sg-code">
+                                            <select class="selectpicker" data-width="fit">
+                                                <option>All teams</option>
+                                                <option>Core</option>
+                                                <option data-divider="true"></option>
+                                                <option>Frontend</option>
+                                            </select>
+                                            <select class="selectpicker" data-width="fit">
+                                                <option>All teams</option>
+                                                <option selected>Core</option>
+                                                <option data-divider="true"></option>
+                                                <option>Frontend</option>
+                                            </select>
+                                        </div>
+                                        <div class="filter-container sg-code">
+                                            <div class="btn-group">
+                                                <button class="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">All languages</button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                    <li class="active"><a href="#">Action</a></li>
+                                                    <li><a href="#">Another action</a></li>
+                                                    <li><a href="#">Something else here</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button class="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">All patterns</button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                    <li class="dropdown-header">Pattern</li>
+                                                    <li><a href="#">Action</a></li>
+                                                    <li class="active"><a href="#">Another action</a></li>
+                                                    <li><a href="#">Something else here</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button class="btn btn-dropdown dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">All levels</button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                    <li><a href="#">Action</a></li>
+                                                    <li class="active"><a href="#">Another action</a></li>
+                                                    <li><a href="#">Something else here</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <h3>Dropdown with search</h3>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <select class="selectpicker" data-live-search="true" title="Search users">
+                            <option data-tokens="ketchup mustard">João Machado</option>
+                            <option data-tokens="mustard">Rodrigo Fernandes</option>
+                            <option data-tokens="frosting">Rafael Cortes</option>
+                            <option data-tokens="frosting">johannegger/dependenciesscala-edited-online-with-bit-1502274565854</option>
+                        </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select class="selectpicker" multiple>
+                            <option>Mustard</option>
+                            <option>Ketchup</option>
+                            <option>Relish</option>
+                        </select>
+                                            </div>
+                                        </div>
+                                        <h3>with avatar</h3>
+                                        <select class="selectpicker" title="Search users">
+                    <option data-content="<img alt='Joao Machado' class='avatar avatar-xxs' src='https://lorempixel.com/50/50/people/'><p>Joao Machado</p>" data-tokens="Joao Machado"></option>
+                    <option data-content="<img alt='Rafael Cortez' class='avatar avatar-xxs' src='https://lorempixel.com/50/50/people/'><p>Rafael Cortes</p>" data-tokens="Rafael Cortez"></option>
+                    <option data-content="<img alt='Rodrigo Fernandes' class='avatar avatar-xxs' src='https://lorempixel.com/50/50/people/'><p>Rodrigo Fernandes</p>" data-tokens="Rodrigo Fernandes"></option>
+                </select>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <h3>With multiple levels</h3>
+                                          <div class="dropdown sg-code">
+                                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials
+                                              <i class="fa fa-angle-down"></i></button>
+                                            <ul class="dropdown-menu">
+                                              <li><a tabindex="-1" href="#">HTML</a></li>
+                                              <li><a tabindex="-1" href="#">CSS</a></li>
+                                              <li class="dropdown-submenu">
+                                                <a class="test" tabindex="-1" href="#">New dropdown</a>
+                                                <ul class="dropdown-menu">
+                                                  <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+                                                  <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+                                                </ul>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <h3>Opening aligned to the right</h3>
+                                          <div class="dropdown pull-left">
+                                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials
+                                              <i class="fa fa-angle-down"></i></button>
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                              <li><a tabindex="-1" href="#">HTML</a></li>
+                                              <li><a tabindex="-1" href="#">CSS</a></li>
+                                              <li class="dropdown-submenu">
+                                                <a class="test" tabindex="-1" href="#">New dropdown</a>
+                                                <ul class="dropdown-menu">
+                                                  <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+                                                  <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+                                                </ul>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <h3>Submenu to the left</h3>
+                                        <div class="dropdown pull-left">
+                                          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials
+                                            <i class="fa fa-angle-down"></i></button>
+                                          <ul class="dropdown-menu dropdown-menu-right">
+                                            <li><a tabindex="-1" href="#">HTML</a></li>
+                                            <li><a tabindex="-1" href="#">CSS</a></li>
+                                            <li class="dropdown-submenu pull-left">
+                                              <a class="test" tabindex="-1" href="#">New dropdown</a>
+                                              <ul class="dropdown-menu">
+                                                <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+                                                <li><a tabindex="-1" href="#">2nd level dropdown second</a></li>
+                                              </ul>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <!--/.row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>Checkbox</h2>
+                                <p>Checkboxes should be used when yada yada</p>
+
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <div class="checkbox checkbox-md">
+                                            <input id="checkbox12" type="checkbox" checked>
+                                            <label for="checkbox12">Big</label>
+                                        </div>
+                                        <div class="checkbox sg-code">
+                                            <input id="checkbox1" type="checkbox">
+                                            <label for="checkbox1">Default</label>
+                                        </div>
+                                        <h4>Checkboxes without label text</h4>
+                                        <p>Usually only used when yada yada</p>
+                                        <div class="checkbox sg-code">
+                                            <input type="checkbox" class="styled styled-primary" id="singleCheckbox2" value="option2" checked aria-label="Single checkbox Two">
+                                            <label></label>
+                                        </div>
+                                        <h4>Checkboxes with indeterminate state</h4>
+                                        <p>Usually only used when yada yada</p>
+                                        <div class="checkbox sg-code">
+                                            <input id="indeterminateCheckbox" class="styled" type="checkbox" onclick="changeState(this)">
+                                            <label></label>
+                                        </div>
+                                        <h4>Inline checkboxes</h4>
+                                        <p>Used when yada yada. Simply add <code>.checkbox-inline</code> to the parent.
+                                            <br/> Check the following code and repeat for all checkboxes.</p>
+                                        <div class="checkbox checkbox-inline">
+                                            <input type="checkbox" class="styled" id="inlineCheckbox1" value="option1">
+                                            <label for="inlineCheckbox1"> Inline One </label>
+                                        </div>
+                                        <div class="checkbox checkbox-inline sg-code">
+                                            <input type="checkbox" class="styled" id="inlineCheckbox2" value="option1">
+                                            <label for="inlineCheckbox2"> Inline Two </label>
+                                        </div>
+                                        <h4>Disabled state also supported.</h4>
+                                        <p>Use when yada yada</p>
+                                        <div class="checkbox sg-code">
+                                            <input class="styled" id="checkbox9" type="checkbox" disabled>
+                                            <label for="checkbox9">Can't check this</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <input class="styled styled" id="checkbox10" type="checkbox" disabled checked>
+                                            <label for="checkbox10">This too</label>
+                                        </div>
+                                        <h4>Switch</h4>
+                                        <div class="switch-container switch-md">
+                                            <input type="checkbox" id="switch2" name="switch" class="switch-button" data-url="" checked="">
+                                            <label class="switch-label" for="switch2"></label>
+                                        </div>
+                                        <div class="switch-container sg-code">
+                                            <input type="checkbox" id="switch1" name="switch" class="switch-button" data-url="" checked="">
+                                            <label class="switch-label" for="switch1"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <h2>Radio buttons</h2>
+                                <p>Add a usage description here</p>
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <div class="radio">
+                                            <input type="radio" name="radio1" id="radio1" value="option1" checked>
+                                            <label for="radio1">Small</label>
+                                        </div>
+                                        <div class="radio radio-md sg-code">
+                                            <input type="radio" name="radio1" id="radio2" value="option2">
+                                            <label for="radio2">Big</label>
+                                        </div>
+                                        <h4>Radios without label text</h4>
+                                        <p>Lala lala</p>
+                                        <div class="sg-code">
+                                            <div class="radio">
+                                                <input type="radio" id="singleRadio1" value="option1" name="radio2" aria-label="Single radio One">
+                                                <label></label>
+                                            </div>
+                                            <div class="radio">
+                                                <input type="radio" id="singleRadio2" value="option2" name="radio2" aria-label="Single radio Two" checked>
+                                                <label></label>
+                                            </div>
+                                        </div>
+                                        <h4>Inline radios</h4>
+                                        <p>Used when yada yada </p>
+                                        <div class="sg-code">
+                                            <div class="radio radio-inline">
+                                                <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked>
+                                                <label for="inlineRadio1"> Inline One </label>
+                                            </div>
+                                            <div class="radio radio-inline">
+                                                <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
+                                                <label for="inlineRadio2"> Inline Two </label>
+                                            </div>
+                                        </div>
+                                        <h4>Disabled</h4>
+                                        <p>Disabled state also supported.</p>
+                                        <div class="radio radio-primary">
+                                            <input type="radio" name="radio3" id="radio5" value="option1" disabled>
+                                            <label for="radio5"> Next </label>
+                                        </div>
+                                        <div class="radio sg-code">
+                                            <input type="radio" name="radio3" id="radio6" value="option2" checked disabled>
+                                            <label for="radio6"> One </label>
+                                        </div>
+                                        <h4>Buttons with radio behaviour</h4>
+                                        <div class="btn-toggle sg-code" data-toggle="buttons">
+                                          <label class="btn btn-link">
+                                            <input type="radio" name="options" id="option1" autocomplete="off"> Last 7 days
+                                          </label>
+                                          <label class="btn btn-link active">
+                                            <input type="radio" name="options" id="option2" autocomplete="off" checked> Last 31 days
+                                          </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/.row-->
+                    </section>
+                    <section id="alerts">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>Alerts</h1>
+                                <p>Very nice description on alerts</p>
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <div class="alert alert-success sg-code" role="alert">
+                                            <p>Congrats! You are now logged in.</p>
+                                        </div>
+                                        <a class="alert-clickable sg-code" href="#">
+                                          <div class="alert alert-info" role="alert">
+                                              <p>Hey! Just letting you know that everything's gonna be alright. I got this.</p>
+                                          </div>
+                                        </a>
+                                        <div class="alert alert-warning" role="alert">
+                                            <p>Be careful! I'm not sure if I got this...</p>
+                                        </div>
+                                        <div class="alert alert-danger" role="alert">
+                                            <p>Oops! Shit, son.</p>
+                                        </div>
+                                        <h4>Dismissable alerts</h4>
+                                        <p>Lalala</p>
+                                        <div class="alert alert-warning alert-dismissible fade in sg-code" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <p><strong>Warning!</strong> Better check yourself, you're not looking too good.</p>
+                                        </div>
+                                        <h4>Example of an alert with link</h4>
+                                        <p>Lalalala</p>
+                                        <div class="alert alert-info sg-code" role="alert">
+                                            <p>Hey! Yada yada <a href="#">click here woo</a></p>
+                                        </div>
+                                        <h4>Example of a larger alerts</h4>
+                                        <p>Lalalala</p>
+
+                                          <div class="alert alert-danger sg-code" role="alert">
+                                            <h4>Oops! What is going on?</h4>
+                                            <p>Well, we don't know either. Why don't you contact support?</p>
+                                          </div>
+
+
+                                          <div class="alert-hotspot alert-dismissible  sg-code" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                                            <div class="clearfix">
+                                              <div class="pull-left">
+                                                <figure class="avatar avatar-xs">
+                                                  <!--avatar img should go here-->
+                                                  <div style="background-color: #000; width: 500px; height: 500px;"></div>
+                                                </figure>
+                                              </div>
+                                              <p><a href="#">Portal</a> has <strong>broken the build 7 times</strong> in the last 2 days.</p>
+                                            </div>
+                                          </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>Labels</h2>
+                                <span class="label label-default">Default</span>
+                                <span class="label label-success">Success</span>
+                                <span class="label label-warning">Warning</span>
+                                <span class="label label-danger sg-code">Danger</span>
+                                <span class="label label-danger label-status sg-code">Not up to standards</span>
+                                <span class="label label-success label-status sg-code">Up to standards</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>Badges</h2>
+                                <a href="#">Messages <span class="badge sg-code">42</span></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>Popover</h2>
+                                <span class="fa-stack fa-lg sg-code" data-html="true" data-type="popover-primary" data-toggle="popover" data-content="Fix 7 issues and improve coverage to be up to standards.  <a href='#'>Fix now</a>" data-placement="top" title="Tip" data-trigger="focus" tabindex="0">
+                                  <i class="fa fa-circle fa-stack-2x"></i>
+                                  <i class="fa fa-lightbulb-o fa-stack-1x"></i>
+                                </span>
+
+                                <span class="fa-stack fa-lg sg-code" data-html="true" data-toggle="popover" data-content="Fix 7 issues and improve coverage to be up to standards.  <a href='#'>Fix now</a>" data-placement="top" title="Tip" data-trigger="focus" tabindex="0">
+                                  <i class="fa fa-circle fa-stack-2x"></i>
+                                  <i class="fa fa-lightbulb-o fa-stack-1x"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="panels">
+                        <div class="row">
+                            <hr/>
+                            <div class="col-md-12">
+                                <h1>Panels</h1>
+                                <p>Lalala</p>
+                                <div class="panel panel-default sg-code">
+                                    <div class="panel-body">
+                                        <p>Basic panel example</p>
+                                    </div>
+                                </div>
+                                <h2>Clickable container</h2>
+                                <a class="panel-clickable sg-code" href="#test">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <p>Clickable panel</p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a class="panel-clickable sg-code" href="#test">
+                                    <div class="panel panel-empty">
+                                        <div class="panel-body">
+                                          <div class="empty-project">
+                                            <div class="pull-left">
+                                              <span style="height: 28px; width: 28px; border-radius: 50%;"></span>
+                                            </div>
+                                            <div class="pull-left">
+                                              <span style="height: 10px; width: 50px;"></span>
+                                              <span style="height: 10px; width: 70px;"></span>
+                                              <br>
+                                              <ul class="list-inline">
+                                                <li>
+                                                  <span style="height: 10px; width: 30px;"></span>
+                                                  <span style="height: 10px; width: 15px;"></span>
+                                                </li>
+                                                <li>
+                                                  <span style="height: 10px; width: 45px;"></span>
+                                                  <span style="height: 10px; width: 15px;"></span>
+                                                </li>
+                                                <li>
+                                                  <span style="height: 10px; width: 35px;"></span>
+                                                  <span style="height: 10px; width: 15px;"></span>
+                                                </li>
+                                                <li>
+                                                  <span style="height: 10px; width: 30px;"></span>
+                                                  <span style="height: 10px; width: 15px;"></span>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </div>
+
+                                          <!-- switch this div to be displayed on hover -->
+                                          <div class="cta-add-project hidden">
+                                            Add project
+                                          </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-12">
+                                <h3>Examples</h3>
+                                <p>Lalala</p>
+                                <div class="col-md-6">
+                                    <a href="#test" class="panel-clickable">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <figure class="avatar avatar-md">
+                                                    <!--avatar img should go here-->
+                                                    <div style="background-color: #000; width: 500px; height: 500px;"></div>
+                                                </figure>
+                                                <h5>João Machado</h5>
+                                                <p>princesa(at)codacy.com</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="#test" class="panel-clickable">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <figure class="avatar avatar-md">
+                                                    <!--avatar img should go here-->
+                                                    <div style="background-color: #000; width: 500px; height: 500px;"></div>
+                                                </figure>
+                                                <h5>Rodrigo Fernandes</h5>
+                                                <p>rodrigo(at)codacy.com</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!--smaller containers-->
+                                <div class="col-md-4">
+                                    <a href="#test" class="panel-clickable">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <figure class="avatar">
+                                                    <!--avatar img should go here-->
+                                                    <div style="background-color: #000; width: 500px; height: 500px;"></div>
+                                                </figure>
+                                                <h5>Rodrigo Fernandes</h5>
+                                                <p>rodrigo(at)codacy.com</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="#test" class="panel-clickable">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <figure class="avatar">
+                                                    <!--avatar img should go here-->
+                                                    <div style="background-color: #000; width: 500px; height: 500px;"></div>
+                                                </figure>
+                                                <h5>Rodrigo Fernandes</h5>
+                                                <p>rodrigo(at)codacy.com</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="#test" class="panel-clickable">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <figure class="avatar">
+                                                    <!--avatar img should go here-->
+                                                    <div style="background-color: #000; width: 500px; height: 500px;"></div>
+                                                </figure>
+                                                <h5>Rodrigo Fernandes</h5>
+                                                <p>rodrigo(at)codacy.com</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                          <div class="col-md-12">
+                            <h3>Panel for issues</h3>
+                            <div class="panel panel-warning panel-issue margin-top-sm margin-bottom-sm margin-left-sm">
+                              <div class="panel-heading">
+                                <h5 class="no-margin">Don't use a predictable random number generator</h5>
+                              </div>
+                              <div class="panel-body no-padding border-secondary-top FileSource">
+                                <div class="flex border-secondary-top">
+                                  <a class="line-number small" href="#">
+                                    <span>105</span>
+                                  </a>
+                                  <pre class="source-code no-margin no-padding-top no-padding-bottom">private def rand = Random.nextString(6)</pre>
+                                </div>
+                              </div>
+                              <div class="panel-body border-secondary-top IssueDetailContainer" style="display: none;">
+                                <div class="IssueDetail">
+                                  <div class="row">
+                                    <div class="col-xs-12">
+                                      <div class="clearfix">
+                                        <div class="pull-left">
+                                          <img src="https://secure.gravatar.com/avatar/a2640a0b7fe187c9b9c36af6bf1fe985?s=256&amp;d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-4.png" width="26" height="26" class="avatar avatar-xs" onerror="this.onError = null; this.src = '/legacy/versioned/images/account/default-user-4.png';">
+                                        </div>
+                                        <h6 class="pull-left">pedrorijo91
+                                          <span class="text-normal text-secondary">2 years ago</span>
+                                        </h6>
+
+                                        <div class="pull-right">
+                                          <div class="dropdown">
+                                            <button id="qa-dropdown-file-options" class="btn btn-default btn-sm btn-icon dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                              <i class="fa fa-gear" aria-hidden="true"></i> <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="qa-dropdown-file-options">
+                                              <li><a href="#">Ignore issue</a></li>
+                                              <li class="divider"></li>
+                                              <li class="dropdown-submenu pull-left">
+                                                <a tabindex="-1"><i class="fa fa-bitbucket"></i> Bitbucket</a>
+                                                <ul class="dropdown-menu">
+                                                  <li>
+                                                    <a href="#"><i class="fa fa-comment-o"></i> Create Comment</a>
+                                                  </li>
+                                                  <li>
+                                                    <a href="#"><i class="fa fa-bug"></i> Create Issue</a>
+                                                  </li>
+                                                </ul>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        <div class="pull-right margin-right-xxs">
+                                          <a href="#" class="btn btn-default btn-sm " role="button">View File</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                      <p class="small">
+                                        Time to fix: 5 minutes <i class="fa fa-link js-copy" data-original-title="Copy issue link"></i>
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div class="DetailLines">
+                                    <div class="flex">
+                                      <a class="line-number small" href="#"><span>103</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs">  }</pre>
+                                    </div>
+                                    <div class="flex">
+                                      <a class="line-number small" href="#"><span>104</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs"></pre>
+                                    </div>
+                                    <div class="flex has-issue">
+                                      <a class="line-number small" href="#"><span>105</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs">  <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rand</span> </span>= <span class="hljs-type">Random</span>.nextString(<span class="hljs-number">6</span>)</pre>
+                                    </div>
+                                    <div class="flex">
+                                      <a class="line-number small" href="#"><span>106</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs"></pre>
+                                    </div>
+                                    <div class="flex">
+                                      <a class="line-number small" href="#"><span>107</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs">  <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">createCategory</span></span>(patternCategoryType: <span class="hljs-type">PatternCategoryType</span>.<span class="hljs-type">Value</span>) = {</pre>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-xs-12">
+                                      <h6 class="margin-top">Why is this an issue?</h6>
+                                      <div class="PatternExplanation">
+                                        <p>The use of a predictable random value can lead to vulnerabilities when used in certain security critical contexts. For example, when the value is used as:</p>
+                                        <ul>
+                                          <li>a CSRF token</li>
+                                          <li>a password reset token (sent by email)</li>
+                                          <li>any other secret value</li>
+                                          <li>A quick fix could be to replace the use of java.util.Random with something stronger, such as java.security.SecureRandom.</li>
+                                        </ul>
+                                        <p>Vulnerable Code:</p>
+                                        <pre><code>String generateSecretToken() {
+    Random r = new Random();
+    return Long.toHexString(r.nextLong());
+}
+
+</code></pre>
+                                        <p>Solution:</p>
+                                        <pre><code>
+import org.apache.commons.codec.binary.Hex;
+
+String generateSecretToken() {
+    SecureRandom secRandom = new SecureRandom();
+
+    byte[] result = new byte[32];
+    secRandom.nextBytes(result);
+    return Hex.encodeHexString(result);
+}
+
+</code></pre>
+                                        <p><a href="#">More Information</a></p>
+                                      </div>
+
+                                      <h6 class="margin-top">Related code pattern</h6>
+                                      <a href="#" class="h5">Prohibit weak Random</a>
+                                      <p>Do not use java.util.Random, its pseudo random generator can be predictable</p>
+                                      <span class="label label-default label-sm">Scala</span>
+                                      <span class="label label-default label-sm">Security</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="panel panel-info panel-issue margin-top-sm margin-bottom-sm margin-left-sm">
+                              <div class="panel-heading">
+                                <h5 class="no-margin">Don't use a predictable random number generator</h5>
+                              </div>
+                              <div class="panel-body no-padding border-secondary-top FileSource">
+                                <div class="flex border-secondary-top">
+                                  <a class="line-number small" href="#">
+                                    <span>105</span>
+                                  </a>
+                                  <pre class="source-code no-margin no-padding-top no-padding-bottom">private def rand = Random.nextString(6)</pre>
+                                </div>
+                              </div>
+                              <div class="panel-body border-secondary-top IssueDetailContainer" style="display: none;">
+                                <div class="IssueDetail">
+                                  <div class="row">
+                                    <div class="col-xs-12">
+                                      <div class="clearfix">
+                                        <div class="pull-left">
+                                          <img src="https://secure.gravatar.com/avatar/a2640a0b7fe187c9b9c36af6bf1fe985?s=256&amp;d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-4.png" width="26" height="26" class="avatar avatar-xs" onerror="this.onError = null; this.src = '/legacy/versioned/images/account/default-user-4.png';">
+                                        </div>
+                                        <h6 class="pull-left">pedrorijo91
+                                          <span class="text-normal text-secondary">2 years ago</span>
+                                        </h6>
+
+                                        <div class="pull-right">
+                                          <div class="dropdown">
+                                            <button id="qa-dropdown-file-options" class="btn btn-default btn-sm btn-icon dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                              <i class="fa fa-gear" aria-hidden="true"></i> <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="qa-dropdown-file-options">
+                                              <li><a href="#">Ignore issue</a></li>
+                                              <li class="divider"></li>
+                                              <li class="dropdown-submenu pull-left">
+                                                <a tabindex="-1"><i class="fa fa-bitbucket"></i> Bitbucket</a>
+                                                <ul class="dropdown-menu">
+                                                  <li>
+                                                    <a href="#"><i class="fa fa-comment-o"></i> Create Comment</a>
+                                                  </li>
+                                                  <li>
+                                                    <a href="#"><i class="fa fa-bug"></i> Create Issue</a>
+                                                  </li>
+                                                </ul>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        <div class="pull-right margin-right-xxs">
+                                          <a href="#" class="btn btn-default btn-sm " role="button">View File</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                      <p class="small">
+                                        Time to fix: 5 minutes <i class="fa fa-link js-copy" data-original-title="Copy issue link"></i>
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div class="DetailLines">
+                                    <div class="flex">
+                                      <a class="line-number small" href="#"><span>103</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs">  }</pre>
+                                    </div>
+                                    <div class="flex">
+                                      <a class="line-number small" href="#"><span>104</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs"></pre>
+                                    </div>
+                                    <div class="flex has-issue">
+                                      <a class="line-number small" href="#"><span>105</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs">  <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rand</span> </span>= <span class="hljs-type">Random</span>.nextString(<span class="hljs-number">6</span>)</pre>
+                                    </div>
+                                    <div class="flex">
+                                      <a class="line-number small" href="#"><span>106</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs"></pre>
+                                    </div>
+                                    <div class="flex">
+                                      <a class="line-number small" href="#"><span>107</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs">  <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">createCategory</span></span>(patternCategoryType: <span class="hljs-type">PatternCategoryType</span>.<span class="hljs-type">Value</span>) = {</pre>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-xs-12">
+                                      <h6 class="margin-top">Why is this an issue?</h6>
+                                      <div class="PatternExplanation">
+                                        <p>The use of a predictable random value can lead to vulnerabilities when used in certain security critical contexts. For example, when the value is used as:</p>
+                                        <ul>
+                                          <li>a CSRF token</li>
+                                          <li>a password reset token (sent by email)</li>
+                                          <li>any other secret value</li>
+                                          <li>A quick fix could be to replace the use of java.util.Random with something stronger, such as java.security.SecureRandom.</li>
+                                        </ul>
+                                        <p>Vulnerable Code:</p>
+                                        <pre><code>String generateSecretToken() {
+    Random r = new Random();
+    return Long.toHexString(r.nextLong());
+}
+
+</code></pre>
+                                        <p>Solution:</p>
+                                        <pre><code>
+import org.apache.commons.codec.binary.Hex;
+
+String generateSecretToken() {
+    SecureRandom secRandom = new SecureRandom();
+
+    byte[] result = new byte[32];
+    secRandom.nextBytes(result);
+    return Hex.encodeHexString(result);
+}
+
+</code></pre>
+                                        <p><a href="#">More Information</a></p>
+                                      </div>
+
+                                      <h6 class="margin-top">Related code pattern</h6>
+                                      <a href="#" class="h5">Prohibit weak Random</a>
+                                      <p>Do not use java.util.Random, its pseudo random generator can be predictable</p>
+                                      <span class="label label-default label-sm">Scala</span>
+                                      <span class="label label-default label-sm">Security</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="panel panel-error panel-issue margin-top-sm margin-bottom-sm margin-left-sm">
+                              <div class="panel-heading">
+                                <h5 class="no-margin">Don't use a predictable random number generator</h5>
+                              </div>
+                              <div class="panel-body no-padding border-secondary-top FileSource">
+                                <div class="flex border-secondary-top">
+                                  <a class="line-number small" href="#">
+                                    <span>105</span>
+                                  </a>
+                                  <pre class="source-code no-margin no-padding-top no-padding-bottom">private def rand = Random.nextString(6)</pre>
+                                </div>
+                              </div>
+                              <div class="panel-body border-secondary-top IssueDetailContainer" style="display: none;">
+                                <div class="IssueDetail">
+                                  <div class="row">
+                                    <div class="col-xs-12">
+                                      <div class="clearfix">
+                                        <div class="pull-left">
+                                          <img src="https://secure.gravatar.com/avatar/a2640a0b7fe187c9b9c36af6bf1fe985?s=256&amp;d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-4.png" width="26" height="26" class="avatar avatar-xs" onerror="this.onError = null; this.src = '/legacy/versioned/images/account/default-user-4.png';">
+                                        </div>
+                                        <h6 class="pull-left">pedrorijo91
+                                          <span class="text-normal text-secondary">2 years ago</span>
+                                        </h6>
+
+                                        <div class="pull-right">
+                                          <div class="dropdown">
+                                            <button id="qa-dropdown-file-options" class="btn btn-default btn-sm btn-icon dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true">
+                                              <i class="fa fa-gear" aria-hidden="true"></i> <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="qa-dropdown-file-options">
+                                              <li><a href="#">Ignore issue</a></li>
+                                              <li class="divider"></li>
+                                              <li class="dropdown-submenu pull-left">
+                                                <a tabindex="-1"><i class="fa fa-bitbucket"></i> Bitbucket</a>
+                                                <ul class="dropdown-menu">
+                                                  <li>
+                                                    <a href="#"><i class="fa fa-comment-o"></i> Create Comment</a>
+                                                  </li>
+                                                  <li>
+                                                    <a href="#"><i class="fa fa-bug"></i> Create Issue</a>
+                                                  </li>
+                                                </ul>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        <div class="pull-right margin-right-xxs">
+                                          <a href="#" class="btn btn-default btn-sm " role="button">View File</a>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                      <p class="small">
+                                        Time to fix: 5 minutes <i class="fa fa-link js-copy" data-original-title="Copy issue link"></i>
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div class="DetailLines">
+                                    <div class="flex">
+                                      <a class="line-number small" href="#"><span>103</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs">  }</pre>
+                                    </div>
+                                    <div class="flex">
+                                      <a class="line-number small" href="#"><span>104</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs"></pre>
+                                    </div>
+                                    <div class="flex has-issue">
+                                      <a class="line-number small" href="#"><span>105</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs">  <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rand</span> </span>= <span class="hljs-type">Random</span>.nextString(<span class="hljs-number">6</span>)</pre>
+                                    </div>
+                                    <div class="flex">
+                                      <a class="line-number small" href="#"><span>106</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs"></pre>
+                                    </div>
+                                    <div class="flex">
+                                      <a class="line-number small" href="#"><span>107</span></a>
+                                      <pre class="source-code no-margin no-padding-top no-padding-bottom scala hljs">  <span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">createCategory</span></span>(patternCategoryType: <span class="hljs-type">PatternCategoryType</span>.<span class="hljs-type">Value</span>) = {</pre>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-xs-12">
+                                      <h6 class="margin-top">Why is this an issue?</h6>
+                                      <div class="PatternExplanation">
+                                        <p>The use of a predictable random value can lead to vulnerabilities when used in certain security critical contexts. For example, when the value is used as:</p>
+                                        <ul>
+                                          <li>a CSRF token</li>
+                                          <li>a password reset token (sent by email)</li>
+                                          <li>any other secret value</li>
+                                          <li>A quick fix could be to replace the use of java.util.Random with something stronger, such as java.security.SecureRandom.</li>
+                                        </ul>
+                                        <p>Vulnerable Code:</p>
+                                        <pre><code>String generateSecretToken() {
+    Random r = new Random();
+    return Long.toHexString(r.nextLong());
+}
+
+</code></pre>
+                                        <p>Solution:</p>
+                                        <pre><code>
+import org.apache.commons.codec.binary.Hex;
+
+String generateSecretToken() {
+    SecureRandom secRandom = new SecureRandom();
+
+    byte[] result = new byte[32];
+    secRandom.nextBytes(result);
+    return Hex.encodeHexString(result);
+}
+
+</code></pre>
+                                        <p><a href="#">More Information</a></p>
+                                      </div>
+
+                                      <h6 class="margin-top">Related code pattern</h6>
+                                      <a href="#" class="h5">Prohibit weak Random</a>
+                                      <p>Do not use java.util.Random, its pseudo random generator can be predictable</p>
+                                      <span class="label label-default label-sm">Scala</span>
+                                      <span class="label label-default label-sm">Security</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <h3>Checklist</h3>
+                            <ul class="checklist sg-code">
+                              <li>Item available</li>
+                              <li class="item-not-available">Item not available</li>
+                              <li>Item available</li>
+                            </ul>
+                            <h3>Group panels as an ordered list</h3>
+                            <ol class="panel-ordered-group sg-code">
+                              <li class="panel panel-default">
+                                <div class="panel-body">
+                                  <p>For the next steps, we assume that you already have tests and coverage for your project.</p>
+                                </div>
+                              </li>
+                              <li class="panel panel-default">
+                                <div class="panel-body">
+                                  <p>Select the language you are using and follow the instructions presented on the GitHub repository.</p>
+                                </div>
+                              </li>
+                            </ol>
+                          </div>
+                        </div>
+                    </section>
+                    <section id="progress-bar">
+                        <div class="row">
+                            <hr/>
+                            <div class="col-md-12">
+                                <h1>Progress bars</h1>
+                                <p>Very nice</p>
+                                <div class="progress sg-code" data-toggle="tooltip" title="60%">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"> <span class="sr-only">60% Complete</span> </div>
+                                </div>
+                                <h2>Smaller bars</h2>
+                                <p>Primary progress bar</p>
+                                <div class="progress progress-sm sg-code" data-toggle="tooltip" title="60%">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">.progress-bar-info</div>
+                                </div>
+                                <h3>Examples of colors</h3>
+                                <div class="progress progress-sm" data-toggle="tooltip" title="60%">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">.progress-bar-danger</div>
+                                </div>
+                                <div class="progress progress-sm" data-toggle="tooltip" title="40%">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">.progress-bar-success</div>
+                                </div>
+                                <div class="progress progress-sm" data-toggle="tooltip" title="80%">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">.progress-bar-warning</div>
+                                </div>
+                                <p>These don't indicate state</p>
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar progress-bar-purple" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">.progress-bar-purple</div>
+                                </div>
+                                <div class="progress progress-sm sg-code">
+                                    <div class="progress-bar progress-bar-orange" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">.progress-bar-orange</div>
+                                </div>
+                                <h2>Breadcrumbs</h2>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ol class="breadcrumb breadcrumb-checks sg-code">
+                                          <li><a href="">Choose a plan</a></li>
+                                          <li><a href="">Customize plan</a></li>
+                                          <li class="active"><a href="">Add Invoice details</a></li>
+                                          <li><a href="">Confirmation</a></li>
+                                        </ol>
+                                        <h3>With progress path</h3>
+                                        <div class="row progress-wizard sg-code">
+                                            <div class="col-xs-3 progress-wizard-step complete">
+                                                <div class="text-center progress-wizard-stepnum">Step 1</div>
+                                                <div class="progress">
+                                                    <div class="progress-bar"></div>
+                                                </div>
+                                                <a href="#" class="progress-wizard-dot"></a>
+                                                <div class="bprogresss-wizard-info text-center">Register</div>
+                                            </div>
+                                            <div class="col-xs-3 progress-wizard-step active">
+                                                <!-- complete -->
+                                                <div class="text-center progress-wizard-stepnum">Step 2</div>
+                                                <div class="progress">
+                                                    <div class="progress-bar"></div>
+                                                </div>
+                                                <a href="#" class="progress-wizard-dot"></a>
+                                                <div class="progress-wizard-info text-center">Select</div>
+                                            </div>
+                                            <div class="col-xs-3 progress-wizard-step disabled">
+                                                <!-- complete -->
+                                                <div class="text-center progress-wizard-stepnum">Step 3</div>
+                                                <div class="progress">
+                                                    <div class="progress-bar"></div>
+                                                </div>
+                                                <a href="#" class="progress-wizard-dot"></a>
+                                                <div class="progress-wizard-info text-center">Confirm</div>
+                                            </div>
+                                            <div class="col-xs-3 progress-wizard-step disabled">
+                                                <!-- active -->
+                                                <div class="text-center progress-wizard-stepnum">Step 4</div>
+                                                <div class="progress">
+                                                    <div class="progress-bar"></div>
+                                                </div>
+                                                <a href="#" class="progress-wizard-dot"></a>
+                                                <div class="progressbs-wizard-info text-center">Payment</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="tables">
+                        <div class="row">
+                            <hr/>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h2>Tables</h2>
+                                        <table class="table table-responsive sg-code">
+                                            <thead>
+                                                <tr>
+                                                    <th>One</th>
+                                                    <th>Two</th>
+                                                    <th>Three</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="#test">Real link</a></td>
+                                                    <td>Normal text</td>
+                                                    <td>Normal text</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="#test">Real link</a></td>
+                                                    <td>Normal text</td>
+                                                    <td>Normal text</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="#test">Real link</a></td>
+                                                    <td>Normal text</td>
+                                                    <td>Normal text</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h2>Table with collapse option</h2>
+                                        <table class="table table-striped table-responsive table-condensed table-collapse sg-code">
+                                            <thead>
+                                              <tr>
+                                                <th class="col-md-3">Project Id</th>
+                                                <th class="col-md-3">name</th>
+                                                <th class="col-md-3">status</th>
+                                                <th class="col-md-3"></th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <td><a href="#">2036</a></td>
+                                                <td><a href="#">onnx</a></td>
+                                                <td>OwnerNotCommiter</td>
+                                                <td><a data-id="1" href="#1" aria-expanded="false"
+                                                data-toggle="collapse"
+                                                class="collapse-link">More details
+                                                </a></td>
+                                              </tr>
+                                              <tr class="row-extra">
+                                                <td colspan="4">
+                                                  <div id="1" class="collapse collapse-fix">
+                                                    <table class="table table-condensed table-extra col-md-12">
+                                                      <tbody>
+                                                        <tr>
+                                                          <td class="col-md-3">
+                                                            <p class="table-th">access</p>
+                                                            <p>Public</p>
+                                                          </td>
+                                                          <td class="col-md-3">
+                                                            <p class="table-th">next analysis</p>
+                                                            <p data-toggle="tooltip" title="2017-10-02T01:34:42.000Z">2 days from now</p>
+                                                          </td>
+                                                          <td class="col-md-3">
+                                                            <p class="table-th">languages</p>
+                                                            <p>C-1</p>
+                                                          </td>
+                                                          <td class="col-md-3">
+                                                            <p class="table-th">git url</p>
+                                                            <p><a href="#" target="_blank" class="external-link">GitHub</a></p>
+                                                          </td>
+                                                        </tr>
+                                                      </tbody>
+                                                    </table>
+                                                  </div>
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td><a href="#">2035</a></td>
+                                                <td><a href="#">cpp</a></td>
+                                                <td>Cloned</td>
+                                                <td><a data-id="2" href="#2" aria-expanded="false"
+                                                data-toggle="collapse"
+                                                data-parent="#table-collapse" class="collapse-link">More details
+                                                </a></td>
+                                              </tr>
+                                              <tr class="row-extra">
+                                                <td colspan="4">
+                                                  <div id="2" class="collapse collapse-fix">
+                                                    <table class="table table-condensed table-extra col-md-12">
+                                                      <tbody>
+                                                        <tr>
+                                                          <td class="col-md-3">
+                                                            <p class="table-th">access</p>
+                                                            <p>Public</p>
+                                                          </td>
+                                                          <td class="col-md-3">
+                                                            <p class="table-th">next analysis</p>
+                                                            <p data-toggle="tooltip" title="2017-10-02T01:34:42.000Z">2 days from now</p>
+                                                          </td>
+                                                          <td class="col-md-3">
+                                                            <p class="table-th">languages</p>
+                                                            <p>C-1</p>
+                                                          </td>
+                                                          <td class="col-md-4">
+                                                            <p class="table-th">git url</p>
+                                                            <p><a href="#" target="_blank" class="external-link">GitHub</a></p>
+                                                          </td>
+                                                        </tr>
+                                                      </tbody>
+                                                    </table>
+                                                  </div>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--/.col-->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="deltas">
+                        <div class="row">
+                            <hr/>
+                            <div class="col-md-12">
+                                <h1>Deltas</h1>
+                                <p class="delta up positive"> 1</p>
+                                <p class="delta down negative sg-code"> 10</p>
+                                <p class="delta neutral strong sg-code">+ 10</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="navbar">
+                        <div class="row">
+                            <hr/>
+                            <div class="col-md-12">
+                                <h1>Navigation</h1>
+                                <nav class="navbar navbar-inverse sg-code">
+                                    <ul class="nav navbar-nav">
+                                        <li role="presentation" class="active"><a href="#">Home</a></li>
+                                        <li role="presentation"><a href="#">Profile</a></li>
+                                        <li role="presentation"><a href="#">Plans and billing</a></li>
+                                        <li role="presentation" class="disabled"><a href="#">Emails</a></li>
+                                    </ul>
+                                </nav>
+                                <h2>Navbar Collapse</h2>
+                                <p>Try a smaller window</p>
+                                <nav class="navbar navbar-inverse sg-code">
+                                    <div class="container-fluid">
+                                        <div class="navbar-header">
+                                            <a class="navbar-brand" href="#"></a>
+                                        </div>
+                                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                            <ul class="nav navbar-nav">
+                                                <li><a href="#">Link 1</a></li>
+                                                <li><a href="#">Link 2</a></li>
+                                                <li><a href="#">Link 3</a></li>
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                        Dropdown <i class="fa fa-chevron-down caret" aria-hidden="true"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#">Action</a></li>
+                                                        <li><a href="#">Another action</a></li>
+                                                        <li><a href="#">Something else here</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <h2>Right Aligned Navbar</h2>
+                                <p>When pulling a navbar to the right it's needed a container so that a margin is aplyed</p>
+                                <nav class="navbar navbar-inverse sg-code">
+                                    <div class="container-fluid">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li role="presentation" class="active"><a href="#">Home</a></li>
+                                            <li role="presentation"><a href="#">Profile</a></li>
+                                            <li role="presentation"><a href="#">Plans and billing</a></li>
+                                            <li role="presentation" class="disabled"><a href="#">Emails</a></li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h2>Side menu</h2>
+                                        <ul class="nav nav-pills nav-stacked sg-code">
+                                            <li role="presentation" class="active"><a href="#dashboard">Dashboard</a></li>
+                                            <li role="presentation"><a href="#integrations">Integrations</a></li>
+                                            <li role="presentation"><a href="#patterns">Patterns</a></li>
+                                            <li role="presentation"><a href="#settings">Settings</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h2>Without arrows</h2>
+                                        <ul class="nav nav-pills nav-stacked nav-list sg-code">
+                                            <li role="presentation" class="active"><a href="#dashboard">Dashboard</a></li>
+                                            <li role="presentation"><a href="#integrations">Integrations</a></li>
+                                            <li role="presentation"><a href="#patterns">Patterns</a></li>
+                                            <li role="presentation"><a href="#settings">Settings</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h2>Linked list</h2>
+                                        <ul class="list-group linked-list sg-code">
+                                            <li class="list-group-item">
+                                                <a href="#">
+                                                    <div class="row">
+                                                      <p class="text-secondary"><small>codacy-website</small></p>
+                                                      <p><strong>pedrorijo91</strong> wants to merge <span class="label label-success text-uppercase"><span class="git-merge"></span> Good to merge</span></p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <a href="#">
+                                                    <div class="row">
+                                                      <p class="text-secondary"><small>codacy-website</small></p>
+                                                      <p><strong>pedrorijo91</strong> wants to merge <span class="label label-success text-uppercase"><span class="git-merge"></span> Good to merge</span></p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h2>List without links</h2>
+                                        <ul class="list-group sg-code">
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <figure class="avatar avatar-xs">
+                                                            <img src="https://secure.gravatar.com/avatar/fa4dbf28653d739aae161f3532225878?s=256&d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-1.png">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <h5>Rafeal Cortes</h5>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <button class="btn btn-default btn-sm">Invite</button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <figure class="avatar avatar-xs">
+                                                            <img src="https://secure.gravatar.com/avatar/fa4dbf28653d739aae161f3532225878?s=256&d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-1.png">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <h5>Pedro Rijo</h5>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                       <button class="btn btn-default btn-sm">Invite</button>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h2>Tabs</h2>
+                                <div class="row sg-code">
+                                    <div class="col-md-12">
+                                        <ul class="nav nav-tabs" role="tablist">
+                                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                                            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane active" id="home">At Home</div>
+                                            <div role="tabpanel" class="tab-pane" id="profile">At Profile</div>
+                                            <div role="tabpanel" class="tab-pane" id="messages">At Messages</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h2>Sidebar</h2>
+                                <div class="row">
+                                    <div class="col-md-1 aside-nav sg-code">
+                                      <ul class="nav">
+                                        <li role="presentation">
+                                          <a href="#" class="aside-item arrow selected">
+                                            <div class="selected">
+                                              <img class="svg aside-icon" src="images/icon-dashboard.svg">
+                                            </div>
+                                            Overview
+                                          </a>
+                                        </li>
+                                        <li role="presentation">
+                                          <a href="#" class="aside-item arrow">
+                                            <div class="">
+                                              <img class="svg aside-icon" src="images/icon-dashboard.svg">
+                                            </div>
+                                            Overview
+                                          </a>
+                                        </li>
+                                        <li role="presentation">
+                                          <a href="#" class="aside-item arrow">
+                                            <div class="">
+                                              <img class="svg aside-icon" src="images/icon-dashboard.svg">
+                                            </div>
+                                            Overview
+                                          </a>
+                                        </li>
+                                        <li role="presentation">
+                                          <a href="#" class="aside-item arrow">
+                                            <div class="">
+                                              <img class="svg aside-icon" src="images/icon-dashboard.svg">
+                                            </div>
+                                            Overview
+                                          </a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="pagination">
+                      <div class="row">
+                        <hr/>
+                        <div class="col-md-12">
+                          <nav aria-label="Page navigation" class="sg-code">
+                            <ul class="pagination">
+                              <li class="disabled">
+                                <a href="#" aria-label="Previous">
+                                  <span aria-hidden="true">&laquo;</span>
+                                </a>
+                              </li>
+                              <li class="active"><a href="#">1</a></li>
+                              <li><a href="#">2</a></li>
+                              <li><a href="#">3</a></li>
+                              <li><a href="#">4</a></li>
+                              <li><a href="#">5</a></li>
+                              <li>
+                                <a href="#" aria-label="Next">
+                                  <span aria-hidden="true">&raquo;</span>
+                                </a>
+                              </li>
+                            </ul>
+                          </nav>
+                        </div> <!--/.col-12-->
+                      </div>
+                    </section>
+                </div>
+              <div class="side-toast toast-success">
+                <p>This issue will be ignored in your next analysis.</p>
+                <i class="fa fa-times"></i>
+              </div>
+            </main>
+        </div>
+    </div>
+    <!--/.row-->
+    <!--/.container-->
+    <script src="assets/v0/javascripts/styleguide-prettify.js"></script>
+    <script src="assets/v0/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="dist/js/main.min.js"></script>
+    <script>
+        $(document).ready(function(e) {
+            $("select").selectpicker();
+            $(".dropdown-toggle").dropdown();
+            $(".sg-code").each(function(i, e) {
+                var $elem = $(e);
+                var html = $("<div />").append($elem.clone().removeClass("sg-code")).html();
+                var $sink = $elem.siblings(".sg-code-sink");
+                if ($sink.length) {
+                    $sink.text(($sink.text() + '\n' + html).trim());
+                } else {
+                    $elem.after($("<pre />").text(html));
+                }
+            });
+            $("pre , code").addClass('prettyprint');
+            $(".table tbody tr").mouseover(function() {
+                $(this).addClass("active");
+            }).mouseout(function() {
+                $(this).removeClass('active');
+            }); //.superLink();
+
+          $(".panel-issue .panel-heading").on("click", function(){
+            $(this).toggleClass("open");
+            $(this).parent().find(".FileSource").toggle();
+            $(this).parent().find(".IssueDetailContainer").toggle();
+          });
+        });
+    </script>
+    <script src="assets/v0/javascripts/tota11y.min.js"></script>
+</body>
+
+</html>

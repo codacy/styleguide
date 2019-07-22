@@ -8,4 +8,5 @@ example/.cache
 /components/build/
 /stylesheets/dist/
 /stylesheets/build/
-.sass-cache
+/website-legacy/dist/
+.sass-cache/

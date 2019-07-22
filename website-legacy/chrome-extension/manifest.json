@@ -1,0 +1,43 @@
+{
+  "name": "Codacy Style Guide Preview",
+  "version": "0.3.1",
+  "description": "Preview Codacy with the latest style guide!",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://app.codacy.com/*",
+        "https://app.staging.codacy.org/*",
+        "https://app.dev.codacy.org/*",
+        "https://enterprise.staging.codacy.org/*",
+        "https://enterprise.dev.codacy.org/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_title": "Codacy Style Guide"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false,
+    "chrome_style": true
+  },
+  "icons": {
+    "16": "images/logo16.png",
+    "32": "images/logo32.png",
+    "48": "images/logo48.png",
+    "128": "images/logo128.png"
+  },
+  "manifest_version": 2
+}
