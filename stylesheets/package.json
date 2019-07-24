@@ -1,6 +1,6 @@
 {
-  "name": "codacy-stylesheets",
-  "version": "0.1.0",
+  "name": "@codacy/stylesheets",
+  "version": "0.1.1",
   "author": "Codacy <code@codacy.com>",
   "repository": "codacy/codacy-styleguide",
   "description": "Codacy Stylesheets",
@@ -11,17 +11,17 @@
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "rimraf": "^2.6.3",
-    "grunt-cli": "^1.3.2",
-    "grunt-contrib-copy": "^1.0.0",
-    "nan": "^2.14.0",
-    "ruby-sass": "0.0.3",
     "grunt": "^1.0.4",
+    "grunt-cli": "^1.3.2",
     "grunt-contrib-compass": "^1.1.1 ",
     "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^3.0.0",
     "grunt-contrib-imagemin": "^3.1.0",
-    "grunt-contrib-sass": "^1.0.0"
+    "grunt-contrib-sass": "^1.0.0",
+    "nan": "^2.14.0",
+    "rimraf": "^2.6.3",
+    "ruby-sass": "0.0.3"
   },
   "main": "dist/out/css/template.css",
   "browser": "dist/out/css/template.css",

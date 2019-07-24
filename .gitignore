@@ -10,3 +10,5 @@ example/.cache
 /stylesheets/build/
 /website-legacy/dist/
 .sass-cache/
+.version
+.metals/

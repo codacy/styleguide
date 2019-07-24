@@ -1,9 +1,9 @@
 {
-  "name": "codacy-styleguide-website-legacy",
-  "version": "0.1.0",
+  "name": "@codacy/styleguide-website-legacy",
+  "version": "1.0.0",
   "description": "Codacy Styleguide [Legacy]",
-  "main": "Gruntfile.js",
-  "devDependencies": {
+  "private": true,
+  "dependencies": {
     "grunt": "^1.0.4",
     "grunt-cli": "^1.3.2",
     "nan": "^2.14.0",
@@ -14,11 +14,10 @@
     "grunt-contrib-nodeunit": "^2.0.0",
     "grunt-contrib-uglify": "^4.0.1",
     "grunt-contrib-watch": "^1.0.0",
-    "codacy-stylesheets": "../stylesheets"
+    "@codacy/stylesheets": "0.1.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "cd ../stylesheets && npm install",
+    "prepare": "npm run build",
     "build": "grunt dist",
     "start": "grunt"
   },

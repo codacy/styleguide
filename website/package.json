@@ -1,5 +1,5 @@
 {
-  "name": "codacy-react-styleguide-website",
+  "name": "@codacy/react-styleguide-website",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,7 +10,7 @@
     "@types/react-bootstrap": "^0.32.19",
     "@types/react-dom": "^16.8.4",
     "@types/react-select": "^3.0.0",
-    "codacy-stylesheets": "../stylesheets",
+    "@codacy/stylesheets": "0.1.0",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-bootstrap": "^0.32.4",
@@ -22,7 +22,7 @@
     "typescript": "^3.5.2"
   },
   "scripts": {
-    "prepare": "cd ../components && npm install && cd ../stylesheets && npm install",
+    "prepare": "react-scripts build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
