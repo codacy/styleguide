@@ -5,23 +5,58 @@ import { Button } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faCaretUp,
-    faCaretDown,
-    faSearch,
-    faCheck
+    faCheck,
+    faChevronUp,
+    faChevronDown,
+    faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Select, { components } from 'react-select';
 import { Styles } from 'react-select/src/styles';
-import { IndicatorContainerProps, ContainerProps } from 'react-select/src/components/containers';
+import { IndicatorContainerProps, ContainerProps, ValueContainerProps } from 'react-select/src/components/containers';
 import { ControlProps } from 'react-select/src/components/Control';
 import { MenuListComponentProps, NoticeProps } from 'react-select/src/components/Menu';
-import { ActionTypes, GroupedOptionsType, OptionsType, ValueType, ActionMeta, InputActionMeta } from 'react-select/src/types';
+import { GroupedOptionsType, OptionsType, ValueType, ActionMeta, InputActionMeta } from 'react-select/src/types';
 import { OptionProps } from 'react-select/src/components/Option';
+import { InputProps } from 'react-select/src/components/Input';
+import { PlaceholderProps } from 'react-select/src/components/Placeholder';
 
 const selectStyles: Partial<Styles> = {
-    control: provided => ({ ...provided, minWidth: 240, margin: 8 }),
-    menu: () => ({ boxShadow: 'inset 0 1px 0 rgba(0, 0, 0, 0.1)' }),
+    menu: () => ({ 
+        minWidth: 160, 
+        position: 'relative', 
+        padding: '5px 0',
+        '.fixed-option': {
+            position: 'absolute',
+            bottom: '0',
+            left: '0',
+            right: '0',
+            backgroundColor: 'white',
+            borderTop: '1px solid #e5ecf5',
+            color: '#101e35',
+            fontWeight: 'normal',
+            padding: '3px 16px'
+        } 
+    }),
+    menuList: provided => ({ 
+        ...provided, 
+        maxHeight: 200
+    }),
+    indicatorSeparator: () => ({ backgroundColor: '#e5ecf5', margin: '9 0' }),
+    group: provider => ({
+        ...provider,
+        ':not(:last-child)': {
+            borderBottom: '1px solid #e5ecf5'
+        }
+    }),
+    groupHeading: provided => ({ ...provided, color: '#c9d8ef', fontWeight: 700, padding: '3px 16px' }),
+    option: (provided, state) => ({
+        ...provided,
+        color: '#101e35',
+        padding: '3px 16px',
+        backgroundColor: 'transparent',
+        fontWeight: state.isSelected ? 700 : undefined
+    })
 };
 
 export type BaseOptionType = {
@@ -37,11 +72,9 @@ export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti }:
 
     const NoOptionsMessage = <OptionType extends BaseOptionType>(props: NoticeProps<OptionType>) => {
         return (
-            <li key="feedback" role="presentation">
-                <span style={{ margin: "10px", width: "220px", display: "block" }}>
-                    No results matched "{inputValue}"
-                </span>
-            </li>
+            <div key="feedback" style={{ padding: '3px 16px' }}>
+                No results matched "{inputValue}"
+            </div>
         );
     };
 
@@ -128,6 +161,7 @@ export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti }:
             onClose={toggleOpen}
             target={
                 <Button
+                    bsStyle={isOpen ? "select open" : "select"}
                     onClick={toggleOpen}
                 // isSelected={isOpen}
                 >
@@ -136,9 +170,9 @@ export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti }:
                         <span>{valueDisplay}</span>
                     </span>
                     <FontAwesomeIcon
-                        style={{ margin: "0 10px" }}
-                        icon={isOpen ? faCaretUp : faCaretDown}
-                        size="1x"
+                        style={{ margin: "0 5px" }}
+                        icon={isOpen ? faChevronUp : faChevronDown}
+                        size="xs"
                     />
                 </Button>
             }
@@ -146,7 +180,7 @@ export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti }:
             <Select
                 autoFocus
                 backspaceRemovesValue={false}
-                components={{ NoOptionsMessage, DropdownIndicator: null, IndicatorSeparator: null, SelectContainer, MenuList, Option }}
+                components={{ NoOptionsMessage, DropdownIndicator: null, IndicatorSeparator: null, SelectContainer, MenuList, Option, Control, ValueContainer, Input, Placeholder }}
                 controlShouldRenderValue={false}
                 hideSelectedOptions={false}
                 isClearable={false}
@@ -159,7 +193,7 @@ export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti }:
                 styles={selectStyles}
                 tabSelectsValue={false}
                 value={isMulti ? values : value}
-                isMulti
+                isMulti={isMulti}
             />
         </Dropdown>
     );
@@ -168,21 +202,23 @@ export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti }:
 // Styled components
 
 const Menu = (props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
-    const shadow = 'hsla(218, 50%, 10%, 0.1)';
     return (
         <div
             style={{
                 backgroundColor: 'white',
-                borderRadius: 4,
-                boxShadow: `0 0 0 1px ${shadow}, 0 4px 11px ${shadow}`,
-                marginTop: 8,
+                borderRadius: 3,
+                border: '1px solid #2a6cff',
+                boxShadow: `none`,
                 position: 'absolute',
+                marginTop: 2,
+                minWidth: 160,
                 zIndex: 2,
             }}
             {...props}
         />
     );
 };
+
 const Blanket = (props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => (
     <div
         style={{
@@ -198,36 +234,72 @@ const Blanket = (props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElem
 );
 
 const Dropdown = ({ children, isOpen, target, onClose }: { children: React.ReactNode, isOpen: boolean, target: React.ReactElement, onClose: () => void }) => (
-    <div style={{ position: 'relative' }}>
+    <div style={{ display: 'inline-block' }}>
         {target}
         {isOpen ? <Menu>{children}</Menu> : null}
         {isOpen ? <Blanket onClick={onClose} /> : null}
     </div>
 );
 
-const Svg = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        focusable="false"
-        role="presentation"
-        {...props}
-    />
+const Control = <OptionType extends BaseOptionType>(props: ControlProps<OptionType>) => {
+    const {
+        children,
+        innerRef,
+        innerProps
+    } = props;
+    const [valueContainer, indicatorsContainer] = React.Children.toArray(children);
+    return (
+        <React.Fragment>
+            <div ref={innerRef} {...innerProps} style={{ margin: '5px 8px', }}>
+                {valueContainer}
+                {indicatorsContainer}
+            </div>
+        </React.Fragment>
+    );
+};
+
+const ValueContainer = <OptionType extends BaseOptionType>(props: ValueContainerProps<OptionType>) => {
+    const { children } = props;
+    return (
+        <React.Fragment>
+            {children} {/* [[Placeholder], Input] */}
+        </React.Fragment>
+    );
+};
+
+const Input = ({
+    className,
+    cx,
+    getStyles,
+    innerRef,
+    isHidden,
+    isDisabled,
+    // @ts-ignore
+    theme,
+    // @ts-ignore
+    selectProps,
+    ...props
+}: InputProps) => (
+        <input
+            className="form-control"
+            // @ts-ignore
+            ref={innerRef}
+            disabled={isDisabled}
+            //hidden={isHidden}
+            placeholder="Search..."
+            {...props}
+        />
+    );
+
+const Placeholder = <OptionType extends BaseOptionType>(props: PlaceholderProps<OptionType>) => (
+    <React.Fragment />
 );
 
 const SelectContainer = <OptionType extends BaseOptionType>(props: ContainerProps<OptionType>) => {
     return (
-        <div>
-            <components.SelectContainer {...props}>
-                <FontAwesomeIcon
-                    style={{ margin: "0 10px", float: 'left', height: '38px' }}
-                    icon={faSearch}
-                    size="1x"
-                />
-                {props.children}
-            </components.SelectContainer>
-        </div>
+        <components.SelectContainer {...props}>
+            {props.children}
+        </components.SelectContainer>
     );
 };
 
@@ -235,9 +307,9 @@ const Option = <OptionType extends BaseOptionType>(props: OptionProps<OptionType
     return (
         <components.Option {...props}>
             {props.children}
-            {props.isSelected ?
+            {(props.isSelected && props.isMulti) ?
                 <FontAwesomeIcon
-                    style={{ float: 'right', height: '20px' }}
+                    style={{ float: 'right', height: '20px', color: '#2a6cff' }}
                     icon={faCheck}
                     size="1x"
                 /> : undefined}
@@ -247,25 +319,10 @@ const Option = <OptionType extends BaseOptionType>(props: OptionProps<OptionType
 
 const MenuList = <OptionType extends BaseOptionType>(props: MenuListComponentProps<OptionType>) => {
     return (
-        <components.MenuList {...props}>
-            {props.children && React.Children.toArray(props.children).reduce((e1, e2, idx) => {
-                return idx === 0 ?
-                    e2 :
-                    <React.Fragment>
-                        {e1}
-                        <hr />
-                        {e2}
-                    </React.Fragment>;
-            }, <React.Fragment />)}
-            <hr />
-            <div className="css-1veuksg-Group">
-                <div>
-                    <div className="css-1n7v3ny-option" id="react-select-2-option-1-1" tabIndex={-1}>
-                        <img alt="Codacy" className="avatar avatar-xxs" src="https://lorempixel.com/50/50/people/3" />
-                        <span>Custom option</span>
-                    </div>
-                </div>
-            </div>
-        </components.MenuList>
+        <React.Fragment>
+            <components.MenuList {...props}>
+                {props.children}
+            </components.MenuList>
+        </React.Fragment>
     );
 };

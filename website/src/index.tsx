@@ -42,6 +42,13 @@ const simpleOptions = [
       { value: 'code-climate', label: "Code Climate" },
       { value: 'sonar-cloud', label: "Sonar Cloud" }
     ]
+  },
+  {
+    label: 'Wtv',
+    options: [
+      { value: 'circle-ci', label: "Circle Ci" },
+      { value: 'tc', label: "Tc" }
+    ]
   }
 ];
 
