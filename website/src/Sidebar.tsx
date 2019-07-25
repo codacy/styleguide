@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ListGroup, ListGroupItem, Collapse } from 'react-bootstrap';
-import 'codacy-stylesheets';
+import '@codacy/stylesheets';
 
 export const Sidebar = () => {
     const [open, setOpen] = useState(false)

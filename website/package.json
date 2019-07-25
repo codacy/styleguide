@@ -1,8 +1,12 @@
 {
   "name": "@codacy/react-styleguide-website",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Codacy React Styleguide Website",
   "private": true,
+  "repository": "git+https://github.com/codacy/styleguide.git",
+  "author": "Rodrigo Fernandes <rodrigo@codacy.com>",
   "dependencies": {
+    "@codacy/stylesheets": "*",
     "@types/jest": "24.0.15",
     "@types/node": "^12.0.12",
     "@types/prettier": "^1.16.4",
@@ -10,7 +14,6 @@
     "@types/react-bootstrap": "^0.32.19",
     "@types/react-dom": "^16.8.4",
     "@types/react-select": "^3.0.0",
-    "@codacy/stylesheets": "0.1.0",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-bootstrap": "^0.32.4",
@@ -27,9 +30,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [

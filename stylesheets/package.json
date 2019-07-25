@@ -1,10 +1,14 @@
 {
   "name": "@codacy/stylesheets",
-  "version": "0.1.1",
-  "author": "Codacy <code@codacy.com>",
-  "repository": "codacy/codacy-styleguide",
-  "description": "Codacy Stylesheets",
+  "version": "0.1.0",
+  "repository": "git+https://github.com/codacy/styleguide.git",
+  "author": "Inês Pinto <ines@codacy.com>",
   "license": "MIT",
+  "keywords": [
+    "codacy",
+    "styleguide",
+    "stylesheets"
+  ],
   "scripts": {
     "build": "grunt",
     "clean": "rimraf dist",

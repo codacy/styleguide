@@ -1,0 +1,259 @@
+version: 2.1
+
+orbs:
+  codacy: codacy/base@0.0.13
+
+references:
+  setup_aws_credentials: &setup_aws_credentials
+    run:
+      name: Setup AWS Credentials
+      command: |
+        mkdir -p ~/.aws && touch ~/.aws/credentials
+        cat >> ~/.aws/credentials \<< EOF
+        [default]
+        aws_access_key_id=$ACCESS_KEY_ID
+        aws_secret_access_key=$SECRET_ACCESS_KEY
+        [integration]
+        source_profile = default
+        role_arn = arn:aws:iam::$AWS_ACCOUNT_ID_INTEGRATION:role/$CONTINUOUS_DELIVERY_ROLE
+        region=eu-west-1
+
+jobs:
+  test_edge_lambda:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/workdir/.aws/src
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Install dependencies
+          command: |
+            sudo npm install -g yarn
+            yarn
+      - run:
+          name: Test Edge Lambda
+          command: yarn run test
+
+  create_stack_react_website:
+    docker:
+      - image: codacy/ci-aws:3.0.2
+    working_directory: ~/workdir/.aws
+    environment:
+      AWS_PROFILE: integration
+    steps:
+      - attach_workspace:
+          at: ~/
+      - *setup_aws_credentials
+      - run:
+          name: Install Node.js and npm
+          command: apk add --update nodejs nodejs-npm
+      - run:
+          name: Install Yarn
+          command: |
+            npm config set unsafe-perm true  
+            npm install -g yarn
+            npm config set unsafe-perm false
+      - run:
+          name: Remove unneeded files before deployment
+          working_directory: ~/workdir/.aws/src
+          command: yarn
+      - deploy:
+          name: Create Cloudformation stack
+          command: make aws-create-stack PROJECT_NAME=styleguide-react-website DEPLOYMENT_TYPE=react-website
+          no_output_timeout: 30m
+
+  create_stack_legacy_website:
+    docker:
+      - image: codacy/ci-aws:3.0.2
+    working_directory: ~/workdir/.aws
+    environment:
+      AWS_PROFILE: integration
+    steps:
+      - attach_workspace:
+          at: ~/
+      - *setup_aws_credentials
+      - run:
+          name: Install Node.js and npm
+          command: apk add --update nodejs nodejs-npm
+      - run:
+          name: Install Yarn
+          command: |
+            npm config set unsafe-perm true  
+            npm install -g yarn
+            npm config set unsafe-perm false
+      - run:
+          name: Remove unneeded files before deployment
+          working_directory: ~/workdir/.aws/src
+          command: yarn
+      - deploy:
+          name: Create Cloudformation stack
+          command: make aws-create-stack PROJECT_NAME=styleguide-website-legacy DEPLOYMENT_TYPE=website-legacy
+          no_output_timeout: 30m
+
+  build_packages:
+    docker:
+      - image: circleci/ruby:2.6.3-buster
+    working_directory: ~/workdir
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: "Install Node.js and npm"
+          command: |
+            curl -sSL "https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v10.16.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+            sudo npm install -g yarn
+      - run:
+          name: Check current version of node and npm
+          command: |
+            node -v
+            yarn -v
+      - run:
+          name: Install SASS dependencies
+          command: gem install sass dnode compass
+      # TODO: add npm cache
+      # TODO: add gem cache
+      - run:
+          name: Download dependencies
+          command: yarn
+      - run:
+          name: Build packages
+          command: CI=false yarn run bolt:install
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - workdir/components/build/
+            - workdir/components/node_modules/
+            - workdir/stylesheets/dist/
+            - workdir/stylesheets/.sass-cache/
+            - workdir/stylesheets/node_modules/
+            - workdir/website/build/
+            - workdir/website/node_modules/
+            - workdir/website-legacy/dist/
+            - workdir/website-legacy/node_modules/
+            - workdir/node_modules/
+
+  publish_packages:
+    docker:
+      - image: circleci/ruby:2.6.3-buster
+    working_directory: ~/workdir
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: "Install Node.js and npm"
+          command: |
+            curl -sSL "https://nodejs.org/dist/v10.16.0/node-v10.16.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v10.16.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+            sudo npm install -g yarn
+      - run:
+          name: Check current version of node and npm
+          command: |
+            node -v
+            yarn -v
+      # TODO: add npm cache
+      # TODO: add gem cache
+      # - run:
+      #     name: Setup npm credentials
+      #     command: |
+      #       echo -e "//registry.npmjs.org/:_authToken=$NPM_TOKEN\nsave-exact=true" > ~/.npmrc
+      - run:
+          name: Publish packages
+          command: |
+            git config --global user.email "circleci@codacy.com"
+            git config --global user.name "CircleCI Codacy Bot"
+            yarn run bolt:version
+            yarn run bolt:publish
+
+  upload_react_website:
+    docker:
+      - image: codacy/ci-aws:3.0.2
+    working_directory: ~/workdir/.aws
+    environment:
+      AWS_PROFILE: integration
+    steps:
+      - attach_workspace:
+          at: ~/
+      - *setup_aws_credentials
+      - deploy:
+          name: Upload react website
+          command: make upload-react-website PROJECT_NAME=styleguide-react-website DEPLOYMENT_TYPE=react-website
+
+  upload_website_legacy:
+    docker:
+      - image: codacy/ci-aws:3.0.2
+    working_directory: ~/workdir/.aws
+    environment:
+      AWS_PROFILE: integration
+    steps:
+      - attach_workspace:
+          at: ~/
+      - *setup_aws_credentials
+      - deploy:
+          name: Upload website legacy
+          command: make upload-website-legacy PROJECT_NAME=styleguide-website-legacy DEPLOYMENT_TYPE=website-legacy
+
+workflows:
+  compile_deploy:
+    jobs:
+      - codacy/checkout_and_version
+      - test_edge_lambda:
+          requires:
+            - codacy/checkout_and_version
+      - create_stack_react_website:
+          filters:
+            branches:
+              only:
+                - master
+                - release
+          context: CodacyAWS
+          requires:
+            - test_edge_lambda
+      - create_stack_legacy_website:
+          filters:
+            branches:
+              only:
+                - master
+                - release
+          context: CodacyAWS
+          requires:
+            - test_edge_lambda
+      - build_packages:
+          requires:
+            - codacy/checkout_and_version
+      - publish_packages:
+          requires:
+            - build_packages
+          context: CodacyNPM
+          filters:
+            branches:
+              only:
+                - master
+                - release
+      - upload_react_website:
+          filters:
+            branches:
+              only:
+                - master
+                - release
+          context: CodacyAWS
+          requires:
+            - create_stack_react_website
+            - build_packages
+      - upload_website_legacy:
+          filters:
+            branches:
+              only:
+                - master
+                - release
+          context: CodacyAWS
+          requires:
+            - create_stack_legacy_website
+            - build_packages
+      - codacy/tag_version:
+          context: CodacyAWS
+          name: tag_version
+          requires:
+            - upload_react_website
+            - upload_website_legacy

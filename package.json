@@ -1,13 +1,15 @@
 {
   "name": "@codacy/styleguide",
-  "version": "0.1.0",
-  "description": "Codacy Styleguide",
+  "version": "1.0.0",
+  "description": "Codacy Styleguide Monorepo",
   "private": true,
+  "repository": "git+https://github.com/codacy/styleguide.git",
+  "author": "Rodrigo Fernandes <rodrigo@codacy.com>",
   "scripts": {
     "bolt": "bolt",
     "bolt:install": "bolt install",
     "bolt:version": "bolt w @codacy/react-components yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version) && bolt w @codacy/stylesheets yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version) && git add -A . && git commit -m \"Releasing version $(cat .version)\" && git tag $(cat .version)",
-    "bolt:publish": "bolt publish",
+    "bolt:publish": "bolt w @codacy/react-components yarn publish --non-interactive --new-version $(cat .version) && bolt w @codacy/stylesheets yarn publish --non-interactive --new-version $(cat .version)",
     "build": "concurrently 'npm:build:components' 'npm:build:stylesheets' 'npm:build:website' 'npm:build:website-legacy'",
     "build:components": "bolt w @codacy/react-components run build",
     "build:stylesheets": "bolt w @codacy/stylesheets run build",
@@ -20,8 +22,6 @@
     "watch:website": "concurrently 'npm:watch:components' 'npm:watch:stylesheets' 'npm:start:website'",
     "watch:website-legacy": "concurrently 'npm:watch:stylesheets' 'npm:start:website-legacy'"
   },
-  "repository": "git+https://github.com/codacy/styleguide.git",
-  "author": "Rodrigo Fernandes <rodrigo@codacy.com>",
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"

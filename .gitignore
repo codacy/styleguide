@@ -1,14 +1,23 @@
-node_modules/
+# Generic
 temp
 *.log
-example/.cache
 .DS_Store
+
+# Development
 .vscode
+.metals/
+.idea/
+
+# Tools
+node_modules/
+.sass-cache/
+
+# Project
+.version
+.aws/teamplates/packaged-static-page.yaml
+.aws/src/dist/
 /website/build/
 /components/build/
 /stylesheets/dist/
 /stylesheets/build/
 /website-legacy/dist/
-.sass-cache/
-.version
-.metals/

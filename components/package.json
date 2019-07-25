@@ -1,15 +1,15 @@
 {
   "name": "@codacy/react-components",
-  "version": "0.1.1",
-  "author": "Codacy <code@codacy.com>",
-  "repository": "codacy/codacy-styleguide",
+  "version": "0.1.0",
   "description": "Codacy React Components",
+  "repository": "git+https://github.com/codacy/styleguide.git",
+  "author": "Rodrigo Fernandes <rodrigo@codacy.com>",
+  "license": "MIT",
   "keywords": [
     "codacy",
     "react",
     "components"
   ],
-  "license": "MIT",
   "main": "./build/index.js",
   "typings": "./build/index.d.ts",
   "files": [
