@@ -21,7 +21,17 @@ import { OptionProps } from 'react-select/src/components/Option';
 import { InputProps } from 'react-select/src/components/Input';
 import { PlaceholderProps } from 'react-select/src/components/Placeholder';
 
-const selectStyles: Partial<Styles> = {
+const normalSelect: Partial<Styles> = {
+    container: () => ({
+        backgroundColor: 'white',
+        borderRadius: 3,
+        border: '1px solid #2a6cff',
+        boxShadow: `none`,
+        position: 'absolute',
+        marginTop: 2,
+        minWidth: 160,
+        zIndex: 2
+    }),
     menu: () => ({ 
         minWidth: 160, 
         position: 'relative', 
@@ -42,7 +52,6 @@ const selectStyles: Partial<Styles> = {
         ...provided, 
         maxHeight: 200
     }),
-    indicatorSeparator: () => ({ backgroundColor: '#e5ecf5', margin: '9 0' }),
     group: provider => ({
         ...provider,
         ':not(:last-child)': {
@@ -59,12 +68,64 @@ const selectStyles: Partial<Styles> = {
     })
 };
 
+const navbarSelect: Partial<Styles> = {
+    container: () => ({
+        backgroundColor: '#15294a',
+        borderRadius: 2,
+        position: 'absolute',
+        marginTop: 5,
+        minWidth: 160,
+        zIndex: 2
+    }),
+    menu: () => ({ 
+        minWidth: 160, 
+        position: 'relative', 
+        padding: '5px 0',
+        '.fixed-option': {
+            position: 'absolute',
+            bottom: '0',
+            left: '0',
+            right: '0',
+            backgroundColor: 'white',
+            borderTop: '1px solid #e5ecf5',
+            color: '#e5ecf5',
+            fontWeight: 'normal',
+            padding: '3px 16px'
+        } 
+    }),
+    input: () => ({
+        background: '#15294a',
+        border: 0,
+        borderBottom: '1px solid #1d3660',
+        borderRadius: 0,
+        color: '#e5ecf5'
+    }),
+    menuList: provided => ({ 
+        ...provided, 
+        maxHeight: 200
+    }),
+    group: provider => ({
+        ...provider,
+        ':not(:last-child)': {
+            borderBottom: '1px solid #1d3660'
+        }
+    }),
+    groupHeading: provided => ({ ...provided, color: '#e5ecf5', fontWeight: 700, padding: '3px 16px' }),
+    option: (provided, state) => ({
+        ...provided,
+        color: '#e5ecf5',
+        padding: '3px 16px',
+        backgroundColor: 'transparent',
+        fontWeight: state.isSelected ? 700 : undefined
+    })
+};
+
 export type BaseOptionType = {
     value: string;
     label: any;
 }
 
-export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti }: { options: GroupedOptionsType<OptionType> | OptionsType<OptionType>, isMulti: boolean }) => {
+export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti, isNavbar = false }: { options: GroupedOptionsType<OptionType> | OptionsType<OptionType>, isMulti: boolean, isNavbar?: boolean }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [values, setValues] = useState<OptionType[] | undefined>(undefined);
     const [inputValue, setInputValue] = useState("");
@@ -72,7 +133,10 @@ export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti }:
 
     const NoOptionsMessage = <OptionType extends BaseOptionType>(props: NoticeProps<OptionType>) => {
         return (
-            <div key="feedback" style={{ padding: '3px 16px' }}>
+            <div key="feedback" style={{ 
+                    padding: '3px 16px',
+                    color: isNavbar ? '#e5ecf5' : '#101e35'
+                }}>
                 No results matched "{inputValue}"
             </div>
         );
@@ -163,7 +227,6 @@ export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti }:
                 <Button
                     bsStyle={isOpen ? "select open" : "select"}
                     onClick={toggleOpen}
-                // isSelected={isOpen}
                 >
                     <span>
                         {/* {value ? <span>State: {value.label}</span> : 'Select a State'} */}
@@ -190,7 +253,7 @@ export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti }:
                 onInputChange={onInputChange}
                 options={options}
                 placeholder="Search..."
-                styles={selectStyles}
+                styles={isNavbar ? navbarSelect : normalSelect}
                 tabSelectsValue={false}
                 value={isMulti ? values : value}
                 isMulti={isMulti}
@@ -203,19 +266,7 @@ export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti }:
 
 const Menu = (props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
     return (
-        <div
-            style={{
-                backgroundColor: 'white',
-                borderRadius: 3,
-                border: '1px solid #2a6cff',
-                boxShadow: `none`,
-                position: 'absolute',
-                marginTop: 2,
-                minWidth: 160,
-                zIndex: 2,
-            }}
-            {...props}
-        />
+        <div {...props} />
     );
 };
 
@@ -250,7 +301,7 @@ const Control = <OptionType extends BaseOptionType>(props: ControlProps<OptionTy
     const [valueContainer, indicatorsContainer] = React.Children.toArray(children);
     return (
         <React.Fragment>
-            <div ref={innerRef} {...innerProps} style={{ margin: '5px 8px', }}>
+            <div ref={innerRef} {...innerProps} style={{margin: '5px 8px'}}>
                 {valueContainer}
                 {indicatorsContainer}
             </div>

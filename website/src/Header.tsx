@@ -1,5 +1,6 @@
 import React from 'react';
 import { Nav, NavItem, Navbar, NavDropdown, MenuItem, Button } from 'react-bootstrap';
+import { Select2 } from './Select2';
 import '@codacy/stylesheets';
 
 export const Header = () => {
@@ -11,16 +12,10 @@ export const Header = () => {
                 </Navbar.Brand>
             </Navbar.Header>
             <Nav>
-                <NavDropdown eventKey={1} title="Codacy" id="organization-dropdown">
-                    <MenuItem eventKey={1.1}>Codacy 2</MenuItem>
-                    <MenuItem eventKey={1.2}>Codacy 3</MenuItem>
-                </NavDropdown>
-                <NavDropdown eventKey={2} title="My Projects" id="project-dropdown">
-                    <MenuItem eventKey={2.1}>Rodrigo Fernandes</MenuItem>
-                    <MenuItem eventKey={2.2}>Rafael Cortes</MenuItem>
-                    <MenuItem divider={true} />
-                    <MenuItem eventKey={2.3}><span className="fa fa-plus"></span> Add new project</MenuItem>
-                </NavDropdown>
+                <Select2 options={[
+                        { value: 'codacy', label: 'Codacy' },
+                        { value: 'code-climate', label: 'Code Climate' }
+                    ]} isMulti={false} isNavbar={true} />
             </Nav >
             <Nav pullRight>
                 <NavItem eventKey={1} href="#">

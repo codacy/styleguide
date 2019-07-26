@@ -120,6 +120,46 @@
       top: 3px;
     }
 
+    .btn-select {
+      letter-spacing: inherit;
+      height: auto;
+      line-height: 60px;
+      padding: 0px 15px;
+      background-color: transparent;
+      border: 0;
+      box-shadow: none;
+      color: $gray;
+      font-size: 18px;
+      font-weight: 700;
+      transform: none;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $white;
+      }
+
+      .fa-xs {
+        font-size: 8px;
+        vertical-align: middle;
+        padding: 3px;
+        box-sizing: initial;
+      }
+
+      &.open {
+
+        .fa-xs {
+          background-color: #15294a;
+          border-radius: 50%;
+          color: #fff;
+        }
+      }
+    }
+
     //specially for dropdown of selects
     .dropdown {
 
