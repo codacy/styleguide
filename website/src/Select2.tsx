@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useState } from 'react';
 
 import { Button } from 'react-bootstrap';
@@ -13,9 +13,9 @@ import {
 
 import Select, { components } from 'react-select';
 import { Styles } from 'react-select/src/styles';
-import { IndicatorContainerProps, ContainerProps, ValueContainerProps } from 'react-select/src/components/containers';
+import { ValueContainerProps } from 'react-select/src/components/containers';
 import { ControlProps } from 'react-select/src/components/Control';
-import { MenuListComponentProps, NoticeProps } from 'react-select/src/components/Menu';
+import { NoticeProps } from 'react-select/src/components/Menu';
 import { GroupedOptionsType, OptionsType, ValueType, ActionMeta, InputActionMeta } from 'react-select/src/types';
 import { OptionProps } from 'react-select/src/components/Option';
 import { InputProps } from 'react-select/src/components/Input';
@@ -32,9 +32,9 @@ const normalSelect: Partial<Styles> = {
         minWidth: 160,
         zIndex: 2
     }),
-    menu: () => ({ 
-        minWidth: 160, 
-        position: 'relative', 
+    menu: () => ({
+        minWidth: 160,
+        position: 'relative',
         padding: '5px 0',
         '.fixed-option': {
             position: 'absolute',
@@ -46,10 +46,10 @@ const normalSelect: Partial<Styles> = {
             color: '#101e35',
             fontWeight: 'normal',
             padding: '3px 16px'
-        } 
+        }
     }),
-    menuList: provided => ({ 
-        ...provided, 
+    menuList: provided => ({
+        ...provided,
         maxHeight: 200
     }),
     group: provider => ({
@@ -61,7 +61,7 @@ const normalSelect: Partial<Styles> = {
     groupHeading: provided => ({ ...provided, color: '#c9d8ef', fontWeight: 700, padding: '3px 16px' }),
     option: (provided, state) => ({
         ...provided,
-        color: '#101e35',
+        color: !state.isFocused ? '#101e35' : '#ccc',
         padding: '3px 16px',
         backgroundColor: 'transparent',
         fontWeight: state.isSelected ? 700 : undefined
@@ -77,9 +77,9 @@ const navbarSelect: Partial<Styles> = {
         minWidth: 160,
         zIndex: 2
     }),
-    menu: () => ({ 
-        minWidth: 160, 
-        position: 'relative', 
+    menu: () => ({
+        minWidth: 160,
+        position: 'relative',
         padding: '5px 0',
         '.fixed-option': {
             position: 'absolute',
@@ -91,7 +91,7 @@ const navbarSelect: Partial<Styles> = {
             color: '#e5ecf5',
             fontWeight: 'normal',
             padding: '3px 16px'
-        } 
+        }
     }),
     input: () => ({
         background: '#15294a',
@@ -100,8 +100,8 @@ const navbarSelect: Partial<Styles> = {
         borderRadius: 0,
         color: '#e5ecf5'
     }),
-    menuList: provided => ({ 
-        ...provided, 
+    menuList: provided => ({
+        ...provided,
         maxHeight: 200
     }),
     group: provider => ({
@@ -113,7 +113,7 @@ const navbarSelect: Partial<Styles> = {
     groupHeading: provided => ({ ...provided, color: '#e5ecf5', fontWeight: 700, padding: '3px 16px' }),
     option: (provided, state) => ({
         ...provided,
-        color: '#e5ecf5',
+        color: !state.isFocused ? '#e5ecf5' : '#ccc',
         padding: '3px 16px',
         backgroundColor: 'transparent',
         fontWeight: state.isSelected ? 700 : undefined
@@ -133,10 +133,10 @@ export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti, i
 
     const NoOptionsMessage = <OptionType extends BaseOptionType>(props: NoticeProps<OptionType>) => {
         return (
-            <div key="feedback" style={{ 
-                    padding: '3px 16px',
-                    color: isNavbar ? '#e5ecf5' : '#101e35'
-                }}>
+            <div key="feedback" style={{
+                padding: '3px 16px',
+                color: isNavbar ? '#e5ecf5' : '#101e35'
+            }}>
                 No results matched "{inputValue}"
             </div>
         );
@@ -243,7 +243,7 @@ export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti, i
             <Select
                 autoFocus
                 backspaceRemovesValue={false}
-                components={{ NoOptionsMessage, DropdownIndicator: null, IndicatorSeparator: null, SelectContainer, MenuList, Option, Control, ValueContainer, Input, Placeholder }}
+                components={{ NoOptionsMessage, DropdownIndicator: null, IndicatorSeparator: null, Option, Control, ValueContainer, Input, Placeholder }}
                 controlShouldRenderValue={false}
                 hideSelectedOptions={false}
                 isClearable={false}
@@ -298,14 +298,10 @@ const Control = <OptionType extends BaseOptionType>(props: ControlProps<OptionTy
         innerRef,
         innerProps
     } = props;
-    const [valueContainer, indicatorsContainer] = React.Children.toArray(children);
     return (
-        <React.Fragment>
-            <div ref={innerRef} {...innerProps} style={{margin: '5px 8px'}}>
-                {valueContainer}
-                {indicatorsContainer}
-            </div>
-        </React.Fragment>
+        <div ref={innerRef} {...innerProps} style={{ margin: '5px 8px' }}>
+            {children}
+        </div>
     );
 };
 
@@ -346,14 +342,6 @@ const Placeholder = <OptionType extends BaseOptionType>(props: PlaceholderProps<
     <React.Fragment />
 );
 
-const SelectContainer = <OptionType extends BaseOptionType>(props: ContainerProps<OptionType>) => {
-    return (
-        <components.SelectContainer {...props}>
-            {props.children}
-        </components.SelectContainer>
-    );
-};
-
 const Option = <OptionType extends BaseOptionType>(props: OptionProps<OptionType>) => {
     return (
         <components.Option {...props}>
@@ -363,17 +351,7 @@ const Option = <OptionType extends BaseOptionType>(props: OptionProps<OptionType
                     style={{ float: 'right', height: '20px', color: '#2a6cff' }}
                     icon={faCheck}
                     size="1x"
-                /> : undefined}
+                /> : null}
         </components.Option>
-    );
-};
-
-const MenuList = <OptionType extends BaseOptionType>(props: MenuListComponentProps<OptionType>) => {
-    return (
-        <React.Fragment>
-            <components.MenuList {...props}>
-                {props.children}
-            </components.MenuList>
-        </React.Fragment>
     );
 };
