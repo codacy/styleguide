@@ -4,7 +4,7 @@ import { Button, ButtonGroup, Col, Grid, MenuItem, Row, SplitButton } from 'reac
 import { CodeExample } from './CodeExample';
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
-import 'codacy-stylesheets';
+import '@codacy/stylesheets';
 
 const App = () => {
   return (

@@ -1,9 +1,12 @@
 {
-  "name": "codacy-styleguide-website-legacy",
-  "version": "0.1.0",
-  "description": "Codacy Styleguide [Legacy]",
-  "main": "Gruntfile.js",
-  "devDependencies": {
+  "name": "@codacy/styleguide-website-legacy",
+  "version": "1.0.0",
+  "description": "Codacy Styleguide Website [Legacy]",
+  "private": true,
+  "repository": "git+https://github.com/codacy/styleguide.git",
+  "author": "Inês Pinto <ines@codacy.com>",
+  "dependencies": {
+    "@codacy/stylesheets": "*",
     "grunt": "^1.0.4",
     "grunt-cli": "^1.3.2",
     "nan": "^2.14.0",
@@ -13,24 +16,11 @@
     "grunt-contrib-connect": "^2.0.0",
     "grunt-contrib-nodeunit": "^2.0.0",
     "grunt-contrib-uglify": "^4.0.1",
-    "grunt-contrib-watch": "^1.0.0",
-    "codacy-stylesheets": "../stylesheets"
+    "grunt-contrib-watch": "^1.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "cd ../stylesheets && npm install",
+    "prepare": "npm run build",
     "build": "grunt dist",
     "start": "grunt"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@bitbucket.org/qamine/styleguide.git"
-  },
-  "keywords": [
-    "codacy",
-    "styleguide"
-  ],
-  "author": "Inês Pinto",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/qamine/styleguide#readme"
+  }
 }

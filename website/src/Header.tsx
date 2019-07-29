@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, NavItem, Navbar, NavDropdown, MenuItem, Button } from 'react-bootstrap';
-import 'codacy-stylesheets';
+import '@codacy/stylesheets';
 
 export const Header = () => {
     return (

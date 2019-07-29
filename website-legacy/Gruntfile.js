@@ -58,7 +58,7 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: "./",
-            src: ["./node_modules/codacy-stylesheets/dist/out/css/template.min.css"],
+            src: ["./node_modules/@codacy/stylesheets/dist/out/css/template.min.css"],
             dest: "./dist/css/template.min.css"
           }
         ]
