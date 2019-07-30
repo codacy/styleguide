@@ -206,7 +206,6 @@ workflows:
             branches:
               only:
                 - master
-                - release
           context: CodacyAWS
           requires:
             - test_edge_lambda
@@ -215,7 +214,6 @@ workflows:
             branches:
               only:
                 - master
-                - release
           context: CodacyAWS
           requires:
             - test_edge_lambda
@@ -230,13 +228,11 @@ workflows:
             branches:
               only:
                 - master
-                - release
       - upload_react_website:
           filters:
             branches:
               only:
                 - master
-                - release
           context: CodacyAWS
           requires:
             - create_stack_react_website
@@ -246,7 +242,6 @@ workflows:
             branches:
               only:
                 - master
-                - release
           context: CodacyAWS
           requires:
             - create_stack_legacy_website
