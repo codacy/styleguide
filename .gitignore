@@ -14,7 +14,7 @@ node_modules/
 
 # Project
 .version
-.aws/teamplates/packaged-static-page.yaml
+.aws/templates/packaged-static-page.yaml
 .aws/src/dist/
 /website/build/
 /components/build/
