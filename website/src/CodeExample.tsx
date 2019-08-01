@@ -12,7 +12,7 @@ export const CodeExample = ({ language = 'xml', children }: { language?: Languag
         const elementString = reactElementToJSXString(e);
         return format(
             elementString,
-            { parser: "babylon", plugins: [parser], semi: true, printWidth: 120 }
+            { parser: "babel", plugins: [parser], semi: true, printWidth: 120 }
         ).slice(0, -2); // HACK: Format JSX adds a `;` in the beginning or end of the string
     };
 

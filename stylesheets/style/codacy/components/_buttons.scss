@@ -86,6 +86,37 @@
   @include button-variant($white, $brand-danger);
 }
 
+.btn-select {
+  font-weight: normal;
+  color: $brand-primary;
+  border: none;
+  background-color: transparent;
+
+  &:hover,
+  &:focus {
+    background: rgba($brand-primary, 0.1);
+    color: $brand-primary;
+    text-decoration: none;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $brand-primary;
+    }
+  }
+
+  &.open {
+    font-weight: bold;
+    background: rgba($brand-primary, 0.1);
+    cursor: pointer;
+  }
+}
+
 .btn-refresh {
   color: $gray;
   cursor: pointer;

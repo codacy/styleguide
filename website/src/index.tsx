@@ -9,7 +9,48 @@ import { Checkbox } from './Checkbox';
 import { InputWithCheckbox } from './InputWithCheckbox';
 import { Switch } from './Switch';
 
+import { Select, SelectOption, SelectOptionGroup } from './Select';
+import { Select2 } from './Select2';
 import '@codacy/stylesheets';
+
+const imageOptions = [
+  {
+    label: 'Cool Tools',
+    options: [
+      { value: 'codacy', label: (<React.Fragment><img alt="Codacy" className="avatar avatar-xxs" src="https://lorempixel.com/50/50/people/1" /><span>Codacy</span></React.Fragment>) }
+    ]
+  },
+  {
+    label: 'Other Tools',
+    options: [
+      { value: 'code-climate', label: (<React.Fragment><img alt="Codacy" className="avatar avatar-xxs" src="https://lorempixel.com/50/50/people/2" /><span>Code Climate</span></React.Fragment>) },
+      { value: 'sonar-cloud', label: (<React.Fragment><img alt="Codacy" className="avatar avatar-xxs" src="https://lorempixel.com/50/50/people/3" /><span>Sonar Cloud</span></React.Fragment>) }
+    ]
+  }
+];
+
+const simpleOptions = [
+  {
+    label: 'Cool Tools',
+    options: [
+      { value: 'codacy', label: 'Codacy' }
+    ]
+  },
+  {
+    label: 'Other Tools',
+    options: [
+      { value: 'code-climate', label: "Code Climate" },
+      { value: 'sonar-cloud', label: "Sonar Cloud" }
+    ]
+  },
+  {
+    label: 'Wtv',
+    options: [
+      { value: 'circle-ci', label: "Circle Ci" },
+      { value: 'tc', label: "Tc" }
+    ]
+  }
+];
 
 const App = () => {
   return (
@@ -105,6 +146,49 @@ const App = () => {
                 </div>
               </div>
             </div>
+            <section>
+              <h1>React Select Simple Options</h1>
+              <Select2 options={simpleOptions} isMulti={false} />
+              <h1>React Select Simple Options Multi</h1>
+              <Select2 options={simpleOptions} isMulti={true} />
+              <h1>React Select Image Options</h1>
+              <Select2 options={imageOptions} isMulti={false} />
+              <h1>Codacy Select</h1>
+              <Row>
+                <Col xs={12}>
+                  <Select defaultOption="codacy">
+                    <SelectOptionGroup label="Cool Tools">
+                      <SelectOption optionKey="codacy">
+                        <img
+                          alt="Codacy"
+                          className="avatar avatar-xxs"
+                          src="https://lorempixel.com/50/50/people/1"
+                        />
+                        <span>Codacy</span>
+                      </SelectOption>
+                    </SelectOptionGroup>
+                    <SelectOptionGroup label="Other Tools">
+                      <SelectOption optionKey="code-climate">
+                        <img
+                          alt="Code Climate"
+                          className="avatar avatar-xxs"
+                          src="https://lorempixel.com/50/50/people/2"
+                        />
+                        <span>Code Climate</span>
+                      </SelectOption>
+                      <SelectOption optionKey="sonar-cloud">
+                        <img
+                          alt="Sonar Cloud"
+                          className="avatar avatar-xxs"
+                          src="https://lorempixel.com/50/50/people/3"
+                        />
+                        <span>Sonar Cloud</span>
+                      </SelectOption>
+                    </SelectOptionGroup>
+                  </Select>
+                </Col>
+              </Row>
+            </section>
             <section id="colors">
               <h1>Colour Palette</h1>
               <Row>
@@ -965,7 +1049,7 @@ const App = () => {
                           <p>
                             <a href="#">Portal</a> has
                                   <strong>broken the build 7 times</strong> in the last
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              2 days.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      2 days.
                                   </p>
                         </div>
                       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Nav, NavItem, Navbar, NavDropdown, MenuItem, Button } from 'react-bootstrap';
+import { Select2 } from './Select2';
 import '@codacy/stylesheets';
 
 export const Header = () => {
@@ -7,20 +8,14 @@ export const Header = () => {
         <Navbar inverse={true} fluid={true}>
             <Navbar.Header>
                 <Navbar.Brand>
-                    <a href="#"><img src="images/codacy-white.svg" alt="codacy-logo" /></a>
+                    <a href="#project-dropdown"><img src="images/codacy-white.svg" alt="codacy-logo" /></a>
                 </Navbar.Brand>
             </Navbar.Header>
             <Nav>
-                <NavDropdown eventKey={1} title="Codacy" id="organization-dropdown">
-                    <MenuItem eventKey={1.1}>Codacy 2</MenuItem>
-                    <MenuItem eventKey={1.2}>Codacy 3</MenuItem>
-                </NavDropdown>
-                <NavDropdown eventKey={2} title="My Projects" id="project-dropdown">
-                    <MenuItem eventKey={2.1}>Rodrigo Fernandes</MenuItem>
-                    <MenuItem eventKey={2.2}>Rafael Cortes</MenuItem>
-                    <MenuItem divider={true} />
-                    <MenuItem eventKey={2.3}><span className="fa fa-plus"></span> Add new project</MenuItem>
-                </NavDropdown>
+                <Select2 options={[
+                        { value: 'codacy', label: 'Codacy' },
+                        { value: 'code-climate', label: 'Code Climate' }
+                    ]} isMulti={false} isNavbar={true} />
             </Nav >
             <Nav pullRight>
                 <NavItem eventKey={1} href="#">
@@ -37,7 +32,7 @@ export const Header = () => {
                     </li>
                 </React.Fragment>
                 <NavDropdown eventKey={3} id="organization-dropdown"
-                    title={<img src="https://secure.gravatar.com/avatar/fa4dbf28653d739aae161f3532225878?s=256&d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-1.png" />}>
+                    title={<img src="https://secure.gravatar.com/avatar/fa4dbf28653d739aae161f3532225878?s=256&d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-1.png" alt="User Gravatar"/>}>
                     <MenuItem eventKey={3.1}>Action</MenuItem>
                     <MenuItem eventKey={3.2}>Another action</MenuItem>
                     <MenuItem eventKey={3.3}>Something else here</MenuItem>
@@ -46,7 +41,7 @@ export const Header = () => {
                             <input type="hidden"
                                 name="csrfToken"
                                 value="4ae8220f83157d735137ce7a762917ba7a4917f6-1511345663270-1ef6729026175f7916b3132e" />
-                            <a id="signout-form" href="#"><i className="fa fa-sign-out"></i> Sign Out</a>
+                            <a id="signout-form" href="#organization-dropdown"><i className="fa fa-sign-out"></i> Sign Out</a>
                         </form>
                     </li>
                 </NavDropdown>
