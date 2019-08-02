@@ -5,7 +5,7 @@ declare module 'react-fast-highlight' {
         languages?: string[];
         children: string;
     }
-    export declare const Highlight: (props: HighlightProps) => JSX.Element;
+    export const Highlight: (props: HighlightProps) => JSX.Element;
     export { };
 
 }

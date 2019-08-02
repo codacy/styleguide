@@ -7,11 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCheck,
     faChevronUp,
-    faChevronDown,
-    faPlus,
+    faChevronDown
 } from "@fortawesome/free-solid-svg-icons";
 
-import Select, { components } from 'react-select';
+import StateManager, { components } from 'react-select';
 import { Styles } from 'react-select/src/styles';
 import { ValueContainerProps } from 'react-select/src/components/containers';
 import { ControlProps } from 'react-select/src/components/Control';
@@ -125,7 +124,7 @@ export type BaseOptionType = {
     label: any;
 }
 
-export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti, isNavbar = false }: { options: GroupedOptionsType<OptionType> | OptionsType<OptionType>, isMulti: boolean, isNavbar?: boolean }) => {
+export const Select = <OptionType extends BaseOptionType>({ options, isMulti, isNavbar = false }: { options: GroupedOptionsType<OptionType> | OptionsType<OptionType>, isMulti: boolean, isNavbar?: boolean }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [values, setValues] = useState<OptionType[] | undefined>(undefined);
     const [inputValue, setInputValue] = useState("");
@@ -240,7 +239,7 @@ export const Select2 = <OptionType extends BaseOptionType>({ options, isMulti, i
                 </Button>
             }
         >
-            <Select
+            <StateManager
                 autoFocus
                 backspaceRemovesValue={false}
                 components={{ NoOptionsMessage, DropdownIndicator: null, IndicatorSeparator: null, Option, Control, ValueContainer, Input, Placeholder }}

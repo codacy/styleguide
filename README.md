@@ -1,15 +1,20 @@
 # Codacy Styleguide
 
-## Use
+## Parts
 
-### Install Dependencies
+* [components](./components) - Custom react components
+* [stylesheets](./stylesheets) - Codacy stylesheets
+* [website](./website) - Codacy styleguide react website
+* [website-legacy](./website-legacy) - Codacy styleguide legacy website
+
+### Develop
+
+#### Install Dependencies
 
 ```sh
 yarn
 yarn bolt:install
 ```
-
-### Develop
 
 #### React Components
 
