@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  codacy: codacy/base@0.0.13
+  codacy: codacy/base@0.3.0
 
 references:
   setup_aws_credentials: &setup_aws_credentials
@@ -17,6 +17,13 @@ references:
         source_profile = default
         role_arn = arn:aws:iam::$AWS_ACCOUNT_ID_INTEGRATION:role/$CONTINUOUS_DELIVERY_ROLE
         region=eu-west-1
+
+  release_filter: &release_filter
+    filters:
+      branches:
+        only:
+          - master
+          - refactor-for-release
 
 jobs:
   test_edge_lambda:
@@ -154,10 +161,10 @@ jobs:
             yarn -v
       # TODO: add npm cache
       # TODO: add gem cache
-      # - run:
-      #     name: Setup npm credentials
-      #     command: |
-      #       echo -e "//registry.npmjs.org/:_authToken=$NPM_TOKEN\nsave-exact=true" > ~/.npmrc
+      - run:
+          name: Setup npm credentials
+          command: |
+            echo -e "//registry.npmjs.org/:_authToken=$NPM_TOKEN\nsave-exact=true" > ~/.npmrc
       - run:
           name: Publish packages
           command: |
@@ -202,18 +209,12 @@ workflows:
           requires:
             - codacy/checkout_and_version
       - create_stack_react_website:
-          filters:
-            branches:
-              only:
-                - master
+          <<: *release_filter
           context: CodacyAWS
           requires:
             - test_edge_lambda
       - create_stack_legacy_website:
-          filters:
-            branches:
-              only:
-                - master
+          <<: *release_filter
           context: CodacyAWS
           requires:
             - test_edge_lambda
@@ -221,32 +222,24 @@ workflows:
           requires:
             - codacy/checkout_and_version
       - publish_packages:
+          <<: *release_filter
           requires:
             - build_packages
           context: CodacyNPM
-          filters:
-            branches:
-              only:
-                - master
       - upload_react_website:
-          filters:
-            branches:
-              only:
-                - master
+          <<: *release_filter
           context: CodacyAWS
           requires:
             - create_stack_react_website
             - build_packages
       - upload_website_legacy:
-          filters:
-            branches:
-              only:
-                - master
+          <<: *release_filter
           context: CodacyAWS
           requires:
             - create_stack_legacy_website
             - build_packages
       - codacy/tag_version:
+          <<: *release_filter
           context: CodacyAWS
           name: tag_version
           requires:
