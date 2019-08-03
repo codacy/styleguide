@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button, ButtonGroup, Col, Grid, MenuItem, Panel, Row, SplitButton, FormGroup, ControlLabel, FormControl, OverlayTrigger, Tooltip, InputGroup, Clearfix } from 'react-bootstrap';
-import { CodeExample, ColorCard, Checkbox, InputWithCheckbox , Switch, Select} from '@codacy/react-components';
+import { CodeExample, ColorCard, Checkbox , InputWithCheckbox, Switch, Select} from '@codacy/react-components';
+
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 

@@ -327,7 +327,10 @@ const Input = ({
     ...props
 }: InputProps) => (
         <input
-            className="form-control"
+            css={getStyles('input', { theme, ...props })}
+            // @ts-ignore
+            className={cx({ input: true }, className)}
+            // className="form-control"
             // @ts-ignore
             ref={innerRef}
             disabled={isDisabled}

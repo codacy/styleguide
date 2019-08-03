@@ -9,14 +9,14 @@
     "@codacy/stylesheets": "*",
     "grunt": "^1.0.4",
     "grunt-cli": "^1.3.2",
-    "nan": "^2.14.0",
-    "ruby-sass": "0.0.3",
-    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-connect": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-nodeunit": "^2.0.0",
     "grunt-contrib-uglify": "^4.0.1",
-    "grunt-contrib-watch": "^1.0.0"
+    "grunt-contrib-watch": "^1.0.0",
+    "nan": "^2.14.0",
+    "ruby-sass": "0.0.3"
   },
   "scripts": {
     "prepare": "npm run build",
