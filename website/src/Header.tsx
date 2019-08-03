@@ -15,7 +15,7 @@ export const Header = () => {
                 <Select options={[
                         { value: 'codacy', label: 'Codacy' },
                         { value: 'code-climate', label: 'Code Climate' }
-                    ]} isMulti={false} isNavbar={true} />
+                    ]} isNavbar={true} searchProps={{ isSearchable: true }} />
             </Nav >
             <Nav pullRight>
                 <NavItem eventKey={1} href="#">

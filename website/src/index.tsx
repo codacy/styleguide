@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button, ButtonGroup, Col, Grid, MenuItem, Panel, Row, SplitButton, FormGroup, ControlLabel, FormControl, OverlayTrigger, Tooltip, InputGroup, Clearfix } from 'react-bootstrap';
-import { CodeExample, ColorCard, Checkbox , InputWithCheckbox, Switch, Select} from '@codacy/react-components';
+import { CodeExample, ColorCard, Checkbox, InputWithCheckbox, Switch, Select } from '@codacy/react-components';
 
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
@@ -25,6 +25,14 @@ const imageOptions = [
 ];
 
 const simpleOptions = [
+  { value: 'codacy', label: 'Codacy' },
+  { value: 'code-climate', label: "Code Climate" },
+  { value: 'sonar-cloud', label: "Sonar Cloud" },
+  { value: 'circle-ci', label: "Circle Ci" },
+  { value: 'tc', label: "Tc" }
+];
+
+const simpleGroupedOptions = [
   {
     label: 'Cool Tools',
     options: [
@@ -143,11 +151,17 @@ const App = () => {
             </div>
             <section>
               <h1>React Select Simple Options</h1>
-              <Select options={simpleOptions} isMulti={false} />
+              <Select options={simpleOptions} />
+              <h1>React Select Simple Searchable Options</h1>
+              <Select options={simpleOptions} searchProps={{ isSearchable: true }} />
+              <h1>React Select Grouped Simple Options</h1>
+              <Select options={simpleGroupedOptions} />
               <h1>React Select Simple Options Multi</h1>
               <Select options={simpleOptions} isMulti={true} />
               <h1>React Select Image Options</h1>
-              <Select options={imageOptions} isMulti={false} />
+              <Select options={imageOptions} />
+              <h1>React Select Image Options Searcheable</h1>
+              <Select options={imageOptions} searchProps={{ isSearchable: true }} />
             </section>
             <section id="colors">
               <h1>Colour Palette</h1>
@@ -1009,7 +1023,7 @@ const App = () => {
                           <p>
                             <a href="#">Portal</a> has
                                   <strong>broken the build 7 times</strong> in the last
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      2 days.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    2 days.
                                   </p>
                         </div>
                       </div>
