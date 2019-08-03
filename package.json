@@ -15,12 +15,12 @@
     "build:stylesheets": "bolt w @codacy/stylesheets run build",
     "build:website": "bolt w @codacy/react-styleguide-website run build",
     "build:website-legacy": "bolt w @codacy/styleguide-website-legacy run build",
-    "watch:components": "sane 'yarn run build:components' components --glob='**/*.*' --ignored='build/**'",
-    "watch:stylesheets": "sane 'yarn run build:stylesheets' stylesheets --glob='**/*.*' --ignored='dist/**'",
+    "start:stylesheets": "sane 'yarn run build:stylesheets' stylesheets --glob='**/*.*' --ignored='dist/**'",
+    "start:components": "bolt w @codacy/react-components run start",
     "start:website": "bolt w @codacy/react-styleguide-website run start",
+    "start:website-and-dependencies": "concurrently 'npm:start:stylesheets' 'npm:start:components' 'npm:start:website'",
     "start:website-legacy": "bolt w @codacy/styleguide-website-legacy run start",
-    "watch:website": "concurrently 'npm:watch:components' 'npm:watch:stylesheets' 'npm:start:website'",
-    "watch:website-legacy": "concurrently 'npm:watch:stylesheets' 'npm:start:website-legacy'"
+    "start:website-legacy-and-dependencies": "concurrently 'npm:start:stylesheets' 'npm:start:website-legacy'"
   },
   "dependencies": {
     "bolt": "^0.23.6",

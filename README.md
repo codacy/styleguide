@@ -2,10 +2,10 @@
 
 ## Parts
 
-* [components](./components) - Custom react components
-* [stylesheets](./stylesheets) - Codacy stylesheets
-* [website](./website) - Codacy styleguide react website
-* [website-legacy](./website-legacy) - Codacy styleguide legacy website
+- [components](./components) - Custom react components
+- [stylesheets](./stylesheets) - Codacy stylesheets
+- [website](./website) - Codacy styleguide react website
+- [website-legacy](./website-legacy) - Codacy styleguide legacy website
 
 ### Develop
 
@@ -14,6 +14,20 @@
 ```sh
 yarn
 yarn bolt:install
+```
+
+#### React Website
+
+```sh
+# yarn start:website # Just rebuilds the website without updating on dependency changes
+yarn start:website-and-dependencies
+```
+
+#### Legacy Website
+
+```sh
+# yarn start:website-legacy # Just rebuilds the website without updating on dependency changes
+yarn start:website-legacy-and-dependencies
 ```
 
 #### React Components
@@ -26,18 +40,6 @@ yarn build:components
 
 ```sh
 yarn build:stylesheets
-```
-
-#### React Website
-
-```sh
-yarn watch:website
-```
-
-#### Legacy Website
-
-```sh
-yarn watch:website-legacy
 ```
 
 #### Others

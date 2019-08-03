@@ -1,15 +1,14 @@
+/** @jsx jsx */
+
 import React from 'react';
 import { useState } from 'react';
 
 import { Button } from 'react-bootstrap';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faCheck,
-    faChevronUp,
-    faChevronDown
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
+import { jsx } from '@emotion/core';
 import StateManager, { components } from 'react-select';
 import { Styles } from 'react-select/src/styles';
 import { ValueContainerProps } from 'react-select/src/components/containers';
@@ -20,7 +19,259 @@ import { OptionProps } from 'react-select/src/components/Option';
 import { InputProps } from 'react-select/src/components/Input';
 import { PlaceholderProps } from 'react-select/src/components/Placeholder';
 
-const normalSelect: Partial<Styles> = {
+export type BaseOptionType = {
+    value: string;
+    label: any;
+}
+
+export type SelectProps<OptionType> = {
+    options: GroupedOptionsType<OptionType> | OptionsType<OptionType>;
+    isMulti: boolean;
+    isNavbar?: boolean;
+    optionTypeName?: string;
+}
+
+export const Select = <OptionType extends BaseOptionType>(
+    { options, isMulti = false, isNavbar = false, optionTypeName = 'value' }: SelectProps<OptionType>
+) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [values, setValues] = useState<OptionType[] | undefined>(undefined);
+    const [inputValue, setInputValue] = useState("");
+    const value = values && values[0];
+
+    const NoOptionsMessage = <OptionType extends BaseOptionType>(props: NoticeProps<OptionType>) => {
+        return (
+            <div key="feedback" style={{
+                padding: '3px 16px',
+                color: isNavbar ? '#e5ecf5' : '#101e35'
+            }}>
+                No results matched "{inputValue}"
+            </div>
+        );
+    };
+
+    const toggleOpen = () => setIsOpen(!isOpen);
+
+    const onInputChange = (newValue: string, actionMeta: InputActionMeta) => {
+        switch (actionMeta.action) {
+            case 'set-value':
+                setInputValue("");
+                break;
+            case 'input-change':
+                setInputValue(newValue);
+                break;
+            default: // Ignore
+        }
+    }
+
+    const onSelectChange = (value: ValueType<OptionType>, actionMeta: ActionMeta) => {
+        toggleOpen();
+
+        if (value === undefined || value === null) {
+            console.error("Received no value in onSelectChange")
+            return;
+        }
+
+        const valueArray: OptionType[] = value instanceof Array ? value : [value]
+
+        switch (actionMeta.action) {
+            case 'select-option':
+                if (isMulti) {
+                    setValues(valueArray)
+                } else if (valueArray.length === 2) {
+                    setValues([valueArray[1]])
+                } else {
+                    setValues(valueArray)
+                }
+                break;
+            case 'deselect-option':
+                setValues(valueArray);
+                break;
+            case 'clear':
+                setValues(undefined);
+                break;
+            default:
+                console.error(`Could not process ActionMeta.Action:${actionMeta.action}`);
+        }
+    };
+
+    // TODO: Refactor to it's own method and allow customization
+    let valueDisplay = "";
+    if (isMulti) {
+        if (values && values.length > 0 && values.length < 3) {
+            valueDisplay = values.map((v) => v.label).join(", ");
+        } else if (values && values.length > 0) {
+            valueDisplay = `Selected ${values.length} ${optionTypeName}s`;
+        } else {
+            valueDisplay = `Select a ${optionTypeName}`;
+        }
+    } else {
+        if (value) {
+            valueDisplay = value.label;
+        } else {
+            valueDisplay = valueDisplay = `Select a ${optionTypeName}`;
+        }
+    }
+
+    return (
+        <Dropdown
+            isOpen={isOpen}
+            onClose={toggleOpen}
+            target={
+                <Button
+                    bsStyle={isOpen ? "select open" : "select"}
+                    onClick={toggleOpen}
+                >
+                    <span>
+                        <span>{valueDisplay}</span>
+                    </span>
+                    <FontAwesomeIcon
+                        style={{ margin: "0 5px" }}
+                        icon={isOpen ? faChevronUp : faChevronDown}
+                        size="xs"
+                    />
+                </Button>
+            }
+        >
+            <StateManager
+                autoFocus
+                backspaceRemovesValue={false}
+                components={{ Control, DropdownIndicator: null, Input, IndicatorSeparator: null, NoOptionsMessage, Option, Placeholder, ValueContainer }}
+                controlShouldRenderValue={false}
+                hideSelectedOptions={false}
+                isClearable={false}
+                menuIsOpen
+                // @ts-ignore
+                onChange={onSelectChange}
+                onInputChange={onInputChange}
+                options={options}
+                placeholder="Search..."
+                styles={isNavbar ? navStyles : defaultStyles}
+                tabSelectsValue={false}
+                value={isMulti ? values : value}
+                isMulti={isMulti}
+            />
+        </Dropdown>
+    );
+};
+
+// Styled components
+
+const Menu = (props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
+    return (
+        <div {...props} />
+    );
+};
+
+const Blanket = (props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => (
+    <div
+        style={{
+            bottom: 0,
+            left: 0,
+            top: 0,
+            right: 0,
+            position: 'fixed',
+            zIndex: 1,
+        }}
+        {...props}
+    />
+);
+
+const Dropdown = ({ children, isOpen, target, onClose }: { children: React.ReactNode, isOpen: boolean, target: React.ReactElement, onClose: () => void }) => (
+    <div style={{ display: 'inline-block' }}>
+        {target}
+        {isOpen ? <Menu>{children}</Menu> : null}
+        {isOpen ? <Blanket onClick={onClose} /> : null}
+    </div>
+);
+
+const Control = <OptionType extends BaseOptionType>(props: ControlProps<OptionType>) => {
+    const {
+        children,
+        cx,
+        getStyles,
+        className,
+        isDisabled,
+        isFocused,
+        innerRef,
+        innerProps,
+        // @ts-ignore
+        menuIsOpen
+    } = props;
+    return (
+        <div
+            ref={innerRef}
+            css={getStyles('control', props)}
+            // @ts-ignore
+            className={cx(
+                {
+                    control: true,
+                    'control--is-disabled': isDisabled,
+                    'control--is-focused': isFocused,
+                    'control--menu-is-open': menuIsOpen,
+                },
+                className
+            )}
+            {...innerProps}
+        >
+            {children}
+        </div>
+    );
+};
+
+const ValueContainer = <OptionType extends BaseOptionType>(props: ValueContainerProps<OptionType>) => {
+    const { children } = props;
+    return (
+        <React.Fragment>
+            {children} {/* [[Placeholder], Input] */}
+        </React.Fragment>
+    );
+};
+
+const Input = ({
+    className,
+    cx,
+    getStyles,
+    innerRef,
+    isHidden,
+    isDisabled,
+    // @ts-ignore
+    theme,
+    // @ts-ignore
+    selectProps,
+    ...props
+}: InputProps) => (
+        <input
+            css={getStyles('input', { theme, ...props })}
+            // @ts-ignore
+            className={cx({ input: true }, className || 'form-control')}
+            // @ts-ignore
+            ref={innerRef}
+            disabled={isDisabled}
+            placeholder="Search..."
+            {...props}
+        />
+    );
+
+const Placeholder = <OptionType extends BaseOptionType>(props: PlaceholderProps<OptionType>) => (
+    <React.Fragment />
+);
+
+const Option = <OptionType extends BaseOptionType>(props: OptionProps<OptionType>) => {
+    return (
+        <components.Option {...props}>
+            {props.children}
+            {(props.isMulti && props.isSelected) ?
+                <FontAwesomeIcon
+                    style={{ float: 'right', height: '20px', color: '#2a6cff' }}
+                    icon={faCheck}
+                    size="1x"
+                /> : null}
+        </components.Option>
+    );
+};
+
+const defaultStyles: Partial<Styles> = {
     container: () => ({
         backgroundColor: 'white',
         borderRadius: 3,
@@ -30,6 +281,9 @@ const normalSelect: Partial<Styles> = {
         marginTop: 2,
         minWidth: 160,
         zIndex: 2
+    }),
+    control: () => ({
+        margin: '5px 8px'
     }),
     menu: () => ({
         minWidth: 160,
@@ -67,7 +321,7 @@ const normalSelect: Partial<Styles> = {
     })
 };
 
-const navbarSelect: Partial<Styles> = {
+const navStyles: Partial<Styles> = {
     container: () => ({
         backgroundColor: '#15294a',
         borderRadius: 2,
@@ -75,6 +329,9 @@ const navbarSelect: Partial<Styles> = {
         marginTop: 5,
         minWidth: 160,
         zIndex: 2
+    }),
+    control: () => ({
+        margin: '5px 8px'
     }),
     menu: () => ({
         minWidth: 160,
@@ -117,243 +374,4 @@ const navbarSelect: Partial<Styles> = {
         backgroundColor: 'transparent',
         fontWeight: state.isSelected ? 700 : undefined
     })
-};
-
-export type BaseOptionType = {
-    value: string;
-    label: any;
-}
-
-export const Select = <OptionType extends BaseOptionType>({ options, isMulti, isNavbar = false }: { options: GroupedOptionsType<OptionType> | OptionsType<OptionType>, isMulti: boolean, isNavbar?: boolean }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [values, setValues] = useState<OptionType[] | undefined>(undefined);
-    const [inputValue, setInputValue] = useState("");
-    const value = values && values[0];
-
-    const NoOptionsMessage = <OptionType extends BaseOptionType>(props: NoticeProps<OptionType>) => {
-        return (
-            <div key="feedback" style={{
-                padding: '3px 16px',
-                color: isNavbar ? '#e5ecf5' : '#101e35'
-            }}>
-                No results matched "{inputValue}"
-            </div>
-        );
-    };
-
-    const toggleOpen = () => setIsOpen(!isOpen);
-
-    const onInputChange = (newValue: string, actionMeta: InputActionMeta) => {
-        switch (actionMeta.action) {
-            case 'set-value':
-                setInputValue("");
-                break;
-            case 'input-change':
-                setInputValue(newValue);
-                break;
-            default:
-            // Ignore
-        }
-    }
-
-    const onSelectChange = (value: ValueType<OptionType>, actionMeta: ActionMeta) => {
-        toggleOpen();
-
-        console.log("Select2.onSelectChange| ", "values: ", values, "value: ", value, "actionMeta: ", actionMeta);
-
-        if (value === undefined || value === null) {
-            console.error("Received no value in onSelectChange")
-            return;
-        }
-
-        const valueArray: OptionType[] = value instanceof Array ? value : [value]
-
-        switch (actionMeta.action) {
-            case 'select-option':
-                if (isMulti) {
-                    setValues(valueArray)
-                } else if (valueArray.length === 2) {
-                    setValues([valueArray[1]])
-                } else {
-                    setValues(valueArray)
-                }
-                break;
-            case 'deselect-option':
-                setValues(valueArray);
-                break;
-            case 'remove-value':
-                console.error(`No action defined for ActionMeta.Action:${actionMeta.action}`);
-                break;
-            case 'pop-value':
-                console.error(`No action defined for ActionMeta.Action:${actionMeta.action}`);
-                break;
-            case 'set-value':
-                console.error(`No action defined for ActionMeta.Action:${actionMeta.action}`);
-                break;
-            case 'clear':
-                setValues(undefined);
-                break;
-            case 'create-option':
-                console.error(`No action defined for ActionMeta.Action:${actionMeta.action}`);
-                break;
-            default:
-                console.error(`Could not recognize ActionMeta.Action:${actionMeta.action}`);
-        }
-    };
-
-    let valueDisplay = "";
-    if (isMulti) {
-        if (values && values.length > 0 && values.length < 3) {
-            valueDisplay = values.map((v) => v.label).join(", ");
-        } else if (values && values.length > 0) {
-            valueDisplay = `Selected ${values.length} values`;
-        } else {
-            valueDisplay = 'Select a State';
-        }
-    } else {
-        if (value) {
-            valueDisplay = value.label;
-        } else {
-            valueDisplay = valueDisplay = 'Select a State';
-        }
-    }
-
-    return (
-        <Dropdown
-            isOpen={isOpen}
-            onClose={toggleOpen}
-            target={
-                <Button
-                    bsStyle={isOpen ? "select open" : "select"}
-                    onClick={toggleOpen}
-                >
-                    <span>
-                        {/* {value ? <span>State: {value.label}</span> : 'Select a State'} */}
-                        <span>{valueDisplay}</span>
-                    </span>
-                    <FontAwesomeIcon
-                        style={{ margin: "0 5px" }}
-                        icon={isOpen ? faChevronUp : faChevronDown}
-                        size="xs"
-                    />
-                </Button>
-            }
-        >
-            <StateManager
-                autoFocus
-                backspaceRemovesValue={false}
-                components={{ NoOptionsMessage, DropdownIndicator: null, IndicatorSeparator: null, Option, Control, ValueContainer, Input, Placeholder }}
-                controlShouldRenderValue={false}
-                hideSelectedOptions={false}
-                isClearable={false}
-                menuIsOpen
-                // @ts-ignore
-                onChange={onSelectChange}
-                onInputChange={onInputChange}
-                options={options}
-                placeholder="Search..."
-                styles={isNavbar ? navbarSelect : normalSelect}
-                tabSelectsValue={false}
-                value={isMulti ? values : value}
-                isMulti={isMulti}
-            />
-        </Dropdown>
-    );
-};
-
-// Styled components
-
-const Menu = (props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
-    return (
-        <div {...props} />
-    );
-};
-
-const Blanket = (props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => (
-    <div
-        style={{
-            bottom: 0,
-            left: 0,
-            top: 0,
-            right: 0,
-            position: 'fixed',
-            zIndex: 1,
-        }}
-        {...props}
-    />
-);
-
-const Dropdown = ({ children, isOpen, target, onClose }: { children: React.ReactNode, isOpen: boolean, target: React.ReactElement, onClose: () => void }) => (
-    <div style={{ display: 'inline-block' }}>
-        {target}
-        {isOpen ? <Menu>{children}</Menu> : null}
-        {isOpen ? <Blanket onClick={onClose} /> : null}
-    </div>
-);
-
-const Control = <OptionType extends BaseOptionType>(props: ControlProps<OptionType>) => {
-    const {
-        children,
-        innerRef,
-        innerProps
-    } = props;
-    return (
-        <div ref={innerRef} {...innerProps} style={{ margin: '5px 8px' }}>
-            {children}
-        </div>
-    );
-};
-
-const ValueContainer = <OptionType extends BaseOptionType>(props: ValueContainerProps<OptionType>) => {
-    const { children } = props;
-    return (
-        <React.Fragment>
-            {children} {/* [[Placeholder], Input] */}
-        </React.Fragment>
-    );
-};
-
-const Input = ({
-    className,
-    cx,
-    getStyles,
-    innerRef,
-    isHidden,
-    isDisabled,
-    // @ts-ignore
-    theme,
-    // @ts-ignore
-    selectProps,
-    ...props
-}: InputProps) => (
-        <input
-            css={getStyles('input', { theme, ...props })}
-            // @ts-ignore
-            className={cx({ input: true }, className)}
-            // className="form-control"
-            // @ts-ignore
-            ref={innerRef}
-            disabled={isDisabled}
-            //hidden={isHidden}
-            placeholder="Search..."
-            {...props}
-        />
-    );
-
-const Placeholder = <OptionType extends BaseOptionType>(props: PlaceholderProps<OptionType>) => (
-    <React.Fragment />
-);
-
-const Option = <OptionType extends BaseOptionType>(props: OptionProps<OptionType>) => {
-    return (
-        <components.Option {...props}>
-            {props.children}
-            {(props.isSelected && props.isMulti) ?
-                <FontAwesomeIcon
-                    style={{ float: 'right', height: '20px', color: '#2a6cff' }}
-                    icon={faCheck}
-                    size="1x"
-                /> : null}
-        </components.Option>
-    );
 };
