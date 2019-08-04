@@ -39,6 +39,6 @@ To set path environment on windows `set PATH=C:\Ruby200-x64\bin;%PATH%`
 - Ensure that npm is up-to-date
   `npm update -g npm`
 
-### Who do I talk to?
+### Who do I talk to
 
 - Inês Isabel for questions about how to use and yada yada

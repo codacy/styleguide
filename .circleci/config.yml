@@ -23,7 +23,6 @@ references:
       branches:
         only:
           - master
-          - refactor-for-release
 
 jobs:
   test_edge_lambda:
@@ -179,16 +178,30 @@ jobs:
       - run:
           name: Publish packages
           command: |
+            # Set git commit settings
             git config --global user.email "circleci@codacy.com"
             git config --global user.name "CircleCI Codacy Bot"
+            # Update version in packages to publish
             yarn bolt w @codacy/react-components yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version)
             yarn bolt w @codacy/stylesheets yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version)
+            # Stage and create commit with version changes
             git add -A .
             git commit -m "Releasing version $(cat .version) [skip ci]"
-            git tag "$(cat .version)"
+            # Publish package versions to npmjs.org
             yarn bolt publish
+            # Update published versions in the website packages
+            yarn bolt w @codacy/styleguide-website-legacy add "@codacy/stylesheets@$(cat .version)"
+            yarn bolt w @codacy/react-styleguide-website add "@codacy/stylesheets@$(cat .version)"
+            yarn bolt w @codacy/react-styleguide-website add "@codacy/react-components@$(cat .version)"
+            # Stage and ammend previous commit with version changes
+            git add -A .
+            git commit --amend --no-edit
+            # Tag this release
+            git tag "$(cat .version)"
+            # Download github.com ssh key signature
             mkdir -p ~/.ssh
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+            # Push commit and tag
             git push origin $CIRCLE_BRANCH
             git push origin --tags
       - run:

@@ -3,7 +3,7 @@
   "version": "0.4.0-refactorforrelease.471003a",
   "repository": "git+https://github.com/codacy/styleguide.git",
   "author": "Inês Pinto <ines@codacy.com>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "codacy",
     "styleguide",
@@ -30,8 +30,6 @@
   "style": "dist/out/css/template.css",
   "sass": "style/codacy/template.scss",
   "files": [
-    "dist/out/{css,scss}/*.{css,scss}",
-    "style/**/*.scss",
-    "images/**/*.svg"
+    "dist/out/{css,scss}/*.{css,scss}"
   ]
 }

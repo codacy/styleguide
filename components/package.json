@@ -4,7 +4,7 @@
   "description": "Codacy React Components",
   "repository": "git+https://github.com/codacy/styleguide.git",
   "author": "Rodrigo Fernandes <rodrigo@codacy.com>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "codacy",
     "react",
@@ -13,8 +13,7 @@
   "main": "./build/index.js",
   "typings": "./build/index.d.ts",
   "files": [
-    "build/*.{js,ts}",
-    "src/*.{ts,tsx}"
+    "build/*.{js,ts}"
   ],
   "scripts": {
     "start": "NODE_ENV=development babel -w ./src --out-dir ./build --extensions \".ts,.tsx\"",

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Codacy Styleguide Monorepo",
   "private": true,
+  "license": "Apache-2.0",
   "repository": "git+https://github.com/codacy/styleguide.git",
   "author": "Rodrigo Fernandes <rodrigo@codacy.com>",
   "scripts": {

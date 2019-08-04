@@ -36,6 +36,6 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Who do I talk to?
+### Who do I talk to
 
 - Inês Isabel for questions about how to use and yada yada

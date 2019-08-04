@@ -42,7 +42,3 @@ const MyPageComponent = () => {
   return <Checkbox id="my-checkbox-id" name="my-checkbox"/>;
 };
 ```
-
----
-
-MIT License

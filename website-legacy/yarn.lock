@@ -90,8 +90,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@codacy/stylesheets@*":
-  version "0.1.0"
+"@codacy/stylesheets@0.4.0-refactorforrelease.471003a":
+  version "0.4.0-refactorforrelease.471003a"
+  resolved "https://registry.yarnpkg.com/@codacy/stylesheets/-/stylesheets-0.4.0-refactorforrelease.471003a.tgz#b64c60b5cd1ce479cdd8a71ce09210ccd31acf07"
+  integrity sha512-kc/Cdr/bc6W7sKWT37T8YrZilDUiLIWI2rgz6rq+KO12WRd+Vox/YrNIj/XzKTZCNRio0IOQkIlChEOIHgS+qA==
 
 abbrev@1:
   version "1.1.1"
