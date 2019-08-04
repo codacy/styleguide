@@ -1,7 +1,7 @@
 # Codacy Styleguide Legacy Website
 
 This is the Codacy awesome styleguide website.
-It will include components, code snippets and how to use then.
+It will include components, code snippets and how to use them.
 
 ### Installation and Running
 

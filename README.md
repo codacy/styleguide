@@ -1,7 +1,11 @@
 # Codacy Styleguide
 
-## Parts
+This is the Codacy awesome styleguide repository.
+It will include components, code snippets and how to use them.
 
+## Structure
+
+- [.aws](./.aws) - Deployment scripts and configurations
 - [components](./components) - Custom react components
 - [stylesheets](./stylesheets) - Codacy stylesheets
 - [website](./website) - Codacy styleguide react website
