@@ -18,12 +18,12 @@
   ],
   "scripts": {
     "start": "NODE_ENV=development babel -w ./src --out-dir ./build --extensions \".ts,.tsx\"",
-    "build": "NODE_ENV=production npm run clean && babel ./src --out-dir ./build --extensions \".ts,.tsx\" && tsc",
+    "build": "NODE_ENV=production yarn run clean && babel ./src --out-dir ./build --extensions \".ts,.tsx\" && tsc",
     "clean": "rimraf build",
     "format": "prettier --trailing-comma es5 --single-quote --write 'src/**/*' 'README.md'",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepare": "npm run build",
+    "prepare": "yarn run build",
     "precommit": "lint-staged",
     "deploy": "np"
   },
@@ -96,7 +96,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx}": [
-      "npm run format",
+      "yarn run format",
       "git add"
     ]
   },

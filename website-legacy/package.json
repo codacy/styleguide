@@ -14,12 +14,10 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-nodeunit": "^2.0.0",
     "grunt-contrib-uglify": "^4.0.1",
-    "grunt-contrib-watch": "^1.0.0",
-    "nan": "^2.14.0",
-    "ruby-sass": "0.0.3"
+    "grunt-contrib-watch": "^1.1.0"
   },
   "scripts": {
-    "prepare": "npm run build",
+    "prepare": "yarn run build",
     "build": "grunt dist",
     "start": "grunt"
   }

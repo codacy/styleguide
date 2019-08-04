@@ -118,7 +118,8 @@ jobs:
             yarn -v
       - run:
           name: Install SASS dependencies
-          command: gem install sass dnode compass
+          # command: gem install sass dnode compass
+          command: gem install compass
       # TODO: add npm cache
       # TODO: add gem cache
       - run:

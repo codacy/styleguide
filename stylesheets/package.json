@@ -12,7 +12,7 @@
   "scripts": {
     "build": "grunt",
     "clean": "rimraf dist",
-    "prepare": "npm run build"
+    "prepare": "yarn run build"
   },
   "devDependencies": {
     "grunt": "^1.0.4",
@@ -23,9 +23,7 @@
     "grunt-contrib-cssmin": "^3.0.0",
     "grunt-contrib-imagemin": "^3.1.0",
     "grunt-contrib-sass": "^1.0.0",
-    "nan": "^2.14.0",
-    "rimraf": "^2.6.3",
-    "ruby-sass": "0.0.3"
+    "rimraf": "^2.6.3"
   },
   "main": "dist/out/css/template.css",
   "browser": "dist/out/css/template.css",

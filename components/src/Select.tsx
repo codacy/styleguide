@@ -30,7 +30,7 @@ export type SelectSearchProps = {
 export type SelectProps<OptionType> = {
     options: GroupedOptionsType<OptionType> | OptionsType<OptionType>;
     defaultValues?: OptionType[],
-    onChange: (values: OptionType[] | undefined) => void;
+    onChange?: (values: OptionType[] | undefined) => void;
     isMulti?: boolean;
     isNavbar?: boolean;
     optionTypeName?: string;
@@ -41,7 +41,7 @@ export const Select = <OptionType extends BaseOptionType>(
     {
         options,
         defaultValues,
-        onChange,
+        onChange = () => { },
         isMulti = false,
         isNavbar = false,
         optionTypeName = 'value',
