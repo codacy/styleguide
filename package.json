@@ -8,8 +8,6 @@
   "scripts": {
     "bolt": "bolt",
     "bolt:install": "bolt install",
-    "bolt:version": "bolt w @codacy/react-components yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version) && bolt w @codacy/stylesheets yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version) && git add -A . && git commit -m \"Releasing version $(cat .version)\" && git tag $(cat .version)",
-    "bolt:publish": "bolt w @codacy/react-components yarn publish --non-interactive --new-version $(cat .version) && bolt w @codacy/stylesheets yarn publish --non-interactive --new-version $(cat .version)",
     "build": "concurrently 'yarn:build:components' 'yarn:build:stylesheets' 'yarn:build:website' 'yarn:build:website-legacy'",
     "build:components": "bolt w @codacy/react-components run build",
     "build:stylesheets": "bolt w @codacy/stylesheets run build",

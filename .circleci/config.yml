@@ -160,19 +160,41 @@ jobs:
           command: |
             node -v
             yarn -v
+      - run:
+          name: Install SASS dependencies
+          # command: gem install sass dnode compass
+          command: gem install compass
       # TODO: add npm cache
       # TODO: add gem cache
       - run:
           name: Setup npm credentials
           command: |
-            echo -e "//registry.npmjs.org/:_authToken=$NPM_TOKEN\nsave-exact=true" > ~/.npmrc
+            npm config set @codacy:registry https://registry.npmjs.org/
+            npm config set _authToken $NPM_TOKEN
+            npm config set access public
+            npm config set save-exact true
+      - add_ssh_keys:
+          fingerprints:
+          - "df:83:d7:c7:d5:79:06:c2:3b:d1:fd:e2:a3:d1:12:c5"
       - run:
           name: Publish packages
           command: |
             git config --global user.email "circleci@codacy.com"
             git config --global user.name "CircleCI Codacy Bot"
-            yarn run bolt:version
-            yarn run bolt:publish
+            yarn bolt w @codacy/react-components yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version)
+            yarn bolt w @codacy/stylesheets yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version)
+            git add -A .
+            git commit -m "Releasing version $(cat .version) [skip ci]"
+            git tag "$(cat .version)"
+            yarn bolt publish
+            mkdir -p ~/.ssh
+            ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+            git push origin $CIRCLE_BRANCH
+            git push origin --tags
+      - run:
+          name: Publish Stylesheets WebJar
+          command: |
+            curl -X GET "https://www.webjars.org/deploy?webJarType=npm&nameOrUrlish=@codacy/stylesheets&version=$(cat .version)"
 
   upload_react_website:
     docker:
@@ -239,10 +261,3 @@ workflows:
           requires:
             - create_stack_legacy_website
             - build_packages
-      - codacy/tag_version:
-          <<: *release_filter
-          context: CodacyAWS
-          name: tag_version
-          requires:
-            - upload_react_website
-            - upload_website_legacy
