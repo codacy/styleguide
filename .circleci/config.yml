@@ -61,9 +61,11 @@ jobs:
             npm install -g yarn
             npm config set unsafe-perm false
       - run:
-          name: Remove unneeded files before deployment
+          name: Build auth project
           working_directory: ~/workdir/.aws/src
-          command: yarn
+          command: |
+            yarn
+            md5sum dist/main.js
       - deploy:
           name: Create Cloudformation stack
           command: make aws-create-stack PROJECT_NAME=styleguide-react-website DEPLOYMENT_TYPE=react-website
@@ -89,9 +91,11 @@ jobs:
             npm install -g yarn
             npm config set unsafe-perm false
       - run:
-          name: Remove unneeded files before deployment
+          name: Build auth project
           working_directory: ~/workdir/.aws/src
-          command: yarn
+          command: |
+            yarn
+            md5sum dist/main.js
       - deploy:
           name: Create Cloudformation stack
           command: make aws-create-stack PROJECT_NAME=styleguide-website-legacy DEPLOYMENT_TYPE=website-legacy
@@ -187,17 +191,17 @@ jobs:
             # Stage and create commit with version changes
             git add -A .
             git commit -m "Releasing version $(cat .version) [skip ci]"
+            # Tag this release
+            git tag "$(cat .version)"
             # Publish package versions to npmjs.org
             yarn bolt publish
             # Update published versions in the website packages
             export PUBLISHED_VERSION=$(cat .version)
-            (cd website-legacy && yarn add "@codacy/stylesheets@$PUBLISHED_VERSION")
-            (cd website && yarn add "@codacy/stylesheets@$PUBLISHED_VERSION" && yarn add "@codacy/react-components@$PUBLISHED_VERSION")
-            # Stage and ammend previous commit with version changes
+            (cd website-legacy && rm -rf node_modules && yarn --ignore-scripts && yarn add --ignore-scripts "@codacy/stylesheets@$PUBLISHED_VERSION")
+            (cd website && rm -rf node_modules && yarn --ignore-scripts && yarn add --ignore-scripts "@codacy/stylesheets@$PUBLISHED_VERSION" && yarn add --ignore-scripts "@codacy/react-components@$PUBLISHED_VERSION")
+            # Stage and create commit with version updates
             git add -A .
-            git commit --amend --no-edit
-            # Tag this release
-            git tag "$(cat .version)"
+            git commit -m "Updating dependencies to released version $(cat .version) [skip ci]"
             # Download github.com ssh key signature
             mkdir -p ~/.ssh
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts

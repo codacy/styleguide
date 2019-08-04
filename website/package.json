@@ -7,8 +7,8 @@
   "repository": "git+https://github.com/codacy/styleguide.git",
   "author": "Rodrigo Fernandes <rodrigo@codacy.com>",
   "dependencies": {
-    "@codacy/react-components": "0.4.0-refactorforrelease.471003a",
-    "@codacy/stylesheets": "0.4.0-refactorforrelease.471003a",
+    "@codacy/react-components": "0.4.2",
+    "@codacy/stylesheets": "0.4.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",

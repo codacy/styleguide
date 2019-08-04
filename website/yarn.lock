@@ -937,20 +937,20 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@codacy/react-components@0.4.0-refactorforrelease.471003a":
-  version "0.4.0-refactorforrelease.471003a"
-  resolved "https://registry.yarnpkg.com/@codacy/react-components/-/react-components-0.4.0-refactorforrelease.471003a.tgz#c713a77d59f4b58b8226acac4bac0bfbbcf4a230"
-  integrity sha512-IjtR4H8GtheV0t2bV3fA2vFkLtB3f54xL9+e4eVmQg99BV53S4elnwge4Zch4SD7I9KghfYGNH212OsVekyfHA==
+"@codacy/react-components@0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@codacy/react-components/-/react-components-0.4.2.tgz#16d4fefe443c974817a0207143d809777e681aab"
+  integrity sha512-NXnjXfsPp9HXe7YvLca8fV3Cg4Lv0vfb8xSmxG0g0jicrtaWHMRlX/TRVuo/hF2IDYMZqluEjNI8EViXh8a5wQ==
   dependencies:
     prettier "^1.18.2"
     react-element-to-jsx-string "^14.0.3"
     react-fast-highlight "^2.2.2"
     react-select "^3.0.4"
 
-"@codacy/stylesheets@0.4.0-refactorforrelease.471003a":
-  version "0.4.0-refactorforrelease.471003a"
-  resolved "https://registry.yarnpkg.com/@codacy/stylesheets/-/stylesheets-0.4.0-refactorforrelease.471003a.tgz#b64c60b5cd1ce479cdd8a71ce09210ccd31acf07"
-  integrity sha512-kc/Cdr/bc6W7sKWT37T8YrZilDUiLIWI2rgz6rq+KO12WRd+Vox/YrNIj/XzKTZCNRio0IOQkIlChEOIHgS+qA==
+"@codacy/stylesheets@0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@codacy/stylesheets/-/stylesheets-0.4.2.tgz#e77078f755310154872abb3852b65784079410aa"
+  integrity sha512-4NHUwKnHSHHrm4rQr/2g0qdEmk9Vw3J4pUKeNfbviLQpKr4stXX1kXI8HuelMCKKQy3QKHG3LI3AT7W2FqSlZw==
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
@@ -4663,9 +4663,11 @@ hmac-drbg@^1.0.0:
     minimalistic-crypto-utils "^1.0.1"
 
 hosted-git-info@^2.1.4:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
-  integrity sha512-7T/BxH19zbcCTa8XkMlbK5lTo1WtgkFi3GvdWEyNuc4Vex7/9Dqbnpsf4JMydcfj9HCg4zUWFTL3Za6lapg5/w==
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.2.tgz#a35c3f355ac1249f1093c0c2a542ace8818c171a"
+  integrity sha512-CyjlXII6LMsPMyUzxpTt8fzh5QwzGqPmQXgY/Jyf4Zfp27t/FvfhwoE/8laaMUcMy816CkWF20I7NeQhwwY88w==
+  dependencies:
+    lru-cache "^5.1.1"
 
 hpack.js@^2.1.6:
   version "2.1.6"
@@ -5984,7 +5986,7 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
   integrity sha512-s5kLOcnH0XqDO+FvuaLX8DDjZ18CGFk7VygH40QoKPUQhW4e2rvM0rwUq0t8IQDOwYSeLK01U90OjzBTme2QqA==
 
-kleur@^3.0.2:
+kleur@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
@@ -7932,12 +7934,12 @@ promise@8.0.2:
     asap "~2.0.6"
 
 prompts@^2.0.1:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/prompts/-/prompts-2.1.0.tgz#bf90bc71f6065d255ea2bdc0fe6520485c1b45db"
-  integrity sha512-+x5TozgqYdOwWsQFZizE/Tra3fKvAoy037kOyU6cgz84n8f6zxngLOV4O32kTwt9FcLCxAqw0P/c8rOr9y+Gfg==
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/prompts/-/prompts-2.2.1.tgz#f901dd2a2dfee080359c0e20059b24188d75ad35"
+  integrity sha512-VObPvJiWPhpZI6C5m60XOzTfnYg/xc/an+r9VYymj9WJW3B/DIH+REzjpAACPf8brwPeP+7vz3bIim3S+AaMjw==
   dependencies:
-    kleur "^3.0.2"
-    sisteransi "^1.0.0"
+    kleur "^3.0.3"
+    sisteransi "^1.0.3"
 
 prop-types-extra@^1.0.1:
   version "1.1.0"
@@ -8939,10 +8941,10 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-sisteransi@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.2.tgz#ec57d64b6f25c4f26c0e2c7dd23f2d7f12f7e418"
-  integrity sha512-ZcYcZcT69nSLAR2oLN2JwNmLkJEKGooFMCdvOkFrToUt/WfcRWqhIg4P4KwY4dmLbuyXIx4o4YmPsvMRJYJd/w==
+sisteransi@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.3.tgz#98168d62b79e3a5e758e27ae63c4a053d748f4eb"
+  integrity sha512-SbEG75TzH8G7eVXFSN5f9EExILKfly7SUvVY5DhhYLvfhKqhDFY0OzevWa/zwak0RLRfWS5AvfMWpd9gJvr5Yg==
 
 slash@^1.0.0:
   version "1.0.0"
