@@ -1,9 +1,9 @@
 {
   "name": "@codacy/stylesheets",
-  "version": "0.1.0",
+  "version": "0.4.0-refactorforrelease.471003a",
   "repository": "git+https://github.com/codacy/styleguide.git",
   "author": "Inês Pinto <ines@codacy.com>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "codacy",
     "styleguide",
@@ -12,7 +12,7 @@
   "scripts": {
     "build": "grunt",
     "clean": "rimraf dist",
-    "prepare": "npm run build"
+    "prepare": "yarn run build"
   },
   "devDependencies": {
     "grunt": "^1.0.4",
@@ -23,17 +23,13 @@
     "grunt-contrib-cssmin": "^3.0.0",
     "grunt-contrib-imagemin": "^3.1.0",
     "grunt-contrib-sass": "^1.0.0",
-    "nan": "^2.14.0",
-    "rimraf": "^2.6.3",
-    "ruby-sass": "0.0.3"
+    "rimraf": "^2.6.3"
   },
   "main": "dist/out/css/template.css",
   "browser": "dist/out/css/template.css",
   "style": "dist/out/css/template.css",
   "sass": "style/codacy/template.scss",
   "files": [
-    "dist/out/{css,scss}/*.{css,scss}",
-    "style/**/*.scss",
-    "images/**/*.svg"
+    "dist/out/{css,scss}/*.{css,scss}"
   ]
 }

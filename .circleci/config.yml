@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  codacy: codacy/base@0.0.13
+  codacy: codacy/base@0.3.0
 
 references:
   setup_aws_credentials: &setup_aws_credentials
@@ -17,6 +17,12 @@ references:
         source_profile = default
         role_arn = arn:aws:iam::$AWS_ACCOUNT_ID_INTEGRATION:role/$CONTINUOUS_DELIVERY_ROLE
         region=eu-west-1
+
+  release_filter: &release_filter
+    filters:
+      branches:
+        only:
+          - master
 
 jobs:
   test_edge_lambda:
@@ -111,7 +117,8 @@ jobs:
             yarn -v
       - run:
           name: Install SASS dependencies
-          command: gem install sass dnode compass
+          # command: gem install sass dnode compass
+          command: gem install compass
       # TODO: add npm cache
       # TODO: add gem cache
       - run:
@@ -152,19 +159,55 @@ jobs:
           command: |
             node -v
             yarn -v
+      - run:
+          name: Install SASS dependencies
+          # command: gem install sass dnode compass
+          command: gem install compass
       # TODO: add npm cache
       # TODO: add gem cache
-      # - run:
-      #     name: Setup npm credentials
-      #     command: |
-      #       echo -e "//registry.npmjs.org/:_authToken=$NPM_TOKEN\nsave-exact=true" > ~/.npmrc
+      - run:
+          name: Setup npm credentials
+          command: |
+            npm config set @codacy:registry https://registry.npmjs.org/
+            npm config set _authToken $NPM_TOKEN
+            npm config set access public
+            npm config set save-exact true
+      - add_ssh_keys:
+          fingerprints:
+          - "df:83:d7:c7:d5:79:06:c2:3b:d1:fd:e2:a3:d1:12:c5"
       - run:
           name: Publish packages
           command: |
+            # Set git commit settings
             git config --global user.email "circleci@codacy.com"
             git config --global user.name "CircleCI Codacy Bot"
-            yarn run bolt:version
-            yarn run bolt:publish
+            # Update version in packages to publish
+            yarn bolt w @codacy/react-components yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version)
+            yarn bolt w @codacy/stylesheets yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version)
+            # Stage and create commit with version changes
+            git add -A .
+            git commit -m "Releasing version $(cat .version) [skip ci]"
+            # Publish package versions to npmjs.org
+            yarn bolt publish
+            # Update published versions in the website packages
+            export PUBLISHED_VERSION=$(cat .version)
+            (cd website-legacy && yarn add "@codacy/stylesheets@$PUBLISHED_VERSION")
+            (cd website && yarn add "@codacy/stylesheets@$PUBLISHED_VERSION" && yarn add "@codacy/react-components@$PUBLISHED_VERSION")
+            # Stage and ammend previous commit with version changes
+            git add -A .
+            git commit --amend --no-edit
+            # Tag this release
+            git tag "$(cat .version)"
+            # Download github.com ssh key signature
+            mkdir -p ~/.ssh
+            ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+            # Push commit and tag
+            git push origin $CIRCLE_BRANCH
+            git push origin --tags
+      - run:
+          name: Publish Stylesheets WebJar
+          command: |
+            curl -X GET "https://www.webjars.org/deploy?webJarType=npm&nameOrUrlish=@codacy/stylesheets&version=$(cat .version)"
 
   upload_react_website:
     docker:
@@ -202,18 +245,12 @@ workflows:
           requires:
             - codacy/checkout_and_version
       - create_stack_react_website:
-          filters:
-            branches:
-              only:
-                - master
+          <<: *release_filter
           context: CodacyAWS
           requires:
             - test_edge_lambda
       - create_stack_legacy_website:
-          filters:
-            branches:
-              only:
-                - master
+          <<: *release_filter
           context: CodacyAWS
           requires:
             - test_edge_lambda
@@ -221,34 +258,19 @@ workflows:
           requires:
             - codacy/checkout_and_version
       - publish_packages:
+          <<: *release_filter
           requires:
             - build_packages
           context: CodacyNPM
-          filters:
-            branches:
-              only:
-                - master
       - upload_react_website:
-          filters:
-            branches:
-              only:
-                - master
+          <<: *release_filter
           context: CodacyAWS
           requires:
             - create_stack_react_website
             - build_packages
       - upload_website_legacy:
-          filters:
-            branches:
-              only:
-                - master
+          <<: *release_filter
           context: CodacyAWS
           requires:
             - create_stack_legacy_website
             - build_packages
-      - codacy/tag_version:
-          context: CodacyAWS
-          name: tag_version
-          requires:
-            - upload_react_website
-            - upload_website_legacy

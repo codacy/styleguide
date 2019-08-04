@@ -2,22 +2,43 @@
 
 ## Components
 
-- [Button](#Button)
+- [Checkbox](#Checkbox)
+- [CodeExample](#CodeExample)
+- [ColorCard](#ColorCard)
+- [InputWithCheckbox](#InputWithCheckbox)
+- [Select](#Select)
+- [Switch](#Switch)
 
-## Button
+## Checkbox
 
-Just a button
+-- TODO Checkbox
+
+## CodeExample
+
+-- TODO CodeExample
+
+## ColorCard
+
+-- TODO ColorCard
+
+## InputWithCheckbox
+
+-- TODO InputWithCheckbox
+
+## Select
+
+-- TODO Select
+
+## Switch
+
+-- TODO Switch
 
 ### Example
 
 ```tsx
-import { Button } from 'codacy-react-styleguide';
+import { Checkbox } from '@codacy/styleguide';
 
 const MyPageComponent = () => {
-  return <Button>Add</Button>;
+  return <Checkbox id="my-checkbox-id" name="my-checkbox"/>;
 };
 ```
-
----
-
-MIT License

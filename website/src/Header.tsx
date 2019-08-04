@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, NavItem, Navbar, NavDropdown, MenuItem, Button } from 'react-bootstrap';
-import { Select2 } from './Select2';
+import { Select } from '@codacy/react-components';
 import '@codacy/stylesheets';
 
 export const Header = () => {
@@ -12,10 +12,10 @@ export const Header = () => {
                 </Navbar.Brand>
             </Navbar.Header>
             <Nav>
-                <Select2 options={[
+                <Select options={[
                         { value: 'codacy', label: 'Codacy' },
                         { value: 'code-climate', label: 'Code Climate' }
-                    ]} isMulti={false} isNavbar={true} />
+                    ]} isNavbar={true} searchProps={{ isSearchable: true }} />
             </Nav >
             <Nav pullRight>
                 <NavItem eventKey={1} href="#">
@@ -32,7 +32,7 @@ export const Header = () => {
                     </li>
                 </React.Fragment>
                 <NavDropdown eventKey={3} id="organization-dropdown"
-                    title={<img src="https://secure.gravatar.com/avatar/fa4dbf28653d739aae161f3532225878?s=256&d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-1.png" alt="User Gravatar"/>}>
+                    title={<img src="https://secure.gravatar.com/avatar/fa4dbf28653d739aae161f3532225878?s=256&d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-1.png" alt="User Gravatar" />}>
                     <MenuItem eventKey={3.1}>Action</MenuItem>
                     <MenuItem eventKey={3.2}>Another action</MenuItem>
                     <MenuItem eventKey={3.3}>Something else here</MenuItem>
