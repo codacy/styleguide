@@ -1,6 +1,6 @@
 {
   "name": "@codacy/react-components",
-  "version": "0.1.0",
+  "version": "0.4.0-refactorforrelease.471003a",
   "description": "Codacy React Components",
   "repository": "git+https://github.com/codacy/styleguide.git",
   "author": "Rodrigo Fernandes <rodrigo@codacy.com>",
@@ -28,33 +28,20 @@
     "deploy": "np"
   },
   "dependencies": {
+    "prettier": "^1.18.2",
     "react-element-to-jsx-string": "^14.0.3",
     "react-fast-highlight": "^2.2.2",
-    "react-select": "^3.0.4",
-    "prettier": "^1.18.2"
+    "react-select": "^3.0.4"
   },
   "peerDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
-    "react-bootstrap": "^0.32.4"
+    "react": "^16.8.6",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "@types/jest": "24.0.16",
-    "@types/react": "16.8.24",
-    "@types/react-dom": "16.8.5",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "typescript": "3.5.3",
-    "@fortawesome/fontawesome-svg-core": "^1.2.19",
-    "@fortawesome/free-solid-svg-icons": "^5.9.0",
-    "@fortawesome/react-fontawesome": "^0.1.4",
-    "@types/prettier": "^1.16.4",
-    "@types/react-bootstrap": "^0.32.19",
-    "@types/react-select": "^3.0.0",
-    "react-bootstrap": "^0.32.4",
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
@@ -64,7 +51,16 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
     "@babel/runtime": "^7.1.5",
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@testing-library/react": "^8.0.4",
+    "@types/jest": "24.0.16",
+    "@types/prettier": "^1.16.4",
+    "@types/react": "16.8.24",
+    "@types/react-bootstrap": "^0.32.19",
+    "@types/react-dom": "16.8.5",
+    "@types/react-select": "^3.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.8.0",
     "fs-extra": "^8.1.0",
@@ -72,8 +68,12 @@
     "jest-dom": "^3.5.0",
     "lint-staged": "^9.0.2",
     "np": "^5.0.3",
+    "react": "^16.8.6",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.8.6",
     "rimraf": "^2.6.3",
-    "ts-jest": "^24.0.2"
+    "ts-jest": "^24.0.2",
+    "typescript": "3.5.3"
   },
   "jest": {
     "setupFilesAfterEnv": [
