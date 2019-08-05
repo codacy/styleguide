@@ -7,6 +7,29 @@
 This is the Codacy awesome styleguide repository.
 It will include components, code snippets and how to use them.
 
+## Use
+
+### SBT
+
+```scala
+"org.webjars.npm" % "codacy__stylesheets" % "<VERSION>"
+```
+
+### NPM
+
+```json
+"dependencies": {
+    // ...
+    "@codacy/stylesheets": "<VERSION>",
+    "@codacy/react-components": "<VERSION>"
+}
+```
+
+### Website
+
+- https://legacy.styleguide.dev.codacy.org
+- https://react.styleguide.dev.codacy.org
+
 ## Structure
 
 - [.aws](./.aws) - Deployment scripts and configurations
@@ -15,42 +38,42 @@ It will include components, code snippets and how to use them.
 - [website](./website) - Codacy styleguide react website
 - [website-legacy](./website-legacy) - Codacy styleguide legacy website
 
-### Develop
+## Develop
 
-#### Install Dependencies
+### Install Dependencies
 
 ```sh
 yarn
 yarn bolt:install
 ```
 
-#### React Website
+### React Website
 
 ```sh
 # yarn start:website # Just rebuilds the website without updating on dependency changes
 yarn start:website-and-dependencies
 ```
 
-#### Legacy Website
+### Legacy Website
 
 ```sh
 # yarn start:website-legacy # Just rebuilds the website without updating on dependency changes
 yarn start:website-legacy-and-dependencies
 ```
 
-#### React Components
+### React Components
 
 ```sh
 yarn build:components
 ```
 
-#### Stylesheets
+### Stylesheets
 
 ```sh
 yarn build:stylesheets
 ```
 
-#### Others
+### Others
 
 Check section `scripts` in [package.json](./package.json)
 
