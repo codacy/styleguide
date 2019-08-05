@@ -182,6 +182,9 @@ jobs:
       - run:
           name: Publish packages
           command: |
+            # Download github.com ssh key signature
+            mkdir -p ~/.ssh
+            ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
             # Set git commit settings
             git config --global user.email "circleci@codacy.com"
             git config --global user.name "CircleCI Codacy Bot"
@@ -193,6 +196,9 @@ jobs:
             git commit -m "Releasing version $(cat .version) [skip ci]"
             # Tag this release
             git tag "$(cat .version)"
+            # Push commit and tag
+            git push origin $CIRCLE_BRANCH
+            git push origin --tags
             # Publish package versions to npmjs.org
             yarn bolt publish
             # Update published versions in the website packages
@@ -202,9 +208,6 @@ jobs:
             # Stage and create commit with version updates
             git add -A .
             git commit -m "Updating dependencies to released version $(cat .version) [skip ci]"
-            # Download github.com ssh key signature
-            mkdir -p ~/.ssh
-            ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
             # Push commit and tag
             git push origin $CIRCLE_BRANCH
             git push origin --tags
