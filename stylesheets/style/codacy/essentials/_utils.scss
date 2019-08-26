@@ -77,8 +77,8 @@ body {
 .avatar {
   overflow: hidden;
   border-radius: 50%;
-  height: 56px;
-  width: 56px;
+  height: 46px;
+  width: 46px;
   margin-right: 10px;
   float: left;
   position: relative;
@@ -95,26 +95,52 @@ body {
   }
 
   &.avatar-xs {
-    height: 28px;
-    width: 28px;
+    height: 26px;
+    width: 26px;
   }
 
   &.avatar-sm {
-    height: 46px;
-    width: 46px;
+    height: 32px;
+    width: 32px;
   }
 
   &.avatar-md {
-    height: 64px;
-    width: 64px;
+    height: 52px;
+    width: 52px;
   }
 
   &.avatar-lg {
-    height: 80px;
-    width: 80px;
+    height: 66px;
+    width: 66px;
+  }
+
+  &.avatar-xl {
+    height: 82px;
+    width: 82px;
   }
 }
 
+.grade-empty {
+  @include grade(1);
+  background-color: $gray-light;
+  stroke: $gray-light;
+  fill: $gray-light;
+}
+
+.grade-loading {
+  @include grade(0.2);
+  font-size: 10px;
+  vertical-align: middle;
+
+  .fa-circle {
+    color: $white;
+  }
+
+  .fa-refresh {
+    color: $black;
+    opacity: 0.3;
+  }
+}
 
 //== Icons
 .fa-question-circle,
