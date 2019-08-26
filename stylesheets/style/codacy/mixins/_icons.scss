@@ -6,3 +6,14 @@
       content: "\f107";
     }
   }
+
+@mixin grade($size) {
+  color: $white;
+  width: 90px * $size;
+  height: 90px * $size;
+  font-size: 50px * $size;
+  line-height: 90px * $size;
+  text-align: center;
+  display: inline-block;
+  border-radius: 50%;
+}

@@ -89,6 +89,33 @@ a.alert-clickable {
   }
 }
 
+//== Alerts inline
+.alert-inline {
+  //== for each alert give an icon
+  $alert-inline-icons: (
+    alert-info '\f05a' $brand-primary,
+    alert-danger '\f057' $brand-danger,
+    alert-warning '\f06a' $brand-warning
+  );
+
+  @each $alert, $icon, $color in $alert-inline-icons {
+    &.#{$alert} {
+      background-color: transparent;
+      color: $gray;
+
+      &:before {
+        content: $icon;
+        color: $color;
+        font-family: FontAwesome;
+        margin-right: 5px;
+        font-size: $font-lg;
+        position: relative;
+        top: 1px;
+      }
+    }
+  }
+}
+
 //== for each alert darken the background color when .alert-clickable
 $alerts: (
 alert-info: $alert-info-bg,
