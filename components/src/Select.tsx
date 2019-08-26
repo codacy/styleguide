@@ -126,8 +126,8 @@ export const Select = <OptionType extends BaseOptionType>(
             onClose={toggleOpen}
             target={
                 <Button
-                    // TODO: Can we do this without forcing a btn type that does not exist on bootstrap?
-                    className={isOpen ? "btn btn-select open" : "btn btn-select"}
+                    bsStyle={null}
+                    className={isOpen ? "btn-select open" : "btn-select"}
                     onClick={toggleOpen}
                 >
                     <span>
@@ -269,7 +269,6 @@ const Option = <OptionType extends BaseOptionType>(props: OptionProps<OptionType
 const createDefaultStyles = (isSearchable: Boolean): Partial<Styles> => {
     const controlProperties = isSearchable ? {
         margin: '5px 8px',
-        // border: '1px solid #c9d8ef',
         border: '1px solid #2a6cff',
         boxShadow: 'none',
         borderRadius: '3px',
@@ -293,6 +292,10 @@ const createDefaultStyles = (isSearchable: Boolean): Partial<Styles> => {
             marginTop: 2,
             minWidth: 160,
             zIndex: 2
+        }),
+        placeholder: provided => ({
+            ...provided,
+            color: '#7E90B2'
         }),
         indicatorsContainer: () => ({
             display: 'block',
@@ -326,12 +329,12 @@ const createDefaultStyles = (isSearchable: Boolean): Partial<Styles> => {
             }
         }),
         groupHeading: provided => ({ ...provided, color: '#c9d8ef', fontWeight: 700, padding: '3px 16px' }),
-        option: (provided, state) => ({
-            ...provided,
-            color: !state.isFocused ? '#101e35' : '#ccc',
+        option: (_, state) => ({
+            color: '#101e35',
             padding: '3px 16px',
-            backgroundColor: 'transparent',
-            fontWeight: state.isSelected ? 700 : undefined
+            backgroundColor: (state.isFocused || state.isSelected) ? '#e5ecf5' : 'transparent',
+            fontWeight: state.isSelected ? 700 : undefined,
+            cursor: 'pointer'
         }),
         valueContainer: (provided) => ({
             ...provided,
@@ -344,9 +347,21 @@ const createNavStyles = (isSearchable: Boolean): Partial<Styles> => {
     const controlProperties = isSearchable ? {
         background: '#15294a',
         borderBottom: '1px solid #1d3660',
-        borderRadius: 0,
+        borderRadius: '0',
         color: '#e5ecf5',
-        margin: '5px 15px 0 15px'
+        margin: '5px 15px 0 15px',
+        paddingLeft: '7px',
+        position: 'relative',
+        ':before': {
+            color: '#7e90b2',
+            content: '"\\f002"',
+            fontFamily: 'FontAwesome',
+            fontSize: '12px',
+            position: 'absolute',
+            top: '4px',
+            left: '0',
+            transform: 'rotateY(180deg)'
+          }
     } : {
             display: 'block',
             width: 0,
@@ -354,7 +369,7 @@ const createNavStyles = (isSearchable: Boolean): Partial<Styles> => {
         };
 
     return {
-        ...createDefaultStyles(isSearchable),
+        // @ts-ignore
         control: () => controlProperties,
         container: () => ({
             backgroundColor: '#15294a',
@@ -370,7 +385,7 @@ const createNavStyles = (isSearchable: Boolean): Partial<Styles> => {
         }),
         placeholder: (provided) => ({
             ...provided,
-            color: '#e5ecf5'
+            color: '#7E90B2'
         }),
         menu: () => ({
             minWidth: 160,
@@ -394,12 +409,12 @@ const createNavStyles = (isSearchable: Boolean): Partial<Styles> => {
             }
         }),
         groupHeading: provided => ({ ...provided, color: '#e5ecf5', fontWeight: 700, padding: '3px 16px' }),
-        option: (provided, state) => ({
-            ...provided,
-            color: !state.isFocused ? '#e5ecf5' : '#ccc',
+        option: (_, state) => ({
+            color: '#fff',
             padding: '3px 16px',
-            backgroundColor: 'transparent',
-            fontWeight: state.isSelected ? 700 : undefined
+            backgroundColor: (state.isFocused || state.isSelected) ? '#1d3660' : 'transparent',
+            fontWeight: state.isSelected ? 700 : undefined, 
+            cursor: 'pointer'
         })
     }
 };
