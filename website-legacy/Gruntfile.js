@@ -1,3 +1,5 @@
+var stylesheetsCSSLocation = "node_modules/@codacy/stylesheets/dist/out/css/template.min.css"
+
 module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
@@ -7,6 +9,10 @@ module.exports = function(grunt) {
       js: {
         files: "assets/v0/javascripts/**/*.js",
         tasks: ["uglify"]
+      },
+      css: {
+        files: stylesheetsCSSLocation,
+        tasks: ["copy"]
       },
       options: {
         livereload: true
@@ -58,7 +64,7 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: "./",
-            src: ["./node_modules/@codacy/stylesheets/dist/out/css/template.min.css"],
+            src: [stylesheetsCSSLocation],
             dest: "./dist/css/template.min.css"
           }
         ]
