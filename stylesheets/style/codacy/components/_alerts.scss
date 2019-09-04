@@ -1,5 +1,12 @@
 .alert {
   padding: 10px;
+  border-radius: 0px;
+
+  a {
+    font-weight: $alert-link-font-weight;
+    color: $gray-base;
+    text-decoration: underline;
+  }
 
   h4 + p:first-of-type {
     &:before {
@@ -136,18 +143,20 @@ alert-success: $alert-success-bg,
 
 //== for each alert give an icon
 $alert-icons: (
-alert-info: '\f0eb',
-alert-danger: '\f05c',
-alert-warning: '\f06a',
-alert-success: '\f05d',
+  alert-info '\f05a' $brand-primary,
+  alert-danger '\f057' $brand-danger,
+  alert-warning '\f06a' $brand-warning,
+  alert-success '\f058' $brand-success
 );
 
-@each $alert, $icon in $alert-icons {
+@each $alert, $icon, $color in $alert-icons {
   .#{$alert} {
     p:first-of-type:before {
       content: $icon;
+      color: $color;
       font-family: FontAwesome;
       margin-right: 10px;
+      margin-left: 20px;
       font-size: $font-lg;
     }
   }
@@ -157,27 +166,30 @@ alert-success: '\f05d',
 .alert-space { height: $margin-lg; }
 
 .side-toast {
-  padding: 10px 30px;
+  padding: 13px 40px;
   position: fixed;
   right: 25px;
   bottom: 95px;
   z-index: 10000;
-  background-color: lighten($gray-lighter, 9%);
-  border: 1px solid $gray-lighter;
+  background-color: $white;
+  border-left: 5px solid $brand-success;
+  border-color: #21C078;
   border-radius: 3px;
-  max-width: 260px;
-  @include box-shadow(0px 3px 10px rgba($gray-lighter, 0.8));
+  max-width: 350px;
+  @include box-shadow(0px 1px 6px 1px rgba($gray-dark, 0.1));
 
   &:before {
     font-family: FontAwesome;
+    font-size: 17px;
     position: absolute;
-    left: 10px;
+    left: 15px;
+    top: 12px;
   }
 
   &.toast-success {
 
     &:before {
-      content: "\f05d";
+      content: "\f058";
       color: $brand-success;
     }
   }
@@ -214,7 +226,8 @@ alert-success: '\f05d',
     position: absolute;
     right: 10px;
     top: 10px;
-    color: $gray-lighter;
+    color: $gray-light;
     cursor: pointer;
+    font-size: 13px;
   }
 }

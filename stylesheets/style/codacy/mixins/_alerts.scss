@@ -2,10 +2,4 @@
   background-color: $background;
   color: $text-color;
   border: 0;
-
-  &:hover ~ a.alert-clickable { background-color: darken($background, 40%); }
-
-  .alert-link { color: darken($text-color, 10%); }
-
-  i { color: $text-color; }
 }

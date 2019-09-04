@@ -837,8 +837,10 @@
                     <section id="alerts">
                         <div class="row">
                             <div class="col-md-12">
-                                <h1>Alerts</h1>
-                                <p>Very nice description on alerts</p>
+                              <h1>Messages</h1>
+                              <p>Messages are used to communicate conditions, feedback, or to show responses to user actions. 
+                                Content can include information, confirmation, warnings, and error messages. 
+                                Codacy communicates messages through six different categories: global alerts, modals, toasts, inline text, button feedback, and notifications.</p>
                                 <div class="panel">
                                     <div class="panel-body">
                                         <div class="alert alert-success sg-code" role="alert">
@@ -850,10 +852,10 @@
                                           </div>
                                         </a>
                                         <div class="alert alert-warning" role="alert">
-                                            <p>Be careful! I'm not sure if I got this...</p>
+                                            <p>Your trial has expired. To keep analyzing your private projects, you need to <a href="#" class="alert-link-global"> upgrade to the Pro plan.</a></p>
                                         </div>
                                         <div class="alert alert-danger" role="alert">
-                                            <p>Oops! Shit, son.</p>
+                                            <p>The GitHub integration is disabled. Please ask an <a href="#" class="alert-link-global"> administrator</a> of this project to enable it.</p>
                                         </div>
                                         <h4>Dismissable alerts</h4>
                                         <p>Lalala</p>
@@ -868,12 +870,6 @@
                                         </div>
                                         <h4>Example of a larger alerts</h4>
                                         <p>Lalalala</p>
-
-                                        <div class="alert alert-danger sg-code" role="alert">
-                                          <h4>Oops! What is going on?</h4>
-                                          <p>Well, we don't know either. Why don't you contact support?</p>
-                                        </div>
-
 
                                         <div class="alert-hotspot alert-dismissible  sg-code" role="alert">
                                           <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
@@ -1901,8 +1897,9 @@ String generateSecretToken() {
                     </section>
                 </div>
               <div class="side-toast toast-success">
-                <p>This issue will be ignored in your next analysis.</p>
-                <i class="fa fa-times"></i>
+                  <h5 class="no-margin-top">You got it right!</h5> 
+                  <p> Looks like you're ready to start the quality journey.</p>
+                  <i class="fa fa-times"></i>
               </div>
             </main>
         </div>
