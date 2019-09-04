@@ -1,6 +1,6 @@
 {
   "name": "@codacy/react-components",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "Codacy React Components",
   "repository": "git+https://github.com/codacy/styleguide.git",
   "author": "Rodrigo Fernandes <rodrigo@codacy.com>",
