@@ -1,6 +1,7 @@
 .alert {
-  padding: 10px;
+  padding: 10px 55px;
   border-radius: 0px;
+  position: relative;
 
   a {
     font-weight: $alert-link-font-weight;
@@ -155,9 +156,10 @@ $alert-icons: (
       content: $icon;
       color: $color;
       font-family: FontAwesome;
-      margin-right: 10px;
-      margin-left: 20px;
       font-size: $font-lg;
+      position:absolute;
+      top: 10px;
+      left: 30px;
     }
   }
 }
