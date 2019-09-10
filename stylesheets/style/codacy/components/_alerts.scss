@@ -174,8 +174,7 @@ $alert-icons: (
   bottom: 95px;
   z-index: 10000;
   background-color: $white;
-  border-left: 5px solid $brand-success;
-  border-color: #21C078;
+  border-left: 5px solid;
   border-radius: 3px;
   max-width: 350px;
   @include box-shadow(0px 1px 6px 1px rgba($gray-dark, 0.1));
@@ -189,6 +188,7 @@ $alert-icons: (
   }
 
   &.toast-success {
+    border-color: $brand-success;
 
     &:before {
       content: "\f058";
@@ -197,6 +197,7 @@ $alert-icons: (
   }
 
   &.toast-danger {
+    border-color: $brand-danger;
 
     &:before {
       content: "\f05c";
