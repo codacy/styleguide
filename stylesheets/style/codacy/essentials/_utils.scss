@@ -57,7 +57,8 @@ body {
 }
 
 .wrapper-padding {
-  @extend .padding-xxs;
+  @extend .padding-left-xxs;
+  @extend .padding-right-xxs;
 }
 
 //== Text utilities
