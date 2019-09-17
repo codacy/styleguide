@@ -21,7 +21,7 @@
 </head>
 
 <body onload="PR.prettyPrint()">
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
         <a href="#" class="navbar-brand"><img src="images/codacy-white.svg" alt="logo"></a>
@@ -81,6 +81,7 @@
   </nav>
     <div class="container">
         <div class="row">
+          
             <aside>
                 <div class="col-md-3 border-secondary-right">
                     <div class="list-group side-menu">
@@ -1828,44 +1829,33 @@ String generateSecretToken() {
                                     </div>
                                 </div>
                                 <h2>Sidebar</h2>
-                                <div class="row">
-                                    <div class="col-md-1 aside-nav sg-code">
-                                      <ul class="nav">
-                                        <li role="presentation">
-                                          <a href="#" class="aside-item arrow selected">
-                                            <div class="selected">
-                                              <img class="svg aside-icon" src="images/icon-dashboard.svg">
-                                            </div>
-                                            Overview
-                                          </a>
-                                        </li>
-                                        <li role="presentation">
-                                          <a href="#" class="aside-item arrow">
-                                            <div class="">
-                                              <img class="svg aside-icon" src="images/icon-dashboard.svg">
-                                            </div>
-                                            Overview
-                                          </a>
-                                        </li>
-                                        <li role="presentation">
-                                          <a href="#" class="aside-item arrow">
-                                            <div class="">
-                                              <img class="svg aside-icon" src="images/icon-dashboard.svg">
-                                            </div>
-                                            Overview
-                                          </a>
-                                        </li>
-                                        <li role="presentation">
-                                          <a href="#" class="aside-item arrow">
-                                            <div class="">
-                                              <img class="svg aside-icon" src="images/icon-dashboard.svg">
-                                            </div>
-                                            Overview
-                                          </a>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                </div>
+                                <p>When using a sidebar be aware that this have a fixed position and the element to be on his side should have at least a 90px margin.</p>
+                                <ul class="nav aside-nav sg-code" style="position: relative; float: left; top: 0; height: auto;">
+                                  <li role="presentation">
+                                    <a href="#" class="aside-item arrow selected">
+                                      <div class="selected">
+                                        <img class="svg aside-icon" src="images/icon-dashboard.svg">
+                                      </div>
+                                      Overview
+                                    </a>
+                                  </li>
+                                  <li role="presentation">
+                                    <a href="#" class="aside-item arrow">
+                                      <div class="">
+                                        <img class="svg aside-icon" src="images/icon-dashboard.svg">
+                                      </div>
+                                      Overview
+                                    </a>
+                                  </li>
+                                  <li role="presentation">
+                                    <a href="#" class="aside-item arrow">
+                                      <div class="">
+                                        <img class="svg aside-icon" src="images/icon-dashboard.svg">
+                                      </div>
+                                      Overview
+                                    </a>
+                                  </li>
+                                </ul>
                             </div>
                         </div>
                     </section>
@@ -1915,7 +1905,7 @@ String generateSecretToken() {
             $(".dropdown-toggle").dropdown();
             $(".sg-code").each(function(i, e) {
                 var $elem = $(e);
-                var html = $("<div />").append($elem.clone().removeClass("sg-code")).html();
+                var html = $("<div />").append($elem.clone().removeClass("sg-code").removeAttr("style")).html();
                 var $sink = $elem.siblings(".sg-code-sink");
                 if ($sink.length) {
                     $sink.text(($sink.text() + '\n' + html).trim());
