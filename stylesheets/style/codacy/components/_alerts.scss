@@ -156,9 +156,21 @@ $alert-icons: (
       color: $color;
       font-family: FontAwesome;
       margin-right: 10px;
-      margin-left: 20px;
+      margin-left: 10px;
       font-size: $font-lg;
+      top: 1px;
+      position: relative;
     }
+  }
+}
+
+.alert-global {
+  p {
+    text-align: center;
+
+    &:first-of-type:before {
+      margin-left: 20px;
+    } 
   }
 }
 

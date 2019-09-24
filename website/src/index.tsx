@@ -59,6 +59,15 @@ const App = () => {
   return (
     <React.Fragment>
       <Header />
+      <Grid fluid={true} className="no-padding">
+        <Row> 
+          <Col xs={12}>
+          <div className="alert alert-global alert-danger" role="alert">
+                        <p>The GitHub integration is disabled. Please ask an administrator of this project to enable it.</p>
+                      </div>
+          </Col>
+        </Row>
+      </Grid>
       <Grid>
         <Row>
           <Col xs={3} className="border-secondary-right">
@@ -967,6 +976,13 @@ const App = () => {
                       </div>
                       <div className="alert alert-danger" role="alert">
                         <p>Oops! Shit, son.</p>
+                      </div>
+                      <h4>Global</h4>
+                      <div className="alert alert-global alert-warning" role="alert">
+                        <p>Your trial has expired. To keep analyzing your private projects, you need to <a href="#">upgrade to the Pro plan.</a></p>
+                      </div>
+                      <div className="alert alert-global alert-danger" role="alert">
+                        <p>The GitHub integration is disabled. Please ask an administrator of this project to enable it.</p>
                       </div>
                       <h4>Dismissable alerts</h4>
                       <p>Lalala</p>
