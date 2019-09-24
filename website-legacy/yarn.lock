@@ -90,10 +90,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@codacy/stylesheets@0.4.9":
-  version "0.4.9"
-  resolved "https://registry.yarnpkg.com/@codacy/stylesheets/-/stylesheets-0.4.9.tgz#d40630e08127694d0dcd60c70c813d68f2e4266f"
-  integrity sha512-0cQgZaUphPuJvREpDgakJ6b8Fd2BJ9vzcDSvQek7q10EoyAmMpX6Ta7BjmgPjkcNQ2Fp/+WFQkEMrkWkNMD9Gg==
+"@codacy/stylesheets@0.4.14":
+  version "0.4.14"
+  resolved "https://registry.yarnpkg.com/@codacy/stylesheets/-/stylesheets-0.4.14.tgz#006f9a7cb67c445a92d17b8462e40764e4e3653c"
+  integrity sha512-heB6prmFsE0pF9XRODKY28Z2UOLMFhjBn3WNSANNTn4DFFjhd9btA5mIcg6knGhG5bc/xUmbfXPGqKus4pWtSg==
 
 abbrev@1:
   version "1.1.1"

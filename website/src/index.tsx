@@ -2514,56 +2514,33 @@ String generateSecretToken() {
                     </div>
                   </div>
                   <h2>Sidebar</h2>
-                  <div className="row">
-                    <div className="col-md-1 aside-nav sg-code">
-                      <ul className="nav">
-                        <li role="presentation">
-                          <a href="#" className="aside-item arrow selected">
-                            <div className="selected">
-                              <img
-                                className="svg aside-icon"
-                                src="images/icon-dashboard.svg"
-                              />
-                            </div>
-                            Overview
-                                  </a>
-                        </li>
-                        <li role="presentation">
-                          <a href="#" className="aside-item arrow">
-                            <div className="">
-                              <img
-                                className="svg aside-icon"
-                                src="images/icon-dashboard.svg"
-                              />
-                            </div>
-                            Overview
-                                  </a>
-                        </li>
-                        <li role="presentation">
-                          <a href="#" className="aside-item arrow">
-                            <div className="">
-                              <img
-                                className="svg aside-icon"
-                                src="images/icon-dashboard.svg"
-                              />
-                            </div>
-                            Overview
-                                  </a>
-                        </li>
-                        <li role="presentation">
-                          <a href="#" className="aside-item arrow">
-                            <div className="">
-                              <img
-                                className="svg aside-icon"
-                                src="images/icon-dashboard.svg"
-                              />
-                            </div>
-                            Overview
-                                  </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                  <p>When using a sidebar be aware that this have a fixed position and the element to be on his side should have at least a 90px margin.</p>
+                  <ul className="nav aside-nav sg-code" style={{position: "relative", float: "left", top: "0", height: "auto"}}>
+                    <li role="presentation">
+                      <a href="#" className="aside-item arrow selected">
+                        <div className="selected">
+                          <img className="svg aside-icon" src="images/icon-dashboard.svg"/>
+                        </div>
+                        Overview
+                      </a>
+                    </li>
+                    <li role="presentation">
+                      <a href="#" className="aside-item arrow">
+                        <div>
+                          <img className="svg aside-icon" src="images/icon-dashboard.svg"/>
+                        </div>
+                        Overview
+                      </a>
+                    </li>
+                    <li role="presentation">
+                      <a href="#" className="aside-item arrow">
+                        <div>
+                          <img className="svg aside-icon" src="images/icon-dashboard.svg"/>
+                        </div>
+                        Overview
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </section>
