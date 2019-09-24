@@ -62,9 +62,9 @@ const App = () => {
       <Grid fluid={true} className="no-padding">
         <Row> 
           <Col xs={12}>
-          <div className="alert alert-global alert-danger" role="alert">
-                        <p>The GitHub integration is disabled. Please ask an administrator of this project to enable it.</p>
-                      </div>
+            <div className="alert alert-global alert-danger" role="alert">
+              <p>The GitHub integration is disabled. Please ask an administrator of this project to enable it.</p>
+            </div>
           </Col>
         </Row>
       </Grid>
