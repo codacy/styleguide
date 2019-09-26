@@ -3,7 +3,9 @@
   padding: 0;
 
   > li {
+    color: $gray;
 
+    &, 
     a {
       font-size: $font-sm;
       font-weight: normal;
@@ -37,6 +39,7 @@
 
     &.active {
 
+      &, 
       a {
         font-weight: bold;
       }
