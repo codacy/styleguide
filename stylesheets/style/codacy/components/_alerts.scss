@@ -1,8 +1,7 @@
 .alert {
-  padding: 10px;
+  padding: 10px 40px;
   border-radius: 0px;
   position: relative;
-  //text-align: left;
 
   a {
     font-weight: $alert-link-font-weight;
@@ -27,6 +26,8 @@
   }
 
   &.alert-global {
+    padding: 10px;
+
     p {
       text-align: center;
     }
@@ -163,11 +164,21 @@ $alert-icons: (
       content: $icon;
       color: $color;
       font-family: FontAwesome;
-      margin-right: 10px;
-      margin-left: 10px;
       font-size: $font-lg;
-      top: 2px;
+      position: absolute;
+      top: 10px;
+      left: 15px;
+    }
+  }
+}
+
+@each $alert, $icon, $color in $alert-icons {
+  .#{$alert}.alert-global {
+    p:first-of-type:before {
       position: relative;
+      top: 2px;
+      left: initial;
+      margin-right: 10px;
     }
   }
 }
