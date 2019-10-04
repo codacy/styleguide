@@ -368,6 +368,17 @@ const App = () => {
                     </Col>
                   </Row>
 
+                  <h2>Buttons and tooltips</h2>
+                  <p>You can always add a tooltip associated to your button, unless that <strong>button has a disabled state</strong>. 
+                    In this case you will need to add a wrapper that handles the tooltip, as the disabled state of the button ignores any action to it, even hover.</p>
+                  <CodeExample>
+                    <OverlayTrigger placement="top" overlay={<Tooltip id="tooltip-overlay">This is an example of tooltip working with disabled button.</Tooltip>}>
+                      <div className="btn-disabled-wrapper">
+                        <Button bsStyle="default" disabled={true} >Disabled button</Button>
+                      </div>
+                    </OverlayTrigger>
+                  </CodeExample>
+
                   <h2>Different sizes</h2>
                   <p>Some description here mentioning layout and position.</p>
                   <p>You can change the button size just by simply adding

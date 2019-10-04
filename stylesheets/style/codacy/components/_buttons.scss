@@ -127,6 +127,16 @@
   }
 }
 
+//Solution https://codepen.io/eugene_ly/pen/Pqzxjp
+.btn-disabled-wrapper {
+  cursor: not-allowed;
+  display: inline-block;
+
+  .btn[disabled] {
+    pointer-events: none;
+  }
+}
+
 // Button Sizes
 // --------------------------------------------------
 
