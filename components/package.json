@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "prettier": "^1.18.2",
-    "react-element-to-jsx-string": "^14.0.3",
+    "react-element-to-jsx-string": "^14.1.0",
     "react-fast-highlight": "^2.2.2",
     "react-select": "^3.0.4"
   },

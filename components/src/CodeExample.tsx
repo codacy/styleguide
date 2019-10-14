@@ -1,27 +1,32 @@
 import React from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
-import { format } from "prettier/standalone";
-import parser from "prettier/parser-babylon";
 import { Highlight } from 'react-fast-highlight';
 
-export type Language = 'xml';
+export const CodeExample = ({ children }: { children: (React.ReactElement | React.ReactElement[]) }) => {
 
-export const CodeExample = ({ language = 'xml', children }: { language?: Language, children: (React.ReactElement | React.ReactElement[]) }): JSX.Element => {
-    
-    const foo = (e: React.ReactElement) => {
-        const elementString = reactElementToJSXString(e);
-        return format(
-            elementString,
-            { parser: "babel", plugins: [parser], semi: true, printWidth: 120 }
-        ).slice(0, -2); // HACK: Format JSX adds a `;` in the beginning or end of the string
+    const elementToString = (element: React.ReactElement) => {
+        return reactElementToJSXString(element, {
+            displayName: (elem: React.ReactElement) => {
+                const displayName =
+                    // @ts-ignore
+                    elem.type.displayName ||
+                    // @ts-ignore
+                    (elem.type.name !== '_default' ? elem.type.name : null) || // Function name
+                    (typeof elem.type === 'function' // Function without a name, you should provide one
+                        ? 'Function Without Display Name'
+                        : elem.type);
+                // HACK: Remove wrapper Uncontrolled(...) from displayName
+                return displayName.replace(new RegExp("Uncontrolled\\((.*)\\)"), '$1')
+            }
+        });
     };
 
-    const childrenString: string = children instanceof Array ? children.map(foo).join("\n") : foo(children);
+    const childrenString = React.Children.toArray(children).map(elementToString).join("\n");
 
     return (
         <React.Fragment>
             {children}
-            <Highlight languages={[language]}>
+            <Highlight>
                 {childrenString}
             </Highlight>
         </React.Fragment>
