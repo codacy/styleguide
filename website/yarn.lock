@@ -929,6 +929,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@base2/pretty-print-object@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@base2/pretty-print-object/-/pretty-print-object-1.0.0.tgz#860ce718b0b73f4009e153541faff2cb6b85d047"
+  integrity sha512-4Th98KlMHr5+JkxfcoDT//6vY8vM+iSPrLNpHhRyLx2CFYi8e2RfqPLdpbnpo0Q5lQC5hNB79yes07zb02fvCw==
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.3.tgz#099139eaec7ebf07a27c1786a3ff64f39464d2ef"
@@ -937,20 +942,20 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@codacy/react-components@0.4.16":
-  version "0.4.16"
-  resolved "https://registry.yarnpkg.com/@codacy/react-components/-/react-components-0.4.16.tgz#a68d1e154de0651f51c545740e623c11b7fadc51"
-  integrity sha512-J7fS58ItdPXUewhxUihZKzsrNhtQ9vss/4Z+xUSqTC6UqG1TsjZ09qx+WFQuct8Qvufj7HcRznvA/s6F+HXwLA==
+"@codacy/react-components@0.4.17":
+  version "0.4.17"
+  resolved "https://registry.yarnpkg.com/@codacy/react-components/-/react-components-0.4.17.tgz#8cdcc77688ceb7c233d06e75cfa7b4e7115c9be1"
+  integrity sha512-LGe5faMf4VGcbrntEjp1IicQC302iewIlFDRkEp3l5bEjDSPDs9DhM4U9RsQVIrR2ynyTdn1RhzSdSlut+ioPA==
   dependencies:
     prettier "^1.18.2"
-    react-element-to-jsx-string "^14.0.3"
+    react-element-to-jsx-string "^14.1.0"
     react-fast-highlight "^2.2.2"
     react-select "^3.0.4"
 
-"@codacy/stylesheets@0.4.16":
-  version "0.4.16"
-  resolved "https://registry.yarnpkg.com/@codacy/stylesheets/-/stylesheets-0.4.16.tgz#09121311ce7380970f075b3cf4b84deb66754304"
-  integrity sha512-WloeMNULavrOouTper0IuZ+2oFe55EvTnEjzOTXoL6ZVAv1BUiOYUkudl94jK32DqY4XgDu8ejz42GYQ50YTTg==
+"@codacy/stylesheets@0.4.17":
+  version "0.4.17"
+  resolved "https://registry.yarnpkg.com/@codacy/stylesheets/-/stylesheets-0.4.17.tgz#45306bb4c199838c36942e3fb64925beb4eaaa08"
+  integrity sha512-Jsy/QXLvTKIdiK1rbL7PaD61WH5NSGu488+btSY6Zg3Naz4AKt9Xqo2ldxvqaciLTOZYdAIpgODikMdojXWypQ==
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
@@ -8176,13 +8181,13 @@ react-dom@^16.8.6:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
-react-element-to-jsx-string@^14.0.3:
-  version "14.0.3"
-  resolved "https://registry.yarnpkg.com/react-element-to-jsx-string/-/react-element-to-jsx-string-14.0.3.tgz#64f50fdbf6ba154d6439da3d7307f79069b94d58"
-  integrity sha512-ziZAm7OwEfFtyhCmQiFNI87KFu+G9EP8qVW4XtDHdKNqqprYifLzqXkzHqC1vnVsPhyp2znoPm0bJHAf1mUBZA==
+react-element-to-jsx-string@^14.1.0:
+  version "14.1.0"
+  resolved "https://registry.yarnpkg.com/react-element-to-jsx-string/-/react-element-to-jsx-string-14.1.0.tgz#31fcc3a82459d5e57ef852aa6879bcd0a578a8cb"
+  integrity sha512-uvfAsY6bn2c8HMBkxwj+2MMXcvNIkKDl0aZg2Jhzp+c096hZaXUNivVCP2H4RBtmGSSJcfMqQA5oPk8YdqFOVw==
   dependencies:
+    "@base2/pretty-print-object" "^1.0.0"
     is-plain-object "3.0.0"
-    stringify-object "3.3.0"
 
 react-error-overlay@^5.1.6:
   version "5.1.6"
@@ -9245,7 +9250,7 @@ string_decoder@~1.1.1:
   dependencies:
     safe-buffer "~5.1.0"
 
-stringify-object@3.3.0, stringify-object@^3.3.0:
+stringify-object@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/stringify-object/-/stringify-object-3.3.0.tgz#703065aefca19300d3ce88af4f5b3956d7556629"
   integrity sha512-rHqiFh1elqCQ9WPLIC8I0Q/g/wj5J1eMkyoiD6eoQApWHP0FtlK7rqnhmabL5VUY9JQCcqwwvlOaSuutekgyrw==
