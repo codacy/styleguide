@@ -1115,7 +1115,7 @@ const App = () => {
             <hr/>
             <section id="panels">
               <h1>Panels</h1>
-              <p>You should use panels to visually separate content in a page.</p>
+              <p>You can use Panels to group similar concepts together to make it easier to scan through the page.</p>
               <CodeExample>
                 <Panel>
                   <Panel.Body>
@@ -1124,7 +1124,7 @@ const App = () => {
                 </Panel>
               </CodeExample>
 
-              <p>We use primary panels in case you want to create a look for selected box only.</p>
+              <p>You can use the Primary panel to create the active panel effect. This should always follow an interaction with a clickable panel.</p>
               <CodeExample>
                 <Panel bsStyle="primary">
                   <Panel.Body>
