@@ -311,90 +311,67 @@
                     </section>
 
                     <section id="buttons">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h1>Buttons</h1>
-                                <p>Buttons are to be used whenever there's an action a user can make, therefore, there should be <strong>one primary button per page.</strong><br/> <code>.btn-default</code> and <code>.btn-link</code> are the only buttons
-                                    that can repeatedly appear in a page and <strong>should not be used for primary or breaking actions.</strong> Buttons should be positioned on the left. When there's a group of buttons, the primary button stands on the
-                                    far right.</p>
+                      <h1>Buttons</h1>
+                      <p>Buttons are to be used whenever there's an action a user can make, therefore, there should be <strong>one primary button per page.</strong>
+                        <br/><code>.btn-default</code> and <code>.btn-link</code> are the only buttons that can repeatedly appear in a page and <strong>should not be used for primary or breaking actions.</strong> 
+                        Buttons should be positioned on the left. When there's a group of buttons, the primary button stands on the far right.</p>
+                      <div class="panel">
+                        <div class="panel-body">
+                          <div class="row">
+                              <div class="col-xs-6">
+                                  <button class="btn btn-default sg-code" type="submit">Default</button>
+                                  <button class="btn btn-primary sg-code" type="submit">Primary</button>
+                                  <button class="btn btn-link sg-code" type="submit">Link</button>
+                                  <button class="btn btn-success sg-code" type="submit">Success</button>
+                                  <button class="btn btn-danger sg-code" type="submit">Danger</button>
+                              </div>
+                              <div class="col-xs-6">
+                                  <button class="btn btn-default sg-code" type="submit" disabled>Default disabled</button>
+                                  <button class="btn btn-primary sg-code" type="submit" disabled>Primary disabled</button>
+                                  <button class="btn btn-link sg-code" type="submit" disabled>Link disabled</button>
+                                  <button class="btn btn-success sg-code" type="submit" disabled>Success disabled</button>
+                                  <button class="btn btn-danger sg-code" type="submit" disabled>Danger disabled</button>
+                              </div>
+                          </div>
 
-                                <div class="panel">
-                                    <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-xs-6">
-                                            <button class="btn btn-default sg-code" type="submit">Default</button>
-                                            <button class="btn btn-primary sg-code" type="submit">Primary</button>
-                                            <button class="btn btn-link sg-code" type="submit">Link</button>
-                                            <button class="btn btn-success sg-code" type="submit">Success</button>
-                                            <button class="btn btn-danger sg-code" type="submit">Danger</button>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <button class="btn btn-default disabled sg-code" type="submit">Default disabled</button>
-                                            <button class="btn btn-primary disabled sg-code" type="submit">Primary disabled</button>
-                                            <button class="btn btn-link disabled sg-code" type="submit">Link disabled</button>
-                                            <button class="btn btn-success disabled sg-code" type="submit">Success disabled</button>
-                                            <button class="btn btn-danger disabled sg-code" type="submit">Danger disabled</button>
-                                        </div>
-                                    </div>
+                          <h2>Buttons and tooltips</h2>
+                          <p>You can always add a tooltip associated to your button, unless that <strong>button has a disabled state</strong>. 
+                            In this case you will need to add a wrapper that handles the tooltip, as the disabled state of the button ignores any action to it, even hover.</p>
+                          <div class="btn-disabled-wrapper sg-code" data-toggle="tooltip" data-title="This is an example of tooltip working with disabled button.">
+                            <button class="btn btn-default" type="button" disabled>Disabled button</button>
+                          </div>
 
-                                        <h2>Different sizes</h2>
-                                        <p>Some description here mentioning layout and position.</p>
-                                        <p>You can change the button size just by simply adding <code>.btn-lg</code>, <code>.btn-sm</code>, <code>.btn-xs</code> to the button class.</p>
+                          <h2>Different sizes</h2>
+                          <p>Some description here mentioning layout and position.</p>
+                          <p>You can change the button size just by simply adding <code>.btn-lg</code>, <code>.btn-sm</code>, <code>.btn-xs</code> to the button class.</p>
 
-                                        <button class="btn btn-default btn-lg">Lg button</button>
-                                        <button class="btn btn-default">button</button>
-                                        <button class="btn btn-default btn-sm">Sm button</button>
-                                        <button class="btn btn-default btn-xs">Xs button</button>
+                          <button class="btn btn-default btn-lg">Lg button</button>
+                          <button class="btn btn-default">button</button>
+                          <button class="btn btn-default btn-sm">Sm button</button>
+                          <button class="btn btn-default btn-xs">Xs button</button>
 
-                                        <h2>Button groups</h2>
-                                        <div class="btn-group sg-code" role="group">
-                                            <button type="button" class="btn btn-default">Left</button>
-                                            <button type="button" class="btn btn-default">Middle</button>
-                                            <button type="button" class="btn btn-default">Right</button>
-                                        </div>
+                          <h2>Button groups</h2>
+                          <div class="btn-group sg-code" role="group">
+                            <button type="button" class="btn btn-default">Left</button>
+                            <button type="button" class="btn btn-default">Middle</button>
+                            <button type="button" class="btn btn-default">Right</button>
+                          </div>
 
-                                        <h2>Split buttons</h2>
-                                        <div class="btn-group sg-code">
-                                            <button type="button" class="btn btn-default">I'm an action</button>
-                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                          </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">And another one</a></li>
-                                                <li><a href="#">A different one</a></li>
-                                                <li><a href="#">An action</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/.panel-->
-
-                                <!-- <div class="col-md-12">
-                                        <div class="btn-group-vertical sg-code" role="group">
-                                            <button type="button" class="btn btn-default">Top</button>
-                                            <button type="button" class="btn btn-default">Middle</button>
-                                            <button type="button" class="btn btn-default">Bottom</button>
-                                        </div>
-                                    </div> -->
-
-                                <!-- <h3>Justified button group</h3>
-                                <div class="btn-group btn-group-justified sg-code" role="group">
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-default">Left</button>
-                                    </div>
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-default">Middle 1</button>
-                                    </div>
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-default">Middle 2</button>
-                                    </div>
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-default">Right</button>
-                                    </div>-->
-                            </div>
+                          <h2>Split buttons</h2>
+                          <div class="btn-group sg-code">
+                            <button type="button" class="btn btn-default">I'm an action</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <span class="caret"></span>
+                              <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">And another one</a></li>
+                              <li><a href="#">A different one</a></li>
+                              <li><a href="#">An action</a></li>
+                            </ul>
+                          </div>
                         </div>
-                        <!--.row-->
+                      </div>
                     </section>
 
                     <section id="forms">
