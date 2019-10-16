@@ -124,8 +124,8 @@ body {
 .grade-empty {
   @include grade(1);
   background-color: $gray-lighter;
-  stroke: $gray-light;
-  fill: $gray-light;
+  stroke: $gray-lighter;
+  fill: $gray-lighter;
 }
 
 .grade-loading {
