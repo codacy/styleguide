@@ -219,7 +219,7 @@ a.panel-clickable {
 
     //== Project empty state simulation
     &.panel-empty {
-      min-height: 131px;
+      min-height: 155px;
       border: 0px;
       @include border-dashed();
       @include transition(all 0.15s ease-in-out);
@@ -232,7 +232,7 @@ a.panel-clickable {
     }
 
     .cta-add-project {
-      padding-top: 40px;
+      padding-top: 50px;
       font-size: $font-md;
       text-align: center;
 
