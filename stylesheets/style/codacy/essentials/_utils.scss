@@ -310,6 +310,11 @@ body {
   display:flex;
 }
 
+.flex-scrollable-content {
+  overflow-y: auto;
+  height: 0;
+}
+
 .js-copy { cursor: pointer; }
 
 .classy-hr {
