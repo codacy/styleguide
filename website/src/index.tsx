@@ -286,7 +286,7 @@ const App = () => {
                     please create a parent class with the proper rule.
                   </p>
 
-                  <div className="panel">
+                  <div className="panel panel-default">
                     <div className="panel-body">
                       <h3>Alignment classes</h3>
                       <CodeExample>
@@ -969,7 +969,7 @@ const App = () => {
                 <div className="col-md-12">
                   <h1>Alerts</h1>
                   <p>Very nice description on alerts</p>
-                  <div className="panel">
+                  <div className="panel panel-default">
                     <div className="panel-body">
                       <div className="alert alert-success sg-code" role="alert">
                         <p>Congrats! You are now logged in.</p>
@@ -1112,814 +1112,727 @@ const App = () => {
                 </div>
               </div>
             </section>
+            <hr/>
             <section id="panels">
-              <div className="row">
-                <hr />
-                <div className="col-md-12">
-                  <h1>Panels</h1>
-                  <p>Lalala</p>
-                  <div className="panel panel-default sg-code">
-                    <div className="panel-body">
-                      <p>Basic panel example</p>
-                    </div>
-                  </div>
-                  <h2>Clickable container</h2>
-                  <a className="panel-clickable sg-code" href="#test">
-                    <div className="panel panel-default">
-                      <div className="panel-body">
-                        <p>Clickable panel</p>
-                      </div>
-                    </div>
-                  </a>
+              <h1>Panels</h1>
+              <p>You can use Panels to group similar concepts together to make it easier to scan through the page.</p>
+              <CodeExample>
+                <Panel>
+                  <Panel.Body>
+                    <p>Basic panel example</p>
+                  </Panel.Body>
+                </Panel>
+              </CodeExample>
 
-                  <a className="panel-clickable sg-code" href="#test">
-                    <div className="panel panel-empty">
-                      <div className="panel-body">
-                        <div className="empty-project">
-                          <div className="pull-left">
-                            <span
-                              style={{ height: '28px', width: '28px', borderRadius: '50%' }}
-                            ></span>
-                          </div>
-                          <div className="pull-left">
-                            <span style={{ height: '10px', width: '50px' }}></span>
-                            <span style={{ height: '10px', width: '70px' }}></span>
-                            <br />
-                            <ul className="list-inline">
-                              <li>
-                                <span style={{ height: '10px', width: '30px' }}></span>
-                                <span style={{ height: '10px', width: '15px' }}></span>
-                              </li>
-                              <li>
-                                <span style={{ height: '10px', width: '45px' }}></span>
-                                <span style={{ height: '10px', width: '15px' }}></span>
-                              </li>
-                              <li>
-                                <span style={{ height: '10px', width: '35px' }}></span>
-                                <span style={{ height: '10px', width: '15px' }}></span>
-                              </li>
-                              <li>
-                                <span style={{ height: '10px', width: '30px' }}></span>
-                                <span style={{ height: '10px', width: '15px' }}></span>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
+              <p>You can use the Primary panel to create the active panel effect. This should always follow an interaction with a clickable panel.</p>
+              <CodeExample>
+                <Panel bsStyle="primary">
+                  <Panel.Body>
+                    <p>Selected box</p>
+                  </Panel.Body>
+                </Panel>
+              </CodeExample>
 
-                        <div className="cta-add-project hidden">
-                          Add project
-                              </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div className="col-md-12">
-                  <h3>Examples</h3>
-                  <p>Lalala</p>
-                  <div className="col-md-6">
-                    <a href="#test" className="panel-clickable">
-                      <div className="panel panel-default">
-                        <div className="panel-body">
-                          <figure className="avatar avatar-md">
-                            <div style={{ backgroundColor: '#000', width: '500px', height: '500px' }}></div>
-                          </figure>
-                          <h5>João Machado</h5>
-                          <p>princesa(at)codacy.com</p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div className="col-md-6">
-                    <a href="#test" className="panel-clickable">
-                      <div className="panel panel-default">
-                        <div className="panel-body">
-                          <figure className="avatar avatar-md">
-                            <div style={{ backgroundColor: '#000', width: '500px', height: '500px' }}></div>
-                          </figure>
-                          <h5>Rodrigo Fernandes</h5>
-                          <p>rodrigo(at)codacy.com</p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-
-                  <div className="col-md-4">
-                    <a href="#test" className="panel-clickable">
-                      <div className="panel panel-default">
-                        <div className="panel-body">
-                          <figure className="avatar">
-                            <div style={{ backgroundColor: '#000', width: '500px', height: '500px' }}></div>
-                          </figure>
-                          <h5>Rodrigo Fernandes</h5>
-                          <p>rodrigo(at)codacy.com</p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div className="col-md-4">
-                    <a href="#test" className="panel-clickable">
-                      <div className="panel panel-default">
-                        <div className="panel-body">
-                          <figure className="avatar">
-                            <div style={{ backgroundColor: '#000', width: '500px', height: '500px' }}></div>
-                          </figure>
-                          <h5>Rodrigo Fernandes</h5>
-                          <p>rodrigo(at)codacy.com</p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div className="col-md-4">
-                    <a href="#test" className="panel-clickable">
-                      <div className="panel panel-default">
-                        <div className="panel-body">
-                          <figure className="avatar">
-                            <div style={{ backgroundColor: '#000', width: '500px', height: '500px' }}></div>
-                          </figure>
-                          <h5>Rodrigo Fernandes</h5>
-                          <p>rodrigo(at)codacy.com</p>
-                        </div>
-                      </div>
-                    </a>
+              <h2>Clickable container</h2>
+              <a className="panel-clickable sg-code" href="#test">
+                <div className="panel panel-default">
+                  <div className="panel-body">
+                    <p>Clickable panel</p>
                   </div>
                 </div>
-                <div className="col-md-12">
-                  <h3>Panel for issues</h3>
-                  <div
-                    className="panel panel-warning panel-issue margin-top-sm margin-bottom-sm margin-left-sm"
-                  >
-                    <div className="panel-heading">
-                      <h5 className="no-margin">
-                        Don't use a predictable random number generator
-                              </h5>
-                    </div>
-                    <div
-                      className="panel-body no-padding border-secondary-top FileSource"
-                    >
-                      <div className="flex border-secondary-top">
-                        <a className="line-number small" href="#">
-                          <span>105</span>
-                        </a>
-                        <pre className="source-code no-margin no-padding-top no-padding-bottom">
-                          private def rand = Random.nextString(6)
-                              </pre>
+              </a>
+
+              <a className="panel-clickable sg-code" href="#test">
+                <div className="panel panel-empty">
+                  <div className="panel-body">
+                    <div className="empty-project">
+                      <div className="pull-left">
+                        <span
+                          style={{ height: '28px', width: '28px', borderRadius: '50%' }}
+                        ></span>
+                      </div>
+                      <div className="pull-left">
+                        <span style={{ height: '10px', width: '50px' }}></span>
+                        <span style={{ height: '10px', width: '70px' }}></span>
+                        <br />
+                        <ul className="list-inline">
+                          <li>
+                            <span style={{ height: '10px', width: '30px' }}></span>
+                            <span style={{ height: '10px', width: '15px' }}></span>
+                          </li>
+                          <li>
+                            <span style={{ height: '10px', width: '45px' }}></span>
+                            <span style={{ height: '10px', width: '15px' }}></span>
+                          </li>
+                          <li>
+                            <span style={{ height: '10px', width: '35px' }}></span>
+                            <span style={{ height: '10px', width: '15px' }}></span>
+                          </li>
+                          <li>
+                            <span style={{ height: '10px', width: '30px' }}></span>
+                            <span style={{ height: '10px', width: '15px' }}></span>
+                          </li>
+                        </ul>
                       </div>
                     </div>
-                    <div
-                      className="panel-body border-secondary-top IssueDetailContainer"
-                      style={{ display: 'none' }}
-                    >
-                      <div className="IssueDetail">
-                        <div className="row">
-                          <div className="col-xs-12">
-                            <div className="clearfix">
-                              <div className="pull-left">
-                                <img
-                                  src="http://bla"
-                                  width="26"
-                                  height="26"
-                                  className="avatar avatar-xs"
-                                // onError={(e) => {
-                                //     e.currentTarget.onerror = null;
-                                //     e.currentTarget.src = '/legacy/versioned/images/account/default-user-4.png';
-                                //     // this.onError = null;
-                                //     // this.src = '/legacy/versioned/images/account/default-user-4.png';
-                                // }}
-                                />
-                              </div>
-                              <h6 className="pull-left">
-                                pedrorijo91
-                                      <span className="text-normal text-secondary"
-                                >2 years ago</span
-                                >
-                              </h6>
 
-                              <div className="pull-right">
-                                <div className="dropdown">
-                                  <button
-                                    id="qa-dropdown-file-options"
-                                    className="btn btn-default btn-sm btn-icon dropdown-toggle"
-                                    data-toggle="dropdown"
-                                    type="button"
-                                    aria-haspopup="true"
-                                    aria-expanded="true"
-                                  >
-                                    <i
-                                      className="fa fa-gear"
-                                      aria-hidden="true"
-                                    ></i>
-                                    <i
-                                      className="fa fa-angle-down"
-                                      aria-hidden="true"
-                                    ></i>
-                                  </button>
-                                  <ul
-                                    className="dropdown-menu dropdown-menu-right"
-                                    aria-labelledby="qa-dropdown-file-options"
-                                  >
-                                    <li><a href="#">Ignore issue</a></li>
-                                    <li className="divider"></li>
-                                    <li className="dropdown-submenu pull-left"><a tabIndex={-1}
-                                    ><i className="fa fa-bitbucket"></i>
-                                      Bitbucket</a>
-                                      <ul className="dropdown-menu">
-                                        <li>
-                                          <a href="#"
-                                          ><i className="fa fa-comment-o"></i>
-                                            Create Comment</a>
-                                        </li>
-                                        <li>
-                                          <a href="#"
-                                          ><i className="fa fa-bug"></i> Create
-                                                  Issue</a
-                                          >
-                                        </li>
-                                      </ul>
+                    <div className="cta-add-project hidden">
+                      Add project
+                          </div>
+                  </div>
+                </div>
+              </a>
+              
+              <h3>Panel for issues</h3>
+              <div className="panel panel-warning panel-issue margin-top-sm margin-bottom-sm margin-left-sm">
+                <div className="panel-heading">
+                  <h5 className="no-margin">Don't use a predictable random number generator</h5>
+                </div>
+                <div className="panel-body no-padding border-secondary-top FileSource">
+                  <div className="flex border-secondary-top">
+                    <a className="line-number small" href="#">
+                      <span>105</span>
+                    </a>
+                    <pre className="source-code no-margin no-padding-top no-padding-bottom">
+                      private def rand = Random.nextString(6)
+                    </pre>
+                  </div>
+                </div>
+                <div className="panel-body border-secondary-top IssueDetailContainer" style={{ display: 'none' }}>
+                  <div className="IssueDetail">
+                    <div className="row">
+                      <div className="col-xs-12">
+                        <div className="clearfix">
+                          <div className="pull-left">
+                            <img
+                              src="http://bla"
+                              width="26"
+                              height="26"
+                              className="avatar avatar-xs"
+                            // onError={(e) => {
+                            //     e.currentTarget.onerror = null;
+                            //     e.currentTarget.src = '/legacy/versioned/images/account/default-user-4.png';
+                            //     // this.onError = null;
+                            //     // this.src = '/legacy/versioned/images/account/default-user-4.png';
+                            // }}
+                            />
+                          </div>
+                          <h6 className="pull-left">
+                            pedrorijo91
+                                  <span className="text-normal text-secondary"
+                            >2 years ago</span
+                            >
+                          </h6>
+
+                          <div className="pull-right">
+                            <div className="dropdown">
+                              <button
+                                id="qa-dropdown-file-options"
+                                className="btn btn-default btn-sm btn-icon dropdown-toggle"
+                                data-toggle="dropdown"
+                                type="button"
+                                aria-haspopup="true"
+                                aria-expanded="true"
+                              >
+                                <i
+                                  className="fa fa-gear"
+                                  aria-hidden="true"
+                                ></i>
+                                <i
+                                  className="fa fa-angle-down"
+                                  aria-hidden="true"
+                                ></i>
+                              </button>
+                              <ul
+                                className="dropdown-menu dropdown-menu-right"
+                                aria-labelledby="qa-dropdown-file-options"
+                              >
+                                <li><a href="#">Ignore issue</a></li>
+                                <li className="divider"></li>
+                                <li className="dropdown-submenu pull-left"><a tabIndex={-1}
+                                ><i className="fa fa-bitbucket"></i>
+                                  Bitbucket</a>
+                                  <ul className="dropdown-menu">
+                                    <li>
+                                      <a href="#"
+                                      ><i className="fa fa-comment-o"></i>
+                                        Create Comment</a>
+                                    </li>
+                                    <li>
+                                      <a href="#"
+                                      ><i className="fa fa-bug"></i> Create
+                                              Issue</a
+                                      >
                                     </li>
                                   </ul>
-                                </div>
-                              </div>
-                              <div className="pull-right margin-right-xxs">
-                                <a
-                                  href="#"
-                                  className="btn btn-default btn-sm "
-                                  role="button"
-                                >View File</a
-                                >
-                              </div>
+                                </li>
+                              </ul>
                             </div>
                           </div>
-                          <div className="col-xs-12">
-                            <p className="small">
-                              Time to fix: 5 minutes
-                                      <i
-                                className="fa fa-link js-copy"
-                                data-original-title="Copy issue link"
-                              ></i>
-                            </p>
+                          <div className="pull-right margin-right-xxs">
+                            <a
+                              href="#"
+                              className="btn btn-default btn-sm "
+                              role="button"
+                            >View File</a
+                            >
                           </div>
                         </div>
-                        <div className="DetailLines">
-                          <div className="flex">
-                            <a className="line-number small" href="#"
-                            ><span>103</span></a
-                            >
-                            <pre className="source-code no-margin no-padding-top no-padding-bottom scala hljs">
-                              {`}`}
-                            </pre>
-                          </div>
-                          <div className="flex">
-                            <a className="line-number small" href="#"
-                            ><span>104</span></a
-                            >
-                            <pre
-                              className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
-                            ></pre>
-                          </div>
-                          <div className="flex has-issue">
-                            <a className="line-number small" href="#"
-                            ><span>105</span></a
-                            >
-                            <pre
-                              className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
-                            >
-                              {`<span className="hljs-keyword">private</span> <span className="hljs-function"><span className="hljs-keyword">def</span> <span className="hljs-title">rand</span> </span>= <span className="hljs-type">Random</span>.nextString(<span className="hljs-number">6</span>)`}
-                            </pre>
-                          </div>
-                          <div className="flex">
-                            <a className="line-number small" href="#"
-                            ><span>106</span></a
-                            >
-                            <pre
-                              className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
-                            ></pre>
-                          </div>
-                          <div className="flex">
-                            <a className="line-number small" href="#"
-                            ><span>107</span></a
-                            >
-                            <pre className="source-code no-margin no-padding-top no-padding-bottom scala hljs">
-                              {`<span className="hljs-keyword">private</span> <span className="hljs-function"><span className="hljs-keyword">def</span> <span className="hljs-title">createCategory</span></span>(patternCategoryType: <span className="hljs-type">PatternCategoryType</span>.<span className="hljs-type">Value</span>) = {`}
-                            </pre>
-                          </div>
-                        </div>
-                        <div className="row">
-                          <div className="col-xs-12">
-                            <h6 className="margin-top">Why is this an issue?</h6>
-                            <div className="PatternExplanation">
-                              <p>
-                                The use of a predictable random value can lead to
-                                vulnerabilities when used in certain security
-                                critical contexts. For example, when the value is
-                                used as:
-                                      </p>
-                              <ul>
-                                <li>a CSRF token</li>
-                                <li>a password reset token (sent by email)</li>
-                                <li>any other secret value</li>
-                                <li>
-                                  A quick fix could be to replace the use of
-                                  java.util.Random with something stronger, such
-                                  as java.security.SecureRandom.
-                                      </li>
-                              </ul>
-                              <p>Vulnerable Code:</p>
-                              <pre><code>{`String generateSecretToken() {`}</code></pre>
-                              <p>Solution:</p>
-                              <pre><code>{`
-                                                                                                                                                                                                                                                          import org.apache.commons.codec.binary.Hex;
+                      </div>
+                      <div className="col-xs-12">
+                        <p className="small">
+                          Time to fix: 5 minutes
+                                  <i
+                            className="fa fa-link js-copy"
+                            data-original-title="Copy issue link"
+                          ></i>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="DetailLines">
+                      <div className="flex">
+                        <a className="line-number small" href="#"
+                        ><span>103</span></a
+                        >
+                        <pre className="source-code no-margin no-padding-top no-padding-bottom scala hljs">
+                          {`}`}
+                        </pre>
+                      </div>
+                      <div className="flex">
+                        <a className="line-number small" href="#"
+                        ><span>104</span></a
+                        >
+                        <pre
+                          className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
+                        ></pre>
+                      </div>
+                      <div className="flex has-issue">
+                        <a className="line-number small" href="#"
+                        ><span>105</span></a
+                        >
+                        <pre
+                          className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
+                        >
+                          {`<span className="hljs-keyword">private</span> <span className="hljs-function"><span className="hljs-keyword">def</span> <span className="hljs-title">rand</span> </span>= <span className="hljs-type">Random</span>.nextString(<span className="hljs-number">6</span>)`}
+                        </pre>
+                      </div>
+                      <div className="flex">
+                        <a className="line-number small" href="#"
+                        ><span>106</span></a
+                        >
+                        <pre
+                          className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
+                        ></pre>
+                      </div>
+                      <div className="flex">
+                        <a className="line-number small" href="#"
+                        ><span>107</span></a
+                        >
+                        <pre className="source-code no-margin no-padding-top no-padding-bottom scala hljs">
+                          {`<span className="hljs-keyword">private</span> <span className="hljs-function"><span className="hljs-keyword">def</span> <span className="hljs-title">createCategory</span></span>(patternCategoryType: <span className="hljs-type">PatternCategoryType</span>.<span className="hljs-type">Value</span>) = {`}
+                        </pre>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-xs-12">
+                        <h6 className="margin-top">Why is this an issue?</h6>
+                        <div className="PatternExplanation">
+                          <p>
+                            The use of a predictable random value can lead to
+                            vulnerabilities when used in certain security
+                            critical contexts. For example, when the value is
+                            used as:
+                                  </p>
+                          <ul>
+                            <li>a CSRF token</li>
+                            <li>a password reset token (sent by email)</li>
+                            <li>any other secret value</li>
+                            <li>
+                              A quick fix could be to replace the use of
+                              java.util.Random with something stronger, such
+                              as java.security.SecureRandom.
+                                  </li>
+                          </ul>
+                          <p>Vulnerable Code:</p>
+                          <pre><code>{`String generateSecretToken() {`}</code></pre>
+                          <p>Solution:</p>
+                          <pre><code>{`
+                                                                                                                                                                                                                                                      import org.apache.commons.codec.binary.Hex;
 String generateSecretToken() {
-                                                                                                                                                                                                                                                              SecureRandom secRandom = new SecureRandom();
-                                                                                                                                                                                                                                                      
-                                                                                                                                                                                                                                                          byte[] result = new byte[32];
-                                                                                                                                                                                                                                                          secRandom.nextBytes(result);
-                                                                                                                                                                                                                                                          return Hex.encodeHexString(result);
-                                                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                                                  `}</code></pre>
-                              <p><a href="#">More Information</a></p>
-                            </div>
+                                                                                                                                                                                                                                                          SecureRandom secRandom = new SecureRandom();
+                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                      byte[] result = new byte[32];
+                                                                                                                                                                                                                                                      secRandom.nextBytes(result);
+                                                                                                                                                                                                                                                      return Hex.encodeHexString(result);
+                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                              `}</code></pre>
+                          <p><a href="#">More Information</a></p>
+                        </div>
 
-                            <h6 className="margin-top">Related code pattern</h6>
-                            <a href="#" className="h5">Prohibit weak Random</a>
-                            <p>
-                              Do not use java.util.Random, its pseudo random
-                              generator can be predictable
-                                  </p>
-                            <span className="label label-default label-sm"
-                            >Scala</span
-                            >
-                            <span className="label label-default label-sm"
-                            >Security</span
-                            >
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className="panel panel-info panel-issue margin-top-sm margin-bottom-sm margin-left-sm"
-                  >
-                    <div className="panel-heading">
-                      <h5 className="no-margin">
-                        Don't use a predictable random number generator
-                              </h5>
-                    </div>
-                    <div
-                      className="panel-body no-padding border-secondary-top FileSource"
-                    >
-                      <div className="flex border-secondary-top">
-                        <a className="line-number small" href="#">
-                          <span>105</span>
-                        </a>
-                        <pre
-                          className="source-code no-margin no-padding-top no-padding-bottom"
-                        >
-                          private def rand = Random.nextString(6)</pre
-                        >
-                      </div>
-                    </div>
-                    <div
-                      className="panel-body border-secondary-top IssueDetailContainer"
-                      style={{ display: 'none' }}
-                    >
-                      <div className="IssueDetail">
-                        <div className="row">
-                          <div className="col-xs-12">
-                            <div className="clearfix">
-                              <div className="pull-left">
-                                <img
-                                  src="https://secure.gravatar.com/avatar/a2640a0b7fe187c9b9c36af6bf1fe985?s=256&amp;d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-4.png"
-                                  width="26"
-                                  height="26"
-                                  className="avatar avatar-xs"
-                                // onerror="this.onError = null; this.src = '/legacy/versioned/images/account/default-user-4.png';"
-                                />
-                              </div>
-                              <h6 className="pull-left">
-                                pedrorijo91
-                                      <span className="text-normal text-secondary"
-                                >2 years ago</span
-                                >
-                              </h6>
-
-                              <div className="pull-right">
-                                <div className="dropdown">
-                                  <button
-                                    id="qa-dropdown-file-options"
-                                    className="btn btn-default btn-sm btn-icon dropdown-toggle"
-                                    data-toggle="dropdown"
-                                    type="button"
-                                    aria-haspopup="true"
-                                    aria-expanded="true"
-                                  >
-                                    <i
-                                      className="fa fa-gear"
-                                      aria-hidden="true"
-                                    ></i>
-                                    <i
-                                      className="fa fa-angle-down"
-                                      aria-hidden="true"
-                                    ></i>
-                                  </button>
-                                  <ul
-                                    className="dropdown-menu dropdown-menu-right"
-                                    aria-labelledby="qa-dropdown-file-options"
-                                  >
-                                    <li><a href="#">Ignore issue</a></li>
-                                    <li className="divider"></li>
-                                    <li className="dropdown-submenu pull-left"><a tabIndex={-1}
-                                    ><i className="fa fa-bitbucket"></i>
-                                      Bitbucket</a
-                                    >
-                                      <ul className="dropdown-menu">
-                                        <li>
-                                          <a href="#"
-                                          ><i className="fa fa-comment-o"></i>
-                                            Create Comment</a
-                                          >
-                                        </li>
-                                        <li>
-                                          <a href="#"
-                                          ><i className="fa fa-bug"></i> Create
-                                                  Issue</a
-                                          >
-                                        </li>
-                                      </ul>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                              <div className="pull-right margin-right-xxs">
-                                <a
-                                  href="#"
-                                  className="btn btn-default btn-sm "
-                                  role="button"
-                                >View File</a
-                                >
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-xs-12">
-                            <p className="small">
-                              Time to fix: 5 minutes
-                                      <i
-                                className="fa fa-link js-copy"
-                                data-original-title="Copy issue link"
-                              ></i>
-                            </p>
-                          </div>
-                        </div>
-                        <div className="DetailLines">
-                          <div className="flex">
-                            <a className="line-number small" href="#"
-                            ><span>103</span></a
-                            >
-                            <pre
-                              className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
-                            >
-                              }</pre
-                            >
-                          </div>
-                          <div className="flex">
-                            <a className="line-number small" href="#"
-                            ><span>104</span></a
-                            >
-                            <pre
-                              className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
-                            ></pre>
-                          </div>
-                          <div className="flex has-issue">
-                            <a className="line-number small" href="#"
-                            ><span>105</span></a
-                            >
-                            <pre
-                              className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
-                            >  <span className="hljs-keyword">private</span> <span className="hljs-function"><span className="hljs-keyword">def</span> <span className="hljs-title">rand</span> </span>= <span className="hljs-type">Random</span>.nextString(<span className="hljs-number">6</span>)</pre>
-                          </div>
-                          <div className="flex">
-                            <a className="line-number small" href="#"
-                            ><span>106</span></a
-                            >
-                            <pre
-                              className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
-                            ></pre>
-                          </div>
-                          <div className="flex">
-                            <a className="line-number small" href="#"
-                            ><span>107</span></a
-                            >
-                            <pre
-                              className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
-                            >{`<span className="hljs-keyword">private</span> <span className="hljs-function"><span className="hljs-keyword">def</span> <span className="hljs-title">createCategory</span></span>(patternCategoryType: <span className="hljs-type">PatternCategoryType</span>.<span className="hljs-type">Value</span>) = {`}
-                            </pre>
-                          </div>
-                        </div>
-                        <div className="row">
-                          <div className="col-xs-12">
-                            <h6 className="margin-top">Why is this an issue?</h6>
-                            <div className="PatternExplanation">
-                              <p>
-                                The use of a predictable random value can lead to
-                                vulnerabilities when used in certain security
-                                critical contexts. For example, when the value is
-                                used as:
-                                      </p>
-                              <ul>
-                                <li>a CSRF token</li>
-                                <li>a password reset token (sent by email)</li>
-                                <li>any other secret value</li>
-                                <li>
-                                  A quick fix could be to replace the use of
-                                  java.util.Random with something stronger, such
-                                  as java.security.SecureRandom.
-                                      </li>
-                              </ul>
-                              <p>Vulnerable Code:</p>
-                              <pre><code>{`String generateSecretToken() {
-                                                                                                                                                                                                                                                                  Random r = new Random();
-                                                                                                                                                                                                                                                                  return Long.toHexString(r.nextLong());
-                                                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                                                              
-          `}</code></pre>
-                              <p>Solution:</p>
-                              <pre><code>{`
-                                                                                                                                                                                                                                                                  import org.apache.commons.codec.binary.Hex;
-                                                                                                                                                                                                                                                                  
-          String generateSecretToken() {
-                                                                                                                                                                                                                                                                      SecureRandom secRandom = new SecureRandom();
-                                                                                                                                                                                                                                                              
-                                                                                                                                                                                                                                                                  byte[] result = new byte[32];
-                                                                                                                                                                                                                                                                  secRandom.nextBytes(result);
-                                                                                                                                                                                                                                                                  return Hex.encodeHexString(result);
-                                                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                                                              
-                                                                                                                                                                                                                                                              `}</code></pre>
-                              <p><a href="#">More Information</a></p>
-                            </div>
-
-                            <h6 className="margin-top">Related code pattern</h6>
-                            <a href="#" className="h5">Prohibit weak Random</a>
-                            <p>
-                              Do not use java.util.Random, its pseudo random
-                              generator can be predictable
-                                  </p>
-                            <span className="label label-default label-sm"
-                            >Scala</span
-                            >
-                            <span className="label label-default label-sm"
-                            >Security</span
-                            >
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className="panel panel-error panel-issue margin-top-sm margin-bottom-sm margin-left-sm"
-                  >
-                    <div className="panel-heading">
-                      <h5 className="no-margin">
-                        Don't use a predictable random number generator
-                              </h5>
-                    </div>
-                    <div
-                      className="panel-body no-padding border-secondary-top FileSource"
-                    >
-                      <div className="flex border-secondary-top">
-                        <a className="line-number small" href="#">
-                          <span>105</span>
-                        </a>
-                        <pre
-                          className="source-code no-margin no-padding-top no-padding-bottom"
-                        >
-                          private def rand = Random.nextString(6)</pre
-                        >
-                      </div>
-                    </div>
-                    <div
-                      className="panel-body border-secondary-top IssueDetailContainer"
-                      style={{ display: 'none' }}
-                    >
-                      <div className="IssueDetail">
-                        <div className="row">
-                          <div className="col-xs-12">
-                            <div className="clearfix">
-                              <div className="pull-left">
-                                <img
-                                  src="https://secure.gravatar.com/avatar/a2640a0b7fe187c9b9c36af6bf1fe985?s=256&amp;d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-4.png"
-                                  width="26"
-                                  height="26"
-                                  className="avatar avatar-xs"
-                                // onerror="this.onError = null; this.src = '/legacy/versioned/images/account/default-user-4.png';"
-                                />
-                              </div>
-                              <h6 className="pull-left">
-                                pedrorijo91
-                                      <span className="text-normal text-secondary"
-                                >2 years ago</span
-                                >
-                              </h6>
-
-                              <div className="pull-right">
-                                <div className="dropdown">
-                                  <button
-                                    id="qa-dropdown-file-options"
-                                    className="btn btn-default btn-sm btn-icon dropdown-toggle"
-                                    data-toggle="dropdown"
-                                    type="button"
-                                    aria-haspopup="true"
-                                    aria-expanded="true"
-                                  >
-                                    <i
-                                      className="fa fa-gear"
-                                      aria-hidden="true"
-                                    ></i>
-                                    <i
-                                      className="fa fa-angle-down"
-                                      aria-hidden="true"
-                                    ></i>
-                                  </button>
-                                  <ul
-                                    className="dropdown-menu dropdown-menu-right"
-                                    aria-labelledby="qa-dropdown-file-options"
-                                  >
-                                    <li><a href="#">Ignore issue</a></li>
-                                    <li className="divider"></li>
-                                    <li className="dropdown-submenu pull-left"><a tabIndex={-1}
-                                    ><i className="fa fa-bitbucket"></i>
-                                      Bitbucket</a
-                                    >
-                                      <ul className="dropdown-menu">
-                                        <li>
-                                          <a href="#"
-                                          ><i className="fa fa-comment-o"></i>
-                                            Create Comment</a
-                                          >
-                                        </li>
-                                        <li>
-                                          <a href="#"
-                                          ><i className="fa fa-bug"></i> Create
-                                                  Issue</a
-                                          >
-                                        </li>
-                                      </ul>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                              <div className="pull-right margin-right-xxs">
-                                <a
-                                  href="#"
-                                  className="btn btn-default btn-sm "
-                                  role="button"
-                                >View File</a
-                                >
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-xs-12">
-                            <p className="small">
-                              Time to fix: 5 minutes
-                                      <i
-                                className="fa fa-link js-copy"
-                                data-original-title="Copy issue link"
-                              ></i>
-                            </p>
-                          </div>
-                        </div>
-                        <div className="DetailLines">
-                          <div className="flex">
-                            <a className="line-number small" href="#"
-                            ><span>103</span></a
-                            >
-                            <pre
-                              className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
-                            >
-                              }</pre
-                            >
-                          </div>
-                          <div className="flex">
-                            <a className="line-number small" href="#"
-                            ><span>104</span></a
-                            >
-                            <pre
-                              className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
-                            ></pre>
-                          </div>
-                          <div className="flex has-issue">
-                            <a className="line-number small" href="#"
-                            ><span>105</span></a
-                            >
-                            <pre
-                              className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
-                            >{`<span className="hljs-keyword">private</span> <span className="hljs-function"><span className="hljs-keyword">def</span> <span className="hljs-title">rand</span> </span>= <span className="hljs-type">Random</span>.nextString(<span className="hljs-number">6</span>)`}</pre>
-                          </div>
-                          <div className="flex">
-                            <a className="line-number small" href="#"
-                            ><span>106</span></a
-                            >
-                            <pre
-                              className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
-                            ></pre>
-                          </div>
-                          <div className="flex">
-                            <a className="line-number small" href="#"
-                            ><span>107</span></a
-                            >
-                            <pre
-                              className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
-                            >{`<span className="hljs-keyword">private</span> <span className="hljs-function"><span className="hljs-keyword">def</span> <span className="hljs-title">createCategory</span></span>(patternCategoryType: <span className="hljs-type">PatternCategoryType</span>.<span className="hljs-type">Value</span>) = {`}</pre>
-                          </div>
-                        </div>
-                        <div className="row">
-                          <div className="col-xs-12">
-                            <h6 className="margin-top">Why is this an issue?</h6>
-                            <div className="PatternExplanation">
-                              <p>
-                                The use of a predictable random value can lead to
-                                vulnerabilities when used in certain security
-                                critical contexts. For example, when the value is
-                                used as:
-                                      </p>
-                              <ul>
-                                <li>a CSRF token</li>
-                                <li>a password reset token (sent by email)</li>
-                                <li>any other secret value</li>
-                                <li>
-                                  A quick fix could be to replace the use of
-                                  java.util.Random with something stronger, such
-                                  as java.security.SecureRandom.
-                                      </li>
-                              </ul>
-                              <p>Vulnerable Code:</p>
-                              <pre><code>{`String generateSecretToken() {
-                                                                                                                                                                                                                                                                          Random r = new Random();
-                                                                                                                                                                                                                                                                          return Long.toHexString(r.nextLong());
-                                                                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                                                                      
-          `}</code></pre>
-                              <p>Solution:</p>
-                              <pre><code>{`
-                                                                                                                                                                                                                                                                          import org.apache.commons.codec.binary.Hex;
-                                                                                                                                                                                                                                                                          
-          String generateSecretToken() {
-                                                                                                                                                                                                                                                                              SecureRandom secRandom = new SecureRandom();
-                                                                                                                                                                                                                                                                      
-                                                                                                                                                                                                                                                                          byte[] result = new byte[32];
-                                                                                                                                                                                                                                                                          secRandom.nextBytes(result);
-                                                                                                                                                                                                                                                                          return Hex.encodeHexString(result);
-                                                                                                                                                                                                                                                                      }
-                                                                                                                                                                                                                                                                      
-                                                                                                                                                                                                                                                                      `}</code></pre>
-                              <p><a href="#">More Information</a></p>
-                            </div>
-
-                            <h6 className="margin-top">Related code pattern</h6>
-                            <a href="#" className="h5">Prohibit weak Random</a>
-                            <p>
-                              Do not use java.util.Random, its pseudo random
-                              generator can be predictable
-                                  </p>
-                            <span className="label label-default label-sm"
-                            >Scala</span
-                            >
-                            <span className="label label-default label-sm"
-                            >Security</span
-                            >
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-12">
-                  <h3>Checklist</h3>
-                  <ul className="checklist sg-code">
-                    <li>Item available</li>
-                    <li className="item-not-available">Item not available</li>
-                    <li>Item available</li>
-                  </ul>
-                  <h3>Group panels as an ordered list</h3>
-                  <ol className="panel-ordered-group sg-code">
-                    <li className="panel panel-default">
-                      <div className="panel-body">
+                        <h6 className="margin-top">Related code pattern</h6>
+                        <a href="#" className="h5">Prohibit weak Random</a>
                         <p>
-                          For the next steps, we assume that you already have
-                          tests and coverage for your project.
+                          Do not use java.util.Random, its pseudo random
+                          generator can be predictable
                               </p>
+                        <span className="label label-default label-sm"
+                        >Scala</span
+                        >
+                        <span className="label label-default label-sm"
+                        >Security</span
+                        >
                       </div>
-                    </li>
-                    <li className="panel panel-default">
-                      <div className="panel-body">
-                        <p>
-                          Select the language you are using and follow the
-                          instructions presented on the GitHub repository.
-                              </p>
-                      </div>
-                    </li>
-                  </ol>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <div className="panel panel-info panel-issue margin-top-sm margin-bottom-sm margin-left-sm">
+                <div className="panel-heading">
+                  <h5 className="no-margin">
+                    Don't use a predictable random number generator
+                          </h5>
+                </div>
+                <div className="panel-body no-padding border-secondary-top FileSource">
+                  <div className="flex border-secondary-top">
+                    <a className="line-number small" href="#">
+                      <span>105</span>
+                    </a>
+                    <pre
+                      className="source-code no-margin no-padding-top no-padding-bottom"
+                    >
+                      private def rand = Random.nextString(6)</pre
+                    >
+                  </div>
+                </div>
+                <div
+                  className="panel-body border-secondary-top IssueDetailContainer"
+                  style={{ display: 'none' }}
+                >
+                  <div className="IssueDetail">
+                    <div className="row">
+                      <div className="col-xs-12">
+                        <div className="clearfix">
+                          <div className="pull-left">
+                            <img
+                              src="https://secure.gravatar.com/avatar/a2640a0b7fe187c9b9c36af6bf1fe985?s=256&amp;d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-4.png"
+                              width="26"
+                              height="26"
+                              className="avatar avatar-xs"
+                            // onerror="this.onError = null; this.src = '/legacy/versioned/images/account/default-user-4.png';"
+                            />
+                          </div>
+                          <h6 className="pull-left">
+                            pedrorijo91
+                                  <span className="text-normal text-secondary"
+                            >2 years ago</span
+                            >
+                          </h6>
+
+                          <div className="pull-right">
+                            <div className="dropdown">
+                              <button
+                                id="qa-dropdown-file-options"
+                                className="btn btn-default btn-sm btn-icon dropdown-toggle"
+                                data-toggle="dropdown"
+                                type="button"
+                                aria-haspopup="true"
+                                aria-expanded="true"
+                              >
+                                <i
+                                  className="fa fa-gear"
+                                  aria-hidden="true"
+                                ></i>
+                                <i
+                                  className="fa fa-angle-down"
+                                  aria-hidden="true"
+                                ></i>
+                              </button>
+                              <ul
+                                className="dropdown-menu dropdown-menu-right"
+                                aria-labelledby="qa-dropdown-file-options"
+                              >
+                                <li><a href="#">Ignore issue</a></li>
+                                <li className="divider"></li>
+                                <li className="dropdown-submenu pull-left"><a tabIndex={-1}
+                                ><i className="fa fa-bitbucket"></i>
+                                  Bitbucket</a
+                                >
+                                  <ul className="dropdown-menu">
+                                    <li>
+                                      <a href="#"
+                                      ><i className="fa fa-comment-o"></i>
+                                        Create Comment</a
+                                      >
+                                    </li>
+                                    <li>
+                                      <a href="#"
+                                      ><i className="fa fa-bug"></i> Create
+                                              Issue</a
+                                      >
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="pull-right margin-right-xxs">
+                            <a
+                              href="#"
+                              className="btn btn-default btn-sm "
+                              role="button"
+                            >View File</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-xs-12">
+                        <p className="small">
+                          Time to fix: 5 minutes
+                                  <i
+                            className="fa fa-link js-copy"
+                            data-original-title="Copy issue link"
+                          ></i>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="DetailLines">
+                      <div className="flex">
+                        <a className="line-number small" href="#"
+                        ><span>103</span></a
+                        >
+                        <pre
+                          className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
+                        >
+                          }</pre
+                        >
+                      </div>
+                      <div className="flex">
+                        <a className="line-number small" href="#"
+                        ><span>104</span></a
+                        >
+                        <pre
+                          className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
+                        ></pre>
+                      </div>
+                      <div className="flex has-issue">
+                        <a className="line-number small" href="#"
+                        ><span>105</span></a
+                        >
+                        <pre
+                          className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
+                        >  <span className="hljs-keyword">private</span> <span className="hljs-function"><span className="hljs-keyword">def</span> <span className="hljs-title">rand</span> </span>= <span className="hljs-type">Random</span>.nextString(<span className="hljs-number">6</span>)</pre>
+                      </div>
+                      <div className="flex">
+                        <a className="line-number small" href="#"
+                        ><span>106</span></a
+                        >
+                        <pre
+                          className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
+                        ></pre>
+                      </div>
+                      <div className="flex">
+                        <a className="line-number small" href="#"
+                        ><span>107</span></a
+                        >
+                        <pre
+                          className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
+                        >{`<span className="hljs-keyword">private</span> <span className="hljs-function"><span className="hljs-keyword">def</span> <span className="hljs-title">createCategory</span></span>(patternCategoryType: <span className="hljs-type">PatternCategoryType</span>.<span className="hljs-type">Value</span>) = {`}
+                        </pre>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-xs-12">
+                        <h6 className="margin-top">Why is this an issue?</h6>
+                        <div className="PatternExplanation">
+                          <p>
+                            The use of a predictable random value can lead to
+                            vulnerabilities when used in certain security
+                            critical contexts. For example, when the value is
+                            used as:
+                                  </p>
+                          <ul>
+                            <li>a CSRF token</li>
+                            <li>a password reset token (sent by email)</li>
+                            <li>any other secret value</li>
+                            <li>
+                              A quick fix could be to replace the use of
+                              java.util.Random with something stronger, such
+                              as java.security.SecureRandom.
+                                  </li>
+                          </ul>
+                          <p>Vulnerable Code:</p>
+                          <pre><code>{`String generateSecretToken() {
+                                                                                                                                                                                                                                                              Random r = new Random();
+                                                                                                                                                                                                                                                              return Long.toHexString(r.nextLong());
+                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                                          
+      `}</code></pre>
+                          <p>Solution:</p>
+                          <pre><code>{`
+                                                                                                                                                                                                                                                              import org.apache.commons.codec.binary.Hex;
+                                                                                                                                                                                                                                                              
+      String generateSecretToken() {
+                                                                                                                                                                                                                                                                  SecureRandom secRandom = new SecureRandom();
+                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                              byte[] result = new byte[32];
+                                                                                                                                                                                                                                                              secRandom.nextBytes(result);
+                                                                                                                                                                                                                                                              return Hex.encodeHexString(result);
+                                                                                                                                                                                                                                                          }
+                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                          `}</code></pre>
+                          <p><a href="#">More Information</a></p>
+                        </div>
+
+                        <h6 className="margin-top">Related code pattern</h6>
+                        <a href="#" className="h5">Prohibit weak Random</a>
+                        <p>
+                          Do not use java.util.Random, its pseudo random
+                          generator can be predictable
+                              </p>
+                        <span className="label label-default label-sm"
+                        >Scala</span
+                        >
+                        <span className="label label-default label-sm"
+                        >Security</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="panel panel-error panel-issue margin-top-sm margin-bottom-sm margin-left-sm">
+                <div className="panel-heading">
+                  <h5 className="no-margin">Don't use a predictable random number generator</h5>
+                </div>
+                <div className="panel-body no-padding border-secondary-top FileSource">
+                  <div className="flex border-secondary-top">
+                    <a className="line-number small" href="#">
+                      <span>105</span>
+                    </a>
+                    <pre className="source-code no-margin no-padding-top no-padding-bottom">
+                      private def rand = Random.nextString(6)
+                    </pre>
+                  </div>
+                </div>
+                <div className="panel-body border-secondary-top IssueDetailContainer" style={{ display: 'none' }}>
+                  <div className="IssueDetail">
+                    <div className="row">
+                      <div className="col-xs-12">
+                        <div className="clearfix">
+                          <div className="pull-left">
+                            <img
+                              src="https://secure.gravatar.com/avatar/a2640a0b7fe187c9b9c36af6bf1fe985?s=256&amp;d=https://s3-eu-west-1.amazonaws.com/codacy-public-assets/default-user-4.png"
+                              width="26"
+                              height="26"
+                              className="avatar avatar-xs"
+                            // onerror="this.onError = null; this.src = '/legacy/versioned/images/account/default-user-4.png';"
+                            />
+                          </div>
+                          <h6 className="pull-left">
+                            pedrorijo91
+                                  <span className="text-normal text-secondary"
+                            >2 years ago</span
+                            >
+                          </h6>
+
+                          <div className="pull-right">
+                            <div className="dropdown">
+                              <button
+                                id="qa-dropdown-file-options"
+                                className="btn btn-default btn-sm btn-icon dropdown-toggle"
+                                data-toggle="dropdown"
+                                type="button"
+                                aria-haspopup="true"
+                                aria-expanded="true"
+                              >
+                                <i
+                                  className="fa fa-gear"
+                                  aria-hidden="true"
+                                ></i>
+                                <i
+                                  className="fa fa-angle-down"
+                                  aria-hidden="true"
+                                ></i>
+                              </button>
+                              <ul
+                                className="dropdown-menu dropdown-menu-right"
+                                aria-labelledby="qa-dropdown-file-options"
+                              >
+                                <li><a href="#">Ignore issue</a></li>
+                                <li className="divider"></li>
+                                <li className="dropdown-submenu pull-left"><a tabIndex={-1}
+                                ><i className="fa fa-bitbucket"></i>
+                                  Bitbucket</a
+                                >
+                                  <ul className="dropdown-menu">
+                                    <li>
+                                      <a href="#"
+                                      ><i className="fa fa-comment-o"></i>
+                                        Create Comment</a
+                                      >
+                                    </li>
+                                    <li>
+                                      <a href="#"
+                                      ><i className="fa fa-bug"></i> Create
+                                              Issue</a
+                                      >
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="pull-right margin-right-xxs">
+                            <a
+                              href="#"
+                              className="btn btn-default btn-sm "
+                              role="button"
+                            >View File</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-xs-12">
+                        <p className="small">
+                          Time to fix: 5 minutes
+                                  <i
+                            className="fa fa-link js-copy"
+                            data-original-title="Copy issue link"
+                          ></i>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="DetailLines">
+                      <div className="flex">
+                        <a className="line-number small" href="#"
+                        ><span>103</span></a
+                        >
+                        <pre
+                          className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
+                        >
+                          }</pre
+                        >
+                      </div>
+                      <div className="flex">
+                        <a className="line-number small" href="#"
+                        ><span>104</span></a
+                        >
+                        <pre
+                          className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
+                        ></pre>
+                      </div>
+                      <div className="flex has-issue">
+                        <a className="line-number small" href="#"
+                        ><span>105</span></a
+                        >
+                        <pre
+                          className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
+                        >{`<span className="hljs-keyword">private</span> <span className="hljs-function"><span className="hljs-keyword">def</span> <span className="hljs-title">rand</span> </span>= <span className="hljs-type">Random</span>.nextString(<span className="hljs-number">6</span>)`}</pre>
+                      </div>
+                      <div className="flex">
+                        <a className="line-number small" href="#"
+                        ><span>106</span></a
+                        >
+                        <pre
+                          className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
+                        ></pre>
+                      </div>
+                      <div className="flex">
+                        <a className="line-number small" href="#"
+                        ><span>107</span></a
+                        >
+                        <pre
+                          className="source-code no-margin no-padding-top no-padding-bottom scala hljs"
+                        >{`<span className="hljs-keyword">private</span> <span className="hljs-function"><span className="hljs-keyword">def</span> <span className="hljs-title">createCategory</span></span>(patternCategoryType: <span className="hljs-type">PatternCategoryType</span>.<span className="hljs-type">Value</span>) = {`}</pre>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-xs-12">
+                        <h6 className="margin-top">Why is this an issue?</h6>
+                        <div className="PatternExplanation">
+                          <p>
+                            The use of a predictable random value can lead to
+                            vulnerabilities when used in certain security
+                            critical contexts. For example, when the value is
+                            used as:
+                                  </p>
+                          <ul>
+                            <li>a CSRF token</li>
+                            <li>a password reset token (sent by email)</li>
+                            <li>any other secret value</li>
+                            <li>
+                              A quick fix could be to replace the use of
+                              java.util.Random with something stronger, such
+                              as java.security.SecureRandom.
+                                  </li>
+                          </ul>
+                          <p>Vulnerable Code:</p>
+                          <pre><code>{`String generateSecretToken() {
+                                                                                                                                                                                                                                                                      Random r = new Random();
+                                                                                                                                                                                                                                                                      return Long.toHexString(r.nextLong());
+                                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                                  
+      `}</code></pre>
+                          <p>Solution:</p>
+                          <pre><code>{`
+                                                                                                                                                                                                                                                                      import org.apache.commons.codec.binary.Hex;
+                                                                                                                                                                                                                                                                      
+      String generateSecretToken() {
+                                                                                                                                                                                                                                                                          SecureRandom secRandom = new SecureRandom();
+                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                      byte[] result = new byte[32];
+                                                                                                                                                                                                                                                                      secRandom.nextBytes(result);
+                                                                                                                                                                                                                                                                      return Hex.encodeHexString(result);
+                                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                  `}</code></pre>
+                          <p><a href="#">More Information</a></p>
+                        </div>
+
+                        <h6 className="margin-top">Related code pattern</h6>
+                        <a href="#" className="h5">Prohibit weak Random</a>
+                        <p>
+                          Do not use java.util.Random, its pseudo random
+                          generator can be predictable
+                              </p>
+                        <span className="label label-default label-sm"
+                        >Scala</span
+                        >
+                        <span className="label label-default label-sm"
+                        >Security</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <h3>Group panels as an ordered list</h3>
+              <ol className="panel-ordered-group sg-code">
+                <li className="panel panel-default">
+                  <div className="panel-body">
+                    <p>
+                      For the next steps, we assume that you already have
+                      tests and coverage for your project.
+                          </p>
+                  </div>
+                </li>
+                <li className="panel panel-default">
+                  <div className="panel-body">
+                    <p>
+                      Select the language you are using and follow the
+                      instructions presented on the GitHub repository.
+                          </p>
+                  </div>
+                </li>
+              </ol>
+            
+              <h3>Checklist</h3>
+              <ul className="checklist sg-code">
+                <li>Item available</li>
+                <li className="item-not-available">Item not available</li>
+                <li>Item available</li>
+              </ul>
             </section>
             <section id="progress-bar">
               <div className="row">

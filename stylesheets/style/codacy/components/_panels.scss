@@ -7,9 +7,17 @@
 .panel {
   margin-bottom: $line-height-computed;
   background-color: $panel-bg;
-  border: 1px solid $border-color;
+  border: 1px solid;
   border-radius: $panel-border-radius;
   box-shadow: none;
+
+  &.panel-default {
+    border-color: $border-color;
+  }
+
+  &.panel-primary {
+    border-color: $brand-primary;
+  }
 
   &.panel-sm {
     .panel-body {
@@ -49,6 +57,7 @@
   }
 
   &.panel-issue {
+    border-color: $border-color;
 
     &.panel-warning {
       border-top: 5px solid $brand-warning;
