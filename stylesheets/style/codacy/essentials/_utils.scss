@@ -313,6 +313,7 @@ body {
 .flex-scrollable-content {
   overflow-y: auto;
   height: 0;
+  min-height: 200px;
 }
 
 .js-copy { cursor: pointer; }
