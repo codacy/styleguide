@@ -7,9 +7,17 @@
 .panel {
   margin-bottom: $line-height-computed;
   background-color: $panel-bg;
-  border: 1px solid $border-color;
+  border: 1px solid;
   border-radius: $panel-border-radius;
   box-shadow: none;
+
+  &.panel-default {
+    border-color: $border-color;
+  }
+
+  &.panel-primary {
+    border-color: $brand-primary;
+  }
 
   &.panel-sm {
     .panel-body {
@@ -49,6 +57,7 @@
   }
 
   &.panel-issue {
+    border-color: $border-color;
 
     &.panel-warning {
       border-top: 5px solid $brand-warning;
@@ -205,7 +214,7 @@ a.panel-clickable {
 
   .panel {
     @include box-shadow(0px 2px 2px rgba($brand-primary, 0.05));
-    @include transition (all 0.2s ease-in-out);
+    @include transition (box-shadow 0.2s ease-in-out);
 
     &:hover {
       @include box-shadow(0px 3px 6px rgba($brand-primary, 0.1));
@@ -219,7 +228,7 @@ a.panel-clickable {
 
     //== Project empty state simulation
     &.panel-empty {
-      min-height: 131px;
+      min-height: 155px;
       border: 0px;
       @include border-dashed();
       @include transition(all 0.15s ease-in-out);
@@ -232,7 +241,7 @@ a.panel-clickable {
     }
 
     .cta-add-project {
-      padding-top: 40px;
+      padding-top: 50px;
       font-size: $font-md;
       text-align: center;
 

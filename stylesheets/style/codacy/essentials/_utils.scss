@@ -123,9 +123,9 @@ body {
 
 .grade-empty {
   @include grade(1);
-  background-color: $gray-light;
-  stroke: $gray-light;
-  fill: $gray-light;
+  background-color: $gray-lighter;
+  stroke: $gray-lighter;
+  fill: $gray-lighter;
 }
 
 .grade-loading {
@@ -303,6 +303,7 @@ body {
   }
 }
 
+//== Flex utils
 .flex {
   display:-webkit-box;
   display:-webkit-flex;
@@ -314,6 +315,61 @@ body {
   overflow-y: auto;
   height: 0;
   min-height: 200px;
+} 
+ 
+.flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.flex-grow-0 {
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+}
+
+.flex-grow-1 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.flex-shrink-0 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.flex-shrink-1 {
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+.align-items-center {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.align-items-end {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+.justify-content-between {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 .js-copy { cursor: pointer; }

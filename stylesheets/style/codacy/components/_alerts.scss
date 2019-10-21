@@ -195,7 +195,7 @@ $alert-icons: (
   background-color: $white;
   border-left: 5px solid;
   border-radius: 3px;
-  max-width: 350px;
+  max-width: 400px;
   @include box-shadow(0px 1px 6px 1px rgba($gray-dark, 0.1));
 
   &:before {
@@ -203,7 +203,7 @@ $alert-icons: (
     font-size: 17px;
     position: absolute;
     left: 15px;
-    top: 12px;
+    top: 10px;
   }
 
   &.toast-success {
