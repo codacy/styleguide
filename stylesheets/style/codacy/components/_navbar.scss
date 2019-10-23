@@ -166,7 +166,13 @@
       //remove the .fa color that is in the .dropdown-menu outside bootstrap-select, and do this .fa instead:
       .dropdown-menu {
 
-        .fa { color: $gray; }
+        .fa { 
+          color: $white;
+
+          &.fa-plus {
+            color: $brand-primary; 
+          }
+        }
       }
 
       //removing fixed width of select
