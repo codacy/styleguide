@@ -1183,6 +1183,16 @@ const App = () => {
                 </div>
               </a>
               
+              <h2>Selectable container</h2>
+              <p>When using selectable panels it should always start as a panel-default, depending on the status (hover or selected) it will replicate panel-primary style.</p>
+              <div className="panel-selectable sg-code" data-url="">
+                <div className="panel panel-default">
+                    <div className="panel-body">
+                        <p>Selectable panel</p>
+                    </div>
+                </div>
+              </div>
+
               <h3>Panel for issues</h3>
               <div className="panel panel-warning panel-issue margin-top-sm margin-bottom-sm margin-left-sm">
                 <div className="panel-heading">

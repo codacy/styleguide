@@ -298,6 +298,20 @@ a.panel-clickable[href],
 
 .panel-selectable[data-url] {
   cursor: pointer;
+
+  .panel:not(.panel-disabled) {
+    
+    &.panel-default {
+      &:hover {
+        @include box-shadow(0px 6px 4px transparentize($brand-primary, 0.85));
+        border-color: $brand-primary;
+      }
+
+      &.selected {
+        border-color: $brand-primary;
+      }
+    }
+  }
 }
 
 .panel ~ a:hover {
