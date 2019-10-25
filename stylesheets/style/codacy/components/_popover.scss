@@ -26,6 +26,11 @@
   box-shadow: 0 2px 3px transparentize($brand-primary, 0.8);
 }
 
+.popover-danger {
+  border-color: $brand-danger;
+  box-shadow: 0 2px 3px transparentize($brand-danger, 0.8);
+}
+
 .popover-md {
   max-width: 420px;
 }
