@@ -126,8 +126,17 @@ a.alert-clickable {
         margin-right: 5px;
         font-size: $font-lg;
         position: relative;
-        top: 1px;
+        top: 2px;
       }
+    }
+  }
+
+  &.alert-inline-sm {
+    font-size: $font-sm; 
+
+    &:before {
+      font-size: $font-normal;
+      top: 1px;
     }
   }
 }
