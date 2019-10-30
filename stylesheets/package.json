@@ -1,6 +1,6 @@
 {
   "name": "@codacy/stylesheets",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "repository": "git+https://github.com/codacy/styleguide.git",
   "author": "Inês Pinto <ines@codacy.com>",
   "license": "Apache-2.0",
