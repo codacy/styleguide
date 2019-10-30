@@ -942,20 +942,20 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@codacy/react-components@0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@codacy/react-components/-/react-components-0.8.0.tgz#4ccdd84f808cef18b68c60df32a3bfac5689b3fd"
-  integrity sha512-62oRCvJetKJ3uVuE+FaY+ExiLwTjvf8XYVpo0vmwSvDKoGIGvfoJrxeLdVR15uyvcfKAtvjU0hfzYCK5I10OMw==
+"@codacy/react-components@0.8.1":
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/@codacy/react-components/-/react-components-0.8.1.tgz#5fe53c44d842281c0ce43a0190d9a9b35085a795"
+  integrity sha512-K17H0AbZVYv1CRku1AQlHPJClyDvcKXMTtO3qu0utp07u4alUUHlJL+e1+6H07KtYgs1ts86YHF6V2G2WAvZ2Q==
   dependencies:
     prettier "^1.18.2"
     react-element-to-jsx-string "^14.1.0"
     react-fast-highlight "^2.2.2"
     react-select "^3.0.4"
 
-"@codacy/stylesheets@0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@codacy/stylesheets/-/stylesheets-0.8.0.tgz#5b2fb50315fcbcedc99160f64ef034e582de0d98"
-  integrity sha512-64rwfpuzhm9C9SPpIHusrjxBtDD4WDUK0pOSRRw/k9nLJJWCH6eY+HE85u9tV8jKSwxfMTmq4BleWzpI6fXa/Q==
+"@codacy/stylesheets@0.8.1":
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/@codacy/stylesheets/-/stylesheets-0.8.1.tgz#0f030df31c0fa87eabaf519e60847a6e4c493d79"
+  integrity sha512-xCv8qm1EwS3igo87X0ovZYD0H2dPMeigbe/nP4slSdNrepknMhwVLZDuK57gUTrEV1ojr/QaD7RsPlHcnp1D6w==
 
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
