@@ -71,7 +71,7 @@
     color: $brand-primary;
 
     &:hover {
-      color: $white;
+      color: $brand-neutral-0;
     }
   }
 }
@@ -134,7 +134,7 @@
 .dropdown-menu > li > a {
 
   &:focus {
-    background-color: $white;
+    background-color: $brand-neutral-0;
   }
 
   &:hover{
@@ -370,7 +370,7 @@
   margin-bottom: 10px;
 
   .input-group-addon {
-    background-color: $white;
+    background-color: $brand-neutral-0;
     border: none;
   }
 
@@ -400,7 +400,7 @@
         left: 0;
         position: absolute;
         line-height: 28px;
-        color: $gray;
+        color: $brand-neutral-500;
       }
 
       &:after {
@@ -409,7 +409,7 @@
         left: 38px;
         position: absolute;
         line-height: 28px;
-        color: $gray;
+        color: $brand-neutral-500;
       }
     }
 

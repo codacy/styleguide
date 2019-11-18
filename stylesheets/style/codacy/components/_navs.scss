@@ -11,7 +11,7 @@
   > li {
 
     > a {
-      color: $gray-darker;
+      color: $brand-neutral-900;
       &:hover,
       &:focus {
         text-decoration: underline;
@@ -24,7 +24,7 @@
       &,
       &:hover,
       &:focus {
-        color: $gray;
+        color: $brand-neutral-300;
         text-decoration: none;
         background-color: transparent;
         cursor: $cursor-disabled;
@@ -48,7 +48,7 @@
     // Actual tabs (as links)
     > a {
       border: 0;
-      color: $gray;
+      color: $brand-neutral-500;
       font-weight: 400;
       margin-right: 0;
 
@@ -74,7 +74,7 @@
       }
 
       &,
-      &:focus { color: $gray-darker; }
+      &:focus { color: $brand-neutral-900; }
     }
   }
 }
@@ -90,7 +90,7 @@
     // Links rendered as pills
     > a {
       border-radius: 0;
-      background-color: $white;
+      background-color: $brand-neutral-0;
       border: 0;
       border-bottom: 1px solid $border-color;
       font-weight: 400;
@@ -132,7 +132,7 @@
         z-index: 2; // Place active items above their siblings for proper border styling
         color: inherit;
         font-weight: bold;
-        background-color: $white;
+        background-color: $brand-neutral-0;
       }
 
       &::after { color: inherit; }

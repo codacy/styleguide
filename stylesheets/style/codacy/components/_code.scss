@@ -4,7 +4,7 @@
 
 pre {
   background-color: $code-bg;
-  border-color: $gray-lighter;
+  border-color: $brand-neutral-200;
 }
 
 //Code lines
@@ -14,11 +14,11 @@ pre {
   width: 42px;
   max-width: 42px;
   overflow-x: hidden;
-  background-color: $gray-lighter;
+  background-color: $brand-neutral-200;
   display: flex;
   justify-content: flex-end !important;
   padding-right: 4px;
-  color: $gray-dark;
+  color: $brand-neutral-600;
   font-weight: normal;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -34,7 +34,7 @@ pre.source-code {
   flex-basis: 0;
   flex-grow: 1;
   border: none;
-  background-color: $white;
+  background-color: $brand-neutral-0;
   display: flex;
   overflow-x: hidden;
   border-radius: 0;

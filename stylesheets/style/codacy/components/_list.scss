@@ -20,7 +20,7 @@
       @extend .text-secondary;
 
       &:before {
-        color: $gray-light;
+        color: $brand-neutral-400;
         content: "\f05c";
       }
     }

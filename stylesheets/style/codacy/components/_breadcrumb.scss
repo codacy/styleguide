@@ -3,9 +3,9 @@
   padding: 0;
 
   > li {
-    color: $gray;
+    color: $brand-neutral-600;
 
-    &, 
+    &,
     a {
       font-size: $font-sm;
       font-weight: normal;
@@ -13,7 +13,7 @@
 
     &::before {
       border: 1px solid transparent;
-      background-color: $gray-lighter;
+      background-color: $brand-neutral-200;
       border-radius: 50%;
       color: $brand-primary;
       content: "\f00c";
@@ -39,7 +39,7 @@
 
     &.active {
 
-      &, 
+      &,
       a {
         font-weight: bold;
       }
@@ -47,7 +47,7 @@
       &, ~ li {
 
         a {
-          color: $gray;
+          color: $brand-neutral-600;
           cursor: not-allowed;
         }
 
@@ -58,14 +58,14 @@
       }
 
       &::before {
-        background-color: $gray-lighter;
+        background-color: $brand-neutral-200;
       }
 
       ~ li {
 
         &::before {
           background-color: transparent;
-          border-color: $gray-lighter;
+          border-color: $brand-neutral-200;
         }
       }
     }

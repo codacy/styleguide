@@ -18,7 +18,7 @@
       margin: {
         right: 8px;
       }
-    }      
+    }
   }
 
   .navbar-btn {
@@ -47,13 +47,13 @@
 }
 
 .navbar-inverse {
-  background-color: $gray-base;
+  background-color: $brand-neutral-900;
 
   .navbar-nav {
     margin: 0;
 
     > li > a {
-      color: $gray;
+      color: $brand-neutral-200;
       display: inline-block;
       font-weight: 400;
       line-height: 60px;
@@ -61,7 +61,7 @@
 
       &:hover,
       &:focus {
-        color: $white;
+        color: $brand-neutral-0;
         background-color: transparent;
         text-decoration: none;
       }
@@ -79,7 +79,7 @@
       &,
       &:hover,
       &:focus {
-        color: $white;
+        color: $brand-neutral-0;
         background-color: transparent;
       }
     }
@@ -89,7 +89,7 @@
       &,
       &:hover,
       &:focus {
-        color: $gray-dark;
+        color: $brand-neutral-900;
         background-color: transparent;
       }
     }
@@ -108,12 +108,12 @@
 
     //adding / and | before the respective contents
     &.navbar-right .dropdown::before {
-      color: $gray-dark;
+      color: $brand-neutral-900;
       content: "|";
     }
 
     &:not(.navbar-right) .dropdown + .dropdown::before {
-      color: $gray-dark;
+      color: $brand-neutral-900;
       content: "/";
       font-size: 18px;
       position: relative;
@@ -128,7 +128,7 @@
       background-color: transparent;
       border: 0;
       box-shadow: none;
-      color: $gray;
+      color: $brand-neutral-300;
       font-size: 18px;
       font-weight: 700;
       transform: none;
@@ -140,7 +140,7 @@
       &:hover,
       &:focus,
       &:active {
-        color: $white;
+        color: $brand-neutral-0;
       }
 
       .fa-xs {
@@ -166,11 +166,11 @@
       //remove the .fa color that is in the .dropdown-menu outside bootstrap-select, and do this .fa instead:
       .dropdown-menu {
 
-        .fa { 
-          color: $white;
+        .fa {
+          color: $brand-neutral-0;
 
           &.fa-plus {
-            color: $brand-primary; 
+            color: $brand-neutral-400;
           }
         }
       }
@@ -189,9 +189,9 @@
         background-color: transparent;
         border: 0;
         box-shadow: none;
-        color: $gray;
-        font-size: 18px;
-        font-weight: 700;
+        color: $brand-neutral-300;
+        font-size: 16px;
+        font-weight: 600;
         transform: none;
 
         &:focus {
@@ -201,7 +201,7 @@
 
         //to make caret from select change to a icon of font awesome
         .caret {
-          color: $gray;
+          color: $brand-neutral-400;
           font-family: 'FontAwesome';
           position: relative;
           right: 0;
@@ -214,12 +214,12 @@
         &:hover,
         &:focus,
         &:active {
-          color: $white;
+          color: $brand-neutral-0;
 
           //both text and caret
           &,
           .caret {
-            color: $white;
+            color: $brand-neutral-0;
           }
         }
       }
@@ -231,12 +231,12 @@
         .dropdown-toggle:hover,
         .dropdown-toggle:focus {
           background-color: transparent;
-          color: $white;
+          color: $brand-neutral-0;
 
           .caret::before {
-            background-color: $gray-darker;
+            background-color: $brand-neutral-900;
             border-radius: 50%;
-            color: $white;
+            color: $brand-neutral-0;
           }
         }
 
@@ -247,14 +247,14 @@
 
       //to work on both dropdowns
       .dropdown-menu {
-        background: $gray-darker;
+        background: $brand-neutral-900;
         border: 0;
         border-radius: 2px;
         margin-top: 5px;
         min-width: 160px;
 
         .fa {
-          color: $gray;
+          color: $brand-neutral-400;
           width: 18px;
         }
 
@@ -264,33 +264,33 @@
         }
 
         .active > a {
-          background: $gray-dark;
-          color: $white;
+          background: $brand-neutral-900;
+          color: $brand-neutral-0;
 
           &:hover,
           &:focus {
-            background: $gray-dark;
-            color: $white;
+            background: $brand-neutral-900;
+            color: $brand-neutral-0;
           }
         }
 
         > li > a,
         > li > form {
-          color: $gray-lighter;
+          color: $brand-neutral-300;
           padding: 5px 15px;
 
           > a {
-            color: $gray-lighter;
+            color: $brand-neutral-300;
             font-weight: 400;
           }
 
           &:hover,
           &:focus,
           &:active {
-            background: $gray-dark;
-            color: $white;
+            background: $brand-neutral-800;
+            color: $brand-neutral-0;
 
-            > a { color: $white; }
+            > a { color: $brand-neutral-0; }
           }
         }
 
@@ -299,7 +299,7 @@
           padding: 0 15px 5px;
 
           &::before {
-            color: $gray;
+            color: $brand-neutral-400;
             content: "\f002";
             font-family: "FontAwesome";
             font-size: 12px;
@@ -310,42 +310,42 @@
         }
 
         input {
-          background: $gray-darker;
+          background: $brand-neutral-900;
           border: 0;
-          border-bottom: 1px solid $gray-dark;
+          border-bottom: 1px solid $brand-neutral-800;
           border-radius: 0;
-          color: $gray-lighter;
+          color: $brand-neutral-0;
           padding: 5px 15px 0 15px;
           white-space: nowrap;
 
           &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-            color: $gray;
+            color: $brand-neutral-400;
           }
 
           &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-            color: $gray;
+            color: $brand-neutral-400;
             opacity: 1;
           }
 
           &::-moz-placeholder { /* Mozilla Firefox 19+ */
-            color: $gray;
+            color: $brand-neutral-400;
             opacity: 1;
           }
 
           &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color: $gray;
+            color: $brand-neutral-400;
           }
         }
 
         .no-results {
           background: transparent;
-          color: $gray-lighter;
+          color: $brand-neutral-300;
           margin: 0;
           padding: 5px 15px;
         }
 
         .divider {
-          background-color: $gray-dark;
+          background-color: $brand-neutral-900;
         }
       }
     }
@@ -368,7 +368,7 @@
   li {
 
     .aside-item {
-      color: $gray-dark;
+      color: $brand-neutral-900;
       font-size: 12px;
       font-weight: normal;
       padding: 10px 0;
@@ -404,10 +404,10 @@
       &:hover,
       &:focus {
         text-decoration: none;
-        color: $gray-base;
+        color: $brand-neutral-900;
 
         .selected .aside-icon path {
-          fill: $gray-dark;
+          fill: $brand-neutral-900;
         }
       }
     }
@@ -415,7 +415,7 @@
     .arrow-left {
       border-bottom: 6px solid transparent;
       border-top: 6px solid transparent;
-      border-right: 8px solid $white;
+      border-right: 8px solid $brand-neutral-0;
       content: "";
       display: block;
       height: 0;

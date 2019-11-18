@@ -44,9 +44,9 @@ h6,
 
 // Contextual colors
 
-@include text-emphasis-variant('.text-white', $white);
+@include text-emphasis-variant('.text-white', $brand-neutral-0);
 
-@include text-emphasis-variant('.text-secondary', $gray);
+@include text-emphasis-variant('.text-secondary', $brand-neutral-600);
 
 @include text-emphasis-variant('.text-primary', $brand-primary);
 
@@ -76,7 +76,7 @@ dd { color: $brand-neutral-900; }
 
 .dl-horizontal dt {
   font-weight: normal;
-  color: $gray;
+  color: $brand-neutral-600;
   text-align: left;
 }
 
@@ -84,7 +84,7 @@ dd { color: $brand-neutral-900; }
 // -------------------------
 small,
 .small {
-  color: $gray;
+  color: $brand-neutral-600;
 }
 
 // Blockquotes

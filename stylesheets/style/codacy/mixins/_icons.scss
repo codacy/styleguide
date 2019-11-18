@@ -8,7 +8,7 @@
   }
 
 @mixin grade($size) {
-  color: $white;
+  color: $brand-neutral-0;
   width: 90px * $size;
   height: 90px * $size;
   font-size: 50px * $size;
