@@ -162,6 +162,54 @@ input[disabled] ~ label {
   z-index: 3;
 }
 
+
+//== Use this class for any tags
+
+.bootstrap-tagsinput {
+  .tag {
+    &.tag-default {
+      border: 1px solid $brand-neutral-300;
+      color: $brand-neutral-500;
+
+      [data-role="remove"] {
+        margin-left: 8px;
+        cursor: pointer;
+
+        &:after {
+          font-size: 12px;
+          content: "\f00d";
+          font-family: FontAwesome;
+          padding: 0px 2px;
+          color: $brand-neutral-400;
+        }
+      }
+    }
+  }
+
+  input {
+
+    &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+      color: $brand-neutral-500;
+    }
+
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: $brand-neutral-500;
+      opacity: 1;
+    }
+
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: $brand-neutral-500;
+      opacity: 1;
+    }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: $brand-neutral-500;
+    }
+  }
+}
+
+
+
 //change placeholder colour if input is disabled
 input:disabled {
   @include placeholder($color: $brand-neutral-500);
