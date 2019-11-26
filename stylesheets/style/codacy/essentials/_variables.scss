@@ -11,14 +11,14 @@ $brand-neutral-100:     #F2F5FD !default;
 $brand-neutral-50:      #F5F8FE !default;
 $brand-neutral-0:       #FFFFFF !default;
 
-
-$gray-base:              #101e35 !default;
-$gray-darker:            #15294A !default;
-$gray-dark:              #1D3660 !default;
-$gray:                   #7E90B2 !default;
-$gray-light:             #C9D8EF !default;
-$gray-lighter:           #E5ECF5 !default;
-$white:                  #FFF !default;
+// These should be removed and keep only the neutrals 
+$gray-base:              $brand-neutral-900 !default;
+$gray-darker:            $brand-neutral-800 !default;
+$gray-dark:              $brand-neutral-700 !default;
+$gray:                   $brand-neutral-500 !default;
+$gray-light:             $brand-neutral-300 !default;
+$gray-lighter:           $brand-neutral-200 !default;
+$white:                  $brand-neutral-0 !default;
 
 // blue
 $brand-primary:          #2A6CFF !default;
