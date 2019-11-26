@@ -107,8 +107,12 @@ a.alert-clickable {
 
 //== Alerts inline
 .alert-inline {
+  background-color: transparent;
+  color: $gray;
+
   //== for each alert give an icon
   $alert-inline-icons: (
+    alert-success '\f058' $brand-success,
     alert-info '\f05a' $brand-primary,
     alert-danger '\f057' $brand-danger,
     alert-warning '\f06a' $brand-warning
@@ -116,9 +120,6 @@ a.alert-clickable {
 
   @each $alert, $icon, $color in $alert-inline-icons {
     &.#{$alert} {
-      background-color: transparent;
-      color: $brand-neutral-600;
-
       &:before {
         content: $icon;
         color: $color;
@@ -126,8 +127,17 @@ a.alert-clickable {
         margin-right: 5px;
         font-size: $font-lg;
         position: relative;
-        top: 1px;
+        top: 2px;
       }
+    }
+  }
+
+  &.alert-inline-sm {
+    font-size: $font-sm; 
+
+    &:before {
+      font-size: $font-normal;
+      top: 1px;
     }
   }
 }
