@@ -181,21 +181,6 @@ const App = () => {
                   </ColorCard>
                 </Col>
                 <Col xs={4}>
-                  <ColorCard color="gray-dark">
-                    <code>$gray-dark</code> is used for body text.
-                  </ColorCard>
-                </Col>
-                <Col xs={4}>
-                  <ColorCard color="gray">
-                    <code>$gray</code> is used for placeholder and additional text.
-                  </ColorCard>
-                </Col>
-                <Col xs={4}>
-                  <ColorCard color="gray-lighter">
-                    <code>$gray-lighter</code> is used for light background, borders and separators.
-                  </ColorCard>
-                </Col>
-                <Col xs={4}>
                   <ColorCard color="primary">
                     <code>$brand-primary</code> is used for buttons, links, inputs on focus.
                   </ColorCard>
