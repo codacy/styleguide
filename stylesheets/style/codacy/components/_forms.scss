@@ -172,14 +172,8 @@ input[disabled] ~ label {
       color: $brand-neutral-500;
 
       [data-role="remove"] {
-        margin-left: 8px;
-        cursor: pointer;
 
         &:after {
-          font-size: 12px;
-          content: "\f00d";
-          font-family: FontAwesome;
-          padding: 0px 2px;
           color: $brand-neutral-400;
         }
       }
