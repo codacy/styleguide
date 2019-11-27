@@ -262,6 +262,9 @@ $dropdown-link-active-color:     $brand-neutral-900 !default;
 //** Active dropdown menu item background color.
 $dropdown-link-active-bg:        $brand-neutral-0 !default;
 
+//** Text color for headers within dropdown menus.
+$dropdown-header-color: $brand-neutral-500 !default;
+
 //==Shadows
 $shadow-hover: 0px 3px 4px 3px rgba(153, 153, 153, 0.2);
 
