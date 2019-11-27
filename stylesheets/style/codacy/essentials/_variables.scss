@@ -1,11 +1,25 @@
-$black:                  #0D192C !default;
-$gray-base:              #101e35 !default;
-$gray-darker:            #15294A !default;
-$gray-dark:              #1D3660 !default;
-$gray:                   #7E90B2 !default;
-$gray-light:             #C9D8EF !default;
-$gray-lighter:           #E5ECF5 !default;
-$white:                  #FFF !default;
+// neutral
+$brand-neutral-900:    #172B4D !default;
+$brand-neutral-800:    #1D3660 !default;
+$brand-neutral-700:    #354B71 !default;
+$brand-neutral-600:    #4C6083 !default;
+$brand-neutral-500:    #7E90B2 !default;
+$brand-neutral-400:    #B6C6E0 !default;
+$brand-neutral-300:    #C9D8EF !default;
+$brand-neutral-200:    #E5ECF5 !default;
+$brand-neutral-100:    #F2F5FD !default;
+$brand-neutral-50:     #F5F8FE !default;
+$brand-neutral-0:      #FFFFFF !default;
+
+// These should be removed and keep only the neutrals 
+$black:                #0D192C;
+$gray-base:              $brand-neutral-900 !default;
+$gray-darker:            $brand-neutral-800 !default;
+$gray-dark:              $brand-neutral-700 !default;
+$gray:                   $brand-neutral-500 !default;
+$gray-light:             $brand-neutral-300 !default;
+$gray-lighter:           $brand-neutral-200 !default;
+$white:                  $brand-neutral-0 !default;
 
 // blue
 $brand-primary:          #2A6CFF !default;
@@ -61,9 +75,9 @@ $font-sizes: (
 
 //** Horizontal offset for forms and lists.
 //** Headings small color
-$headings-small-color:        $gray-dark !default;
+$headings-small-color:        $brand-neutral-600 !default;
 //** Blockquote small color
-$blockquote-small-color:      $gray-base !default;
+$blockquote-small-color:      $brand-neutral-600 !default;
 
 
 // Format
@@ -90,19 +104,19 @@ $width-default: 220px; // 3 960px-grid columns
 
 $zindex-select-dropdown: 1060; // must be higher than a modal background (1050)
 
-$dropdown-link-hover-bg: $gray-lighter;
+$dropdown-link-hover-bg: $brand-neutral-100;
 
 //checkbox
 $fa-var-check: "\f00c" !default;
 $check-icon: $fa-var-check !default;
 
 //** Placeholder text color
-$input-color-placeholder: $gray-light;
+$input-color-placeholder: $brand-neutral-600;
 
-$input-border: $gray-light;
+$input-border: $brand-neutral-300;
 
 //borders
-$border-color: $gray-lighter;
+$border-color: $brand-neutral-300;
 $border-radius-base:        3px !default;
 $border-radius-lg:          6px !default;
 $border-radius-sm:          2px !default;
@@ -138,24 +152,24 @@ $alert-border-radius:         $border-radius-base !default;
 $alert-link-font-weight:      bold !default;
 
 $alert-success-bg:            $state-success-bg !default;
-$alert-success-text:          $black !default;
+$alert-success-text:          $brand-neutral-900 !default;
 $alert-success-border:        $state-success-border !default;
 
 $alert-info-bg:               $state-info-bg !default;
-$alert-info-text:             $black !default;
+$alert-info-text:             $brand-neutral-900 !default;
 $alert-info-border:           $state-info-border !default;
 
 $alert-warning-bg:            $brand-warning-light !default;
-$alert-warning-text:          $black !default;
+$alert-warning-text:          $brand-neutral-900 !default;
 $alert-warning-border:        $state-warning-border !default;
 
 $alert-danger-bg:             $state-danger-bg !default;
-$alert-danger-text:           $black !default;
+$alert-danger-text:           $brand-neutral-900 !default;
 $alert-danger-border:         $state-danger-border !default;
 
 
 //== Progress bar
-$progress-bg:     lighten($gray-light, 5%);
+$progress-bg:                 $brand-neutral-100;
 
 //** Default progress bar color
 $progress-bar-bg:             $brand-accent;
@@ -175,7 +189,7 @@ $progress-bar-orange-bg:      $brand-orange;
 
 
 //==Tables
-$table-bg:             $white !default;
+$table-bg:             $brand-neutral-0 !default;
 $table-bg-accent:      lighten($brand-primary, 40%) !default;
 $table-bg-hover:       lighten($brand-primary, 38%) !default;
 
@@ -190,15 +204,15 @@ $panel-danger-code-bg:        $brand-danger-light !default;
 $code-bg:                     #f4f9f9 !default;
 
 //** Border color for table and cell borders.
-$table-border-color:            $gray-lighter !default;
+$table-border-color:            $brand-neutral-200 !default;
 
 //==List
 $list-group-border:             $border-color;
 $list-group-hover-bg:           $table-bg-hover;
 
-$list-group-link-color:         $gray-darker !default;
+$list-group-link-color:         $brand-neutral-800 !default;
 $list-group-link-hover-color:   $list-group-link-color !default;
-$list-group-link-heading-color: $gray-darker !default;
+$list-group-link-heading-color: $brand-neutral-600 !default;
 
 //==Labels
 //** Default label background color
@@ -228,31 +242,34 @@ $label-link-hover-color:      #fff !default;
 //## Dropdown menu container and contents.
 
 //** Background for the dropdown menu.
-$dropdown-bg:                    $white !default;
+$dropdown-bg:                    $brand-neutral-0 !default;
 //** Dropdown menu `border-color`.
 $dropdown-border:                $brand-primary !default;
 //** Dropdown menu `border-color` **for IE8**.
 $dropdown-fallback-border:       $brand-primary !default;
 //** Divider color for between dropdown items.
-$dropdown-divider-bg:            $gray-lighter !default;
+$dropdown-divider-bg:            $brand-neutral-200 !default;
 
 //** Dropdown link text color.
-$dropdown-link-color:            $gray-base !default;
+$dropdown-link-color:            $brand-neutral-900 !default;
 //** Hover color for dropdown links.
-$dropdown-link-hover-color:      $gray-base !default;
+$dropdown-link-hover-color:      $brand-neutral-900 !default;
 //** Hover background for dropdown links.
-$dropdown-link-hover-bg:         $gray-lighter !default;
+$dropdown-link-hover-bg:         $brand-neutral-200 !default;
 
 //** Active dropdown menu item text color.
-$dropdown-link-active-color:     $gray-base !default;
+$dropdown-link-active-color:     $brand-neutral-900 !default;
 //** Active dropdown menu item background color.
-$dropdown-link-active-bg:        $white !default;
+$dropdown-link-active-bg:        $brand-neutral-0 !default;
+
+//** Text color for headers within dropdown menus.
+$dropdown-header-color: $brand-neutral-500 !default;
 
 //==Shadows
 $shadow-hover: 0px 3px 4px 3px rgba(153, 153, 153, 0.2);
 
 //==Buttons
-$disabled-color:      $gray-lighter !default;
+$disabled-color:      $brand-neutral-300 !default;
 $button-border:       1px !default;
 $button-xs:           24px !default;
 $button-padding-xs:   7px !default;
@@ -276,7 +293,7 @@ $badge-bg:                    $state-info-bg !default;
 //** Badge text color in active nav link
 $badge-active-color:          $state-info-text !default;
 //** Badge background color in active nav link
-$badge-active-bg:             $white !default;
+$badge-active-bg:             $brand-neutral-0 !default;
 
 $badge-font-weight:           bold !default;
 $badge-line-height:           1 !default;
@@ -289,9 +306,9 @@ $badge-border-radius:         3px !default;
 //** Tooltip max width
 $tooltip-max-width:           200px !default;
 //** Tooltip text color
-$tooltip-color:               $gray-base !default;
+$tooltip-color:               $brand-neutral-900 !default;
 //** Tooltip background color
-$tooltip-bg:                  $white !default;
+$tooltip-bg:                  $brand-neutral-0 !default;
 $tooltip-opacity:             1 !default;
 
 //** Tooltip arrow width

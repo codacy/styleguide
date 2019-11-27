@@ -14,7 +14,7 @@ html {
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-weight: bold;
-  color: $black;
+  color: $brand-neutral-900;
 }
 
 h1,
@@ -44,9 +44,9 @@ h6,
 
 // Contextual colors
 
-@include text-emphasis-variant('.text-white', $white);
+@include text-emphasis-variant('.text-white', $brand-neutral-0);
 
-@include text-emphasis-variant('.text-secondary', $gray);
+@include text-emphasis-variant('.text-secondary', $brand-neutral-600);
 
 @include text-emphasis-variant('.text-primary', $brand-primary);
 
@@ -70,13 +70,13 @@ dt { line-height: 28px; }
 
 dl { margin-bottom: 0; }
 
-dd { color: $black; }
+dd { color: $brand-neutral-900; }
 
 // Horizontal description lists
 
 .dl-horizontal dt {
   font-weight: normal;
-  color: $gray;
+  color: $brand-neutral-600;
   text-align: left;
 }
 
@@ -84,7 +84,7 @@ dd { color: $black; }
 // -------------------------
 small,
 .small {
-  color: $gray;
+  color: $brand-neutral-600;
 }
 
 // Blockquotes

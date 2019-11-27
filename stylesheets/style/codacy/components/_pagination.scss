@@ -16,8 +16,7 @@
       padding: $padding-base-vertical $padding-base-horizontal;
       line-height: $line-height-base;
       text-decoration: none;
-      color: $pagination-color;
-      background-color: $pagination-bg;
+      color: $brand-neutral-500;
       border: none;
       margin-left: -1px;
     }
@@ -41,9 +40,8 @@
     &:hover,
     &:focus {
       z-index: 2;
-      color: $pagination-hover-color;
-      background-color: $pagination-hover-bg;
-      border-color: $pagination-hover-border;
+      color: $brand-primary;
+      background-color: $brand-neutral-100;
     }
   }
 
@@ -53,7 +51,7 @@
     &:hover,
     &:focus {
       z-index: 3;
-      color: $gray-dark;
+      color: $brand-neutral-800;
       background-color: transparent;
       border-bottom: 2px solid $pagination-active-border;
       cursor: default;

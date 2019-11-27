@@ -44,14 +44,14 @@
   }
 
   .panel-heading {
-    background-color: $white;
+    background-color: $brand-neutral-0;
     border: 0;
     font-weight: bold;
     padding: $panel-heading-padding;
   }
 
   .panel-footer {
-    background-color: $white;
+    background-color: $brand-neutral-0;
     border: 0;
     padding: $panel-footer-padding;
   }
@@ -100,6 +100,7 @@
             content: "\f078";
             font-family: FontAwesome;
             float: right;
+            color: $brand-neutral-600;
           }
         }
 
@@ -107,6 +108,7 @@
           > h5 {
             &:after {
               content: "\f077";
+              color: $brand-neutral-600;
             }
           }
         }
@@ -126,7 +128,7 @@
     .panel-heading {
       position: relative;
       padding: 15px 70px 15px 50px;
-      color: $gray-darker;
+      color: $brand-neutral-900;
       font-weight: normal;
       background-color: transparent;
       font-size: $font-md;
@@ -148,19 +150,20 @@
           right: 30px;
           top: 15px;
           font-size: $font-normal;
-          color: $gray-lighter;
+          color: $brand-neutral-500;
         }
 
         &[aria-expanded="true"] {
           &::after {
             content: "\f077";
+            color: $brand-neutral-500;
           }
         }
 
         &:hover,
         &[aria-expanded="true"] {
           &::after {
-            color: $gray;
+            color: $brand-neutral-400;
           }
         }
       }
@@ -196,9 +199,9 @@
 
     .log-stacktrace {
       margin: 5px 0;
-      background-color: $gray-dark;
+      background-color: $brand-neutral-600;
       min-height: 120px;
-      color: $white;
+      color: $brand-neutral-0;
       white-space: pre;
     }
   }
@@ -251,7 +254,7 @@ a.panel-clickable {
     }
 
     .empty-project span {
-      background-color: $gray-lighter;
+      background-color: $brand-neutral-100;
       display: block;
       margin-right: 15px;
       margin-bottom: 10px;
@@ -264,10 +267,10 @@ a.panel-clickable {
 
     .panel {
 
-      .panel-heading { color: $gray; }
+      .panel-heading { color: $brand-neutral-800; }
 
       .panel-body {
-        p { color: $gray; }
+        p { color: $brand-neutral-600; }
       }
     }
   }
@@ -278,7 +281,7 @@ a.panel-clickable[href],
 
   .panel:not(.panel-disabled) {
     @include transition (box-shadow 0.2s ease-in-out);
-    
+
     &.panel-default {
       @include box-shadow(0px 2px 2px transparentize($brand-primary, 0.95));
 
@@ -286,7 +289,7 @@ a.panel-clickable[href],
         @include box-shadow(0px 6px 4px transparentize($brand-primary, 0.9));
       }
     }
-    
+
     &.panel-primary {
       @include box-shadow(0px 2px 2px transparentize($brand-primary, 0.95));
 
@@ -301,7 +304,7 @@ a.panel-clickable[href],
   cursor: pointer;
 
   .panel:not(.panel-disabled) {
-    
+
     &.panel-default {
       &:hover {
         @include box-shadow(0px 6px 4px transparentize($brand-primary, 0.85));
@@ -335,10 +338,10 @@ ol.panel-ordered-group {
 
     &::before {
       content: counter(my-awesome-counter);
-      color: $gray;
+      color: $brand-neutral-500;
       font-weight: bold;
       font-size: 1.2rem;
-      background: $gray-lighter;
+      background: $brand-neutral-100;
       position: absolute;
       border-radius: 50%;
       width: 20px;

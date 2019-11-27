@@ -5,7 +5,7 @@ legend {
   margin-bottom: $line-height-computed;
   font-size: ($font-size-base * 1.5); //20px
   line-height: inherit;
-  color: $gray-darker;
+  color: $brand-neutral-500;
   padding-bottom: 8px;
   border: 0 !important;
   font-weight: bold;
@@ -33,10 +33,10 @@ label {
   // HTML5 says that controls under a fieldset > legend:first-child won't be
   // disabled if the fieldset is disabled. Due to implementation difficulty, we
   // don't honor that edge case; we style them as disabled anyway.
-  border: 1px solid $gray-light;
+  border: 1px solid $brand-neutral-300;
   box-shadow: none;
   border-radius: $border-radius-small;
-  color: $gray-darker;
+  color: $brand-neutral-600;
   font-size: $font-normal;
   height: 28px;
   padding: 4px 12px;
@@ -45,32 +45,32 @@ label {
   &[disabled],
   &[readonly],
   fieldset[disabled] & {
-    background-color: $white;
-    border: 1px solid $gray-lighter;
+    background-color: $brand-neutral-0;
+    border: 1px solid $brand-neutral-300;
     opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
     box-shadow: none;
-    color: $gray-light;
+    color: $brand-neutral-500;
   }
 
   &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: $gray;
+    color: $brand-neutral-500;
   }
   &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: $gray;
+    color: $brand-neutral-500;
     opacity: 1;
   }
   &::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: $gray;
+    color: $brand-neutral-500;
     opacity: 1;
   }
   &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: $gray;
+    color: $brand-neutral-500;
   }
 
   &:focus {
     box-shadow: none;
     border-color: $brand-primary;
-    color: $gray-darker;
+    color: $brand-neutral-600;
   }
 
   + p {
@@ -83,7 +83,7 @@ label {
 
   p {
     font-size: $font-sm;
-    color: $gray;
+    color: $brand-neutral-600;
     position: absolute;
   }
 
@@ -91,7 +91,7 @@ label {
     label::after {
       content: "(optional)";
       @include general-type;
-      color: $gray;
+      color: $brand-neutral-500;
       font-size: $font-sm;
       margin-left: $margin-xs;
     }
@@ -133,7 +133,7 @@ label {
   }
 
   label {
-    color: $gray;
+    color: $brand-neutral-500;
     font-size: $font-sm;
     margin-bottom: 0;
   }
@@ -162,9 +162,51 @@ input[disabled] ~ label {
   z-index: 3;
 }
 
+
+//== Use this class for any tags
+
+.bootstrap-tagsinput {
+  .tag {
+    &.tag-default {
+      border: 1px solid $brand-neutral-300;
+      color: $brand-neutral-500;
+
+      [data-role="remove"] {
+
+        &:after {
+          color: $brand-neutral-400;
+        }
+      }
+    }
+  }
+
+  input {
+
+    &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+      color: $brand-neutral-500;
+    }
+
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: $brand-neutral-500;
+      opacity: 1;
+    }
+
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: $brand-neutral-500;
+      opacity: 1;
+    }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: $brand-neutral-500;
+    }
+  }
+}
+
+
+
 //change placeholder colour if input is disabled
 input:disabled {
-  @include placeholder($color: $gray);
+  @include placeholder($color: $brand-neutral-500);
 }
 
 // input:invalid, textarea:invalid {
@@ -175,7 +217,7 @@ input:disabled {
 .has-success {
   // For now, we defined to not have a success visual feedback. Success = Normal input state.
   // We still need to change this because the plugin for validation will always apply this success class.
-  @include form-control-validation($gray-dark, $gray-light, lighten($gray-lighter, 20%));
+  @include form-control-validation($brand-neutral-900, $brand-neutral-200);
 }
 .has-warning {
   @include form-control-validation($state-warning-text, $state-warning-border, $state-warning-bg);
@@ -195,13 +237,13 @@ input:disabled {
 }
 
 .input-group-addon {
-    background-color: lighten($gray-lighter, 20%);
+    background-color: $brand-neutral-200;
     border-color: $border-color;
-    color: $gray-dark;
+    color: $brand-neutral-600;
 
     ~.form-control {
         &[disabled] {
-            background: $white;
+            background: $brand-neutral-0;
             border-bottom: 1px solid $border-color;
         }
     }
@@ -423,8 +465,8 @@ input:disabled {
 
       &::before{
         cursor: not-allowed;
-        background-color: $gray-light;
-        border-color: $gray-light;
+        background-color: $brand-neutral-100;
+        border-color: $brand-neutral-200;
       }
     }
 
@@ -471,10 +513,10 @@ input[type="radio"] {
   }
   .styled:checked + label {
     &::before {
-      color: $white;
+      color: $brand-neutral-0;
     }
     &::after {
-      color: $white;
+      color: $brand-neutral-0;
     }
   }
 }
@@ -510,14 +552,14 @@ label + .switch-md {
       content: "\f00c";
       text-align: center;
       line-height: 18px;
-      color: $white;
+      color: $brand-neutral-0;
       font-size: calc(#{$font-normal} - 4px); //10px
     }
   }
 }
 
 .switch-button:disabled + .switch-label::before {
-  background-color: $white;
+  background-color: $brand-neutral-0;
   border: 1px solid $border-color;
 }
 
@@ -538,7 +580,7 @@ label + .switch-md {
     height: 18px;
     width: 18px;
     margin: -1px;
-    background: $gray-light;
+    background: $brand-neutral-100;
     position: absolute;
     top: 0;
     bottom: 0;

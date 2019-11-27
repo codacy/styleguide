@@ -32,13 +32,13 @@
 }
 
 .open > .btn-default.dropdown-toggle {
-  color: $white;
+  color: $brand-neutral-0;
   box-shadow: none;
 
   &:active,
   &:focus { outline: none !important; }
 
-  .caret { color: $white; }
+  .caret { color: $brand-neutral-0; }
 }
 
 .btn-toggle > .btn-link {
@@ -71,19 +71,19 @@
 }
 
 .btn-default {
-  @include button-variant($brand-primary, $white, true);
+  @include button-variant($brand-primary, $brand-neutral-0, true);
 }
 
 .btn-primary {
-  @include button-variant($white, $brand-primary);
+  @include button-variant($brand-neutral-0, $brand-primary);
 }
 
 .btn-success {
-  @include button-variant($white, $brand-success);
+  @include button-variant($brand-neutral-0, $brand-success);
 }
 
 .btn-danger {
-  @include button-variant($white, $brand-danger);
+  @include button-variant($brand-neutral-0, $brand-danger);
 }
 
 .btn-select {
@@ -118,7 +118,7 @@
 }
 
 .btn-refresh {
-  color: $gray;
+  color: $brand-neutral-400;
   cursor: pointer;
 
   &.disabled {

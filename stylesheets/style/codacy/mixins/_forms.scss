@@ -70,7 +70,7 @@
     border-color: $border-color;
 
     &:focus {
-      @if ($border-color==$gray-light) {
+      @if ($border-color==$brand-neutral-500) {
         border-color: $brand-primary;
       } @else {
         border-color: $border-color;
