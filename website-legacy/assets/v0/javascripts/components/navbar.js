@@ -1,10 +1,10 @@
 $(function() {
   var inputSearch = $(".bs-searchbox input");
-  var divider = $(".project-name .dropdown-menu .divider");
-  var addProject = $(".project-name .dropdown-menu .divider + li");
+  var divider = $(".filter-search .dropdown-menu .divider");
+  var addProject = $(".filter-search .dropdown-menu .divider + li");
 
   inputSearch.on("input", function () {
-    var lastChild = $(".project-name .dropdown-menu li:last-child");
+    var lastChild = $(".filter-search .dropdown-menu li:last-child");
     divider.removeClass("hidden");
     addProject.removeClass("hidden");
 
