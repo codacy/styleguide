@@ -42,19 +42,19 @@
   border-bottom: 1px solid $border-color;
   margin: 10px 0 20px;
   float: left;
+  font-weight: 400;
 
   > li {
 
     // Actual tabs (as links)
     > a {
       border: 0;
-      color: $brand-neutral-500;
-      font-weight: 400;
+      color: $brand-primary;
       margin-right: 0;
 
       &:hover,
       &:focus {
-        color: $brand-primary;
+        color: $brand-primary-darker;
         text-decoration: none;
       }
     }
@@ -71,6 +71,7 @@
         background-color: transparent;
         border: 0;
         border-bottom: 3px solid $brand-primary;
+        cursor: pointer;
       }
 
       &,
