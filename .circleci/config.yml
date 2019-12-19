@@ -107,8 +107,6 @@ jobs:
             - workdir/stylesheets/dist/
             - workdir/stylesheets/.sass-cache/
             - workdir/stylesheets/node_modules/
-            - workdir/website/build/
-            - workdir/website/node_modules/
             - workdir/website-legacy/dist/
             - workdir/website-legacy/node_modules/
             - workdir/legacy-javascripts/dist/
@@ -175,7 +173,6 @@ jobs:
             # Update published versions in the website packages
             export PUBLISHED_VERSION=$(cat .version)
             (cd website-legacy && rm -rf node_modules && yarn --ignore-scripts && yarn add --ignore-scripts "@codacy/stylesheets@$PUBLISHED_VERSION" && yarn add --ignore-scripts "@codacy/legacy-javascripts@$PUBLISHED_VERSION")
-            (cd website && rm -rf node_modules && yarn --ignore-scripts && yarn add --ignore-scripts "@codacy/stylesheets@$PUBLISHED_VERSION" && yarn add --ignore-scripts "@codacy/react-components@$PUBLISHED_VERSION")
             # Stage and create commit with version updates
             git add -A .
             git commit -m "Updating dependencies to released version $(cat .version) [skip ci]"
