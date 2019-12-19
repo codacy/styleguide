@@ -34,9 +34,7 @@ jobs:
           at: ~/
       - run:
           name: Install dependencies
-          command: |
-            sudo npm install -g yarn
-            yarn
+          command: yarn
       - run:
           name: Test Edge Lambda
           command: yarn run test
