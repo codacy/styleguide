@@ -1,4 +1,5 @@
 var stylesheetsCSSLocation = "node_modules/@codacy/stylesheets/dist/out/css/template.min.css"
+var legacyJSLocation = "node_modules/@codacy/legacy-javascripts/dist/js/main.min.js"
 
 module.exports = function(grunt) {
   // Project configuration.
@@ -7,8 +8,8 @@ module.exports = function(grunt) {
 
     watch: {
       js: {
-        files: "assets/v0/javascripts/**/*.js",
-        tasks: ["uglify"]
+        files: legacyJSLocation,
+        tasks: ["copy"]
       },
       css: {
         files: stylesheetsCSSLocation,
@@ -29,36 +30,6 @@ module.exports = function(grunt) {
       }
     },
 
-    uglify: {
-      options: {
-        manage: false,
-        preserveComments: "all" // Preserve all comments on JS files
-      },
-      my_target: {
-        files: {
-          "dist/js/main.min.js": [
-            "assets/v0/bootstrap-3.3.7/assets/javascripts/bootstrap.min.js",
-            "assets/v0/bootstrap-select/js/bootstrap-select.js",
-            "assets/v0/bootstrap-tagsinput/src/bootstrap-tagsinput.js",
-            "assets/v0/javascripts/components/*.js"
-          ]
-        }
-      }
-    },
-
-    concat: {
-      options: {
-        separator: ";",
-        stripBanners: true,
-        banner:
-          '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-      },
-      dist: {
-        src: ["assets/v0/javascripts/*.js"],
-        dest: "dist/js/main.min.js"
-      }
-    },
-
     copy: {
       production: {
         files: [
@@ -66,6 +37,11 @@ module.exports = function(grunt) {
             cwd: "./",
             src: [stylesheetsCSSLocation],
             dest: "./dist/css/template.min.css"
+          },
+          {
+            cwd: "./",
+            src: [legacyJSLocation],
+            dest: "./dist/js/main.min.js"
           }
         ]
       }
@@ -75,12 +51,6 @@ module.exports = function(grunt) {
   // Load the plugin that provides the "watch" task.
   grunt.loadNpmTasks("grunt-contrib-watch");
 
-  // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks("grunt-contrib-uglify");
-
-  // Load the plugin that provides the "concat" task.
-  grunt.loadNpmTasks("grunt-contrib-concat");
-
   // Load the plugin that provides the "connect" task.
   grunt.loadNpmTasks("grunt-contrib-connect");
 
@@ -89,11 +59,9 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask("default", [
-    "concat",
-    "uglify",
     "copy",
     "connect",
     "watch"
   ]);
-  grunt.registerTask("dist", ["concat", "uglify", "copy"]);
+  grunt.registerTask("dist", ["copy"]);
 };

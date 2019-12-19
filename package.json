@@ -13,8 +13,10 @@
     "build:components": "bolt w @codacy/react-components run build",
     "build:stylesheets": "bolt w @codacy/stylesheets run build",
     "build:website-legacy": "bolt w @codacy/styleguide-website-legacy run build",
+    "build:legacy-javascripts": "bolt w @codacy/legacy-javascripts run build",
     "start:stylesheets": "sane 'yarn run build:stylesheets' stylesheets --glob='**/*.*' --ignored='dist/**'",
     "start:components": "bolt w @codacy/react-components run start",
+    "start:legacy-javascripts": "bolt w @codacy/legacy-javascripts run start",
     "start:website-legacy": "bolt w @codacy/styleguide-website-legacy run start",
     "start:website-legacy-and-dependencies": "concurrently 'yarn:start:stylesheets' 'yarn:start:website-legacy'"
   },
@@ -77,6 +79,7 @@
     "workspaces": [
       "components",
       "stylesheets",
+      "legacy-javascripts",
       "website-legacy",
       "build/*"
     ]

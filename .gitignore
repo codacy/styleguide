@@ -20,3 +20,4 @@ node_modules/
 /stylesheets/dist/
 /stylesheets/build/
 /website-legacy/dist/
+/legacy-javascripts/dist/
