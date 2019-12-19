@@ -34,42 +34,10 @@ jobs:
           at: ~/
       - run:
           name: Install dependencies
-          command: |
-            sudo npm install -g yarn
-            yarn
+          command: yarn
       - run:
           name: Test Edge Lambda
           command: yarn run test
-
-  create_stack_react_website:
-    docker:
-      - image: codacy/ci-aws:3.0.2
-    working_directory: ~/workdir/.aws
-    environment:
-      AWS_PROFILE: integration
-    steps:
-      - attach_workspace:
-          at: ~/
-      - *setup_aws_credentials
-      - run:
-          name: Install Node.js and npm
-          command: apk add --update nodejs nodejs-npm
-      - run:
-          name: Install Yarn
-          command: |
-            npm config set unsafe-perm true  
-            npm install -g yarn
-            npm config set unsafe-perm false
-      - run:
-          name: Build auth project
-          working_directory: ~/workdir/.aws/src
-          command: |
-            yarn
-            md5sum dist/main.js
-      - deploy:
-          name: Create Cloudformation stack
-          command: make aws-create-stack PROJECT_NAME=styleguide-react-website DEPLOYMENT_TYPE=react-website
-          no_output_timeout: 30m
 
   create_stack_legacy_website:
     docker:
@@ -216,20 +184,6 @@ jobs:
           command: |
             curl -X GET "https://www.webjars.org/deploy?webJarType=npm&nameOrUrlish=@codacy/stylesheets&version=$(cat .version)"
 
-  upload_react_website:
-    docker:
-      - image: codacy/ci-aws:3.0.2
-    working_directory: ~/workdir/.aws
-    environment:
-      AWS_PROFILE: integration
-    steps:
-      - attach_workspace:
-          at: ~/
-      - *setup_aws_credentials
-      - deploy:
-          name: Upload react website
-          command: make upload-react-website PROJECT_NAME=styleguide-react-website DEPLOYMENT_TYPE=react-website
-
   upload_website_legacy:
     docker:
       - image: codacy/ci-aws:3.0.2
@@ -251,11 +205,6 @@ workflows:
       - test_edge_lambda:
           requires:
             - codacy/checkout_and_version
-      - create_stack_react_website:
-          <<: *release_filter
-          context: CodacyAWS
-          requires:
-            - test_edge_lambda
       - create_stack_legacy_website:
           <<: *release_filter
           context: CodacyAWS
@@ -269,12 +218,6 @@ workflows:
           requires:
             - build_packages
           context: CodacyNPM
-      - upload_react_website:
-          <<: *release_filter
-          context: CodacyAWS
-          requires:
-            - create_stack_react_website
-            - build_packages
       - upload_website_legacy:
           <<: *release_filter
           context: CodacyAWS

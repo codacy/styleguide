@@ -5,8 +5,8 @@
 # Variables
 OWNER="codacy"
 ENVIRONMENT="codacy"
-DEPLOYMENT_TYPE?=website-legacy            # website-legacy            | react-website
-PROJECT_NAME?="styleguide-website-legacy"  # styleguide-website-legacy | styleguide-react-website
+DEPLOYMENT_TYPE?=website-legacy            # website-legacy
+PROJECT_NAME?="styleguide-website-legacy"  # styleguide-website-legacy
 
 # Commands
 PARAMETERS:=(\
@@ -61,12 +61,6 @@ create-ssm-parameters: ## Create the necessary secrets and parameters in the SSM
 		--value "$$VALUE" \
 		--overwrite ; \
 	done
-
-.PHONY: upload-react-website
-upload-react-website: .SETUP_AWS_REGION ## Upload react website
-	PAGES_S3_BUCKET=$$(aws cloudformation describe-stacks --stack-name ${PROJECT_NAME} --output text --query 'Stacks[0].Outputs[?OutputKey==`WebsiteBucketName`].OutputValue') ;\
-	aws s3 sync ../website/build/ s3://$$PAGES_S3_BUCKET/ ;\
-	aws s3 sync ./login_resources/ s3://$$PAGES_S3_BUCKET
 
 .PHONY: upload-website-legacy
 upload-website-legacy: .SETUP_AWS_REGION ## Upload website legacy
