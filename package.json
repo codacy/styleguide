@@ -9,15 +9,12 @@
   "scripts": {
     "bolt": "bolt",
     "bolt:install": "bolt install",
-    "build": "concurrently 'yarn:build:components' 'yarn:build:stylesheets' 'yarn:build:website' 'yarn:build:website-legacy'",
+    "build": "concurrently 'yarn:build:components' 'yarn:build:stylesheets' 'yarn:build:website-legacy'",
     "build:components": "bolt w @codacy/react-components run build",
     "build:stylesheets": "bolt w @codacy/stylesheets run build",
-    "build:website": "bolt w @codacy/react-styleguide-website run build",
     "build:website-legacy": "bolt w @codacy/styleguide-website-legacy run build",
     "start:stylesheets": "sane 'yarn run build:stylesheets' stylesheets --glob='**/*.*' --ignored='dist/**'",
     "start:components": "bolt w @codacy/react-components run start",
-    "start:website": "bolt w @codacy/react-styleguide-website run start",
-    "start:website-and-dependencies": "concurrently 'yarn:start:stylesheets' 'yarn:start:components' 'yarn:start:website'",
     "start:website-legacy": "bolt w @codacy/styleguide-website-legacy run start",
     "start:website-legacy-and-dependencies": "concurrently 'yarn:start:stylesheets' 'yarn:start:website-legacy'"
   },
@@ -80,7 +77,6 @@
     "workspaces": [
       "components",
       "stylesheets",
-      "website",
       "website-legacy",
       "build/*"
     ]

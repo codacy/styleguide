@@ -28,14 +28,12 @@ It will include components, code snippets and how to use them.
 ### Website
 
 - https://legacy.styleguide.dev.codacy.org
-- https://react.styleguide.dev.codacy.org
 
 ## Structure
 
 - [.aws](./.aws) - Deployment scripts and configurations
 - [components](./components) - Custom react components
 - [stylesheets](./stylesheets) - Codacy stylesheets
-- [website](./website) - Codacy styleguide react website
 - [website-legacy](./website-legacy) - Codacy styleguide legacy website
 
 ## Develop
@@ -45,13 +43,6 @@ It will include components, code snippets and how to use them.
 ```sh
 yarn
 yarn bolt:install
-```
-
-### React Website
-
-```sh
-# yarn start:website # Just rebuilds the website without updating on dependency changes
-yarn start:website-and-dependencies
 ```
 
 ### Legacy Website

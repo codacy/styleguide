@@ -4,7 +4,6 @@ This modules holds the script to create the styleguide website.
 It is used to publish:
 
 - https://legacy.styleguide.dev.codacy.org
-- https://react.styleguide.dev.codacy.org
 
 ## Requirements
 
