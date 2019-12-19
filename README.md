@@ -13,6 +13,7 @@ It will include components, code snippets and how to use them.
 
 ```scala
 "org.webjars.npm" % "codacy__stylesheets" % "<VERSION>"
+"org.webjars.npm" % "codacy__legacy-javascripts" % "<VERSION>"
 ```
 
 ### NPM
@@ -21,6 +22,7 @@ It will include components, code snippets and how to use them.
 "dependencies": {
     // ...
     "@codacy/stylesheets": "<VERSION>",
+    "@codacy/legacy-javascripts": "<VERSION>",
     "@codacy/react-components": "<VERSION>"
 }
 ```
@@ -33,6 +35,7 @@ It will include components, code snippets and how to use them.
 
 - [.aws](./.aws) - Deployment scripts and configurations
 - [components](./components) - Custom react components
+- [legacy-javacripts](./legacy-javascripts) - Codacy legacy javascripts
 - [stylesheets](./stylesheets) - Codacy stylesheets
 - [website-legacy](./website-legacy) - Codacy styleguide legacy website
 
@@ -62,6 +65,12 @@ yarn build:components
 
 ```sh
 yarn build:stylesheets
+```
+
+### Legacy Javascripts
+
+```sh
+yarn build:legacy-javascripts
 ```
 
 ### Others

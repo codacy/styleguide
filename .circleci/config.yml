@@ -111,6 +111,8 @@ jobs:
             - workdir/website/node_modules/
             - workdir/website-legacy/dist/
             - workdir/website-legacy/node_modules/
+            - workdir/legacy-javascripts/dist/
+            - workdir/legacy-javascripts/node_modules/
             - workdir/node_modules/
 
   publish_packages:
@@ -159,6 +161,7 @@ jobs:
             # Update version in packages to publish
             yarn bolt w @codacy/react-components yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version)
             yarn bolt w @codacy/stylesheets yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version)
+            yarn bolt w @codacy/legacy-javascripts yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version)
             # Stage and create commit with version changes
             git add -A .
             git commit -m "Releasing version $(cat .version) [skip ci]"
@@ -171,7 +174,7 @@ jobs:
             yarn bolt publish
             # Update published versions in the website packages
             export PUBLISHED_VERSION=$(cat .version)
-            (cd website-legacy && rm -rf node_modules && yarn --ignore-scripts && yarn add --ignore-scripts "@codacy/stylesheets@$PUBLISHED_VERSION")
+            (cd website-legacy && rm -rf node_modules && yarn --ignore-scripts && yarn add --ignore-scripts "@codacy/stylesheets@$PUBLISHED_VERSION" && yarn add --ignore-scripts "@codacy/legacy-javascripts@$PUBLISHED_VERSION")
             (cd website && rm -rf node_modules && yarn --ignore-scripts && yarn add --ignore-scripts "@codacy/stylesheets@$PUBLISHED_VERSION" && yarn add --ignore-scripts "@codacy/react-components@$PUBLISHED_VERSION")
             # Stage and create commit with version updates
             git add -A .
@@ -183,6 +186,10 @@ jobs:
           name: Publish Stylesheets WebJar
           command: |
             curl -X GET "https://www.webjars.org/deploy?webJarType=npm&nameOrUrlish=@codacy/stylesheets&version=$(cat .version)"
+      - run:
+          name: Publish Legacy Javascripts WebJar
+          command: |
+            curl -X GET "https://www.webjars.org/deploy?webJarType=npm&nameOrUrlish=@codacy/legacy-javascripts&version=$(cat .version)"
 
   upload_website_legacy:
     docker:
