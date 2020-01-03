@@ -361,8 +361,7 @@
   top: 60px;
   left: 0;
   z-index: 1;
-  background: #edf5fc;
-  border-right: 1px solid #dbe6ec;
+  background: #EBF1FF;
   height: 100vh;
 
   li {
@@ -388,11 +387,6 @@
         font-weight: bold;
 
         .aside-icon path { fill: $brand-accent; }
-
-        &::after,
-        &::before { @extend .arrow-left; }
-
-        &::before { @extend .arrow-left-border; }
       }
 
       &:hover,
