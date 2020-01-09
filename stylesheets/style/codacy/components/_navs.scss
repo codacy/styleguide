@@ -166,3 +166,42 @@
     }
   }
 }
+
+.left-menu {
+  background-color: $brand-neutral-50;
+  padding: 0 16px;
+  padding-top: 16px;
+  margin-bottom: 0;
+  list-style: none;
+  height: 100%;
+
+  li {
+
+    &:first-child {
+      margin-top: 16px;
+    }
+
+    &.active {
+      a {
+        background-color: #EBF1FF;
+        font-weight: bold;
+      }
+    }
+
+    a {
+      font-size: 14px;
+      font-weight: normal;
+      color: $brand-neutral-900;
+      height: 48px;
+      display: block;
+      padding: 16px;
+      box-sizing: border-box;
+
+      &:focus,
+      &:hover {
+        background-color: #EBF1FF;
+        outline: none;
+      }
+    }
+  }
+}
