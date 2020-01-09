@@ -405,25 +405,5 @@
         }
       }
     }
-
-    .arrow-left {
-      border-bottom: 6px solid transparent;
-      border-top: 6px solid transparent;
-      border-right: 8px solid $brand-neutral-0;
-      content: "";
-      display: block;
-      height: 0;
-      margin-right: -1px;
-      position: absolute;
-      top: 25px;
-      right: 0;
-      width: 0;
-    }
-
-    .arrow-left-border {
-      @extend .arrow-left;
-      border-right: 8px solid #dbe6ec;
-      margin-right: 0;
-    }
   }
 }
