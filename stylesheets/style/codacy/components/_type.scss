@@ -74,10 +74,19 @@ dd { color: $brand-neutral-900; }
 
 // Horizontal description lists
 
-.dl-horizontal dt {
-  font-weight: normal;
-  color: $brand-neutral-600;
-  text-align: left;
+.dl-horizontal {
+
+  dt {
+    font-weight: normal;
+    color: $brand-neutral-600;
+    text-align: left;
+  }
+
+  @media (min-width: 768px) {
+    dt {
+      width: 200px;
+    }
+  }
 }
 
 // Emphasis & misc
