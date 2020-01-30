@@ -26,7 +26,11 @@ pre {
   user-select: none;
 }
 
-.line-number span, .code-line {
+.line-number span {
+  align-self: start;
+}
+
+.code-line {
   align-self: center;
 }
 
@@ -38,16 +42,15 @@ pre.source-code {
   display: flex;
   overflow-x: hidden;
   border-radius: 0;
+  white-space: pre-wrap;
 }
 
 .code-duplicated {
-
   .line-number {
     background-color: $duplication-light;
   }
 
   .line-duplicated {
-
     .source-code {
       background-color: $duplication-lighter;
     }
@@ -55,7 +58,6 @@ pre.source-code {
 }
 
 .code-issues {
-
   .source-code {
     background-color: $code-bg;
   }
