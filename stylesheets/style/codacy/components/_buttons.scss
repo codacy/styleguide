@@ -51,6 +51,7 @@
 .btn-link {
   font-weight: $btn-font-weight;
   color: $brand-primary;
+  padding: 0px; 
 
   &:hover,
   &:focus {
