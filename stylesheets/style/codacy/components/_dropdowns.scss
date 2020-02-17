@@ -73,6 +73,17 @@
     &:hover {
       color: $brand-neutral-0;
     }
+
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+      &,
+      &:hover,
+      &:focus,
+      &.focus {
+        color: $brand-primary;
+      }
+    }
   }
 }
 
