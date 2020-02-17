@@ -1,9 +1,0 @@
-src
-node_modules
-.babelrc
-dist
-.babelrc
-tests
-.circleci
-tslint.json
-tsconfig.json

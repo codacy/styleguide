@@ -13,26 +13,26 @@
   font-size: $font-sm;
   line-height: 16px;
   padding: 0 10px;
-  max-width: 160px;
+  max-width: 230px;
   box-shadow: 0 2px 3px transparentize($brand-primary, 0.8);
 
   .arrow {
     display: none;
   }
-}
 
-.popover-primary {
-  border-color: $brand-primary;
-  box-shadow: 0 2px 3px transparentize($brand-primary, 0.8);
-}
+  &.popover-md {
+    max-width: 360px;
+  }
 
-.popover-danger {
-  border-color: $brand-danger;
-  box-shadow: 0 2px 3px transparentize($brand-danger, 0.8);
-}
-
-.popover-md {
-  max-width: 420px;
+  &.popover-primary {
+    border-color: $brand-primary;
+    box-shadow: 0 2px 3px transparentize($brand-primary, 0.8);
+  }
+  
+  &.popover-danger {
+    border-color: $brand-danger;
+    box-shadow: 0 2px 3px transparentize($brand-danger, 0.8);
+  }
 }
 
 .popover-title {
