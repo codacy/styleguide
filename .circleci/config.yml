@@ -102,8 +102,6 @@ jobs:
       - persist_to_workspace:
           root: ~/
           paths:
-            - workdir/components/build/
-            - workdir/components/node_modules/
             - workdir/stylesheets/dist/
             - workdir/stylesheets/.sass-cache/
             - workdir/stylesheets/node_modules/
@@ -157,7 +155,6 @@ jobs:
             git config --global user.email "circleci@codacy.com"
             git config --global user.name "CircleCI Codacy Bot"
             # Update version in packages to publish
-            yarn bolt w @codacy/react-components yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version)
             yarn bolt w @codacy/stylesheets yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version)
             yarn bolt w @codacy/legacy-javascripts yarn version --non-interactive --no-git-tag-version --no-commit-hooks --new-version $(cat .version)
             # Stage and create commit with version changes
