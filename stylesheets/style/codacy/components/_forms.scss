@@ -42,14 +42,24 @@ label {
   padding: 4px 12px;
   transition: all 0.2s linear;
 
+  &:focus {
+    box-shadow: none;
+    border-color: $brand-primary;
+    color: $brand-neutral-600;
+  }
+  
   &[disabled],
   &[readonly],
   fieldset[disabled] & {
-    background-color: $brand-neutral-0;
-    border: 1px solid $brand-neutral-300;
-    opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
-    box-shadow: none;
-    color: $brand-neutral-500;
+    
+    &,
+    &:focus {
+      background-color: $brand-neutral-0;
+      border: 1px solid $brand-neutral-300;
+      opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
+      box-shadow: none;
+      color: $brand-neutral-500;
+    }
   }
 
   &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -65,12 +75,6 @@ label {
   }
   &:-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: $brand-neutral-500;
-  }
-
-  &:focus {
-    box-shadow: none;
-    border-color: $brand-primary;
-    color: $brand-neutral-600;
   }
 
   + p {
