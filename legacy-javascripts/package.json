@@ -1,6 +1,6 @@
 {
   "name": "@codacy/legacy-javascripts",
-  "version": "0.12.4",
+  "version": "0.12.5",
   "description": "Codacy Styleguide Javascripts [Legacy]",
   "repository": "git+https://github.com/codacy/styleguide.git",
   "author": "Inês Pinto <ines@codacy.com>",
