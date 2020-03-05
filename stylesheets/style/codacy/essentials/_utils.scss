@@ -20,15 +20,17 @@ body {
       cursor: pointer;
 
       &::after {
-        content: " \f107";
-        font-family: FontAwesome;
-        font-weight: 400;
+        content: " \f078";
+        font-family: $font-family-icon;
+        font-weight: 900;
+        font-size: 0.65em;
+        margin-left: 5px;
       }
 
       &[aria-expanded="true"] {
         &::after {
-          font-family: FontAwesome;
-          content: " \f106";
+          font-family: $font-family-icon;
+          content: " \f077";
         }
       }
     }
@@ -36,9 +38,9 @@ body {
     //== Add icon indicating the link will open on another tab when there is "target=_blank"
     &[target="_blank"]:not(.no-external-icon) {
       &::after {
-        content: " \f08e";
-        font-family: FontAwesome;
-        font-weight: 400;
+        content: " \f35d";
+        font-weight: 900;
+        font-family: $font-family-icon;
       }
     }
   }
@@ -156,7 +158,8 @@ body {
   &.up {
 
     &:before {
-      font-family: "fontAwesome";
+      font-family: $font-family-icon;
+      font-weight: 900;
       content: "\f106";
     }
   }
@@ -164,7 +167,8 @@ body {
   &.down {
 
     &:before {
-      font-family: "fontAwesome";
+      font-family: $font-family-icon;
+      font-weight: 900;
       content: "\f107";
     }
   }

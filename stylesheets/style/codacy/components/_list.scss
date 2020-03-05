@@ -13,8 +13,9 @@
 
     &:before {
       @extend .text-success;
-      content: "\f05d";
-      font-family: FontAwesome;
+      content: "\f058";
+      font-weight: 400;
+      font-family: $font-family-icon;
       padding-right: 5px;
     }
 
@@ -23,7 +24,7 @@
 
       &:before {
         color: $brand-neutral-400;
-        content: "\f05c";
+        content: "\f057";
       }
     }
   }

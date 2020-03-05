@@ -92,7 +92,8 @@ a.alert-clickable {
 
       &::after {
         content: "\f00d";
-        font-family: FontAwesome;
+        font-weight: 900;
+        font-family: $font-family-icon;
       }
 
       &:hover {
@@ -123,7 +124,8 @@ a.alert-clickable {
       &:before {
         content: $icon;
         color: $color;
-        font-family: FontAwesome;
+        font-family: $font-family-icon;
+        font-weight: 900;
         margin-right: 5px;
         font-size: $font-lg;
         position: relative;
@@ -173,7 +175,8 @@ $alert-icons: (
     p:first-of-type:before {
       content: $icon;
       color: $color;
-      font-family: FontAwesome;
+      font-family: $font-family-icon;
+      font-weight: 900;
       font-size: $font-lg;
       position: absolute;
       top: 10px;
@@ -209,7 +212,8 @@ $alert-icons: (
   @include box-shadow (0px 1px 6px 1px rgba($brand-neutral-200, 0.8));
 
   &:before {
-    font-family: FontAwesome;
+    font-family: $font-family-icon;
+    font-weight: 900;
     font-size: 17px;
     position: absolute;
     left: 15px;

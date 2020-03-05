@@ -62,7 +62,8 @@
 
     &:before {
       content: "\f053";
-      font-family: FontAwesome;
+      font-weight: 900;
+      font-family: $font-family-icon;
       position: absolute;
       font-size: $font-sm;
       bottom: 3px;

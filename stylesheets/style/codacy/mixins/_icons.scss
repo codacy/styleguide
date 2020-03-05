@@ -1,9 +1,10 @@
 @mixin caret() {
-    font-family: 'FontAwesome';
+    font-family: $font-family-icon;
     color: $brand-primary;
-
+    font-weight: 900;
+    font-size: 0.65em;
     &:before {
-      content: "\f107";
+      content: "\f078";
     }
   }
 

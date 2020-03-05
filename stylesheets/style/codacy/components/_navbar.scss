@@ -202,7 +202,8 @@
         //to make caret from select change to a icon of font awesome
         .caret {
           color: $brand-neutral-400;
-          font-family: 'FontAwesome';
+          font-family: $font-family-icon;
+          font-weight: 900;
           position: relative;
           right: 0;
 
@@ -301,7 +302,8 @@
           &::before {
             color: $brand-neutral-500;
             content: "\f002";
-            font-family: "FontAwesome";
+            font-weight: 900;
+            font-family: $font-family-icon;
             font-size: 12px;
             position: absolute;
             top: 12px;

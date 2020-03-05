@@ -98,7 +98,8 @@
         > h5 {
           &:after {
             content: "\f078";
-            font-family: FontAwesome;
+            font-family: $font-family-icon;
+            font-weight: 900;
             float: right;
             color: $brand-neutral-600;
           }
@@ -134,7 +135,8 @@
       font-size: $font-md;
 
       &:before {
-        font-family: FontAwesome;
+        font-family: $font-family-icon;
+        font-weight: 400;
         position: absolute;
         left: 15px;
         font-size: $font-lg;
@@ -145,7 +147,8 @@
 
         &:after {
           content: "\f078";
-          font-family: FontAwesome;
+          font-family: $font-family-icon;
+          font-weight: 900;
           position: absolute;
           right: 30px;
           top: 15px;
@@ -179,7 +182,7 @@
       .panel-heading {
 
         &:before {
-          content: "\f05d";
+          content: "\f058";
           color: $brand-success;
         }
       }
@@ -191,7 +194,7 @@
       .panel-heading {
 
         &:before {
-          content: "\f05c";
+          content: "\f057";
           color: $brand-danger;
         }
       }
@@ -248,7 +251,8 @@ a.panel-clickable {
 
       &:before {
         content: "\f055";
-        font-family: FontAwesome;
+        font-family: $font-family-icon;
+        font-weight: 900;
         margin-right: 5px;
       }
     }
