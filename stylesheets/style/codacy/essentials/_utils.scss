@@ -40,6 +40,8 @@ body {
       &::after {
         content: " \f35d";
         font-weight: 900;
+        font-size: .85em;
+        vertical-align: 0.08em;
         font-family: $font-family-icon;
       }
     }
