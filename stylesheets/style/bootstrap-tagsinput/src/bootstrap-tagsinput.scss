@@ -76,7 +76,8 @@
       &:after {
         font-size: 12px;
         content: "\f00d";
-        font-family: FontAwesome;
+        font-family: $font-family-icon;
+        font-weight: 900;
         padding: 0px 2px;
         color: transparentize($gray-light, 0.5);
       }

@@ -154,15 +154,19 @@ table {
 
     .table-caret {
       &:after {
-        content: " \f106";
-        font-family: FontAwesome;
+        content: " \f077";
+        font-family: $font-family-icon;
+        font-weight: 900;
+        font-size: 0.65em;
+        margin-left: 2px;
+        vertical-align: 0.1em;
         color: $brand-neutral-500;
       }
 
       &.descending {
 
         &:after {
-          content: " \f107";
+          content: " \f078";
           color: $brand-neutral-500;
         }
       }
@@ -170,7 +174,7 @@ table {
       &.ascending {
 
         &:after {
-          content: " \f106";
+          content: " \f077";
           color: $brand-neutral-500;
         }
       }
@@ -179,12 +183,12 @@ table {
     &:hover {
       .table-caret {
         &:after {
-          content: " \f107";
+          content: " \f078";
         }
 
         &.descending {
           &:after {
-            content: " \f106";
+            content: " \f077";
           }
         }
       }

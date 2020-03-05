@@ -184,7 +184,6 @@ select.selectpicker {
         border: none;
         line-height: 0;
         position: relative;
-        font-weight: normal;
       }
     }
   }
@@ -198,7 +197,7 @@ select.selectpicker {
       .caret {
 
         &:before {
-          content: "\f106";
+          content: "\f077";
         }
       }
     }
@@ -329,7 +328,6 @@ select.selectpicker {
     .caret {
       position: static;
       top: auto;
-      margin-top: -1px;
     }
   }
 

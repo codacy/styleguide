@@ -17,7 +17,8 @@
       border-radius: 50%;
       color: $brand-primary;
       content: "\f00c";
-      font-family: FontAwesome;
+      font-family: $font-family-icon;
+      font-weight: 900;
       display: inline-block;
       font-size: 8px;
       height: 12px;
@@ -32,6 +33,8 @@
     //Override bootstrap style
     + li::before {
       content: "\f00c";
+      font-family: $font-family-icon;
+      font-weight: 900;
       color: $brand-primary;
       padding: 0 1px;
       margin-left: 35px;

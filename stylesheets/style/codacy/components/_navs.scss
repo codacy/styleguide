@@ -107,10 +107,11 @@
       }
 
       &::after {
-        content: "\f105";
-        font-family: FontAwesome;
+        content: "\f054";
+        font-size: 0.65em;
+        font-family: $font-family-icon;
+        font-weight: 900;
         font-style: normal;
-        font-weight: normal;
         text-decoration: inherit;
         right: 15px;
         position: absolute;
