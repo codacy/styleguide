@@ -27,7 +27,7 @@ references:
 jobs:
   test_edge_lambda:
     docker:
-      - image: circleci/node:10
+      - image: circleci/node:12
     working_directory: ~/workdir/.aws/src
     steps:
       - attach_workspace:
