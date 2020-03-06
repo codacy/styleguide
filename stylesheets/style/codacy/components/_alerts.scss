@@ -233,7 +233,7 @@ $alert-icons: (
     border-color: $brand-danger;
 
     &:before {
-      content: "\f05c";
+      content: "\f057";
       color: $brand-danger;
     }
   }
@@ -241,7 +241,7 @@ $alert-icons: (
   &.toast-info {
 
     &:before {
-      content: "\f0eb";
+      content: "\f05a";
       color: $brand-primary;
     }
   }
