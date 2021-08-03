@@ -23,6 +23,7 @@ references:
       branches:
         only:
           - master
+          - bump-libraries-CY-4461
 
 jobs:
   test_edge_lambda:
