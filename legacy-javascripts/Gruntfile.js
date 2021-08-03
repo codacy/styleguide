@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       my_target: {
         files: {
           "dist/js/main.min.js": [
-            "assets/v0/bootstrap-3.3.7/assets/javascripts/bootstrap.min.js",
+            "assets/v0/bootstrap-3.4.1/assets/javascripts/bootstrap.min.js",
             "assets/v0/bootstrap-select/js/bootstrap-select.js",
             "assets/v0/bootstrap-tagsinput/src/bootstrap-tagsinput.js",
             "assets/v0/javascripts/components/*.js"
