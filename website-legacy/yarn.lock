@@ -90,15 +90,15 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@codacy/legacy-javascripts@1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@codacy/legacy-javascripts/-/legacy-javascripts-1.1.4.tgz#7ef300d70dd92db957a2edaacd7fb59803a33e4c"
-  integrity sha512-ERADcdzmk9HDQ99if58/1cQe8ZjAEskaItOs+q5qCM3qy0+TUCkBAMqALmlh/9aTxJGvdVee0AIh2hVxRE0ntw==
+"@codacy/legacy-javascripts@1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@codacy/legacy-javascripts/-/legacy-javascripts-1.1.5.tgz#e19562487150f105f01a7621d6df1784fb382805"
+  integrity sha512-OOv+B99zPHHH3BcuIJsRITOuZ0Gst5wxG3C1QuY78uBeA6Mb1mdY4UDP85s2bFw38NmSprDwm2FsxQX4VMPEsA==
 
-"@codacy/stylesheets@1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@codacy/stylesheets/-/stylesheets-1.1.4.tgz#0dcfa138b6d5819a62819b38c8a6ecf2d22182b2"
-  integrity sha512-KSe8quPFoYbAJpUPRuJFM6wCWT8ml/5zmTIzUY/vVaJQyIMK7ZIHJocESAd/n59Ta+D6qiGvAkya2Ooqz/PeZQ==
+"@codacy/stylesheets@1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@codacy/stylesheets/-/stylesheets-1.1.5.tgz#1c72203da22e0d9a47f57b38f07ac4e0ab33f301"
+  integrity sha512-hW4ajFcJXHId/O/2SmzxbdW23FyGsGmRYR1+M4fWpAqHtX39SngclquPgmsjiMu7iKTvIgmmo3FiWkz5jzVZWw==
 
 abbrev@1:
   version "1.1.1"
