@@ -21,3 +21,4 @@ node_modules/
 /stylesheets/build/
 /website-legacy/dist/
 /legacy-javascripts/dist/
+.git/
