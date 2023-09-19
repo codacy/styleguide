@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  codacy: codacy/base@0.3.0
+  codacy: codacy/base@6.1.3
 
 references:
   setup_aws_credentials: &setup_aws_credentials
