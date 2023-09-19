@@ -1,4 +1,4 @@
-~version: 2.1
+version: 2.1
 
 orbs:
   codacy: codacy/base@6.1.3
