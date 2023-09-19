@@ -34,10 +34,10 @@ jobs:
           at: ~/workdir
       - run:
           name: Install dependencies
-          command: yarn
+          command: yarn install
       - run:
           name: Test Edge Lambda
-          command: yarn run test
+          command: yarn test
 
   create_stack_legacy_website:
     docker:
