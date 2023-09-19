@@ -27,11 +27,11 @@ references:
 jobs:
   test_edge_lambda:
     docker:
-      - image: circleci/node:12
+      - image: circleci/node:gallium
     working_directory: ~/workdir/.aws/src
     steps:
       - attach_workspace:
-          at: ~/
+          at: ~/workdir
       - run:
           name: Install dependencies
           command: yarn
@@ -71,11 +71,11 @@ jobs:
 
   build_packages:
     docker:
-      - image: circleci/ruby:2.6.3-buster
+      - image: circleci/node:gallium
     working_directory: ~/workdir
     steps:
       - attach_workspace:
-          at: ~/
+          at: ~/workdir
       - run:
           name: "Install Node.js and npm"
           command: |
